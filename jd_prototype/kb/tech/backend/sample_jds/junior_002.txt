@@ -1,0 +1,29 @@
+{"role_family": "Backend Engineer", "seniority_level": "Junior", "team_context": "Payments team, 4 engineers", "primary_stack": "Node.js, NestJS, PostgreSQL, AWS SQS", "date_added": "2024-10-15", "approved_by": "eng_hiring_committee"}
+
+---
+
+Junior Backend Engineer — Payments Team
+
+Role Summary
+You will join our Payments team as a Junior Backend Engineer, building and maintaining the backend services that handle payment processing, reconciliation, and fraud detection hooks for our B2B SaaS platform. The team runs a Node.js/NestJS stack on AWS. You will work on a system that processes $2M in transactions daily and receive close mentorship from two senior engineers on the team.
+
+Key Responsibilities
+- You will implement new features in NestJS following the team's established module and service patterns
+- You will write unit tests for every module you touch, using Jest as the testing framework
+- You will participate in weekly architecture discussions and flag questions or concerns early
+- You will investigate payment reconciliation discrepancies assigned to you and document root causes
+- You will maintain and improve internal developer documentation for the services you own
+- You will monitor the health of your services using our CloudWatch dashboards and escalate anomalies
+
+Must-Have Skills
+- You have shipped production JavaScript or TypeScript code in a professional or substantial personal context
+- You understand asynchronous patterns in Node.js (Promises, async/await, event loops)
+- You can design and query relational databases using SQL
+- You are comfortable with Git workflows, including rebasing and resolving conflicts
+- You understand REST API fundamentals and can implement them cleanly
+
+Nice-to-Have Skills
+- You have used NestJS or another structured Node.js framework
+- You have worked with a message queue (SQS, RabbitMQ, or Kafka) in any context
+- You have experience with AWS services beyond just S3
+- You understand the basics of payment processing or financial transaction flows

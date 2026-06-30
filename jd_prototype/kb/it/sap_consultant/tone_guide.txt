@@ -1,0 +1,34 @@
+TONE GUIDE — IT Department (SAP Consultant) · Arvind Limited
+
+Voice: Technical, module-specific, and implementation-grounded. SAP candidates can
+spot a generic JD instantly. Name the module, name the industry context (textile
+manufacturing), name the integration points.
+
+DO:
+- Name the primary module (MM, FICO, PP, SD, WM) in the first line of Must-Have Skills
+- Reference Arvind's SAP landscape: manufacturing plants, multi-entity setup, textile-specific processes
+- Use second-person: "You will configure...", "You will own...", "You will lead..."
+- State implementation experience as a concrete number: "1+ full-cycle implementation"
+- Distinguish between functional consultants (configuration, specs) and technical (ABAP)
+
+DO NOT:
+- Say "SAP knowledge" — specify the module
+- List ABAP development as must-have for functional roles
+- Use "strong communication skills" — all SAP consultants need to work with business users; describe the actual interaction
+- Overstate S/4HANA experience requirements at junior level (most mid-market SAP in India is still ECC)
+
+Structure expectations:
+- Role Summary: Arvind's SAP landscape, primary module coverage, team size
+- Key Responsibilities: split between support/BAU, project work, and business engagement
+- Must-Have Skills: module name + process depth + implementation cycle count
+- Nice-to-Have: S/4HANA, secondary module, industry-specific add-ons (IS-Retail, IS-Mill for textiles)
+
+Tone examples:
+  GOOD: "You will own the SAP MM configuration for Arvind's Gujarat and Karnataka plants,
+        managing master data governance, procurement cycle customisation, and integration
+        with FICO for GR/IR reconciliation."
+  BAD:  "You will support SAP activities in a manufacturing environment."
+
+  GOOD: "You have completed at least one full SAP MM implementation lifecycle — from
+        blueprint through go-live — and can own functional specifications independently."
+  BAD:  "You have good SAP knowledge and experience."

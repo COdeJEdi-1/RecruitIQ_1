@@ -1,0 +1,62 @@
+role_family: Head Legal
+department: LEGAL & COMPLIANCE
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- 2-JD-Head-Legal (2) (1).pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Analyse and identify legal risks and implications of business transactions
+    - Keep senior management informed of developments in laws and regulations that potentially affect
+      the business
+    - Drafting of MOUs, Term Sheets, Agreements, Commercial Contracts, Agreement to Sell, Conveyance Deeds,
+      Notices, Security Documents and other transaction/structuring documents pertaining to Real Estate
+      business
+    - Understand, review and comment on Title due diligence
+    - Understand various court processes and advise management on legal strategy
+    - Liaise with authorities like Revenue, Stamp, RERA, etc.
+    - Ensure compliance of various applicable laws
+    - Experience working with senior legal professionals on various drafting and litigation matters
+    arvind_specific:
+    - Arvind Smartspaces — Real Estate business legal function
+    leadership_skills:
+    - Independently heads the large Legal department
+    qualifications:
+    - Law Graduate from a Premier Law Institute / National Law School
+    - 10+ years of experience
+    - Strong legal acumen and drafting skills
+    - Strong communication skills
+    - Knowledge of Real Estate transactions, drafting, relevant laws and RERA
+    - Ability to read and understand Gujarati or Kannada an added advantage
+    - Knowledge of Gujarat and/or Karnataka Revenue Laws
+    kpis: []
+    reporting_to: Chief Operating Officer

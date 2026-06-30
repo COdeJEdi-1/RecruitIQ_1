@@ -1,0 +1,31 @@
+role_family: Area Sales Manager / Regional Manager
+department: Retail
+division: Arvind Brands
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Multi-store performance management
+    - Field team leadership and training
+    - Store expansion tracking
+    - Scheme execution and promotional rollout
+    progressive_skills: []
+    arvind_specific:
+    - Area management across an Arvind Brands cluster of EBOs/MBOs
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Regional P&L ownership across store clusters
+    - Retail analytics and BTL activation strategy
+    - MIS reporting to brand leadership
+    - New store opening project management
+    progressive_skills: []
+    arvind_specific:
+    - Regional leadership for Arvind Brands across a city tier or state
+    leadership_skills: []

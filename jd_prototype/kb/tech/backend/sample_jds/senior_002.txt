@@ -1,0 +1,30 @@
+{"role_family": "Backend Engineer", "seniority_level": "Senior", "team_context": "Billing and Subscriptions team, 5 engineers", "primary_stack": "Java, Spring Boot, PostgreSQL, AWS, Stripe", "date_added": "2024-12-01", "approved_by": "eng_hiring_committee"}
+
+---
+
+Senior Backend Engineer — Billing & Subscriptions
+
+Role Summary
+You will join our Billing and Subscriptions team as a Senior Backend Engineer, owning the backend systems that manage subscription lifecycle, invoicing, and payment processing for 85,000 paying customers. The team runs Java/Spring Boot services on AWS, integrated with Stripe. You will lead architectural improvements to our billing engine, which is undergoing a migration from a legacy monolith to a set of event-driven microservices.
+
+Key Responsibilities
+- You will lead the architecture of the billing engine migration, defining service boundaries, event contracts, and data migration strategy
+- You will own the technical quality of the team's output: setting standards, running design reviews, and reviewing every critical PR before merge
+- You will work directly with the Finance and Revenue Operations teams to ensure billing accuracy, idempotency, and audit traceability
+- You will drive reliability improvements: SLO definition, runbook creation, and chaos testing for critical billing paths
+- You will mentor two engineers, providing structured feedback on their technical growth and helping them take on higher-complexity work
+- You will own the Stripe integration and evaluate new Stripe capabilities as the team's subject-matter expert
+- You will be the primary technical escalation point for billing-related incidents
+
+Must-Have Skills
+- You have 5+ years of backend experience, with at least 2 years on billing, payments, or financial systems
+- You have deep Java experience (Spring Boot preferred) and can navigate a complex, legacy-adjacent codebase
+- You understand idempotency, exactly-once processing, and audit trail requirements for financial systems
+- You have worked with Stripe, Braintree, or a comparable payment platform at a deep API level
+- You have led a service decomposition or migration project and can articulate what went well and what you would do differently
+
+Nice-to-Have Skills
+- You have worked with revenue recognition requirements (ASC 606) and understand how billing system design affects accounting
+- You have used AWS EventBridge or Step Functions for orchestrating financial workflows
+- You have contributed to PCI-DSS compliance work
+- You have experience with multi-currency and multi-tenant billing systems

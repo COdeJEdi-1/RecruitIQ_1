@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+{% block title %}History | JD Generator{% endblock %}
+
+{% block extra_style %}
+  .dept-card {
+    transition: all 0.2s ease; cursor: pointer;
+  }
+  .dept-card:hover {
+    box-shadow: 0 4px 16px rgba(129,0,34,0.1);
+    border-color: #810022;
+  }
+  .dept-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .fade-in { animation: fadeIn 0.25s ease-out forwards; }
+{% endblock %}
+
+{% block content %}
+<div class="mb-space-xl">
+  <h1 class="text-headline-lg text-on-surface">History</h1>
+  <p class="text-body-md text-on-surface-variant mt-1">Sample JDs across every department, plus approved JDs.</p>
+</div>
+
+<!-- ── Department sample segments ──────────────────────────────────────── -->
+<div class="mb-space-2xl">
+  <h2 class="text-headline-md text-on-surface mb-1">Browse by Department</h2>
+  <p class="text-label-sm text-on-surface-variant mb-space-md">A representative sample JD from each department's knowledge base.</p>
+
+  <div id="deptGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <!-- Loading skeletons -->
+    {% for i in range(6) %}
+    <div class="bg-white rounded-xl border border-outline-variant p-4 animate-pulse">
+      <div class="h-10 w-10 rounded-lg bg-surface-container mb-3"></div>
+      <div class="h-4 w-2/3 bg-surface-container rounded mb-2"></div>
+      <div class="h-3 w-full bg-surface-container rounded mb-1"></div>
+      <div class="h-3 w-5/6 bg-surface-container rounded"></div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- ── Generated JDs (pending + approved, from localStorage) ────────────── -->
+<div class="mb-space-2xl" id="generatedDraftsSection" style="display:none">
+  <h2 class="text-headline-md text-on-surface mb-1">My Generated JDs</h2>
+  <p class="text-label-sm text-on-surface-variant mb-space-md">JDs you generated this session — pending approval or already saved.</p>
+  <div id="generatedDraftsList" class="flex flex-col gap-2"></div>
+</div>
+
+<!-- ── Library edits (localStorage) ─────────────────────────────────────── -->
+<div class="mb-space-2xl" id="localDraftsSection" style="display:none">
+  <h2 class="text-headline-md text-on-surface mb-1">My Library Edits</h2>
+  <p class="text-label-sm text-on-surface-variant mb-space-md">Edits you made to Library JDs — stored only in this browser until exported.</p>
+  <div id="localDraftsList" class="flex flex-col gap-2"></div>
+</div>
+
+<!-- ── Approved JD history ──────────────────────────────────────────────── -->
+<div>
+  <h2 class="text-headline-md text-on-surface mb-1">JD History</h2>
+  <p class="text-label-sm text-on-surface-variant mb-space-md">JDs generated and saved to the knowledge base, most recent first.</p>
+
+  <div id="jdHistoryList" class="flex flex-col gap-2">
+    <div class="bg-white rounded-xl border border-outline-variant p-6 text-center text-label-sm text-on-surface-variant">
+      Loading history…
+    </div>
+  </div>
+</div>
+
+<!-- ── Draft detail modal ───────────────────────────────────────────────── -->
+<div id="draftModal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant sticky top-0 bg-white">
+      <div>
+        <div class="flex items-center gap-2 mb-0.5">
+          <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-label-xs font-bold">Local Draft</span>
+          <h3 id="draftModalTitle" class="text-headline-md text-on-surface"></h3>
+        </div>
+        <p id="draftModalSubtitle" class="text-label-sm text-on-surface-variant mt-0.5"></p>
+      </div>
+      <button onclick="closeDraftModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center transition-colors">
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant">close</span>
+      </button>
+    </div>
+    <div class="px-6 py-5">
+      <pre id="draftModalBody" class="text-body-md text-on-surface whitespace-pre-wrap font-sans leading-relaxed"></pre>
+    </div>
+    <div class="px-6 py-4 border-t border-outline-variant flex justify-between items-center sticky bottom-0 bg-white">
+      <button id="draftDeleteBtn" class="px-4 py-2 text-label-sm text-error border border-error/30 rounded-lg hover:bg-error/5 transition-colors flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">delete</span>
+        Discard draft
+      </button>
+      <button id="draftContinueBtn"
+         class="px-5 py-2 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">edit</span>
+        Continue editing
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Detail modal ─────────────────────────────────────────────────────── -->
+<div id="jdModal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant sticky top-0 bg-white">
+      <div>
+        <h3 id="modalTitle" class="text-headline-md text-on-surface">Role Title</h3>
+        <p id="modalSubtitle" class="text-label-sm text-on-surface-variant mt-0.5"></p>
+      </div>
+      <button onclick="closeJdModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center transition-colors">
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant">close</span>
+      </button>
+    </div>
+    <div class="px-6 py-5">
+      <pre id="modalBody" class="text-body-md text-on-surface whitespace-pre-wrap font-sans leading-relaxed"></pre>
+    </div>
+    <div class="px-6 py-4 border-t border-outline-variant flex justify-end gap-3 sticky bottom-0 bg-white">
+      <a id="modalGenerateLink" href="{{ url_for('generator') }}"
+         class="px-5 py-2 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+        Generate one like this
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  const DEPT_ICONS = {
+    tech: ['code', '#e8f4fd', '#1565c0'],
+    hr: ['groups', '#fff3e0', '#e65100'],
+    finance: ['payments', '#e8f5e9', '#2e7d32'],
+    manufacturing: ['precision_manufacturing', '#ede7f6', '#5e35b1'],
+    it: ['dns', '#e3f2fd', '#1976d2'],
+    sustainability: ['eco', '#e0f2f1', '#00695c'],
+    retail: ['storefront', '#fce4ec', '#c62828'],
+    quality: ['verified', '#fff8e1', '#f57f17'],
+    supply_chain: ['local_shipping', '#f3e5f5', '#6a1b9a'],
+    sales_marketing: ['campaign', '#ffebee', '#ad1457'],
+    design_merchandising: ['palette', '#fce4ec', '#ad1457'],
+    environmental: ['water_drop', '#e0f7fa', '#00838f'],
+    telecom: ['cell_tower', '#e8eaf6', '#3949ab'],
+  };
+
+  async function loadDepartmentSamples() {
+    try {
+      const res = await fetch('/api/jd/department-samples');
+      const data = await res.json();
+      const grid = document.getElementById('deptGrid');
+
+      if (!data.samples || !data.samples.length) {
+        grid.innerHTML = '<p class="text-label-sm text-on-surface-variant col-span-full">No samples available.</p>';
+        return;
+      }
+
+      grid.innerHTML = data.samples.map((s, i) => {
+        const [icon, bg, fg] = DEPT_ICONS[s.dept] || ['description', '#f0f0f0', '#555'];
+        const hasContent = !!s.full_text;
+        return `
+        <div class="dept-card fade-in bg-white rounded-xl border border-outline-variant p-4"
+             style="animation-delay:${i * 40}ms"
+             ${hasContent ? `onclick='openJdModal(${JSON.stringify(s).replace(/'/g, "&apos;")})'` : ''}>
+          <div class="flex items-start gap-3 mb-2">
+            <div class="dept-icon" style="background:${bg};">
+              <span class="material-symbols-outlined text-[20px]" style="color:${fg};">${icon}</span>
+            </div>
+            <div class="min-w-0">
+              <p class="text-label-sm font-bold text-on-surface-variant uppercase tracking-wide">${s.dept_label}</p>
+              <p class="text-label-md font-bold text-on-surface truncate">${s.role_title}</p>
+            </div>
+          </div>
+          <p class="text-body-sm text-on-surface-variant leading-relaxed line-clamp-3">${s.preview}</p>
+          ${hasContent ? `
+          <div class="mt-3 flex items-center gap-1 text-label-xs font-bold" style="color:${fg};">
+            <span class="material-symbols-outlined text-[14px]">visibility</span>
+            View sample JD
+          </div>` : ''}
+        </div>`;
+      }).join('');
+    } catch (err) {
+      document.getElementById('deptGrid').innerHTML =
+        `<p class="text-label-sm text-error col-span-full">Failed to load department samples: ${err.message}</p>`;
+    }
+  }
+
+  async function loadJdHistory() {
+    const container = document.getElementById('jdHistoryList');
+    try {
+      const res = await fetch('/api/jd/history');
+      const data = await res.json();
+
+      if (!data.history || !data.history.length) {
+        container.innerHTML = `
+          <div class="bg-white rounded-xl border border-outline-variant p-10 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-xl bg-surface-container flex items-center justify-center mb-3">
+              <span class="material-symbols-outlined text-[28px] text-on-surface-variant">history</span>
+            </div>
+            <h3 class="text-headline-md text-on-surface mb-1">No approved JDs yet</h3>
+            <p class="text-body-sm text-on-surface-variant max-w-sm mb-4">Generated and approved JDs will appear here.</p>
+            <a href="{{ url_for('generator') }}"
+               class="px-5 py-2.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">add</span>
+              Generate the first JD
+            </a>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = data.history.map(h => `
+        <div class="bg-white rounded-xl border border-outline-variant p-4 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="material-symbols-outlined text-[20px] text-on-surface-variant">description</span>
+            <div class="min-w-0">
+              <p class="text-label-md font-bold text-on-surface truncate">${h.family_label} · ${h.dept_label}</p>
+              <p class="text-label-sm text-on-surface-variant">${h.yoe_band ? h.yoe_band + ' yrs · ' : ''}${h.date_added || ''}</p>
+            </div>
+          </div>
+          <span class="text-label-xs text-on-surface-variant shrink-0">${h.approved_by || ''}</span>
+        </div>
+      `).join('');
+    } catch (err) {
+      container.innerHTML = `<p class="text-label-sm text-error">Failed to load history: ${err.message}</p>`;
+    }
+  }
+
+  function openJdModal(sample) {
+    document.getElementById('modalTitle').textContent = sample.role_title;
+    document.getElementById('modalSubtitle').textContent =
+      `${sample.dept_label} · ${sample.family_label}${sample.yoe_band ? ' · ' + sample.yoe_band + ' yrs' : ''}`;
+    document.getElementById('modalBody').textContent = sample.full_text;
+    document.getElementById('jdModal').classList.remove('hidden');
+  }
+
+  function closeJdModal() {
+    document.getElementById('jdModal').classList.add('hidden');
+  }
+
+  function loadGeneratedDrafts() {
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    const entries = Object.values(drafts).sort((a, b) => b.saved_at.localeCompare(a.saved_at));
+    if (!entries.length) return;
+
+    document.getElementById('generatedDraftsSection').style.display = '';
+    document.getElementById('generatedDraftsList').innerHTML = entries.map(d => {
+      const isPending = d.status === 'pending';
+      const badgeClass = isPending ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800';
+      const badgeText  = isPending ? 'Pending' : 'Approved';
+      const icon       = isPending ? 'pending' : 'check_circle';
+      const iconColor  = isPending ? 'text-amber-500' : 'text-green-600';
+      return `
+        <div class="bg-white border border-outline-variant rounded-xl p-4 flex items-center justify-between gap-4 cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-colors"
+             onclick="openGeneratedDraftModal('${d.id}')">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="material-symbols-outlined text-[20px] ${iconColor}">${icon}</span>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="text-label-md font-bold text-on-surface truncate">${d.role_title}</p>
+                <span class="px-2 py-0.5 rounded-full text-label-xs font-bold shrink-0 ${badgeClass}">${badgeText}</span>
+              </div>
+              <p class="text-label-sm text-on-surface-variant">${[d.department, d.family, d.yoe_band ? d.yoe_band + ' yrs' : ''].filter(Boolean).join(' · ')}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0" onclick="event.stopPropagation()">
+            <span class="text-label-xs text-on-surface-variant">${new Date(d.saved_at).toLocaleString()}</span>
+            <button onclick="discardGeneratedDraft('${d.id}')"
+                    class="w-7 h-7 rounded-full hover:bg-error/10 flex items-center justify-center text-error/50 hover:text-error transition-colors"
+                    title="Remove">
+              <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function openGeneratedDraftModal(id) {
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    const d = drafts[id];
+    if (!d) return;
+    const isPending = d.status === 'pending';
+    document.getElementById('draftModalTitle').textContent = d.role_title;
+    document.getElementById('draftModalSubtitle').textContent =
+      [d.department, d.family, d.yoe_band ? d.yoe_band + ' yrs' : ''].filter(Boolean).join(' · ');
+    document.querySelector('#draftModal .rounded-full').textContent = isPending ? 'Pending' : 'Approved';
+    document.querySelector('#draftModal .rounded-full').className =
+      `px-2 py-0.5 rounded-full text-label-xs font-bold ${isPending ? 'bg-amber-100 text-amber-800' : 'bg-green-100 text-green-800'}`;
+    document.getElementById('draftModalBody').textContent = d.jd_text || '(no content saved)';
+    document.getElementById('draftDeleteBtn').onclick = () => { discardGeneratedDraft(id); closeDraftModal(); };
+    document.getElementById('draftContinueBtn').onclick = () => {
+      // Store the draft ID so generator.html can pick it up on load
+      localStorage.setItem('jd_resume_draft_id', id);
+      window.location.href = '{{ url_for("generator") }}';
+    };
+    document.getElementById('draftModal').classList.remove('hidden');
+  }
+
+  function discardGeneratedDraft(id) {
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    delete drafts[id];
+    localStorage.setItem('jd_generated_drafts', JSON.stringify(drafts));
+    loadGeneratedDrafts();
+    if (!Object.keys(drafts).length) document.getElementById('generatedDraftsSection').style.display = 'none';
+  }
+
+  function loadLocalDrafts() {
+    const drafts = JSON.parse(localStorage.getItem('jd_drafts') || '{}');
+    const entries = Object.values(drafts).sort((a, b) => b.saved_at.localeCompare(a.saved_at));
+    if (!entries.length) return;
+
+    document.getElementById('localDraftsSection').style.display = '';
+    document.getElementById('localDraftsList').innerHTML = entries.map(d => `
+      <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center justify-between gap-4 cursor-pointer hover:bg-amber-100 transition-colors"
+           onclick="openDraftModal('${d.id}')">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="material-symbols-outlined text-[20px] text-amber-600">edit_note</span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <p class="text-label-md font-bold text-on-surface truncate">${d.role_title}</p>
+              <span class="px-2 py-0.5 rounded-full bg-amber-200 text-amber-800 text-label-xs font-bold shrink-0">Draft</span>
+            </div>
+            <p class="text-label-sm text-on-surface-variant">${[d.dept_label, d.family_label, d.yoe_band ? d.yoe_band + ' yrs' : ''].filter(Boolean).join(' · ')}</p>
+          </div>
+        </div>
+        <span class="text-label-xs text-on-surface-variant shrink-0">${new Date(d.saved_at).toLocaleString()}</span>
+      </div>`).join('');
+  }
+
+  function openDraftModal(id) {
+    const drafts = JSON.parse(localStorage.getItem('jd_drafts') || '{}');
+    const d = drafts[id];
+    if (!d) return;
+    document.getElementById('draftModalTitle').textContent = d.role_title;
+    document.getElementById('draftModalSubtitle').textContent =
+      [d.dept_label, d.family_label, d.yoe_band ? d.yoe_band + ' yrs' : ''].filter(Boolean).join(' · ');
+    document.getElementById('draftModalBody').textContent = d.content || '(no content saved)';
+    document.getElementById('draftDeleteBtn').onclick = () => discardDraft(id);
+    document.getElementById('draftContinueBtn').onclick = () => {
+      // Signal library.html to reopen this draft in side-by-side edit mode
+      localStorage.setItem('jd_resume_library_edit_id', id);
+      window.location.href = '{{ url_for("library") }}';
+    };
+    document.getElementById('draftModal').classList.remove('hidden');
+  }
+
+  function closeDraftModal() {
+    document.getElementById('draftModal').classList.add('hidden');
+  }
+
+  function discardDraft(id) {
+    const drafts = JSON.parse(localStorage.getItem('jd_drafts') || '{}');
+    delete drafts[id];
+    localStorage.setItem('jd_drafts', JSON.stringify(drafts));
+    closeDraftModal();
+    loadLocalDrafts();
+    // re-render list
+    const entries = Object.values(drafts);
+    if (!entries.length) document.getElementById('localDraftsSection').style.display = 'none';
+  }
+
+  // Real-time: when a JD is approved in another tab (generator), refresh
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'jd_approved_event') {
+      loadGeneratedDrafts();
+      loadJdHistory();
+    }
+    // Refresh draft cards when edits are saved from the Generator tab
+    if (e.key === 'jd_draft_updated') {
+      loadGeneratedDrafts();
+    }
+  });
+
+  loadGeneratedDrafts();
+  loadLocalDrafts();
+  loadDepartmentSamples();
+  loadJdHistory();
+</script>
+{% endblock %}

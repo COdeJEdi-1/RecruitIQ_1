@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Arvind GCC | HR Intelligence Platform</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary":                    "#830026",
+            "primary-fixed":              "#ffdadb",
+            "primary-fixed-dim":          "#ffb2b7",
+            "primary-container":          "#a61d3a",
+            "on-primary":                 "#ffffff",
+            "on-primary-container":       "#ffbabe",
+            "on-primary-fixed":           "#40000e",
+            "on-primary-fixed-variant":   "#90062c",
+            "secondary":                  "#5f5e5e",
+            "secondary-container":        "#e4e2e1",
+            "secondary-fixed":            "#e4e2e1",
+            "secondary-fixed-dim":        "#c8c6c6",
+            "on-secondary":               "#ffffff",
+            "on-secondary-container":     "#656464",
+            "on-secondary-fixed":         "#1b1c1c",
+            "on-secondary-fixed-variant": "#474747",
+            "tertiary":                   "#423e40",
+            "tertiary-container":         "#595557",
+            "tertiary-fixed":             "#e8e0e3",
+            "tertiary-fixed-dim":         "#ccc5c8",
+            "on-tertiary":                "#ffffff",
+            "on-tertiary-container":      "#d1cacd",
+            "on-tertiary-fixed":          "#1e1b1d",
+            "on-tertiary-fixed-variant":  "#4a4648",
+            "background":                 "#F4F5F7",
+            "surface":                    "#ffffff",
+            "surface-dim":                "#edd4d5",
+            "surface-bright":             "#fff8f7",
+            "surface-variant":            "#f6dddd",
+            "surface-tint":               "#b22742",
+            "surface-container-lowest":   "#ffffff",
+            "surface-container-low":      "#fff0f0",
+            "surface-container":          "#ffe9e9",
+            "surface-container-high":     "#fce2e3",
+            "surface-container-highest":  "#f6dddd",
+            "on-surface":                 "#251819",
+            "on-surface-variant":         "#594142",
+            "on-background":              "#251819",
+            "inverse-surface":            "#3c2d2d",
+            "inverse-on-surface":         "#ffeced",
+            "inverse-primary":            "#ffb2b7",
+            "outline":                    "#8c7071",
+            "outline-variant":            "#e0bec0",
+            "error":                      "#ba1a1a",
+            "error-container":            "#ffdad6",
+            "on-error":                   "#ffffff",
+            "on-error-container":         "#93000a",
+          },
+          fontFamily: {
+            "body-md":    ["Inter"],
+            "body-sm":    ["Inter"],
+            "body-lg":    ["Inter"],
+            "label-md":   ["Inter"],
+            "headline-lg":["Playfair Display"],
+            "headline-md":["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ── base ── */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ── layout helpers ── */
+    .bg-subtle-gradient {
+      background: radial-gradient(ellipse 80% 60% at top left, #FDF0F1 0%, #F4F5F7 60%, #EFF0F2 100%);
+    }
+    .glass-header {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(224, 190, 192, 0.4);
+    }
+
+    /* ── architectural accent ── */
+    .accent-left {
+      border-left: 4px solid #830026;
+    }
+
+    /* ── module card ── */
+    .module-card {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      border-left: 4px solid #830026;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow:
+        0 2px 4px rgba(131, 0, 38, 0.04),
+        0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    .module-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 4px 8px rgba(131, 0, 38, 0.08),
+        0 16px 40px rgba(0, 0, 0, 0.12),
+        0 2px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    /* ── image hero with deep cinematic shadow ── */
+    .card-image-wrap {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.7s ease;
+      filter: brightness(0.92) contrast(1.05) saturate(0.9);
+    }
+    .module-card:hover .card-image-wrap img {
+      transform: scale(1.06);
+      filter: brightness(0.85) contrast(1.08) saturate(0.95);
+    }
+
+    /* deep shadow layers — top vignette + bottom fade */
+    .card-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(131, 0, 38, 0.18) 0%, transparent 60%),
+        linear-gradient(180deg,
+          rgba(0,0,0,0.28) 0%,
+          rgba(0,0,0,0.04) 40%,
+          rgba(0,0,0,0.0)  60%,
+          rgba(0,0,0,0.44) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* extra depth rim on hover */
+    .module-card:hover .card-image-wrap::before {
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(131, 0, 38, 0.26) 0%, transparent 55%),
+        linear-gradient(180deg,
+          rgba(0,0,0,0.36) 0%,
+          rgba(0,0,0,0.06) 38%,
+          rgba(0,0,0,0.02) 58%,
+          rgba(0,0,0,0.58) 100%);
+    }
+    /* bottom text-protection gradient */
+    .card-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(0deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* badge floating over image */
+    .image-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 5px 12px 5px 8px;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .image-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ffffff;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+
+    /* ── card body ── */
+    .card-body {
+      padding: 32px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    /* ── primary CTA ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #830026;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(131, 0, 38, 0.28);
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: #6e001f;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(131, 0, 38, 0.36);
+    }
+    .btn-primary:active { transform: scale(0.97); }
+
+    /* ── outline CTA ── */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #830026;
+      color: #830026;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      background: transparent;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: #fff0f0;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(131, 0, 38, 0.12);
+    }
+    .btn-outline:active { transform: scale(0.97); }
+
+    /* ── module tag ── */
+    .module-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #830026;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* ── status pill ── */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #594142;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* ── ripple ── */
+    button, a.btn-primary, a.btn-outline {
+      position: relative;
+      overflow: hidden;
+    }
+    button span.ripple, a span.ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      transform: scale(0);
+      animation: ripple-anim 0.6s linear;
+      pointer-events: none;
+      width: 80px;
+      height: 80px;
+      margin-top: -40px;
+      margin-left: -40px;
+    }
+    @keyframes ripple-anim {
+      to { transform: scale(4); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body class="bg-subtle-gradient min-h-screen text-on-surface font-body-md overflow-x-hidden">
+
+  <!-- ── Header ── -->
+  <header class="fixed top-0 left-0 right-0 h-20 glass-header z-50 flex items-center justify-between px-10">
+    <div class="flex items-center gap-8">
+      <img
+        alt="Arvind GCC Logo"
+        class="h-10"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc3M_3Ot3ymKstLRoa5v5QBlrTAQi11c3T_8-9_vZ9Q2oJ-EIGIJqNcug3nqhVhrOQVpAWjKujN803ZsX0jldRFvBnYVnoNQeIw0aBc5BUSUeMA0PEZpSSuHjKMTgLQC55d_CN5cstv8u2nCJV8CrQBl3wkC1H_XkizsOgT3sv7vA2gFB-0-lslJoBylkmNjO0cf6u5AJ3qaVxP-bY1uhocNL9tEwoEBolDW72YYSwGAjVTy7kHmXW3wWR4dT7YTYvqA"
+      />
+      <nav class="hidden md:flex items-center gap-6">
+        <a class="font-label-md text-sm font-semibold text-primary" href="#">Platform Home</a>
+        <a class="font-label-md text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Documentation</a>
+        <a class="font-label-md text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Enterprise Support</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" title="Notifications">notifications</button>
+      <div class="h-8 w-px bg-outline-variant mx-1"></div>
+      <div class="flex items-center gap-3 px-3 py-1.5 rounded-full bg-surface hover:shadow-sm cursor-pointer border border-outline-variant transition-all">
+        <div class="w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary font-bold text-xs">AR</div>
+        <span class="text-sm font-semibold font-label-md">Admin Portal</span>
+      </div>
+      <!-- Clearance pending button — wire up once access is approved -->
+      <button
+        title="Access pending clearance approval"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-dashed border-outline text-on-surface-variant text-xs font-semibold font-label-md opacity-60 hover:opacity-100 hover:border-primary hover:text-primary transition-all cursor-not-allowed"
+        disabled
+      >
+        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 0;">lock_clock</span>
+        Pending
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main class="pt-36 pb-24 px-10 max-w-[1400px] mx-auto min-h-screen flex flex-col justify-center">
+
+    <!-- Welcome block -->
+    <div class="mb-14 max-w-xl">
+      <p class="text-base text-on-surface-variant leading-relaxed">
+        Empowering the future of enterprise human resources through specialized AI intelligence and architectural precision.
+        Select a module to begin.
+      </p>
+    </div>
+
+    <!-- ── Module Cards ── -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <!-- Card 1 — JD Generator -->
+      <div class="module-card flex flex-col">
+        <div class="card-image-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuANXxrvq_-sixCEXI9mMNH-yQBF6CMk0gRLzXWvcSAHvdCMXUm99svVPykiARCBZM8K4Mwbh7BWPteRT-SOtOs9980UzADU_CyB0gRhRDPcdkYHvIezwTPkiJp7yJDjDo9uvv-yxPi3W4_rpsNkt_mgVQcsEu7xky_e5hFSBxpqR5jUiJd-CCdDaJKaC4P0x3Hjbfxd9ugenN-z6lc5FJhu4xovCXgMMTRXAHaVrL2keoVSB-6uL_4L"
+            alt="Premium fountain pen on structured documents — Arvind JD Generator"
+          />
+          <span class="image-badge">
+            <span class="dot"></span>Intelligence Module
+          </span>
+        </div>
+
+        <div class="card-body">
+          <div class="module-tag">
+            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">description</span>
+            AI-Powered · Role Calibration
+          </div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface mb-3 leading-snug">
+            Job Description Generator
+          </h2>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-grow">
+            Craft Arvind-calibrated role descriptions in seconds. Our AI model understands department nuances
+            and organizational standards to ensure every JD aligns perfectly with the GCC hierarchy —
+            from Junior ICs to Directors.
+          </p>
+
+          <!-- quick feature chips -->
+          <div class="flex flex-wrap gap-2 mt-5">
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">13 Departments</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">YoE Banding</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">PDF / DOCX Export</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">Feedback Learning</span>
+          </div>
+
+          <div class="mt-8">
+            <a href="http://localhost:5001" class="btn-primary" target="_blank" rel="noopener">
+              Launch Generator
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — Voice Agent -->
+      <div class="module-card flex flex-col">
+        <div class="card-image-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyjEEEboUMGn-HlLczoG3oqZAsRmajOu_UGmBRbsn22VrsFKu4XA8cjJJkabuHOSCOeZqAR3oBj4tpoD7QTf6dKTDEDCFnMtPYL9H3Q1eMzs5IOrETXNJq8BN5MfkOYIp96ulVV95atNMxwanVDRjxwMPihcAllDgLrkb1qmahdrw4Ye3CUeh2jg9OSBYYMV3oc9whRYZFGijOhirMqRGgWs9v5AISN1U8aAbK1qew8dzkJDAup7VP"
+            alt="Sophisticated AI voice waveform — Arvind Voice Screening"
+          />
+          <span class="image-badge">
+            <span class="dot"></span>Automation Suite
+          </span>
+        </div>
+
+        <div class="card-body">
+          <div class="module-tag">
+            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">record_voice_over</span>
+            AI Voice · Bulk Campaigns
+          </div>
+          <h2 class="font-headline-lg text-3xl font-bold text-on-surface mb-3 leading-snug">
+            AI Voice Screening
+          </h2>
+          <p class="text-sm text-on-surface-variant leading-relaxed flex-grow">
+            Scale your first-round interviews with automated, human-like voice screening. Dispatch calls to
+            thousands of candidates simultaneously, gather structured insights, and monitor live campaign
+            status — all while maintaining a premium candidate experience.
+          </p>
+
+          <!-- quick feature chips -->
+          <div class="flex flex-wrap gap-2 mt-5">
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">CSV Upload</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">Bulk Campaigns</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">Live Monitoring</span>
+            <span class="text-xs bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant">OmniDimension API</span>
+          </div>
+
+          <div class="mt-8">
+            <a href="http://localhost:5173" class="btn-outline" target="_blank" rel="noopener">
+              Launch Dashboard
+              <span class="material-symbols-outlined text-[18px]">dashboard</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="mt-20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-on-surface-variant border-t border-outline-variant pt-8">
+      <div class="flex items-center gap-6">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          Systems Operational
+        </div>
+        <span class="text-xs text-on-surface-variant opacity-60">v2.4.0 · GCC-Standard</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a class="text-xs hover:text-primary transition-colors" href="#">Privacy</a>
+        <a class="text-xs hover:text-primary transition-colors" href="#">Terms</a>
+        <a class="text-xs hover:text-primary transition-colors" href="#">Help Center</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // ripple on all interactive elements
+    document.querySelectorAll('.btn-primary, .btn-outline, button').forEach(el => {
+      el.addEventListener('mousedown', function (e) {
+        const rect = this.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top  = (e.clientY - rect.top)  + 'px';
+        this.appendChild(ripple);
+        ripple.addEventListener('animationend', () => ripple.remove());
+      });
+    });
+  </script>
+</body>
+</html>

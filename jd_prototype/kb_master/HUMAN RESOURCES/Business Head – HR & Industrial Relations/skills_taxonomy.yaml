@@ -1,0 +1,95 @@
+role_family: Business Head – HR & Industrial Relations
+department: HUMAN RESOURCES
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Business Head HR and IR Textiles.doc
+- Business Head HR and IR_17.12.15.doc
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Formulate short-term and long-term IR strategies at a business/group level
+    - Create a fair and high-performance culture enabling operators to contribute their best across all
+      factory locations
+    - Manage all statutory, legal, and payroll aspects; create a win-win environment with union leaders
+      and representatives
+    - Plan human resource requirements in consultation with heads of functional and operational areas
+    - Revamp processes to run operations with optimal/reduced manpower
+    - Redeploy workmen and ensure adequate training across operations
+    - Define and standardize productivity norms by role/task/job code
+    - Maintain balance between permanent and contractual workers (e.g., outsourcing non-core activities)
+    - Ongoing evaluation and feasibility study of automation (especially material movement)
+    - Conceptualize & develop training & development initiatives for improved productivity, capability
+      building, quality enhancement
+    - Identify capable workmen and develop them into Supervisors
+    - Train workforce to multi-skill to mitigate impact of absenteeism
+    - Conduct surveys on work climate analysis; recommend changes for good working environment
+    - Manage Health, Safety, and Hygiene of the plant
+    - Salary Administration / Performance Appraisal
+    - Develop Employee Engagement activities for workmen
+    - Handle Employee Grievances
+    - Ensure implementation of Code of Conduct, Code of Business Ethics, Standing Order, Discipline policy,
+      Sexual Harassment Committee per legal directive
+    - Revamp work environment and facilities at workplace (transport, canteens, etc.)
+    - Overhaul occupational safety practices and systems
+    - Address collective bargaining, arbitration & negotiation preparation; settle bipartite and tripartite
+      settlements with unions
+    - Deal with multi-union culture; represent before Conciliation Officer to settle demands
+    - 'Handle industrial disputes and unrest: Gate meetings, Gherao, demonstration, sabotage, Strike,
+      lock-out, Police and court interventions, retrenchment'
+    - Compensation design, career and skill development; CTC component design (including performance incentives,
+      overtime bonus)
+    - Worker engagement, communication and morale building (town halls, magazines, festival celebrations)
+    - Support through external tie-ups for benefits of workers (soft loans, insurance schemes)
+    - Build trustworthy relationship with society for business continuity (CSR)
+    - Conduct CSR surveys, identify areas of operations, prepare activities calendar, align with NSDC
+      and NGOs
+    - Establish and maintain liaison and rapport with Govt. authorities, Local Police, local influencing
+      bodies
+    - Implement OD interventions and Competency Framework per company strategy
+    - Formulate strategy for Capability building and Succession planning
+    - Ensure coordination for performance management system implementation within the company's PMS framework
+    arvind_specific:
+    - Group-level Employee Relations across all Arvind factory locations
+    - Fluency in Gujarati required (Read and Speak) for one variant of this role
+    leadership_skills:
+    - BMH grade; reports to CEO of Businesses (BU-level variant, 4-5 reportees, team size 15+) or Group
+      CFO & Executive Director (Group-level variant, 10+ reportees, team size 20)
+    qualifications:
+    - Graduate in any discipline
+    - PG Degree – Human Resource / Industrial Relations / Labour Welfare
+    - 15+ years of experience in HR & IR / Industrial Relations of a manufacturing set up
+    - Innovative Thinking, Business Acumen, Operational Excellence, Strategy formulation & Implementation,
+      Negotiation skills, Inter-personal Skills, Conflict Management, Team management skills
+    - Union Negotiations, Training of Workmen, Workforce Planning, Labour Laws, Managing and Leading a
+      large team
+    kpis: []
+    reporting_to: CEO of Businesses (BU-level) / Group CFO & Executive Director (Group-level)

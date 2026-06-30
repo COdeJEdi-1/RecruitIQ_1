@@ -1,0 +1,35 @@
+role_family: Payroll & Welfare Officer
+department: Hr
+division: Arvind Limited — Garment Factory HR
+company: Arvind Limited
+experience_bands:
+  junior:
+    label: Junior / Trainee
+    years: 0-2
+    seniority_tag: Junior
+    core_skills:
+    - 'Maintain statutory worker welfare facilities: canteen, first aid, crèche, sanitation'
+    - Organize health check-ups, safety training, hygiene awareness programs
+    - Process attendance, overtime, and leave for wage calculation
+    - Handle worker grievances and mediate disputes
+    progressive_skills: []
+    arvind_specific:
+    - Worker welfare programs at Arvind's Bengaluru garment factory
+    leadership_skills: []
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - End-to-end monthly payroll processing per Minimum Wages Act
+    - 'Statutory deductions: ESI, EPF — timely submissions and record maintenance'
+    - Source and recruit skilled/unskilled workers via employment exchanges and local
+      networks
+    - Conduct interviews and skill assessments (stitching, finishing)
+    - Support labour inspections and statutory audits
+    - Maintain compliance with Factories Act 1948, Minimum Wages Act, Payment of Wages
+      Act, ESI Act, EPF Act
+    progressive_skills: []
+    arvind_specific:
+    - Payroll ownership for Arvind's garment manufacturing workforce
+    leadership_skills: []

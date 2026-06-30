@@ -1,0 +1,76 @@
+role_family: Direct Tax
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Direct Tax_ Sr Analyst_Job_Descriptions.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    core_skills: []
+    progressive_skills:
+    - Prepare computation of total income and support filing of Income Tax Returns (ITR) within statutory
+      timelines
+    - Compute current tax and deferred tax provisions, support tax-related disclosures for financial statements
+    - Support tax audit compliance, including preparation of Form 3CD details, schedules, and supporting
+      documentation
+    - Compute and arrange for advance tax payments based on projected income
+    - Support income tax assessments and litigation by preparing submissions, data, and documentation,
+      coordinating with consultants and tax authorities
+    - Perform TDS/TCS reconciliation (books vs. returns vs. Form 26AS) and ensure timely correction of
+      mismatches
+    - Prepare and validate Form 15CA / 15CB documentation for foreign remittances, assess TDS applicability
+      on forex payments including treaty/withholding considerations
+    - Ensure statutory compliance reporting and adherence to direct tax due dates
+    - Compute Professional Tax and support periodic Professional Tax return filing across applicable states
+    - Manage tax queries from business, finance, and auditors
+    - Prepare MIS and tax dashboards covering compliance status, provisions, demands, and refunds
+    - Adhere to SOPs, audit requirements, internal controls, and defined SLAs; identify opportunities
+      for process improvement and automation
+    - Work independently with minimal supervision in a fast-paced Shared Services environment; provide
+      guidance to junior team members
+    arvind_specific:
+    - Shared Services environment within a leading Indian conglomerate (GCC)
+    leadership_skills:
+    - Provides guidance to junior team members
+    qualifications:
+    - Graduate in Commerce/Accounting (B.Com) or equivalent; CA / Inter-CA / CMA preferred
+    - 3–5 years of relevant experience in Direct Tax / corporate taxation / tax compliance
+    - Strong understanding of the Income Tax Act, TDS/TCS provisions, tax provisioning (current and deferred),
+      and tax audit requirements
+    - Working knowledge of Form 15CA/15CB and withholding tax on foreign remittances
+    - Mandatory hands-on experience working on SAP (FI); familiarity with tax filing utilities and TDS
+      software preferred
+    - Understanding of Indian statutory compliance and reporting requirements
+    - Good verbal and written communication skills
+    - Strong analytical, problem-solving, and organizational abilities with good working knowledge of
+      MS Excel
+    - Experience working in Shared Services / GCC / large corporate environment preferred
+    kpis: []
+    reporting_to: ''
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

@@ -1,0 +1,64 @@
+role_family: Manager HR / Sr Manager HR
+department: HUMAN RESOURCES
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Business HR.doc
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    core_skills: []
+    progressive_skills:
+    - Maintain and enhance the organization's human resources function by planning, implementing, and
+      evaluating employee relations and HR policies, programs, and practices
+    - Look into HR Operations function delivering proactive and business-focused HR advice and services,
+      including recruitment and selection, employee relations, reward and systems
+    - Manpower planning and forecasting for the business
+    - Hiring people as per requirement; reduce lead time for hiring and cost of hiring
+    - Identify Training service providers as per TNI identified; ensure identified TNI are addressed through
+      appropriate and timely programs
+    - Support the formulation of KRAs
+    - Support Business Managers in Selection, Recruitment, Appraisal, Internal Transfer of employees
+    - Design and develop Employee Engagement activities
+    - Ensure attrition rate is measured at single-digit level
+    - Manage grievances of Manager and above of the business
+    arvind_specific:
+    - HR Operations for a manufacturing set up at Arvind, based in Ahmedabad
+    leadership_skills:
+    - Manager / Sr Manager HR, Grade M2
+    qualifications:
+    - Graduate in any discipline
+    - PG Degree in HR
+    - Minimum 6 years of experience in Human Resource from a manufacturing set up
+    - Interview Skills / Convincing Skills, Performance Management Programme, Inter-personal Skills, Conflict
+      Management / Problem solving, Communication (Written/Oral), Motivation, Leadership
+    kpis:
+    - Attrition rate measured on single-digit level
+    - Reduced lead time and cost of hiring
+    reporting_to: 'Administrative: Business Head; Functionally: Business Head HR'
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

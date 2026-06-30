@@ -1,0 +1,76 @@
+role_family: IT Support Manager
+department: INFORMATION TECHNOLOGY
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- IT_Support_Manager_JD.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Own end-to-end IT operations for the GCC, ensuring uptime, security, and service quality across
+      desktops, servers, network, and core applications including Active Directory, Microsoft 365
+    - Administer and govern Active Directory and Microsoft 365 user lifecycle, access provisioning, license
+      allocation, and email/data security
+    - Maintain fundamental oversight of network infrastructure — switches, routers, Wi-Fi, internet/ISP
+      links and connectivity across GCC locations; act as escalation point for connectivity and infrastructure
+      issues
+    - Design and enforce backup and disaster recovery practices, including backup scheduling, restore
+      testing, and recovery time/point objectives
+    - Manage IT vendors and service providers, negotiating SLAs, tracking performance, resolving escalations
+    - Maintain a single source of truth for IT asset and inventory management — procurement, allocation,
+      tracking, retirement of hardware and software
+    - Run IT support operations on ITIL-aligned principles — incident, problem, change, and request management
+      using ITSM and monitoring tools
+    - Act as the primary stakeholder interface for IT support across business teams
+    - Build, mentor, and manage the GCC's IT support team, setting clear ownership, escalation paths,
+      and performance standards
+    arvind_specific:
+    - Arvind GCC — IT operations backbone supporting multiple business units across the Arvind Group
+    leadership_skills:
+    - Builds, mentors, and manages the GCC's IT support team
+    qualifications:
+    - 8-10 years of progressive experience in IT support / IT operations, including at least 2–3 years
+      in a managerial or team-lead capacity
+    - Prior experience supporting a GCC, shared services centre, or captive/MNC environment strongly preferred
+    - Hands-on experience with Active Directory, Microsoft 365 / Office 365 administration
+    - Solid fundamental understanding of networking — switches, routers, LAN/WAN, Wi-Fi, internet connectivity
+    - Working knowledge of backup and disaster recovery tools and practices
+    - Demonstrated experience in vendor management, stakeholder management, and IT asset/inventory management
+    - Comfort working across multiple ITSM, monitoring, and productivity tools simultaneously; fundamental
+      understanding of ITIL practices
+    - Bachelor's degree in IT, Computer Science, or related field, or equivalent practical experience
+    - ITIL Foundation (v4) certification (preferred)
+    - Microsoft certifications (preferred)
+    - Exposure to AI-powered IT support tools (preferred)
+    - Experience operating across multiple legal entities or business units within a conglomerate structure
+      (preferred)
+    kpis: []
+    reporting_to: Chief Information Officer (CIO)
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

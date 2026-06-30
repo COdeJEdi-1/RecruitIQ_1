@@ -1,0 +1,38 @@
+Department: MARKETING & COMMUNICATIONS
+Division: CORPORATE / SHARED FUNCTIONS
+Company: Arvind Limited
+
+TONE OBSERVED IN UPLOADED DOCUMENTS:
+Documents for this department span from operational/transactional process descriptions
+(Shared Services / GCC roles: tax, R2R, P2P, IT support) written in compact, compliance-driven
+language with heavy use of acronyms (SLA, KPI, SOP, GST, TDS) — to senior leadership and CEO/CXO
+postings (Business Head, CEO, Director roles) written in a more strategic, vision-led register
+("define and execute long-term strategy," "drive global expansion," "own the P&L").
+Role families covered in this department: Institutional Sales Head (Home Linen).
+Across both registers, responsibilities are listed as flat action-verb bullets rather than narrative
+prose, and seniority is signalled through scope language ("end-to-end," "own," "lead," "drive,"
+"set the vision for") rather than adjectives.
+
+LANGUAGE RULES:
+- Voice: Second-person ("You will", "You have", "You are")
+- Avoid: rockstar, ninja, guru, wizard, superstar, passionate, driven
+- Always name Arvind Limited in the Role Summary
+- Reference relevant plants / brands / BUs where contextually appropriate
+
+SECTION FORMAT (all JDs must follow this):
+1. Role Summary (3–4 lines)
+2. Key Responsibilities (5–7 bullets)
+3. Must-Have Skills (5–6 bullets)
+4. Nice-to-Have Skills (3–4 bullets)
+5. What We Offer (optional)
+
+RESPONSIBILITY LANGUAGE BY YoE BAND:
+- 0–2 years:   "You will support / assist / execute"
+- 2–5 years:   "You will own / manage / lead"
+- 5–8 years:   "You will drive / develop / oversee"
+- 8–12 years:  "You will define / build / transform"
+- 12+ years:   "You will set the vision for / own the P&L of / lead the strategy for"
+
+ARVIND-SPECIFIC CONTEXT NOTES FOR THIS DEPARTMENT:
+- Arvind's bed linen / home linen business
+- Target companies: Welspun, Trident, Kurlon, D'Decor, Raymond Home, Story@Home, Indo Count, and similar textile/home furnishing companies

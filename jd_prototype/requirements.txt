@@ -1,0 +1,11 @@
+groq
+openai
+chromadb
+pyyaml
+python-dotenv
+streamlit
+flask
+supabase
+requests
+python-docx
+reportlab

@@ -1,0 +1,61 @@
+---METADATA---
+{
+  "role_family": "Manager HR / Sr Manager HR",
+  "department": "HUMAN RESOURCES",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "5–8",
+  "seniority_label": "Manager / Senior Manager",
+  "source_doc": "Business HR.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+Role
+Manager HR / Sr Manager HR
+Grade
+M2
+Division
+Location
+Ahmedabad
+Department
+Human Resource
+Release Date
+Reports to
+Administrative : Business Head
+Functionally : Business Head HR
+Team Size
+Key Purpose of the Job
+Maintains and enhances the organization's human resources function by planning, implementing, and evaluating employee relations and human resources policies, programs, and practices.  To look into HR Operations function which delivers proactive and business focused HR advice and services, including recruitment and selection, employee relations and reward and systems.
+Major responsibilities :
+Talent Acquisition and Selection
+Manpower planning and forecasting for Business
+Hiring people as per requirement
+Reduce lead time for hiring and cost of hiring.
+Training and Development
+Identify Training service providers as per TNI identified
+Ensuring identified TNI are addressed through appropriate and timely programs.
+Performance Management System
+Support the formulation of KRA’s
+Support Business Managers in Selection, Recruitment , Appraisal , Internal Transfer of employees.
+Others
+Design and Development of Employee Engagement activities
+Ensuring attrition rate is measured on Single Digit level
+Manage grievance of Manager and above of the business
+Interactions
+Internal : Business CEO and HOD’s , HR Team Members in Unit, CMG Team , Finance Team , Administration Team , IT Application and Hardware Team .
+External:  Candidates, Recruitment Consultant , Training Service Providers.
+Educational and Experience
+Graduate in any discipline
+PG Degree in HR
+Minimum 6 years of experience in Human Resource from manufacturing set up.
+Skills and Competencies
+Interview Skills / Convincing Skills
+Performance Management Programme
+Inter- personal Skills
+Conflict Management / Problem solving
+Communication – Written / oral
+Motivation
+Leadership

@@ -1,0 +1,41 @@
+role_family: QA Automation / SDET
+department: Tech
+
+core_skills:
+  - Test automation framework design and maintenance
+  - API testing (REST/GraphQL) with Postman, RestAssured, or pytest
+  - UI automation with Selenium, Playwright, or Cypress
+  - CI/CD integration of test suites (GitHub Actions, GitLab CI, Jenkins)
+  - Test case design: boundary analysis, equivalence partitioning, exploratory testing
+  - Performance and load testing (JMeter, k6, Locust)
+  - Bug lifecycle management and defect triage
+
+stack_skills:
+  frameworks:
+    - Playwright (TypeScript or Python)
+    - Selenium WebDriver (Java or Python)
+    - Cypress
+    - Appium (mobile)
+  api_tools:
+    - Postman / Newman
+    - RestAssured (Java)
+    - pytest + requests (Python)
+  performance:
+    - k6
+    - JMeter
+    - Locust
+  languages:
+    - Python
+    - Java
+    - TypeScript / JavaScript
+  ci_cd:
+    - GitHub Actions, GitLab CI
+    - Jenkins
+    - Docker (containerised test execution)
+
+yoe_bands:
+  junior: "1-3"
+  mid: "3-6"
+  senior: "6-9"
+  lead: "9-13"
+  architect: "13+"

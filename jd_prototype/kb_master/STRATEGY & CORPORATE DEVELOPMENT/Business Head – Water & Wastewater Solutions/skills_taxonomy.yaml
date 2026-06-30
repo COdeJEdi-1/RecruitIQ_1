@@ -1,0 +1,66 @@
+role_family: Business Head – Water & Wastewater Solutions
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Accel positions.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Responsible for Technical, commercial and operational strategy, maintaining profitability, winning
+      market share in strategic and emerging regions, delivering revenue and EBITDA growth as per budget
+    - Develop strategy for business operations, including M&A, Technological JV with Business Development
+      & revenue generation
+    - Overall responsible for operational activities and execution of ZLD/ETP/RO Project
+    - Responsible for proposals, detailed process & design engineering of WTP/ETP/RO/ZLD, Client Interaction
+      & Networking
+    - Complete process knowledge for ETP/RO/ZLD
+    - 'Knowledge of emerging technologies: MBR, MBBR, UF, RO, CPU, Ion Exchange'
+    - Make effective marketing strategies, promote dealer network, develop new customers, provide better
+      services to existing clients
+    - Implement marketing strategies based on market feedback, assign jobs to junior staff, promote dealer
+      network, analyze performance, provide technical/marketing training
+    - Analyze customer need and market demand, create new prospects, carry out surveys
+    - Prepare Sales Budget, implement MIS, implement marketing promotional strategies
+    - Organize trade shows and participate in exhibitions to promote product & brand awareness
+    - Handle new product development process
+    - Recruitment & selection of sales & support staff at various levels
+    - Control and manage warehouse and inventories for all products
+    arvind_specific:
+    - Arvind Envisol — Water & Wastewater Solutions business (ZLD/ETP/RO)
+    leadership_skills:
+    - Business Head-level ownership
+    qualifications:
+    - '>20 Years of experience'
+    - B.E. Chemical/Mechanical
+    - CTC range 25-30 LAC
+    kpis: []
+    reporting_to: ''

@@ -1,0 +1,37 @@
+TONE GUIDE — Sustainability / ESG Department · Arvind Limited
+
+Voice: Credible, data-driven, and textile-industry-specific. Sustainability candidates
+in the apparel/textile space know the difference between generic ESG and real
+supply chain sustainability. Name the frameworks, name the buyer requirements, name
+the Arvind-specific programs.
+
+DO:
+- Reference specific frameworks: GRI, BRSR, TCFD, GHG Protocol, SBTi
+- Name textile-specific certifications and standards: OEKO-TEX, GOTS, ZDHC MRSL, BCI (Better Cotton)
+- Mention buyer sustainability requirements by name (H&M Higg index, PVH Corp standards, VF Corp)
+- Reference Arvind's water stewardship program and SEBI BRSR Core compliance
+- Use second-person: "You will own...", "You will lead...", "You will build..."
+- Be specific about data scope: plant-level vs group-level, Scope 1/2/3
+
+DO NOT:
+- Use "passionate about sustainability" — describe the actual work
+- List BRSR or GRI as a nice-to-have for any level beyond junior — these are baseline
+- Confuse ESG reporting with CSR/philanthropy — Arvind's sustainability work is operational
+- Use vague language like "coordinate with teams" — name the teams (plant EHS, supply chain, finance)
+
+Structure expectations:
+- Role Summary: Arvind's sustainability scope, reporting framework ownership, team or committee context
+- Key Responsibilities: data collection, report writing, stakeholder engagement, and certification management — in proportion to the experience level
+- Must-Have Skills: framework knowledge at the appropriate depth, data tools, and Arvind-specific standards
+- Nice-to-Have: advanced tools (Watershed, Sweep), SBTi, green finance
+
+Tone examples:
+  GOOD: "You will own Arvind's Scope 1 and Scope 2 emissions data consolidation across
+        six manufacturing plants, prepare the GHG Protocol inventory, and support
+        the BRSR Core disclosure for the listed entity."
+  BAD:  "You will work on sustainability initiatives and support reporting activities."
+
+  GOOD: "You have managed ZDHC MRSL compliance data for a textile manufacturer and
+        understand the difference between RSL testing and MRSL verification at
+        chemical supplier level."
+  BAD:  "You have an interest in sustainability and some reporting experience."

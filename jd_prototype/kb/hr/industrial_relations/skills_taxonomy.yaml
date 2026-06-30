@@ -1,0 +1,31 @@
+role_family: Associate Manager – Industrial Relations / Employee Relations
+department: Hr
+division: Arvind Limited — Plant HR
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Day-to-day employee grievance handling and resolution
+    - Maintain harmonious relations across workers, contract labour, supervisors
+    - Labour law compliance and statutory record maintenance
+    - 'Contractor coordination: attendance, wages, PF/ESIC, documentation'
+    progressive_skills: []
+    arvind_specific:
+    - IR/ER for Arvind's plant workforce at Kadi/Kalol, Gujarat
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Lead disciplinary actions, domestic enquiries, and misconduct case management
+    - Shop-floor rounds for discipline and engagement monitoring
+    - Liaise with labour authorities during audits and inspections
+    - Design and execute employee engagement and welfare programs
+    progressive_skills: []
+    arvind_specific:
+    - Plant-level IR leadership reporting into Plant HR Head
+    leadership_skills: []

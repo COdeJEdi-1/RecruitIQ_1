@@ -1,0 +1,60 @@
+role_family: Accounting
+department: Finance
+
+core_skills:
+  - Month-end and year-end close process
+  - General ledger reconciliation
+  - Accounts payable and receivable management
+  - GAAP or IFRS financial reporting
+  - Intercompany accounting and eliminations
+  - Audit preparation and liaison
+  - ERP data entry and reporting
+
+stack_skills:
+  erp:
+    - NetSuite
+    - SAP
+    - Oracle Financials
+    - QuickBooks (SMB context)
+  reporting:
+    - Microsoft Excel (advanced)
+    - Google Sheets
+    - Blackline (account reconciliation)
+    - FloQast
+  payroll_and_tax:
+    - ADP
+    - Gusto
+    - Avalara (sales tax)
+
+nice_to_have:
+  - Revenue recognition under ASC 606 / IFRS 15
+  - Multi-entity and multi-currency consolidation
+  - Technical accounting memos
+  - Public company reporting (10-K, 10-Q)
+  - CPA, ACA, ACCA, or CIMA qualification
+
+level_gates:
+  Junior: >
+    Executes close tasks from a checklist under supervision. Prepares journal
+    entries and reconciliations that are reviewed before posting. Learns the
+    chart of accounts and close calendar. Requires significant guidance on
+    judgment calls and non-standard entries.
+
+  Mid: >
+    Owns a section of the close independently (e.g. prepaids, fixed assets,
+    accruals). Prepares schedules for audit with minimal rework. Identifies
+    discrepancies and resolves them without escalating every case. Comfortable
+    proposing journal entries for manager review.
+
+  Senior: >
+    Owns a full accounting area (e.g. revenue recognition, consolidation, or
+    technical accounting). Reviews and signs off on junior close work.
+    Primary contact for external auditors in their area. Interprets new
+    accounting standards and writes position memos. Drives process
+    improvement in the close.
+
+  Lead: >
+    Owns the Controller function or a major accounting sub-function.
+    Manages a team of 3–8 accountants. Accountable for close quality
+    and timeline. Partners with CFO and external auditors. Drives
+    systems strategy and automation. Owns the audit relationship.

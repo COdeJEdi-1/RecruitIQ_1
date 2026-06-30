@@ -1,0 +1,31 @@
+role_family: Sales Manager – Home Linen
+department: Sales Marketing
+division: Ankur Textiles (Arvind Limited)
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Primary field sales representation for assigned Home Linen zone
+    - Relationship management with dealers, distributors, and retailers
+    - Lead generation, follow-up, and conversion
+    - Coordination with internal teams for order processing and delivery
+    progressive_skills: []
+    arvind_specific:
+    - Field sales for Ankur Textiles' Home Linen portfolio across assigned zone
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Support Zonal Head on sales strategy and market expansion
+    - Institutional customer relationship management
+    - Market intelligence and competitor activity tracking
+    - Trade activation, sampling, and promotional execution
+    progressive_skills: []
+    arvind_specific:
+    - Zonal sales leadership supporting Ankur Textiles' pan-India expansion
+    leadership_skills: []

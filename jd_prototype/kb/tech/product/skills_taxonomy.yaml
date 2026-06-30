@@ -1,0 +1,39 @@
+role_family: Product Management
+department: Tech
+
+core_skills:
+  - Product discovery (user research, problem framing, hypothesis-driven development)
+  - Roadmap definition, prioritisation frameworks (RICE, MoSCoW, opportunity sizing)
+  - Writing clear, testable acceptance criteria and PRDs
+  - Defining and tracking product KPIs (activation, retention, revenue, NPS)
+  - Stakeholder alignment and executive communication
+  - Agile / Scrum delivery in cross-functional squads
+  - A/B testing design and interpretation
+
+domain_skills:
+  - SaaS product lifecycle management
+  - B2B and B2C product strategy
+  - Platform and API products
+  - Data and analytics products
+  - Mobile-first product development
+
+collaboration_surfaces:
+  - Engineering (backend, frontend, data)
+  - UX / Design
+  - Business Intelligence and Data Analytics
+  - Sales, Marketing, and Customer Success
+  - Legal and Compliance (for regulated products)
+
+tools:
+  - Jira, Linear, or equivalent
+  - Figma (design review fluency)
+  - Mixpanel, Amplitude, or equivalent analytics
+  - SQL (data pull fluency, not engineering-level)
+  - Confluence / Notion
+
+yoe_bands:
+  associate: "0-2"
+  mid: "2-5"
+  senior: "5-8"
+  group_pm: "8-12"
+  director: "12+"

@@ -1,0 +1,18 @@
+role_family: Fashion Consultant / Retail Sales Associate
+department: Retail
+division: Arvind Brands
+company: Arvind Limited
+experience_bands:
+  junior:
+    label: Junior / Trainee
+    years: 0-2
+    seniority_tag: Junior
+    core_skills:
+    - Customer service and styling advice
+    - Product knowledge across brand collections
+    - Upselling and cross-selling techniques
+    - Store planning and merchandising basics
+    progressive_skills: []
+    arvind_specific:
+    - Customer-facing role at an Arvind Brands EBO (Arrow, USPA, Flying Machine, etc.)
+    leadership_skills: []

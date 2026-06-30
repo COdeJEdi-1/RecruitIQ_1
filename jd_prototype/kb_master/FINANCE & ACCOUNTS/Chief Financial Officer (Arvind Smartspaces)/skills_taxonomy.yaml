@@ -1,0 +1,84 @@
+role_family: Chief Financial Officer (Arvind Smartspaces)
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CFO - Arvind Smartspaces.doc.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - 'Ensure appropriate financial systems and processes are in place: Company Reporting, Cash Management,
+      Debt Facilities, Risk Management and Audits, Tax Compliance, Insurance, Contract Management, Terms
+      of Trade & Accounting Projects & Analysis'
+    - 'Corporate Finance: optimizing the balance sheet structure'
+    - 'Financial Strategy: budgeting, forecasting, contributing to overall strategy and investment prioritization,
+      investor relationship management'
+    - 'Risk Management: organizational risk framework (strategic and financial)'
+    - Assist the CEO in developing, for Board approval, a strategic financial direction and positioning
+      to ensure the Company's success
+    - Develop and recommend an annual operating plan and financial budget supporting the Company's long-term
+      strategy
+    - Work directly with the CEO to help raise funding, loans and venture capital for the company
+    - Create, coordinate and evaluate the financial controls and supporting information systems of the
+      Company
+    - Approve and coordinate changes and improvements to disclosure controls and internal control over
+      financial and MIS reporting
+    - Develop appropriate KPIs to monitor and drive the financial performance of the Company and operating
+      business units
+    - Oversee and monitor the Company's financial position, banking and financing activities, capital
+      structure, banking/financial covenants and hedging arrangements
+    - Ensure adequacy of the Company's insurance coverage
+    - Oversee and monitor effective tax strategies and compliance for both direct and indirect taxation
+    - Ensure optimal team size of the Department with proper work allocation
+    - Coordinate preparation of the Company's financial statements and management discussion and analysis
+      (annual and interim)
+    - Coordinate the annual audit with Internal and external auditors
+    - Assist the Audit Committee in performing its duties under applicable laws
+    - Attend Board and Committee meetings and present financial information necessary for discharging
+      duties
+    - Establish and maintain communications with the investor community; oversee dissemination of press
+      releases, annual reports, analyst/media communications, investor relations
+    - Provide people management and subject matter leadership to the corporate finance team
+    - Strategic business partnering and business analytics for management decision making
+    - Drive automation and digitalization for financial processes
+    - Evaluate strategic decisions for business growth
+    arvind_specific:
+    - Arvind Smartspaces Ltd — real estate business; reports to CEO & MD, Smartspaces
+    leadership_skills:
+    - CFO-level leadership of the corporate finance team
+    qualifications:
+    - Financial Strategy
+    - Risk Management
+    - Problem Solver
+    - Analytical
+    - Conflict Management
+    kpis: []
+    reporting_to: CEO & MD, Smartspaces

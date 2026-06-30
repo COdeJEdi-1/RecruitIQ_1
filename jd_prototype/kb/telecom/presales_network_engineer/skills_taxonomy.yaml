@@ -1,0 +1,30 @@
+role_family: Pre-sales / Network Engineer
+department: Telecom
+division: Arvind Syntel
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - LAN/WAN design support
+    - CCTV and access control system configuration
+    - AV integration technical support
+    progressive_skills: []
+    arvind_specific:
+    - Network and security technical support for Arvind Syntel's enterprise clients
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - SD-WAN architecture and deployment
+    - Pre-sales technical proposal development
+    - Cisco-certified network design (CCNA/CCNP)
+    - Client-facing technical demonstrations
+    progressive_skills: []
+    arvind_specific:
+    - Pre-sales technical leadership for Arvind Syntel's networking and security practice
+    leadership_skills: []

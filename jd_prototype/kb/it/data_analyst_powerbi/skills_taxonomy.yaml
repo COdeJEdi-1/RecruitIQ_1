@@ -1,0 +1,36 @@
+role_family: Sr. Specialist – Power BI Reporting (Data Analyst)
+department: It
+division: Arvind Limited
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - 'Design Power BI reports: daily ops views to multi-page reports with filters,
+      slicers, drill-throughs'
+    - 'Write DAX measures: YTD, MTD, period-over-period, running totals, conditional
+      formatting'
+    - Apply bookmarks, tooltips, dynamic titles, and page navigation purposefully
+    - Gather requirements from operations managers, commercial leads, and finance
+      teams
+    progressive_skills: []
+    arvind_specific:
+    - Power BI reporting from Microsoft Fabric data lake — manufacturing/retail domain
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Build executive summary AND operational detail views
+    - Diagnose and resolve report performance issues (slow visuals, heavy queries,
+      inefficient DAX)
+    - Manage Power BI deployment pipelines (dev → test → production)
+    - 'Maintain documentation per report: what it shows, data source, audience'
+    progressive_skills: []
+    arvind_specific:
+    - OEE, OTIF, sell-through, shrinkage, and margin reporting for Arvind's manufacturing/retail
+      operations
+    leadership_skills: []

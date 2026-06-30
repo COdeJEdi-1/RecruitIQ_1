@@ -1,0 +1,31 @@
+role_family: Project Manager – ETP/STP
+department: Environmental
+division: Arvind Envisol Limited
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - EPC project execution for ETP/STP installations
+    - Contract management with vendors and subcontractors
+    - EHS compliance enforcement on project sites
+    - Commissioning and handover management
+    progressive_skills: []
+    arvind_specific:
+    - ETP/STP project delivery for Arvind Envisol's industrial clients
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Multi-project portfolio leadership
+    - Client relationship management for large ZLD projects
+    - Project profitability and timeline ownership
+    - Team leadership across project sites
+    progressive_skills: []
+    arvind_specific:
+    - Project portfolio leadership across Arvind Envisol's ZLD project pipeline
+    leadership_skills: []

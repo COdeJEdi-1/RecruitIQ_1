@@ -1,0 +1,90 @@
+role_family: "Talent Acquisition"
+department: "Human Resources"
+division: "Corporate / Shared Functions"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Job posting on Naukri, LinkedIn, Indeed
+      - Resume screening and shortlisting
+      - Coordinating interview schedules
+      - Offer letter preparation
+      - ATS data entry and candidate tracking
+    progressive_skills:
+      - Cold outreach and Boolean search on LinkedIn
+      - Pre-screening calls and candidate pipeline management
+    arvind_specific:
+      - Understanding of blue-collar vs white-collar hiring in textile/manufacturing
+      - Plant location hiring (Gujarat, Jharkhand, Karnataka, Maharashtra)
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - End-to-end recruitment ownership for 2-3 business units
+      - Campus hiring and fresher programs
+      - Vendor management (recruitment agencies, RPO partners)
+      - Offer negotiation and candidate experience management
+      - Hiring MIS and TAT reporting
+    arvind_specific:
+      - Knowledge of niche textile roles (Colorist, Loom Technician, Finishing Manager)
+      - Blue-collar volume hiring for plant locations
+    leadership_skills:
+      - Stakeholder management with hiring managers
+      - Coordinating a team of 1-2 junior recruiters
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Talent acquisition strategy for a division or business unit
+      - Employer branding and EVP development
+      - Workforce planning in coordination with HR Business Partners
+      - Diversity hiring initiatives
+      - Interview training and structured interviewing frameworks
+    arvind_specific:
+      - Hiring for manufacturing, retail, and corporate functions simultaneously
+      - Managing plant-level IR sensitivity in recruitment
+    leadership_skills:
+      - Managing a TA team of 3-6
+      - Collaborating with COO/CHRO on hiring priorities
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Group-level TA strategy across multiple business units
+      - Budget ownership for recruitment function
+      - Building hiring SLAs and governance frameworks
+      - Executive search and CXO-level hiring
+      - HR tech stack evaluation (ATS, HRMS integration)
+    arvind_specific:
+      - Understanding of Arvind Group structure (Brands, Envisol, IoT, SmartSpaces)
+      - Multi-plant hiring strategy
+    leadership_skills:
+      - Function head for TA across Arvind Limited
+      - Reporting to CHRO
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Workforce transformation strategy
+      - M&A talent integration planning
+      - External talent market intelligence and benchmarking
+    arvind_specific: []
+    leadership_skills:
+      - CHRO-1 level ownership of all talent strategy

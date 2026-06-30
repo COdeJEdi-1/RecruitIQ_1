@@ -1,0 +1,30 @@
+{"role_family": "Backend Engineer", "seniority_level": "Mid", "team_context": "Search and Recommendations team, 4 engineers", "primary_stack": "Go, PostgreSQL, Elasticsearch, Kafka, AWS", "date_added": "2024-11-01", "approved_by": "eng_hiring_committee"}
+
+---
+
+Mid-Level Backend Engineer — Search & Recommendations
+
+Role Summary
+You will join our Search and Recommendations team as a Mid-Level Backend Engineer, building the backend systems that power search indexing, ranking, and personalised recommendation feeds for 1.2M active users. The team works in Go, with Elasticsearch for search and Kafka for event streaming. You will own features end-to-end and be a key contributor to the team's roadmap execution.
+
+Key Responsibilities
+- You will design and implement backend features in Go, including Kafka consumers, Elasticsearch indexing pipelines, and REST APIs
+- You will own the quality of your work through unit, integration, and end-to-end tests
+- You will monitor production performance of the systems you ship using our Datadog dashboards and investigate regressions
+- You will contribute to design reviews, raising correctness, scalability, and maintainability concerns explicitly
+- You will review the work of one junior engineer on the team, providing weekly PR feedback
+- You will work with the ML team to integrate new ranking models into the serving layer
+- You will document architecture decisions using our team's RFC template
+
+Must-Have Skills
+- You have 2+ years shipping production Go services in a professional context
+- You have worked with Elasticsearch or a similar search engine and understand indexing, mapping, and query DSL
+- You are comfortable with event-driven architectures and have consumed or produced Kafka topics in production
+- You understand concurrency in Go (goroutines, channels, sync primitives) well enough to avoid common pitfalls
+- You write tests and know when to use unit tests vs integration tests vs end-to-end tests
+
+Nice-to-Have Skills
+- You have worked on relevance ranking or recommendation systems
+- You have experience with Kafka Streams or Flink for stateful stream processing
+- You have contributed to observability tooling (custom metrics, tracing instrumentation)
+- You have used AWS MSK or managed Elasticsearch/OpenSearch

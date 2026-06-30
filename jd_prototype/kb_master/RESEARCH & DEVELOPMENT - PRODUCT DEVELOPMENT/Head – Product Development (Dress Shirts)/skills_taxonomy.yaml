@@ -1,0 +1,65 @@
+role_family: Head – Product Development (Dress Shirts)
+department: RESEARCH & DEVELOPMENT / PRODUCT DEVELOPMENT
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- About Arvind and JD- Dress Shirts Category.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Develop new products for Dress Shirt category fabrics in line with market requirements and business
+      opportunity
+    - Worked extensively in Dress Shirt Category, yarn dyed, specialty in Fabric Finishing
+    - Sustaining, Transformative & Disruptive Product Innovation
+    - Build business through seasonal product newness & material innovation
+    - In-depth product knowledge, insights on cutting-edge innovation, overall understanding of Dress
+      Shirt Category business
+    - Handle complete fabric product development from fiber to fabric design
+    - Develop product range in yarn for men's and women's wear
+    - Liaise with design, product & process development teams
+    - Understand customer trends and create new products to establish business in the market
+    - Set up and oversee continuous new product development for business growth
+    - Assist in raw material sourcing strategy
+    arvind_specific:
+    - Foray into Dress Shirt category for Arvind's Textile business
+    - 'Target companies: Luthai Textile Co. Ltd., Lufeng Company Ltd., Jiangsu Lianfa Textile Co. Ltd,
+      Penn Fabrics, Younger, Esquel — PVH heritage Dress Shirt Design/R&D experience'
+    leadership_skills:
+    - Reports to Executive Director
+    qualifications:
+    - Bachelors / Masters in Textile Engineering
+    - Minimum 15 years of experience
+    - Very strong on the technical side of textile manufacturing; understands all manufacturing processes
+      in detail
+    - Strong technical expertise in product development on woven fabrics
+    - Commercialization ability and strong result orientation
+    kpis: []
+    reporting_to: Mr. Punit Lalbhai, Executive Director

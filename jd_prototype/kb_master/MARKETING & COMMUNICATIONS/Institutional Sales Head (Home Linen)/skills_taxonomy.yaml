@@ -1,0 +1,62 @@
+role_family: Institutional Sales Head (Home Linen)
+department: MARKETING & COMMUNICATIONS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- JD - Institutional Sales Head.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Lead Arvind's bed linen business for institutional and bulk B2B channels
+    - Build and grow revenue from hotels, hospitals, railways, hospitality chains, facility management
+      companies, corporate gifting houses, government institutions, and similar large-volume buyers
+    - Own the institutional business strategy for bed linen and related linen categories
+    - Drive new business acquisition, retention, renewal, and account expansion
+    - Build strong relationships with procurement heads, purchase managers, admins, consultants, and tendering
+      teams
+    - Develop and manage national/regional accounts across hotels, hospitals, railways, hostels, resorts,
+      corporates, and gifting channels
+    arvind_specific:
+    - Arvind's bed linen / home linen business
+    - 'Target companies: Welspun, Trident, Kurlon, D''Decor, Raymond Home, Story@Home, Indo Count, and
+      similar textile/home furnishing companies'
+    leadership_skills:
+    - Institutional Business Head — owns institutional channel strategy
+    qualifications:
+    - 12-26 years of total experience
+    - Strong institutional/B2B sales leadership in home furnishing
+    - Tendering, negotiation, and key account management skills
+    - Experience selling to hotels, hospitals, railways, government bodies, corporates, or contract furnishing
+      buyers
+    - Strong network in hospitality, healthcare, government procurement, or corporate purchasing
+    - History of selling bulk textile products to institutional buyers
+    kpis: []
+    reporting_to: ''

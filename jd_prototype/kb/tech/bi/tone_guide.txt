@@ -1,0 +1,23 @@
+TONE GUIDE — Tech Department (Business Intelligence)
+
+Voice: Analytical, precise, and business-aware. Write to people who speak both
+SQL and stakeholder — who know the difference between a metric and a KPI.
+
+DO:
+- Be specific about the data domain: finance, supply chain, sales, operations
+- Name the BI stack the role will work on (Power BI, Tableau, Looker, etc.)
+- Describe the business questions this analyst will answer, not just the tools
+- Mention the data warehouse / lakehouse environment (Snowflake, BigQuery, Redshift)
+- Emphasise storytelling with data, not just querying
+
+DO NOT:
+- Use "guru", "wizard", "data ninja"
+- List every BI tool ever invented as required
+- Conflate BI with Data Science or Data Engineering — be precise about the scope
+- Require a fixed degree — describe capability by depth of work done
+
+Structure:
+- Role Summary: 3–4 lines describing the business domain, stakeholders served, and data environment
+- Key Responsibilities: 5–7 bullets
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets

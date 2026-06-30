@@ -1,0 +1,47 @@
+Department: STRATEGY & CORPORATE DEVELOPMENT
+Division: CORPORATE / SHARED FUNCTIONS
+Company: Arvind Limited
+
+TONE OBSERVED IN UPLOADED DOCUMENTS:
+Documents for this department span from operational/transactional process descriptions
+(Shared Services / GCC roles: tax, R2R, P2P, IT support) written in compact, compliance-driven
+language with heavy use of acronyms (SLA, KPI, SOP, GST, TDS) — to senior leadership and CEO/CXO
+postings (Business Head, CEO, Director roles) written in a more strategic, vision-led register
+("define and execute long-term strategy," "drive global expansion," "own the P&L").
+Role families covered in this department: Business Head – International Operations (Egypt), Business Head – Security & Surveillance (Telecom), Business Head – Water & Wastewater Solutions, CEO – Business Unit (Human Protection), CEO – Business Unit (Knits), CEO – Business Unit (Water/EPC), CEO – Turnaround Specialist (Distressed Assets), Chief Operating Officer (Institutional), Executive Assistant – GCC Leadership.
+Across both registers, responsibilities are listed as flat action-verb bullets rather than narrative
+prose, and seniority is signalled through scope language ("end-to-end," "own," "lead," "drive,"
+"set the vision for") rather than adjectives.
+
+LANGUAGE RULES:
+- Voice: Second-person ("You will", "You have", "You are")
+- Avoid: rockstar, ninja, guru, wizard, superstar, passionate, driven
+- Always name Arvind Limited in the Role Summary
+- Reference relevant plants / brands / BUs where contextually appropriate
+
+SECTION FORMAT (all JDs must follow this):
+1. Role Summary (3–4 lines)
+2. Key Responsibilities (5–7 bullets)
+3. Must-Have Skills (5–6 bullets)
+4. Nice-to-Have Skills (3–4 bullets)
+5. What We Offer (optional)
+
+RESPONSIBILITY LANGUAGE BY YoE BAND:
+- 0–2 years:   "You will support / assist / execute"
+- 2–5 years:   "You will own / manage / lead"
+- 5–8 years:   "You will drive / develop / oversee"
+- 8–12 years:  "You will define / build / transform"
+- 12+ years:   "You will set the vision for / own the P&L of / lead the strategy for"
+
+ARVIND-SPECIFIC CONTEXT NOTES FOR THIS DEPARTMENT:
+- Arvind's Telecom business (Syntel) — market leader in Mini-EPABXs for SOHO/SMB, partnered with NEC, Alcatel Lucent Enterprise, Cisco, Polycom
+- Arvind's Shared Mobile Radio Service and GPS-based vehicle tracking/Fleet Management Systems — India's largest Public Mobile Radio Trunking Services operator with 90%+ market share
+- Entering the Security and Surveillance Industry (CCTV Cameras, DVRs & NVRs) as a new business line
+- Arvind Human Protection Division, established 2008 — pioneer in high-performance flame-retardant fabrics and protective garments for oil & gas, energy, construction, automotive, utilities, healthcare, and defense forces
+- IGNX™ — advanced solution for protection against electric arc, flash fire, molten metal splash, foul weather, and biological hazards
+- Knits-based apparel business, Bangalore — Garments-Knits industry
+- Acquiring and turning around distressed textile-domain assets for Arvind Ltd.
+- Water treatment / EPC and infrastructure business
+- Office of GCC Leadership — Arvind's Global Capability Centre in Ahmedabad
+- Arvind Envisol — Water & Wastewater Solutions business (ZLD/ETP/RO)
+- Arvind Ltd. — Egypt international operations

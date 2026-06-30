@@ -1,0 +1,34 @@
+role_family: Manager – Record to Report (R2R)
+department: Finance
+division: Arvind Limited — Finance & Accounting
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - 'End-to-end R2R management: GL, Fixed Assets, Intercompany Accounting, Accruals,
+      Provisions'
+    - BS reconciliations and timely month/quarter/year-end close
+    - Review journal entries, account reconciliations, financial reports
+    - Prepare financial statements per IFRS/US GAAP/local standards
+    - Coordinate with internal and external auditors
+    progressive_skills: []
+    arvind_specific:
+    - R2R operations supporting Arvind Limited's multi-entity consolidation
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Drive process improvements, standardization, automation across R2R function
+    - Track KPIs and SLAs for shared services delivery
+    - Collaborate with AP, AR, FP&A, Tax, Treasury teams
+    - Lead, mentor, and develop a team of accountants
+    - Support system implementations and finance transformation initiatives
+    progressive_skills: []
+    arvind_specific:
+    - Leading R2R team within Arvind's Finance Shared Services / GCC structure
+    leadership_skills: []

@@ -1,0 +1,44 @@
+role_family: Software Development Engineer (SDE)
+department: Tech
+
+core_skills:
+  - End-to-end feature ownership (design → build → ship → monitor)
+  - REST / GraphQL API design and integration
+  - Frontend development with React or Vue + TypeScript
+  - Backend services in Python, Node.js, or Go
+  - Relational and NoSQL database design and querying
+  - Unit, integration, and end-to-end testing practices
+  - Version control with Git and pull-request-based code review
+
+stack_skills:
+  frontend:
+    - React 18 / Next.js
+    - Vue 3 / Nuxt
+    - TypeScript, Tailwind CSS
+    - Webpack / Vite
+  backend:
+    - Python (FastAPI, Django)
+    - Node.js (Express, NestJS)
+    - Go
+    - Java (Spring Boot)
+  databases:
+    - PostgreSQL, MySQL
+    - Redis (caching, queues)
+    - MongoDB, DynamoDB
+  infra_basics:
+    - Docker, basic Kubernetes
+    - CI/CD pipelines (GitHub Actions, GitLab CI)
+    - Cloud basics (AWS / GCP / Azure)
+
+leadership_skills:
+  - Technical design documentation
+  - Code review mentorship
+  - Cross-functional collaboration (Product, Design, QA)
+  - Incident response and on-call participation
+
+yoe_bands:
+  entry: "0-2"
+  mid: "2-5"
+  senior: "5-8"
+  lead: "8-12"
+  principal: "12+"

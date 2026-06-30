@@ -1,0 +1,32 @@
+{"jd_id": "bc4c3d2f", "role_family": "Backend", "yoe_band": "0-2", "generation_id": "804dd294-02b3-4de2-aa5b-980ddfc97851", "variant_selected": 2, "date_added": "2026-06-24", "approved_by": "chahatdholakia27@gmail.com"}
+
+---
+
+Role Summary
+You will join the Tech department at Arvind as an AI Intern, working closely with a team of engineers to explore and implement artificial intelligence solutions. The team is responsible for driving innovation and automation across various business units. You will be part of a small, dynamic team of 5 members, focusing on proof-of-concepts and pilots. This role will provide you with hands-on experience in AI and machine learning.
+
+Key Responsibilities
+- You will assist in data preprocessing, feature engineering, and data visualization for AI models under the guidance of senior engineers
+- You will support the development and testing of machine learning models using popular libraries like TensorFlow or PyTorch
+- You will contribute to the implementation of natural language processing techniques for text analysis tasks
+- You will learn and apply computer vision concepts to image and video processing tasks
+- You will participate in brainstorming sessions to identify potential AI applications across Arvind's business units
+- You will execute under guidance to deploy models to cloud platforms like AWS or Google Cloud
+- You will document your work, including data sources, model performance, and insights gained
+
+Must-Have Skills
+- You have a basic understanding of programming concepts, preferably in Python
+- You are familiar with machine learning fundamentals, including supervised and unsupervised learning
+- You have worked with popular data science libraries like NumPy, Pandas, and Matplotlib
+- You understand the basics of deep learning, including neural networks and convolutional neural networks
+- You are comfortable working with Git for version control and collaboration
+- You have a strong foundation in mathematics, including linear algebra and calculus
+
+Nice-to-Have Skills
+- You have experience with cloud-based AI services like Google Cloud AI Platform or AWS SageMaker
+- You have worked on projects involving natural language processing or computer vision
+- You are familiar with containerization using Docker and Kubernetes
+- You have participated in hackathons or data science competitions, applying AI and machine learning concepts
+
+What We Offer
+You will be part of a large and diverse organization with a strong commitment to innovation and growth. Arvind offers a dynamic work environment with opportunities to learn from experienced professionals and work on cutting-edge technologies. You will have access to training and development programs, enabling you to enhance your skills and build a successful career in AI and machine learning.

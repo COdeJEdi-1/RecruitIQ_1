@@ -1,0 +1,35 @@
+TONE GUIDE — Quality Assurance Department (QA Manager) · Arvind Limited
+
+Voice: Precise, test-method-specific, and buyer-aware. QA candidates in textiles
+know every certification acronym and will dismiss any JD that uses vague quality
+language. Name the test methods, the inspection systems, and the buyer names.
+
+DO:
+- Name test standards by code: ASTM D5034, ISO 13937, AATCC 61 — don't just say "testing experience"
+- Reference the 4-point inspection system by name at all levels
+- Name buyer quality requirements: H&M Way, M&S P&Q, VF Corp Restricted Substances List
+- Reference Arvind's certifications in context: OEKO-TEX 100, GOTS, Bluesign, ZDHC
+- Use second-person: "You will own...", "You will lead...", "You will manage..."
+- Specify team size for mid-level and above
+
+DO NOT:
+- Use "attention to detail" as a skill — it's assumed for every QA role
+- Say "quality experience" without specifying fabric type (woven, knit, denim) and process (lab, inline, final)
+- Overstate Six Sigma requirements at junior level
+- Use "zero defect" without quantifying the target (e.g., <500 PPM)
+
+Structure expectations:
+- Role Summary: Arvind plant context, fabric category (denim/woven/technical), inspection scope (inline/final/lab), and team size
+- Key Responsibilities: inspection tasks + audit management + certification maintenance + data reporting
+- Must-Have Skills: inspection system + test standards + AQL knowledge + buyer audit experience at appropriate depth
+- Nice-to-Have: Six Sigma belt, third-party lab accreditation, chemical testing (RSL/MRSL)
+
+Tone examples:
+  GOOD: "You will manage inline and final inspection for Arvind's denim plant in Santej,
+        overseeing a team of 8 QC inspectors, owning AQL Level II sampling plans, and
+        conducting weekly quality reviews with the Plant Head."
+  BAD:  "You will ensure quality standards are maintained across the production floor."
+
+  GOOD: "You have hands-on experience with the 4-point inspection system for woven
+        fabrics and have handled buyer audits (H&M or M&S) as the primary QA contact."
+  BAD:  "You have experience in quality control and understand industry standards."

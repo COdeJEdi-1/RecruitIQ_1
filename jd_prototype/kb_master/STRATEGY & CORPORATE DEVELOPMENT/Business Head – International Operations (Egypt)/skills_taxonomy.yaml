@@ -1,0 +1,61 @@
+role_family: Business Head – International Operations (Egypt)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Business Head-Egypt.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Oversee the financial performance of the Egypt operations, ensuring profitability and cost efficiency
+    - Develop and maintain strong relationships with vendors to ensure quality and timely delivery of
+      services and products per Company Standards
+    - Manage outsourcing processes to optimize operational efficiency and cost-effectiveness, ensuring
+      alignment with company standards and customer expectations
+    - Strive for new business opportunities to drive growth and expand market presence in and around Egypt
+    - Develop and implement strategic plans to achieve business objectives and enhance competitive positioning
+    - Lead, mentor & develop a high-performing team to achieve business goals and foster a positive work
+      environment
+    arvind_specific:
+    - Arvind Ltd. — Egypt international operations
+    leadership_skills:
+    - Business Head-level leadership of Egypt operations
+    qualifications:
+    - 20+ years of experience in a similar industry
+    - Proven track record in P&L management and vendor relations
+    - Extensive experience in outsourcing, OEM management & managing local collaborations
+    - Strong business development skills with a strategic mindset
+    - Excellent leadership and team management abilities
+    - Exceptional communication and interpersonal skills
+    - Ability to work effectively in a dynamic and fast-paced environment
+    - 'Preferred industry experience: Manufacturing, Apparel'
+    kpis: []
+    reporting_to: ''

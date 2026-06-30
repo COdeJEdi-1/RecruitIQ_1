@@ -1,0 +1,81 @@
+role_family: "HR Business Partner"
+department: "Human Resources"
+division: "Corporate / Shared Functions"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - HRIS data management
+      - Employee onboarding coordination
+      - Leave and attendance tracking
+      - HR policy documentation support
+    progressive_skills:
+      - Employee query handling and grievance first-level resolution
+    arvind_specific:
+      - Factory standing orders, shift rosters
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - Employee lifecycle management (onboarding to exit)
+      - Performance management cycle facilitation
+      - HR MIS and analytics (attrition, headcount, absenteeism)
+      - Exit interviews and retention analysis
+    arvind_specific:
+      - Shops and Establishments Act compliance
+      - Plant HR operations: contract labour, ESI/PF compliance
+    leadership_skills:
+      - HRBP for a business unit of 200-500 employees
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Strategic HR partnership with business leaders
+      - OD interventions, employee engagement programs
+      - Succession planning support
+      - Compensation benchmarking and salary review
+    arvind_specific:
+      - Industrial Relations (IR) in manufacturing — managing unions, wage negotiations
+      - Factories Act compliance and plant-level labour law
+    leadership_skills:
+      - Managing a team of HRBPs / HR Executives
+      - Influencing VP/GM-level business decisions through HR lens
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - HR strategy for a division (e.g., Arvind Brands or Manufacturing)
+      - Building HR frameworks: competency, performance, career pathing
+      - Culture change management and transformation programs
+    arvind_specific:
+      - Multi-plant IR oversight
+      - Group HRBP for a business vertical
+    leadership_skills:
+      - Leading a team of 5-10 HR professionals
+      - Board-level HR reporting
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - CHRO-level strategy: talent, culture, compensation, IR
+      - M&A HR integration
+    arvind_specific: []
+    leadership_skills:
+      - CHRO or equivalent

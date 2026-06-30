@@ -1,0 +1,98 @@
+---METADATA---
+{
+  "role_family": "Chief Information Officer",
+  "department": "INFORMATION TECHNOLOGY",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "12+",
+  "seniority_label": "Vice President / Chief Officer",
+  "source_doc": "CIO.docx, Chief Info and Digital Officer.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+Role
+Chief Information Officer
+Grade
+BM
+Division
+Corporate
+Location
+Ahmedabad
+Department
+IT
+Vacancy Date
+25/6/2014
+Reports to
+Administrative
+Reportees
+Function
+Team Size
+CTC Range : 50 to 60 Lacs
+Key Purpose of the Job
+To lead IT as business function focusing on Process innovations, Business Model setup, Business Engagements, IT Management – governance setup, with specialization in Business Intelligence and functional skills. Create an environment for Business Excellence through IT enablers.
+Major responsibilities:
+IT Management:
+Responsible for leading and providing strategic direction for developing business applications.
+Prepare IT Budgets and ensure compliance to IT budget, optimized resource utilization and setup IT organization.
+Responsible for driving projects and tracking budgets and KRAs
+To synergize & align IT applications to businesses & Group.
+Help business to reduce overall operation cost by process revamping, process automations etc.
+Led a team of members in managing IT Infrastructure,  Business Application ,ERP activities across the businesses
+Vendor management for managing IT facilities & for procurement of IT Infrastructure
+Setup of IT organization structure, Recruitment of right talent
+Technology Evaluation:
+Develop IT Roadmap, IT Policy and Standards for the Group.
+Establish network across locations
+Disaster Recovery System, assuring near zero downtime.
+Institutionalize key processes in Operations, Security, Support, Documentation, etc
+Project management and support to SAP implementations and up-gradations.
+Evaluate emerging technologies for deployment across the Group and for providing technology related information to business.
+Information Security :
+In the role of CIO, develop Information Security Policy for the Group, establish Governance structure and measurement processes.
+Improve the baseline of security across the Group at minimal cost and time.
+Management of outsourcing for IT Facility management services across the group.
+IT Procurement with effective evaluation and negotiation while adopting stringent Service level agreements.
+Knowledge Management and Competency Development:
+Develop IT competencies of team, through job analysis & skill evaluation and by delivering training (Class Room & e-learning).
+Implementation and maintenance of Knowledge management systems and document management systems.
+Interactions
+Internal	: Head of Dept. or Functional Heads, Business CEOs
+External	:	 Vendors
+Educational and Experience
+Graduate in any discipline /   B.Tech  in Computers, IT , BCA
+PG Degree IT Management
+Certificate Course related to the job.
+Minimum 20  years of experience in IT Dept. and in Manufacturing Industry, should have experience of at-least 3 years in handling IT function for diversified Group.
+Skills and Competencies
+Inter- personal Skills
+Conflict Management
+Execution Skills
+Negotiation Skills
+Strategic Thinker
+Leadership Skills
+
+Job Title: Chief Information and Digital Officer (CIDO)
+Department: IT
+Reports To: Chief Finance Officer (CFO)
+Job Overview: The CIDO is a strategic leader responsible for driving digital transformation and managing the organization’s information technology. The role involves overseeing digital strategy, innovation, and IT infrastructure to ensure alignment with the company’s goals.
+Responsibilities:
+Develop and execute a comprehensive digital strategy that aligns with the organization’s vision and business objectives.
+Lead the IT department, setting objectives and strategies for the use of technology within the organization.
+Drive digital innovation and serve as a change agent, fostering a culture of continuous improvement and digital-first mindset.
+Collaborate with other stake holders to integrate digital initiatives with business processes and strategies.
+Oversee the management of digital projects, ensuring they deliver value and meet ROI expectations.
+Stay abreast of emerging technologies and digital trends to maintain a competitive edge and recommend new technologies that will benefit the organization.
+Ensure the security and compliance of digital and information systems.
+Attract, develop, and retain top digital talent to build a high-performing digital team.
+Identify and prepare road map for deploying Robotic processes in various functions like manufacturing, procurement, warehouse etc.
+Qualifications:
+Proven experience as a CIDO, CIO, CTO, or similar leadership role in digital transformation and IT management in diversified Industries.
+Strong understanding of digital technologies, including cloud computing, data analytics, cybersecurity, and enterprise software.
+Excellent leadership and communication skills, with the ability to influence and engage stakeholders at all levels.
+Strategic thinker with a track record of developing and implementing digital strategies that drive business growth.
+SAP Implementation Exposure
+Bachelor’s or Master’s degree in Information Technology, Computer Science, Business Administration, or related field.
+Team size : 40

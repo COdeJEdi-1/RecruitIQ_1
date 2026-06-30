@@ -1,0 +1,53 @@
+role_family: Sourcing Manager (Fabric/Trim)
+department: Supply Chain
+division: Arvind Limited — Sourcing
+company: Arvind Limited
+experience_bands:
+  junior:
+    label: Junior / Trainee
+    years: 0-2
+    seniority_tag: Junior
+    core_skills:
+    - Fabric/trim sample tracking
+    - Vendor data maintenance
+    - Basic costing support
+    progressive_skills: []
+    arvind_specific:
+    - Exposure to Arvind's denim and woven fabric categories
+    leadership_skills: []
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Fabric sourcing and vendor development
+    - Costing negotiation
+    - Quality benchmarking against buyer requirements
+    progressive_skills: []
+    arvind_specific:
+    - Sourcing for Arvind Fashions brand portfolio (Arrow, USPA, Flying Machine)
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Sourcing strategy for fabric categories (denim/woven/knit)
+    - Vendor audits and capability mapping
+    - Cost optimization across sourcing portfolio
+    progressive_skills: []
+    arvind_specific:
+    - Vendor audits aligned to Arvind quality standards
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Group sourcing strategy
+    - Strategic vendor partnerships
+    - New material/vendor development pipelines
+    progressive_skills: []
+    arvind_specific:
+    - Cross-BU sourcing strategy across Arvind Limited and AFL
+    leadership_skills: []

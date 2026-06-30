@@ -1,0 +1,57 @@
+role_family: HR Shared Services Tower Lead
+department: HUMAN RESOURCES
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- HR.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Lead the Employee Lifecycle Shared Services tower, delivering consistent, SLA-driven HR services
+      from hire-to-retire across group companies
+    - 'Own end-to-end employee lifecycle services: onboarding, lifecycle changes, benefits, exits'
+    - Run HR service delivery through ticketing, knowledge base, and workflow platforms
+    - Ensure SLA adherence, first-time resolution, and employee experience metrics
+    - Drive process standardisation and automation across HR transactions
+    - Partner with COEs and Business HR on seamless handoffs and clarity of ownership
+    - Build dashboards on service quality, volumes, root causes, and productivity
+    arvind_specific:
+    - Arvind GCC — Employee Lifecycle Shared Services tower across group companies
+    leadership_skills:
+    - Tower Lead-level ownership of Employee Lifecycle Shared Services
+    qualifications:
+    - 12 to 15 years of experience
+    kpis:
+    - SLA adherence
+    - First-time resolution
+    - Employee experience metrics
+    - Service quality, volumes, root causes, productivity
+    reporting_to: Head – HR Operations / GCC Head
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

@@ -1,0 +1,65 @@
+role_family: CEO – Business Unit (Water/EPC)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CEO- Water.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Supervise and control all strategic and business aspects of the company
+    - Develop high quality business strategies and plans ensuring alignment with short-term and long-term
+      objectives
+    - Lead and motivate subordinates to advance employee engagement, develop a high performing managerial
+      team
+    - Oversee all operations and business activities to ensure desired results consistent with overall
+      strategy and mission
+    - Make high-quality investing decisions to advance the business and increase profits
+    - Enforce adherence to legal guidelines and in-house policies to maintain legality and business ethics
+    - Review financial and non-financial reports to devise solutions or improvements
+    - Build trust relations with key partners and stakeholders, act as point of contact for important
+      shareholders
+    - Analyse problematic situations and provide solutions for company survival and growth
+    - Maintain deep knowledge of the markets and industry of the company
+    arvind_specific:
+    - Water treatment / EPC and infrastructure business
+    leadership_skills:
+    - CEO-level company leadership
+    qualifications:
+    - ME / M.Tech / B.Tech Engineering or relevant field with MBA an added advantage
+    - Proven experience as CEO or similar managerial role
+    - Experience in EPC and/or infrastructure sector
+    - Experience in waste water treatment projects
+    - 'Familiarity with diverse business functions: Business Development, Projects, Commercial, Procurement'
+    - Shaping the Strategy, Decision Making, Achievement Orientation, Leading Teams, Authentic Leadership,
+      Adaptability, Driving Innovation
+    kpis: []
+    reporting_to: ''

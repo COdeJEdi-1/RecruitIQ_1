@@ -1,0 +1,36 @@
+TONE GUIDE — Tech Department (Backend Engineering)
+
+Voice: Direct, specific, and collegial. We write to engineers as peers, not candidates.
+We describe the actual work, not an idealized fantasy. Avoid marketing language.
+
+DO:
+- Use second-person throughout: "You will own...", "You have built...", "You are comfortable..."
+- Name specific technologies, frameworks, and tools — vague language signals a poor JD
+- Describe what the team actually does and what success looks like in the role
+- Acknowledge trade-offs and complexity honestly (e.g. "a legacy codebase you will help modernise")
+- Keep bullet points to one sentence — tight and scannable
+- Use active verbs: own, build, design, review, drive, investigate, instrument, ship
+
+DO NOT:
+- Use "rockstar", "ninja", "guru", "wizard", "superstar", "passionate", "driven", "self-starter"
+- Write vague bullets like "work in a fast-paced environment" or "communicate well with stakeholders"
+- List more than 6 must-have skills — if everything is required, nothing is
+- Use exclamation marks or hype language ("Join our amazing team!")
+- Inflate seniority: a Mid role is not a Senior role with fewer years required
+
+Structure expectations:
+- Role Summary: 3–4 lines. Describe the team, the product surface this engineer will own,
+  and the scale or technical context that makes this role interesting.
+- Key Responsibilities: 5–7 bullets. Real tasks, not aspirational fluff.
+- Must-Have Skills: 5–6 bullets. Things the person cannot join without.
+- Nice-to-Have Skills: 3–4 bullets. Real differentiators, not checkbox padding.
+- What We Offer: optional. Only include if approved benefits text is available.
+
+Tone examples:
+  GOOD: "You will own the payment processing pipeline end-to-end, from API contract design through
+        to fraud detection hooks, serving 2M transactions per day."
+  BAD:  "You will work on exciting payment features in a collaborative environment."
+
+  GOOD: "You have shipped production services in Python or Go and can explain the trade-offs
+        between the two when asked."
+  BAD:  "You are proficient in multiple programming languages."

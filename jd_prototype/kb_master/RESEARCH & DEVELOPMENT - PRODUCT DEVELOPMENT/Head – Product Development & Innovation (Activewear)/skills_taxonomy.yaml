@@ -1,0 +1,74 @@
+role_family: Head – Product Development & Innovation (Activewear)
+department: RESEARCH & DEVELOPMENT / PRODUCT DEVELOPMENT
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- Activewear - JD.doc
+- Activewear -Product Development and Innovation Head.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Lead the activewear (casual wear at work or at sports) business with thorough experience/exposure
+      in Fabric manufacturing, Apparel Marketing, Strategic Sourcing, Pricing, Innovation/development,
+      and quality of Fabrics for leading sports/leisure apparel brands
+    - Develop new products for foray into athleisure and performance fabrics space in line with market
+      requirements and business opportunity
+    - Sustaining, Transformative & Disruptive Product Innovation
+    - Build the Sportswear business through seasonal newness & material innovation
+    - In-depth product knowledge, insights on cutting-edge innovation, overall understanding of athleisure
+      business
+    - Plan requirement for modern equipment and machinery needed to set up facility to manufacture the
+      products
+    - Design and set up end-to-end processes for efficient functioning of the unit
+    - Set up and oversee continuous new product development for business growth
+    - Assist in recruitment of senior individuals to head various functions of the business
+    - Assist in raw material sourcing strategy
+    - Lead the team of fabric product development from fiber to fabric design, and fabric to apparel
+    - Collaborate on projects for material development with suppliers
+    - Understand customer trends and create new products to establish business in the market
+    - Present seasonal collections based on customer needs and forecasts, co-create with customers
+    arvind_specific:
+    - 'Companies to target: Nike, Adidas, Reebok, Underarmour, Columbia, Timberland, The North Face, L.L.Bean,
+      Puma, VF Corporation, Paul & Shark, Speedo, Umbro, Kelme, Quiksilver, Vans, New Balance, Oakley,
+      Nan Yang Textile'
+    - 'Location: Ahmedabad, Gujarat, India'
+    leadership_skills:
+    - Reports to Mr. Punit Lalbhai, Executive Director
+    qualifications:
+    - Bachelors / Masters in Textile Engineering
+    - Minimum 15 years of experience
+    - Strong on the technical side of textile manufacturing; understands manufacturing processes in detail
+    - Strong technical expertise in product development on sports wear / active wear
+    - Commercialization ability and strong result orientation
+    - Decision making, Strategic Planning, Innovative Thinking, Adaptability, Team Management, Target
+      Oriented, Authentic Leadership, Operation Management
+    kpis: []
+    reporting_to: Mr. Punit Lalbhai, Executive Director

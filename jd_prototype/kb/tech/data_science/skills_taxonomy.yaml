@@ -1,0 +1,44 @@
+role_family: Data Science & Machine Learning
+department: Tech
+
+core_skills:
+  - Statistical modelling and machine learning fundamentals
+  - Python (scikit-learn, pandas, NumPy, Matplotlib/Seaborn)
+  - Feature engineering and data preprocessing at scale
+  - Model evaluation, validation, and bias/fairness assessment
+  - Experiment design and A/B testing statistical analysis
+  - ML model deployment and monitoring in production
+  - SQL for data extraction and exploration
+
+ml_specialisations:
+  nlp:
+    - Transformer-based models (BERT, GPT family, LLaMA)
+    - Text classification, NER, summarisation, RAG pipelines
+    - HuggingFace ecosystem
+  cv:
+    - Object detection, segmentation (YOLO, Detectron2)
+    - Image classification and embedding models
+    - OpenCV
+  forecasting:
+    - Time-series models (ARIMA, Prophet, LightGBM, LSTM)
+    - Demand planning and supply chain forecasting
+  recommendation:
+    - Collaborative and content-based filtering
+    - Two-tower models, embedding-based retrieval
+  mlops:
+    - MLflow, Weights & Biases, or equivalent
+    - Feature stores (Feast, Tecton)
+    - Model serving (BentoML, TorchServe, FastAPI)
+    - Kubeflow, SageMaker, or Vertex AI pipelines
+
+frameworks:
+  - PyTorch, TensorFlow / Keras
+  - scikit-learn, XGBoost, LightGBM, CatBoost
+  - Spark (PySpark) for large-scale data processing
+
+yoe_bands:
+  associate: "0-2"
+  mid: "2-5"
+  senior: "5-8"
+  staff: "8-12"
+  principal: "12+"

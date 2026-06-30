@@ -1,0 +1,31 @@
+{"role_family": "Backend Engineer", "seniority_level": "Lead", "team_context": "Data Platform team, 8 engineers", "primary_stack": "Python, Go, Kafka, Spark, AWS", "date_added": "2024-06-01", "approved_by": "eng_hiring_committee"}
+
+---
+
+Staff / Lead Backend Engineer — Data Platform
+
+Role Summary
+You will join our Data Platform team as a Staff/Lead Backend Engineer, setting the technical direction for the infrastructure that ingests, processes, and serves data to 10 internal product teams. The platform processes 4TB of event data daily using Kafka and Spark on AWS. You will lead a team of 8 engineers, drive the platform's 3-year roadmap, and represent Data Platform in engineering leadership forums.
+
+Key Responsibilities
+- You will define the technical vision and 12-month roadmap for the Data Platform, working with the Engineering Director and product stakeholders
+- You will lead design reviews for all major platform investments, ensuring architectural decisions are well-reasoned and documented
+- You will grow the team: formal mentorship of two senior engineers, feedback cycles, and helping direct reports identify their next growth milestone
+- You will own the platform's reliability posture: SLO definition, capacity planning, and incident response standards
+- You will represent the Data Platform in cross-functional forums: architecture review board, security reviews, and product planning cycles
+- You will drive the platform's on-call health and reduce alert fatigue through systematic reliability improvements
+- You will evaluate and pilot new technologies (e.g. Apache Iceberg, streaming SQL) and build the business case for adoption
+
+Must-Have Skills
+- You have 8+ years of backend engineering experience with at least 3 years in a staff or technical lead role
+- You have led a team of 5+ engineers and can articulate your philosophy on technical leadership and mentorship
+- You have deep experience with event streaming at scale (Kafka in production, including multi-region or high-throughput deployments)
+- You have designed and operated data processing systems using Spark, Flink, or equivalent at petabyte scale
+- You have set technical standards and coding conventions that were adopted beyond your immediate team
+- You are comfortable operating in ambiguity: you can define the problem, propose the solution, and drive execution without a detailed brief
+
+Nice-to-Have Skills
+- You have experience with modern data lakehouse patterns (Delta Lake, Apache Iceberg, Hudi)
+- You have contributed to open-source data infrastructure projects
+- You have represented engineering externally (conference talks, blog posts, or public RFC participation)
+- You have worked on platforms serving ML training pipelines and understand the data access patterns of model training at scale

@@ -1,0 +1,86 @@
+role_family: "FP&A Analyst"
+department: "Finance & Accounts"
+division: "Corporate / Shared Functions"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Financial modelling in Excel (P&L, balance sheet, cash flow)
+      - MIS preparation and monthly variance reporting
+      - Budget vs actual analysis
+      - Data extraction from SAP FICO
+    progressive_skills:
+      - Cost centre-wise reporting
+      - Basic PowerPoint decks for management review
+    arvind_specific:
+      - Manufacturing cost structure (raw material, conversion cost, overheads)
+      - Textile-specific cost drivers: yarn prices, dye costs, energy
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - Annual operating plan (AOP) / budget building
+      - Business unit P&L ownership and review
+      - Driver-based financial models
+      - Working capital analysis
+      - Presentation to senior management
+    arvind_specific:
+      - Plant-wise profitability reporting
+      - Segment reporting: denim, woven, brands, technical textiles
+    leadership_skills:
+      - Working independently with BU heads
+      - Coordinating with plant finance teams
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Long-range planning (3-5 year strategic plan)
+      - M&A financial due diligence
+      - Scenario modelling and sensitivity analysis
+      - Treasury: cash flow forecasting, debt management
+      - Investor presentations and board packs
+    arvind_specific:
+      - Group consolidation across Arvind entities
+      - Capex evaluation for plant expansion
+    leadership_skills:
+      - Managing a team of 2-4 FP&A analysts
+      - Direct interaction with CFO
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Finance function strategy
+      - ERP and analytics tool implementation (SAP BPC, Anaplan)
+      - Rating agency and bank relationship management
+    arvind_specific:
+      - Group-level FP&A for Arvind Limited (listed entity)
+      - SEBI-compliant financial disclosures
+    leadership_skills:
+      - VP Finance / Head FP&A
+      - CFO-minus-1
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Capital allocation strategy
+      - M&A structuring and integration
+    arvind_specific: []
+    leadership_skills:
+      - CFO or Group CFO

@@ -1,0 +1,24 @@
+TONE GUIDE — Tech Department (Software Development Engineer — Full Stack / SDE)
+
+Voice: Direct, specific, and collegial. Write to engineers as peers, not candidates.
+Describe real work, real systems, and real trade-offs — not aspirational fluff.
+
+DO:
+- Use second-person: "You will own...", "You have built...", "You are comfortable..."
+- Name specific technologies — vague language signals a poor JD
+- Describe end-to-end ownership (frontend, backend, or both as the role demands)
+- Reference actual systems, scale, or product surfaces this engineer will touch
+- Keep bullets tight and scannable — one sentence each
+- Use active verbs: own, build, ship, design, review, instrument, migrate
+
+DO NOT:
+- Use "rockstar", "ninja", "guru", "full-stack wizard", "passionate"
+- Write vague bullets like "work across the stack" without specifics
+- List more than 6 must-haves
+- Inflate seniority
+
+Structure:
+- Role Summary: 3–4 lines describing team, product, and what makes this role interesting
+- Key Responsibilities: 5–7 bullets (real tasks)
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets

@@ -1,0 +1,36 @@
+TONE GUIDE — Finance Department (FP&A)
+
+Voice: Precise and commercial. FP&A candidates assess whether the role has real
+analytical substance — our JDs should demonstrate that we know what good FP&A work
+looks like.
+
+DO:
+- State the business unit coverage and P&L size where possible
+- Name the planning tools and ERP in use
+- Be specific about the reporting cadence (monthly close, weekly flash, QBR)
+- Use second-person: "You will build...", "You own...", "You partner with..."
+- Distinguish between reporting (producing numbers) and analysis (explaining them)
+
+DO NOT:
+- Use "numbers person" or "finance guru"
+- List Excel as a nice-to-have — it is always a must-have
+- Describe the role as purely analytical if it has significant business partnering weight
+- Overstate seniority of stakeholder interactions for junior roles
+
+Structure expectations:
+- Role Summary: coverage area, team structure, and what makes this role commercially
+  interesting (growth stage, complexity, access to CFO, etc.)
+- Key Responsibilities: separate modelling tasks, reporting tasks, and business
+  partnering tasks clearly
+- Must-Have Skills: model-building depth, specific tools, and finance qualification
+  expectations by level
+- Nice-to-Have: differentiators like SaaS metrics fluency, SQL, or M&A background
+
+Tone examples:
+  GOOD: "You will own the monthly P&L reporting for our $200M Revenue organisation,
+        partnering with three commercial VPs and presenting the flash report to the CFO."
+  BAD:  "You will support senior stakeholders with financial analysis."
+
+  GOOD: "You have built three-statement models from scratch and can explain the
+        assumptions behind your forecasts under scrutiny from a CFO."
+  BAD:  "You have strong financial modelling skills."

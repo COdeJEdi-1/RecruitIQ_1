@@ -1,0 +1,67 @@
+role_family: Frontend Engineer
+department: Tech
+
+core_skills:
+  - HTML, CSS, and JavaScript fundamentals (ES2020+)
+  - Component-based UI architecture
+  - Browser developer tools and performance profiling
+  - Accessibility (WCAG 2.1 AA basics)
+  - REST API integration and async data handling
+  - Version control with Git
+  - Writing unit and component-level tests
+
+stack_skills:
+  frameworks:
+    - React (hooks, context, concurrent features)
+    - Vue 3
+    - Angular
+    - Next.js / Nuxt.js
+  styling:
+    - CSS Modules
+    - Tailwind CSS
+    - styled-components / Emotion
+    - Design system integration (e.g. MUI, Radix UI)
+  state_management:
+    - Redux Toolkit
+    - Zustand
+    - React Query / TanStack Query
+  testing:
+    - Jest
+    - React Testing Library
+    - Cypress / Playwright
+  build_and_tooling:
+    - Vite
+    - Webpack
+    - TypeScript
+
+nice_to_have:
+  - Server-side rendering (SSR) and edge rendering patterns
+  - Web performance optimisation (Core Web Vitals, bundle analysis)
+  - Mobile web / PWA experience
+  - Storybook for component documentation
+  - Basic Node.js for BFF (Backend-for-Frontend) patterns
+
+level_gates:
+  Junior: >
+    Implements UI components from Figma specs with guidance. Writes working code
+    that passes review with minor iterations. Understands the component lifecycle
+    and basic state management. Not expected to own pages or features end-to-end yet.
+    Pairs with Mid/Senior for complex interactions.
+
+  Mid: >
+    Owns pages and user flows end-to-end. Makes sensible component architecture
+    decisions without needing to be guided. Identifies and fixes performance issues
+    independently. Reviews Junior PRs for correctness and maintainability.
+    Collaborates directly with designers to resolve edge cases.
+
+  Senior: >
+    Defines the frontend architecture for new product surfaces. Owns the design system
+    contribution process. Sets testing and performance standards for the team.
+    Mentors Mid engineers. Capable of evaluating and introducing new tooling.
+    Works directly with product and design to shape requirements before they become tickets.
+
+  Lead: >
+    Sets the frontend technical strategy across multiple squads. Owns Core Web Vitals
+    and frontend reliability metrics. Drives design system governance. Partners with
+    design and product leadership. Grows a team of 5–8 frontend engineers.
+    Represents frontend concerns in architecture reviews.

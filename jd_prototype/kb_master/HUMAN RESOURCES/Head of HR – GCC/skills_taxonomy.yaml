@@ -1,0 +1,65 @@
+role_family: Head of HR – GCC
+department: HUMAN RESOURCES
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- HR.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Lead the people strategy for a new, fast-scaling Global Capability Centre spanning Finance, Technology,
+      Procurement, and HR operations
+    - Shape the organisation structure, build leadership and capability, strengthen culture, ensure seamless
+      high-quality employee experience across the GCC
+    - Partner closely with HR COEs for rewards, policies, and specialised frameworks
+    - Own the full employee lifecycle within the centre
+    - Build a scalable HR operating model
+    - Lead talent acquisition and workforce planning
+    - Drive performance, development, and engagement
+    - Enable leadership effectiveness
+    - Ensure disciplined HR governance, compliance, and operational excellence
+    - Bring people insights, talent intelligence, and organisational judgment into GCC leadership discussions
+    arvind_specific:
+    - Arvind GCC — new, fast-scaling Global Capability Centre
+    leadership_skills:
+    - Head of HR-level ownership of GCC people strategy
+    qualifications:
+    - 15–18 years of HR experience with 5+ years leading HR in a GCC
+    - Experience scaling centres from early phases to 1000+ employees
+    - Strong expertise in HR business partnering, talent management, org design, and operations
+    - Ability to work closely with global COEs and navigate complex stakeholder environments
+    - Data-driven, execution-focused approach with strong leadership presence
+    kpis:
+    - Smooth scaling of the GCC with strength in talent, culture, and capability
+    - High levels of employee and manager experience
+    - Mature and reliable HR processes with strong governance
+    - Strong global alignment and stakeholder confidence
+    reporting_to: ''

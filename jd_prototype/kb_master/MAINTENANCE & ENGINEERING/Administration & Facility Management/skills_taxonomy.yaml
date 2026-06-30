@@ -1,0 +1,80 @@
+role_family: Administration & Facility Management
+department: MAINTENANCE & ENGINEERING
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- Central Administration and facility mgmt.doc
+- Central Administration and facility mgmt.pdf
+- Chief Manager Administration and facility mgmt.doc
+- Chief Manager Administration and facility mgmt.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Handling operation & maintenance of office premises
+    - 'Managing overall maintenance of facilities & equipment: UPS, IBMS, Access control, CCTV, kitchen
+      equipment, Wind Solar hybrid systems, solar water heating systems, solar BIPV system, Rain water
+      harvesting, water & sewage treatment plants, RO system, organic waste composting, fire fighting
+      & alarm system, fire suppression system'
+    - Ensuring proper work space planning and allocation
+    - Managing Help Desk, Fire & Safety, Security, Transport, Travel, VISA, Passport, Telephone Set, EPBX
+      system, Cafeteria Management, Event Management, Mail Desk, Housekeeping operations
+    - Establishing systems & processes for improving effectiveness of the function through cost, quality
+      & delivery compliance
+    - Interacting with departments for executing maintenance of equipment / timely delivery of new equipment
+    - Inspecting field sites/facilities to evaluate condition and ensure general up-keep of premises/equipment/furniture/furnishings/vehicles
+    - Management of all COVID-related protocols and systems (internal and external)
+    - Ensuring administration-related SOPs are implemented
+    - Responsibility for central kitchen management
+    arvind_specific:
+    - 'Facilities managed: Operations of Arvind Ltd based in and around Ahmedabad'
+    leadership_skills:
+    - Chief Manager-level facility management ownership for a single-site scope
+    qualifications:
+    - Graduate in any discipline
+    - PG Degree – any discipline
+    - 15-20 years of experience
+    kpis: []
+    reporting_to: ''
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    inherits_from: lead
+    core_skills: []
+    progressive_skills:
+    - 'Spearheading transport system: OTA / No-shows tracking, logging, checking, routing'
+    arvind_specific:
+    - 'Facilities managed: Textile and garment Operations of Arvind Ltd based in Ahmedabad and Bangalore,
+      Gujarat, Corporate Office, Envisol'
+    leadership_skills:
+    - Central Head-level facility management ownership across multiple sites/business units
+    qualifications:
+    - Graduate in any discipline
+    - PG Degree – any discipline
+    - 15-20 years of experience
+    kpis: []
+    reporting_to: ''
+note: Corporate administration/facilities function — mapped to closest-fit department (MAINTENANCE & ENGINEERING)
+  since it covers building/utility maintenance, not a perfect match to any listed department.

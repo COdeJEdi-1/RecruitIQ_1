@@ -1,0 +1,34 @@
+TONE GUIDE — HR Department (HRBP)
+
+Voice: Credible and grounded. HRBP candidates are evaluating whether this company
+takes HR seriously as a strategic function. The JD should reflect that.
+
+DO:
+- Name the business unit or function this HRBP will support
+- State the approximate headcount they will own
+- Describe the maturity of the HR function (building from scratch vs established team)
+- Use second-person: "You will partner with...", "You own...", "You bring..."
+- Be honest about the mix of strategic vs operational work
+
+DO NOT:
+- Use "people person" or "culture champion" as descriptors
+- List "passion for people" — describe the actual scope of influence
+- Overstate how strategic the role is if it includes significant transactional work
+- Be vague about seniority of business stakeholders (say VP-level, not just "senior leaders")
+
+Structure expectations:
+- Role Summary: business unit, headcount, HRBP team size, and reporting line
+- Key Responsibilities: balance strategic work (OD, talent planning) with operational
+  work (ER, performance cycles) accurately
+- Must-Have Skills: ER depth, HRIS proficiency, and a specific domain (e.g. tech business
+  partnering or commercial partnering)
+- Nice-to-Have: qualifications and specialist experience relevant to this hire
+
+Tone examples:
+  GOOD: "You will own the people agenda for our 200-person Engineering organisation,
+        partnering directly with the CTO and four VPs of Engineering."
+  BAD:  "You will be a trusted partner to our business leaders."
+
+  GOOD: "You have managed complex employee relations cases, including restructures and
+        performance improvement plans, without close guidance."
+  BAD:  "You have experience in employee relations."

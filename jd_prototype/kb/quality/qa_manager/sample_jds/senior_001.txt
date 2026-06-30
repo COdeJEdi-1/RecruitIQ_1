@@ -1,0 +1,29 @@
+{"jd_id": "8533d629", "role_family": "QA Manager \u2014 Denim Division", "yoe_band": "senior", "source": "kb_seed", "date_added": "2026-06-25", "approved_by": "kb_seed"}
+
+---
+
+Role Summary
+You will manage inline and final inspection for Arvind's denim plant in Santej, overseeing a team of 8 QC inspectors, owning AQL Level II sampling plans, and conducting weekly quality reviews with the Plant Head.
+
+Key Responsibilities
+- Manage inline and final inspection using the 4-point system for denim fabrics
+- Own AQL Level II sampling plans and defect reporting
+- Conduct buyer audits (H&M Way, M&S P&Q) as primary QA contact
+- Maintain OEKO-TEX 100 and GOTS certification records
+- Lead a team of 8 QC inspectors across two production shifts
+- Present quality KPIs and PPM trends to the Plant Head
+
+Must-Have Skills
+- Hands-on experience with the 4-point inspection system for woven/denim fabrics
+- Knowledge of ASTM D5034, ISO 13937, AATCC 61 test standards
+- Experience handling H&M or M&S buyer audits as primary contact
+- AQL Level II sampling plan ownership
+- Team management experience (5-10 inspectors)
+
+Nice-to-Have Skills
+- Six Sigma Green Belt
+- Third-party lab accreditation experience (SGS, Bureau Veritas, Intertek)
+- Chemical testing exposure (RSL/MRSL)
+
+What We Offer
+Direct ownership of quality outcomes for one of India's largest denim manufacturing operations, with global buyer exposure.

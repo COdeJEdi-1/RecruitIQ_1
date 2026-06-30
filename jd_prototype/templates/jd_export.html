@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ role_title }} — Arvind Job Description</title>
+<style>
+  /* ── Print / PDF styles ─────────────────────────────────────── */
+  @media print {
+    body { background: #fff !important; padding: 0 !important; }
+    .no-print { display: none !important; }
+    .card { box-shadow: none !important; }
+    @page { margin: 1.2cm 1.6cm; size: A4; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px;
+    background: #f0f0f0;
+    font-family: Calibri, Arial, sans-serif;
+  }
+  .outer {
+    max-width: 660px; width: 100%;
+    margin: 0 auto;
+  }
+  /* ── Print / Save as PDF button ── */
+  .actions-bar {
+    display: flex; gap: 10px; justify-content: flex-end;
+    margin-bottom: 14px;
+  }
+  .btn-print {
+    background: #B01030; color: #fff; border: none;
+    padding: 8px 20px; border-radius: 4px; font-size: 13px;
+    cursor: pointer; font-family: Calibri, Arial, sans-serif;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-print:hover { background: #8c0d25; }
+  .btn-close {
+    background: #f7f7f7; color: #3d3d3d; border: 1px solid #e2e2e2;
+    padding: 8px 20px; border-radius: 4px; font-size: 13px;
+    cursor: pointer; font-family: Calibri, Arial, sans-serif;
+  }
+
+  /* ── Card ─────────────────────────────────────────────────── */
+  .card {
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  /* ── Header ───────────────────────────────────────────────── */
+  .hdr {
+    padding: 18px 28px 14px 28px;
+    border-bottom: 3px solid #B01030;
+  }
+  .hdr-inner {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .hdr-label {
+    color: #777777; font-size: 12px; font-style: italic;
+  }
+  .hdr-logo img {
+    height: 36px; display: block;
+  }
+
+  /* ── Role banner ──────────────────────────────────────────── */
+  .role-banner {
+    background: #B01030;
+    padding: 18px 28px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .role-banner h1 {
+    margin: 0; color: #ffffff;
+    font-size: 20px; font-weight: 700; letter-spacing: 0.3px;
+  }
+  .role-banner .meta-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+  }
+  .chip {
+    background: rgba(255,255,255,0.18);
+    color: #ffffff; border-radius: 3px;
+    padding: 3px 10px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Section header ───────────────────────────────────────── */
+  .section-wrap { padding: 22px 28px 8px 28px; }
+  .section-head {
+    font-size: 11px; font-weight: 700; color: #B01030;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    border-bottom: 2px solid #B01030;
+    padding-bottom: 6px; margin-bottom: 14px;
+  }
+
+  /* ── Position overview table ──────────────────────────────── */
+  .pos-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .pos-table tr:nth-child(odd) td:first-child { background: #f7f7f7; }
+  .pos-table tr:nth-child(even) td:first-child { background: #ffffff; }
+  .pos-table td { padding: 7px 10px; vertical-align: top; }
+  .pos-table td:first-child {
+    width: 38%; font-weight: 600; color: #3d3d3d;
+  }
+  .pos-table td:last-child {
+    color: #3d3d3d; padding-left: 14px;
+  }
+  .pos-table td:last-child.empty {
+    color: #aaaaaa; font-style: italic;
+  }
+
+  /* ── Body text ────────────────────────────────────────────── */
+  .body-text {
+    font-size: 13px; color: #3d3d3d; line-height: 1.7; margin: 0;
+  }
+
+  /* ── Bullet lists ─────────────────────────────────────────── */
+  .jd-list {
+    font-size: 13px; color: #3d3d3d;
+    line-height: 1.9; margin: 0; padding-left: 20px;
+  }
+  .jd-list li { margin-bottom: 2px; }
+
+  /* ── Sub-headings inside Must-Have ───────────────────────── */
+  .sub-head {
+    font-size: 13px; font-weight: 700; color: #3d3d3d;
+    margin: 10px 0 6px 0;
+  }
+
+  /* ── Footer ───────────────────────────────────────────────── */
+  .ftr {
+    background: #f7f7f7; padding: 14px 28px;
+    border-top: 1px solid #e2e2e2;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ftr img { height: 17px; display: block; }
+  .ftr-note { font-size: 11px; color: #999999; font-style: italic; }
+
+  /* ── Apply section ────────────────────────────────────────── */
+  .apply-text {
+    font-size: 13px; color: #3d3d3d; line-height: 1.7; margin: 0 0 8px 0;
+  }
+  .apply-text a { color: #B01030; }
+  .disclaimer { font-size: 12px; color: #999999; font-style: italic; margin: 0; }
+  .spacer { height: 8px; }
+</style>
+</head>
+<body>
+<div class="outer">
+
+  <!-- ── Action bar (hidden in print) ─────────────────────── -->
+  <div class="actions-bar no-print">
+    <button class="btn-close" onclick="window.close()">✕ Close</button>
+    <button class="btn-print" onclick="window.print()">
+      ⬇ Save as PDF / Print
+    </button>
+  </div>
+
+  <div class="card">
+
+    <!-- ══ HEADER ══ -->
+    <div class="hdr">
+      <div class="hdr-inner">
+        <span class="hdr-label">Job Description</span>
+        <div class="hdr-logo">
+          <img src="{{ logo_main }}" alt="Arvind Limited" style="height:36px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ROLE BANNER ══ -->
+    <div class="role-banner">
+      <h1>{{ role_title }}</h1>
+      <div class="meta-chips">
+        {% if yoe_band %}<span class="chip">{{ yoe_band }} yrs exp</span>{% endif %}
+        {% if department %}<span class="chip">{{ department | replace('_',' ') | title }}</span>{% endif %}
+        {% if location %}<span class="chip">{{ location }}</span>{% endif %}
+      </div>
+    </div>
+
+    <!-- ══ POSITION OVERVIEW ══ -->
+    <div class="section-wrap">
+      <div class="section-head">Position Overview</div>
+      <table class="pos-table">
+        <tr>
+          <td>Job Title</td>
+          <td {% if not role_title %}class="empty"{% endif %}>{{ role_title or '—' }}</td>
+        </tr>
+        <tr>
+          <td>Department</td>
+          <td {% if not department %}class="empty"{% endif %}>{{ (department or '') | replace('_',' ') | title or '—' }}</td>
+        </tr>
+        <tr>
+          <td>Division / BU</td>
+          <td {% if not division %}class="empty"{% endif %}>{{ division or '—' }}</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td {% if not location %}class="empty"{% endif %}>{{ location or 'Ahmedabad, Gujarat' }}</td>
+        </tr>
+        <tr>
+          <td>Employment Type</td>
+          <td>{{ employment_type or 'Full-Time' }}</td>
+        </tr>
+        <tr>
+          <td>Experience Level</td>
+          <td {% if not yoe_band %}class="empty"{% endif %}>{{ yoe_band ~ ' years' if yoe_band else '—' }}</td>
+        </tr>
+        <tr>
+          <td>Reporting To</td>
+          <td {% if not reporting_to %}class="empty"{% endif %}>{{ reporting_to or '—' }}</td>
+        </tr>
+        <tr>
+          <td>No. of Openings</td>
+          <td {% if not openings %}class="empty"{% endif %}>{{ openings or '—' }}</td>
+        </tr>
+        <tr>
+          <td>Job Code</td>
+          <td {% if not job_code %}class="empty"{% endif %}>{{ job_code or '—' }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ══ ABOUT ARVIND ══ -->
+    <div class="section-wrap">
+      <div class="section-head">About Arvind</div>
+      <p class="body-text">
+        Arvind Limited is India's largest vertically integrated textile and apparel conglomerate
+        with over 95 years of heritage, operating across Textile &amp; Apparel, Retail, Advanced
+        Materials, Environmental Solutions, and Communication &amp; Digital Solutions.
+        Arvind employs over 30,000 people and exports to 90+ countries, with a manufacturing
+        footprint spanning Gujarat, Karnataka, and Rajasthan.
+      </p>
+      <div class="spacer"></div>
+      <p class="body-text">
+        {% if division and 'GCC' in division %}
+        Arvind GCC is the Global Capability Centre being established to build world-class
+        technology, analytics, and digital capabilities that power Arvind's global operations.
+        {% else %}
+        This role sits within {{ (department or 'our') | replace('_',' ') | title }} and contributes
+        directly to Arvind's mission of building a future-ready, sustainable enterprise.
+        {% endif %}
+      </p>
+    </div>
+
+    <!-- ══ ROLE SUMMARY ══ -->
+    {% if role_summary %}
+    <div class="section-wrap">
+      <div class="section-head">Role Summary</div>
+      <p class="body-text">{{ role_summary | replace('\n', '<br>') | safe }}</p>
+    </div>
+    {% endif %}
+
+    <!-- ══ KEY RESPONSIBILITIES ══ -->
+    {% if key_responsibilities %}
+    <div class="section-wrap">
+      <div class="section-head">Key Responsibilities</div>
+      <ul class="jd-list">
+        {% for item in key_responsibilities %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- ══ MUST-HAVE SKILLS ══ -->
+    {% if must_have %}
+    <div class="section-wrap">
+      <div class="section-head">Must-Have Skills &amp; Qualifications</div>
+      <ul class="jd-list">
+        {% for item in must_have %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- ══ NICE-TO-HAVE ══ -->
+    {% if nice_to_have %}
+    <div class="section-wrap">
+      <div class="section-head">Nice-to-Have Skills</div>
+      <ul class="jd-list">
+        {% for item in nice_to_have %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- ══ WHAT WE OFFER ══ -->
+    <div class="section-wrap">
+      <div class="section-head">What We Offer</div>
+      <ul class="jd-list">
+        {% if what_we_offer %}
+          {% for item in what_we_offer %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        {% else %}
+          <li>Competitive compensation aligned to market benchmarks</li>
+          <li>Opportunity to build from the ground up within a 95-year-old enterprise</li>
+          <li>Exposure to global operations across Textile, Retail, Advanced Materials, and more</li>
+          <li>Learning &amp; development via Arvind's Samarth early-career platform</li>
+          <li>Inclusive, diverse, and purpose-driven work culture</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- ══ HOW TO APPLY ══ -->
+    <div class="section-wrap" style="padding-bottom:24px;">
+      <div class="section-head">How to Apply</div>
+      <p class="apply-text">
+        Apply through <a href="https://careers.arvind.com">careers.arvind.com</a>
+        or email your profile to <a href="mailto:hr.ta@arvind.in">hr.ta@arvind.in</a>
+        {% if job_code %}with subject: <strong>{{ job_code }} — {{ role_title }}</strong>{% endif %}
+      </p>
+      <p class="disclaimer">
+        Arvind Limited is an equal opportunity employer committed to diversity and inclusion.
+      </p>
+      {% if generated_date %}
+      <p class="disclaimer" style="margin-top:6px;">
+        Generated on {{ generated_date }} · {{ generated_by }}
+      </p>
+      {% endif %}
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <div class="ftr">
+      <img src="{{ logo_gcc }}" alt="Arvind GCC" style="height:17px;">
+      <span class="ftr-note">Confidential &nbsp;|&nbsp; Naroda Road, Ahmedabad &nbsp;|&nbsp; careers.arvind.com</span>
+    </div>
+
+  </div><!-- /card -->
+</div><!-- /outer -->
+</body>
+</html>

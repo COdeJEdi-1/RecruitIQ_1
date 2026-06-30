@@ -1,0 +1,31 @@
+role_family: Fashion Designer
+department: Design Merchandising
+division: Arvind Fashions Limited
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Trend research and seasonal concept development
+    - CAD development for garment design
+    - Colour forecasting integration
+    - Tech pack preparation for production handoff
+    progressive_skills: []
+    arvind_specific:
+    - Design support for an Arvind Fashions brand collection cycle
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Full collection design ownership
+    - Cross-brand design language consistency
+    - Vendor and production team collaboration for sample development
+    - Design team mentorship
+    progressive_skills: []
+    arvind_specific:
+    - Lead designer role for a brand within Arvind Fashions' portfolio
+    leadership_skills: []

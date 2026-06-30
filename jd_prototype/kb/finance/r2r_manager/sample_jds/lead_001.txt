@@ -1,0 +1,33 @@
+{"jd_id": "885dc3b5", "role_family": "Manager \u2013 Record to Report (R2R)", "yoe_band": "lead", "source": "real_scraped_jd", "date_added": "2026-06-25", "approved_by": "kb_import"}
+
+---
+
+Role Summary
+You will manage end-to-end Record to Report operations for Arvind Limited in Ahmedabad, reporting to the Senior Manager / Finance Controller. You will own General Ledger, Fixed Assets, Intercompany Accounting, Accruals, and Provisions across the entity, ensuring accurate and timely financial close.
+
+Key Responsibilities
+- Manage end-to-end R2R: GL, Fixed Assets, Intercompany Accounting, Accruals, Provisions, BS Reconciliations
+- Drive timely month-end, quarter-end, and year-end close
+- Review journal entries, account reconciliations, and financial reports
+- Prepare financial statements per IFRS / US GAAP / local accounting standards
+- Coordinate directly with internal and external auditors
+- Drive process improvements, standardization, and automation across the R2R function
+- Track KPIs and SLAs for finance shared services delivery
+- Collaborate closely with AP, AR, FP&A, Tax, and Treasury teams
+- Lead, mentor, and develop team members
+- Support system implementations and finance transformation initiatives
+
+Must-Have Skills
+- CA / CMA / CPA / MBA Finance
+- 10-12 years in Finance & Accounting
+- GL accounting, financial reporting, and reconciliation expertise
+- IFRS / US GAAP / internal controls knowledge
+- Shared Services / BPO / GCC / MNC background preferred
+- ERP experience: SAP / Oracle / Microsoft Dynamics
+
+Nice-to-Have Skills
+- BlackLine / Hyperion exposure
+- Process transitions and continuous improvement experience
+
+What We Offer
+Leadership of a critical finance function within Arvind's shared services structure, exposure to multi-entity consolidation, and a clear path toward broader finance transformation ownership.

@@ -1,0 +1,31 @@
+role_family: Enterprise Sales Manager – AV/Telecom/Networking/Security
+department: Telecom
+division: Arvind Syntel
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Enterprise business development and revenue growth
+    - 'End-to-end project sales lifecycle: lead generation to closure'
+    - Opportunity identification across AV, Telecom, Networking, and Security domains
+    - Relationship building with corporate clients
+    progressive_skills: []
+    arvind_specific:
+    - Enterprise sales for Arvind Syntel's AV, Telecom, and Security solutions portfolio
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Government and large enterprise account ownership
+    - Techno-commercial solution selling leadership
+    - OEM and System Integrator partnership management
+    - Sales team leadership and pipeline ownership
+    progressive_skills: []
+    arvind_specific:
+    - Regional sales leadership across Mumbai/Ahmedabad/Hyderabad for Arvind Syntel
+    leadership_skills: []

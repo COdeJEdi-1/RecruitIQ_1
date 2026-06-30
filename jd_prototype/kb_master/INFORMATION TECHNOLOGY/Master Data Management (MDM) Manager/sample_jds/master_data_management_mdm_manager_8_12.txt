@@ -1,0 +1,82 @@
+---METADATA---
+{
+  "role_family": "Master Data Management (MDM) Manager",
+  "department": "INFORMATION TECHNOLOGY",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "8–12",
+  "seniority_label": "Deputy General Manager / General Manager",
+  "source_doc": "MDM - Manager.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+Job Title:
+Manager / Senior Manager – Master Data Management (MDM)
+Location:
+Ahmedabad (GCC – Arvind Ltd.)
+Role Purpose:
+Lead the design, setup, and scaling of the Master Data Management (MDM) function within the Global Capability Center (GCC). The role will be responsible for governance, quality, standardization, and lifecycle management of master data across Vendor, Customer, and related domains, while driving transformation, automation, and best-in-class practices.
+Key Responsibilities:
+1. MDM Strategy & Setup
+Define and implement the MDM vision, roadmap, and operating model for GCC.
+Establish centralized MDM services for Vendor and Customer master data.
+Drive transition of MDM activities from business units / locations into GCC.
+Develop SOPs, policies, and standard templates for data governance.
+2. Data Governance & Quality
+Set up and lead data governance framework including:
+Data ownership & stewardship model
+Data standards, policies, and controls
+Define KPIs/KRAs for data quality, accuracy, completeness, and timeliness
+Implement data quality tools, audits, and monitoring dashboards
+Ensure compliance with internal controls, audit requirements, and regulatory standards
+3. Vendor & Customer Master Data Management
+Oversee end-to-end lifecycle:
+Creation, modification, blocking, and archival
+Ensure proper validations (KYC, tax details, banking, credit limits, etc.)
+Drive standardization and deduplication initiatives
+Collaborate with Procurement, Finance, Sales, and IT teams
+4. Transformation & Automation
+Identify and implement opportunities for:
+Process automation (RPA, workflows)
+Digital tools (MDM platforms, data catalogs)
+Drive continuous improvement and process re-engineering
+Leverage analytics for proactive data quality management
+5. Stakeholder Management
+Partner with senior stakeholders across:
+Finance, Procurement, Sales, Supply Chain, IT
+Act as SPOC for MDM governance and escalations
+6. Team Leadership & Capability Building
+Build and lead a high-performing MDM team within GCC
+Define roles like Data Stewards, Analysts, and Specialists
+Drive training, capability building, and knowledge management
+Key Requirements:
+Experience:
+10–15 years (Manager: ~10–12 | Sr. Manager: ~12–15)
+Strong experience in:
+Master Data Management (Vendor/Customer)
+Shared Services / GCC setup or transformation roles
+Process migration / transitions
+Experience in manufacturing / textile / retail domains preferred
+Technical & Functional Skills:
+Strong knowledge of ERP systems (SAP S/4HANA preferred)
+Exposure to MDM tools (e.g., SAP MDG, Informatica, Collibra, etc.)
+Understanding of:
+Data governance frameworks
+Data quality management tools
+Workflow and automation tools (RPA – UiPath, Automation Anywhere, etc.)
+Strong analytical and problem-solving skills
+Leadership & Behavioral Skills:
+Strong stakeholder management and influencing skills
+Ability to work in ambiguity and build from scratch
+High ownership and execution focus
+Strong communication and change management skills
+Key Success Metrics (KPIs):
+Data accuracy and completeness %
+Reduction in duplicate records
+Turnaround time for master data requests
+Audit compliance and error rates
+% automation in MDM processes
+Stakeholder satisfaction scores

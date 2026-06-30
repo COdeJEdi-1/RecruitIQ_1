@@ -1,0 +1,66 @@
+role_family: FP&A
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- FP&A_ Sr Analyst_Job_Descriptions.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    core_skills: []
+    progressive_skills:
+    - Prepare timely and accurate Flash Reports and month-end MIS reports for leadership
+    - Conduct working capital review across receivables, payables, and inventory, highlighting trends,
+      blockages, and improvement opportunities
+    - Partner on inventory management analytics — ageing, provisioning inputs, slow/non-moving stock analysis,
+      inventory KPI tracking
+    - Build and maintain dashboards and reporting templates to improve speed, accuracy, and decision usefulness
+      of FP&A outputs
+    - Ensure compliance with internal controls, reporting standards, and defined SLAs across all planning
+      and reporting deliverables
+    - Monitor reporting accuracy, turnaround time, and other operational KPIs
+    - Identify opportunities for standardization, automation, and process improvement
+    - Work independently with minimal supervision in a fast-paced Shared Services environment; provide
+      guidance to junior team members
+    arvind_specific:
+    - Shared Services environment within a leading Indian conglomerate (GCC)
+    leadership_skills:
+    - Provides guidance to junior team members
+    qualifications:
+    - Graduate in Commerce/Accounting (B.Com) or equivalent; CA / CMA / MBA (Finance) preferred
+    - 3–5 years of relevant experience in FP&A / business finance / management reporting
+    - Strong understanding of forecasting, variance analysis, MIS reporting, and working capital concepts
+    - Mandatory hands-on experience working on SAP (CO / FI); exposure to BPC or planning tools an advantage
+    - Strong financial modelling and analytical skills with the ability to translate data into insight
+    - Advanced working knowledge of MS Excel; exposure to reporting/analytics tools (e.g., Power BI) strongly
+      preferred
+    - Good verbal and written communication skills, with the ability to present analysis to senior stakeholders
+    - Experience working in Shared Services / GCC / large corporate environment preferred
+    kpis: []
+    reporting_to: ''
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

@@ -1,0 +1,82 @@
+role_family: "QA Manager"
+department: "Quality Assurance / Quality Control"
+division: "Manufacturing & Plant Operations"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Fabric inspection: 4-point system, visual defect identification
+      - AQL sampling and defect classification
+      - Lab testing: GSM, tensile strength, colour fastness, shrinkage
+      - Test report preparation
+    progressive_skills:
+      - ASTM / ISO / AATCC test method awareness
+    arvind_specific:
+      - Arvind QC standards for denim and woven fabrics
+      - Buyer quality requirements (H&M, M&S, VF Corp)
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - QMS implementation (ISO 9001)
+      - SPC (Statistical Process Control) and control charts
+      - Customer audit handling (buyer quality audits)
+      - NCR (Non-Conformance Report) management and CAPA
+      - Inline and final inspection coordination
+    arvind_specific:
+      - Managing Arvind fabric quality for export orders
+      - OEKO-TEX 100, GOTS, Bluesign certification support
+    leadership_skills:
+      - Coordinating QC team of 3-8 inspectors
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Full QMS ownership: audit calendar, documentation, management review
+      - Six Sigma / Lean quality tools (FMEA, Ishikawa, 8D)
+      - Incoming raw material QC: yarn, dyes, chemicals
+      - Third-party lab relationships (SGS, Bureau Veritas, Intertek)
+    arvind_specific:
+      - Multi-plant quality harmonisation across Arvind sites
+      - Sustainability quality: ZDHC MRSL testing, RSL management
+    leadership_skills:
+      - Managing a QA team of 10-25
+      - Presenting quality KPIs to Plant Head and GM
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Quality strategy: zero-defect roadmap, PPM targets
+      - New product qualification and validation
+      - Customer quality agreements and SLAs
+    arvind_specific:
+      - Group quality head for Arvind's fabric business
+      - Representing Arvind in buyer quality summits
+    leadership_skills:
+      - VP Quality / Head of Quality Assurance
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Quality culture transformation
+      - Industry standards body participation
+    arvind_specific: []
+    leadership_skills:
+      - Chief Quality Officer / Group VP Quality

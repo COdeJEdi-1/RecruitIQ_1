@@ -1,0 +1,32 @@
+role_family: Associate Manager – Production (Needle Punch Non-Woven)
+department: Manufacturing
+division: Arvind Advanced Materials
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Needle Punch Non-Woven production process management
+    - Carding, Cross-Lapping, Drafting, Needle Loom operations
+    - GSM/Thickness/Density/Width/Mechanical Properties control
+    - RCA & problem-solving on production line issues
+    progressive_skills: []
+    arvind_specific:
+    - Arvind Advanced Materials' Dholka non-woven facility, Grade E1-E2
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - 'Full production line ownership: targets, quality, waste minimization'
+    - Team and manpower management across shifts
+    - 'Process optimization for fibre types: Polyester, Polypropylene, Meta-Aramid,
+      Para-Aramid, Viscose, Recycled Fibres'
+    - 5S and safety standard enforcement
+    progressive_skills: []
+    arvind_specific:
+    - Reporting to Chief Manager – Non-Woven Production at Arvind Advanced Materials
+    leadership_skills: []

@@ -1,0 +1,88 @@
+role_family: "Production Manager"
+department: "Manufacturing"
+division: "Manufacturing & Plant Operations"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Production planning and scheduling (shift-wise)
+      - Machine efficiency monitoring (OEE basics)
+      - Daily output reporting
+      - Coordination with maintenance for downtime
+      - Basic quality checks on the floor
+    progressive_skills:
+      - SOP adherence and shift handover documentation
+    arvind_specific:
+      - Loom operations, fabric winding, grey fabric inspection
+      - Shift production targets for Arvind plant (metres/shift)
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - Section-level production management (50-150 machines)
+      - Line balancing and efficiency improvement (OEE 80%+ target)
+      - 5S and Kaizen implementation
+      - Cross-shift coordination
+      - Root cause analysis for production losses
+    arvind_specific:
+      - Fabric weaving: rapier/projectile/airjet looms
+      - Denim / woven fabric production targets
+      - OEKO-TEX and sustainability standards on the floor
+    leadership_skills:
+      - Managing a team of 10-30 operators
+      - Reporting to Plant Manager
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Plant-level production planning (capacity planning, RCCP)
+      - Capex proposals for machine upgrades
+      - Budget ownership for production cost
+      - ISO 9001, ISO 14001 implementation
+      - Liaison with design/merchandising for new product trials
+    arvind_specific:
+      - Multi-department production coordination: weaving, sizing, warping, finishing
+      - Plant efficiency benchmarking against Arvind standards
+    leadership_skills:
+      - Managing supervisors and section heads (team of 30-100)
+      - P&L accountability for a production section
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Plant head responsibilities
+      - Greenfield / brownfield expansion planning
+      - Labour relations and IR at plant level
+      - Customer audits (buyer audits, sustainability audits)
+    arvind_specific:
+      - Full plant ownership for one of Arvind's manufacturing sites
+      - Liaison with corporate supply chain and sales
+    leadership_skills:
+      - Plant Manager / VP Manufacturing
+      - Reporting to COO
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Multi-plant network strategy
+      - Manufacturing technology transformation
+    arvind_specific: []
+    leadership_skills:
+      - COO / VP Operations

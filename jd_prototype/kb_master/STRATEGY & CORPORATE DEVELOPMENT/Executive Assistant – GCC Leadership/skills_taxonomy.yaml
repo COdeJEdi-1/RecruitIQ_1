@@ -1,0 +1,76 @@
+role_family: Executive Assistant – GCC Leadership
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- GCC EA JD.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Serve as the central coordination point for GCC leadership activities, ensuring effective management
+      of leadership priorities and schedules
+    - Proactively manage leadership calendars, ensuring optimal prioritization of strategic meetings and
+      commitments
+    - Anticipate scheduling conflicts and resolve them effectively while maintaining alignment with business
+      priorities
+    - Manage complex calendars involving internal leadership, internal stakeholders, and external partners
+    - Coordinate leadership reviews, strategic meetings, project updates, and governance forums
+    - Prepare meeting agendas, coordinate briefing materials, and ensure follow-up on action items
+    - Manage domestic and international travel planning including flights, visas, accommodation, itineraries,
+      and ground logistics
+    - Ensure seamless travel experience for leadership through proactive planning and coordination
+    - Manage travel expenses and ensure compliance with corporate policies
+    - Facilitate communication between GCC leadership and internal stakeholders including HR, Finance,
+      Operations, and other teams
+    - Support preparation of leadership presentations, briefing notes, and communication materials
+    - Maintain confidentiality and professionalism in handling sensitive information
+    - Coordinate logistics for leadership visits, global stakeholder engagements, and internal leadership
+      forums
+    - Support planning and execution of town halls, leadership offsites, and strategic workshops
+    - Manage leadership office documentation, expense reports, and key administrative processes
+    - Maintain structured records of meetings, key decisions, and follow-ups
+    - Continuously improve processes to enhance leadership office efficiency
+    arvind_specific:
+    - Office of GCC Leadership — Arvind's Global Capability Centre in Ahmedabad
+    leadership_skills:
+    - Trusted partner to GCC leadership ensuring operational efficiency
+    qualifications:
+    - 7–12 years of experience supporting senior executives, business heads, or GCC leadership teams
+    - Experience working in multinational organizations, consulting firms, or global services environments
+      preferred
+    - Proven ability to manage complex schedules and multiple senior stakeholders
+    - Bachelor's degree in Business Administration, Management, or related field
+    - Executive Presence, Proactive Problem Solving, Exceptional Organizational Skills, Stakeholder Management,
+      Discretion & Confidentiality
+    kpis: []
+    reporting_to: Head – GCC / GCC Leadership Office
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+note: Executive Assistant role mapped to closest-fit department (STRATEGY & CORPORATE DEVELOPMENT — office
+  of GCC leadership) since no dedicated admin/EA department exists in the given list.

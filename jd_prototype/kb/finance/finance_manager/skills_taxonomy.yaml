@@ -1,0 +1,43 @@
+role_family: Finance Manager / DGM Finance
+department: Finance
+division: Arvind Limited — Finance & Accounts
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Financial strategy and budgeting
+    - Fund management and treasury operations
+    - SEBI/legal compliance and MIS reporting
+    - SAP FICO ownership
+    progressive_skills: []
+    arvind_specific:
+    - SAP FICO for Arvind Limited's multi-entity structure
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Investor relations and board reporting
+    - IndAS/IFRS compliance across entities
+    - Costing and profitability analysis at group level
+    - Cross-functional financial governance
+    progressive_skills: []
+    arvind_specific:
+    - 'Investor relations for NSE: ARVIND / BSE: 500101'
+    leadership_skills: []
+  executive:
+    label: VP / SVP / CXO
+    years: 12+
+    seniority_tag: Executive
+    core_skills:
+    - Group financial strategy and capital allocation
+    - M&A and corporate finance advisory
+    - CXO-level investor and analyst relationship management
+    progressive_skills: []
+    arvind_specific:
+    - CFO-level financial leadership across Arvind Group entities
+    leadership_skills: []

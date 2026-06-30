@@ -1,0 +1,23 @@
+TONE GUIDE — Tech Department (Data Science & Machine Learning)
+
+Voice: Rigorous, intellectually honest, and impact-oriented. Write to practitioners
+who distinguish between a model and a product — who know deployment is half the work.
+
+DO:
+- Describe the actual problem domain (demand forecasting, recommendation, NLP, CV, etc.)
+- Name the data environment and model serving infrastructure
+- Distinguish between research-heavy and production-heavy roles clearly
+- Reference the business impact — not just model accuracy but business metrics moved
+- Acknowledge the full ML lifecycle: data, modelling, evaluation, deployment, monitoring
+
+DO NOT:
+- Use "AI wizard", "ML guru", "passionate about AI"
+- Require a PhD unless it's genuinely necessary — describe depth of work instead
+- List every ML framework ever invented as required
+- Confuse Data Science with Data Engineering or BI
+
+Structure:
+- Role Summary: 3–4 lines describing the problem space, team, and production context
+- Key Responsibilities: 5–7 bullets
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets

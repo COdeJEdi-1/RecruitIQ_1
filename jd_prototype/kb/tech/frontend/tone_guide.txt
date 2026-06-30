@@ -1,0 +1,34 @@
+TONE GUIDE — Tech Department (Frontend Engineering)
+
+Voice: Specific, visual, and technically grounded. Frontend engineers care about craft —
+our JDs should reflect that we do too.
+
+DO:
+- Reference real tools and frameworks used in production, not aspirational ones
+- Describe the product surface and user scale (e.g. "a consumer app with 500K MAU")
+- Acknowledge design collaboration — Frontend at this company works closely with Design
+- Use second-person: "You will...", "You own...", "You bring..."
+- Be honest about the stack maturity (greenfield vs legacy migration vs stable)
+
+DO NOT:
+- Use vague UI descriptors ("beautiful", "pixel-perfect", "delightful") without context
+- List every CSS property as a skill requirement
+- Confuse Frontend with Full-stack — be clear about the scope of the role
+- Use "passionate about UX" without describing what UX work the engineer actually does
+
+Structure expectations:
+- Role Summary: establish what product surface this engineer will own and who they
+  will work with (designer, PM, backend engineer ratio)
+- Key Responsibilities: include a mix of feature work, tech debt ownership, and
+  collaboration tasks — real work, not ideals
+- Must-Have Skills: framework + testing + one depth area (performance, a11y, etc.)
+- Nice-to-Have: focus on the differentiators that matter for this team's roadmap
+
+Tone examples:
+  GOOD: "You will build and own the checkout flow in React, working directly with our
+        Design Systems team to implement new Radix UI components."
+  BAD:  "You are passionate about creating beautiful user interfaces."
+
+  GOOD: "You have shipped accessible, responsive UIs and can articulate why your
+        implementation choices matter for users on low-bandwidth connections."
+  BAD:  "You care about user experience and write clean code."

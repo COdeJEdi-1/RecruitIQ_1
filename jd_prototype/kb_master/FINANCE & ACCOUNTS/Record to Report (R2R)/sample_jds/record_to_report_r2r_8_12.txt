@@ -1,0 +1,47 @@
+---METADATA---
+{
+  "role_family": "Record to Report (R2R)",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "8–12",
+  "seniority_label": "Deputy General Manager / General Manager",
+  "source_doc": "Manager - R2R.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+JOB DESCRIPTION
+Job Title: Manager
+Location: Ahmedabad, Gujarat, India
+Department: Finance & Accounts – GCC
+Employment Type: Full-Time
+About the Role:
+We are looking for a detail-oriented and process-driven Senior Analyst – Record to Report (R2R) to support end-to-end general accounting, month-end close, and reporting operations within a Shared Services environment of a leading Indian conglomerate. The role requires hands-on expertise across journal processing, balance sheet reconciliations, fixed assets, intercompany, and close and reporting activities, along with strong accounting fundamentals and SAP experience.
+Key Responsibilities:
+Manage end-to-end Record to Report (R2R) operations including journal processing, accruals and provisions, balance sheet reconciliations, fixed assets, intercompany accounting, and period-end close.
+Ensure timely and accurate posting of journals and completion of close activities in compliance with company policies, accounting standards, and defined SLAs.
+Own and review balance sheet account reconciliations, ensure timely clearing of reconciling items, and escalate aged or unusual items.
+Drive month-end, quarter-end, and year-end close per the close calendar, monitor task completion and dependencies, and ensure cut-off adherence.
+Prepare and review financial schedules, flux/variance analysis, and management reporting inputs, providing commentary on key movements.
+Manage fixed asset accounting, intercompany reconciliations, and resolution of mismatches with counterpart entities.
+Ensure compliance with applicable accounting standards (IFRS/Ind AS), Indian statutory requirements, and internal financial controls (including SOX, where applicable).
+Adhere to SOPs, audit requirements, compliance standards, and internal controls, and support statutory and internal audits with timely, audit-ready documentation.
+Coordinate with FP&A, treasury, tax, auditors, and business teams for smooth process execution.
+Monitor process accuracy, turnaround time, reconciliation aging, and other operational KPIs to ensure process efficiency.
+Identify opportunities for standardization, automation, and process improvement, and contribute towards operational excellence initiatives.
+Work independently with minimal supervision in a fast-paced Shared Services environment, and provide guidance to junior team members.
+Required Qualifications & Skills:
+Graduate in Commerce/Accounting (B.Com) or equivalent; semi-qualified CA/CMA or MBA (Finance) preferred.
+10-15 years of relevant experience in Record to Report (R2R) / general accounting / month-end close operations.
+Strong understanding of the end-to-end R2R lifecycle and core accounting concepts.
+Mandatory hands-on experience working on SAP (FI module).
+Understanding of Indian accounting practices and statutory compliance, including GST and TDS, and exposure to IFRS/Ind AS.
+Good verbal and written communication skills.
+Strong analytical, problem-solving, and organizational abilities.
+Good working knowledge of MS Excel; exposure to reporting/analytics tools (e.g., Power BI) is an added advantage.
+Experience working in Shared Services / GCC / large corporate environment preferred.
+Ideal Candidate Profile:
+The ideal candidate is a self-driven finance professional with strong Record to Report operational expertise, sound accounting knowledge, SAP proficiency, and an understanding of Indian statutory compliance and accounting standards. The candidate should possess good communication and stakeholder management skills, demonstrate ownership and attention to detail, and be capable of managing close and reporting activities independently in a process-driven Shared Services environment.

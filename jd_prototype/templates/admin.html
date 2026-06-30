@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel | Arvind GCC{% endblock %}
+
+{% block extra_style %}
+.kpi-card {
+  background:#fff;
+  border:1px solid rgba(129,0,34,0.1);
+  border-radius:14px;
+  padding:22px 24px;
+  box-shadow:0 1px 4px rgba(129,0,34,0.06);
+  transition:box-shadow .2s ease, transform .2s ease;
+}
+.kpi-card:hover {
+  box-shadow:0 8px 32px rgba(129,0,34,0.13);
+  transform:translateY(-2px);
+}
+.kpi-icon { width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.section-card {
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.07);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  transition:box-shadow .2s ease;
+}
+.section-card:hover { box-shadow:0 6px 28px rgba(0,0,0,0.09); }
+@keyframes cardIn {
+  from { opacity:0; transform:translateY(14px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.kpi-card { animation:cardIn .35s cubic-bezier(.4,0,.2,1) both; }
+.kpi-card:nth-child(1) { animation-delay:.05s; }
+.kpi-card:nth-child(2) { animation-delay:.12s; }
+.kpi-card:nth-child(3) { animation-delay:.19s; }
+.bar-track { height:6px;background:#f3e8ec;border-radius:99px;overflow:hidden;flex:1; }
+.bar-fill  { height:100%;background:#810022;border-radius:99px;transition:width 0.9s cubic-bezier(.4,0,.2,1);width:0; }
+.status-badge { display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase; }
+.badge-published { background:#d1fae5;color:#065f46; }
+.badge-review    { background:#fef3c7;color:#92400e; }
+.badge-draft     { background:#e0e7ff;color:#3730a3; }
+.badge-pending   { background:#fff7ed;color:#9a3412; }
+.access-row { border-bottom:1px solid rgba(0,0,0,0.05);padding:12px 0; }
+.access-row:last-child { border-bottom:none; }
+.green-dot { width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 0 3px rgba(34,197,94,.2);flex-shrink:0; }
+.day-bar { background:#810022;border-radius:3px 3px 0 0;min-height:4px;transition:height 0.6s ease; }
+{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="mb-6">
+  <h1 class="text-headline-lg text-on-surface">Administrative Overview</h1>
+  <p class="text-body-md text-on-surface-variant mt-1">Real-time LLM orchestration and content auditing for Arvind Global Capability Center.</p>
+</div>
+
+<!-- Top KPI row + Access Log sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
+
+  <!-- KPIs (2/3 width) -->
+  <div class="lg:col-span-2 flex flex-col gap-5">
+
+    <!-- 3 KPI cards -->
+    <div class="grid grid-cols-3 gap-4" id="kpiGrid">
+      {% for i in range(3) %}
+      <div class="kpi-card animate-pulse">
+        <div class="h-2.5 w-24 bg-surface-container rounded mb-4"></div>
+        <div class="h-8 w-16 bg-surface-container rounded mb-2"></div>
+        <div class="h-2.5 w-28 bg-surface-container rounded"></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Volume by Department + Activity table side by side -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- Volume by Dept -->
+      <div class="section-card p-6">
+        <div class="flex justify-between items-center mb-5">
+          <h2 class="text-headline-md text-on-surface font-bold">Volume by Department</h2>
+          <button onclick="exportCSV()" class="text-label-xs text-primary font-bold hover:underline">Export CSV</button>
+        </div>
+        <div id="deptBars" class="flex flex-col gap-3">
+          {% for i in range(4) %}<div class="h-5 bg-surface-container rounded animate-pulse"></div>{% endfor %}
+        </div>
+        <!-- 7-day bar spark -->
+        <div class="mt-6">
+          <p class="text-label-xs text-on-surface-variant uppercase tracking-widest mb-2">Daily JDs — last 7 days</p>
+          <div id="sparkBars" class="flex items-end gap-1 h-10">
+            {% for i in range(7) %}<div class="flex-1 bg-surface-container rounded animate-pulse" style="height:60%"></div>{% endfor %}
+          </div>
+          <div id="sparkLabels" class="flex gap-1 mt-1">
+            {% for i in range(7) %}<div class="flex-1 h-2 bg-surface-container rounded animate-pulse"></div>{% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Generative Activity -->
+      <div class="section-card">
+        <div class="px-5 py-4 border-b border-outline-variant/20">
+          <h2 class="text-headline-md text-on-surface font-bold">Recent Generative Activity</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="bg-surface-container-low/30">
+                <th class="px-4 py-2.5 text-label-xs text-on-surface-variant uppercase tracking-wider">Role Title</th>
+                <th class="px-3 py-2.5 text-label-xs text-on-surface-variant uppercase tracking-wider">Dept</th>
+                <th class="px-3 py-2.5 text-label-xs text-on-surface-variant uppercase tracking-wider">Status</th>
+              </tr>
+            </thead>
+            <tbody id="activityTable" class="divide-y divide-outline-variant/10">
+              <tr><td colspan="3" class="px-4 py-8 text-center text-label-sm text-on-surface-variant">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- User breakdown table -->
+    <div class="section-card">
+      <div class="px-5 py-4 border-b border-outline-variant/20">
+        <h2 class="text-headline-md text-on-surface font-bold">User Activity Breakdown</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="bg-surface-container-low/30">
+              <th class="px-5 py-3 text-label-xs text-on-surface-variant uppercase tracking-wider">User</th>
+              <th class="px-4 py-3 text-label-xs text-on-surface-variant uppercase tracking-wider">JDs Created</th>
+              <th class="px-4 py-3 text-label-xs text-on-surface-variant uppercase tracking-wider">Top Department</th>
+              <th class="px-4 py-3 text-label-xs text-on-surface-variant uppercase tracking-wider">Share</th>
+            </tr>
+          </thead>
+          <tbody id="userTable" class="divide-y divide-outline-variant/10">
+            <tr><td colspan="4" class="px-5 py-8 text-center text-label-sm text-on-surface-variant">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Access Log sidebar (1/3 width) -->
+  <div class="section-card p-5 flex flex-col" style="border:1.5px solid rgba(129,0,34,0.18)">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="material-symbols-outlined text-[18px] text-primary">history</span>
+      <h2 class="text-headline-md text-on-surface font-bold">Access Log</h2>
+    </div>
+    <div id="accessLog" class="flex flex-col flex-1 overflow-y-auto" style="max-height:480px">
+      {% for i in range(4) %}
+      <div class="access-row animate-pulse">
+        <div class="h-3 w-32 bg-surface-container rounded mb-2"></div>
+        <div class="h-2.5 w-24 bg-surface-container rounded mb-1"></div>
+        <div class="h-2.5 w-40 bg-surface-container rounded"></div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="mt-4 w-full py-2.5 border border-primary/30 rounded-lg text-label-sm text-primary font-bold hover:bg-primary/5 transition-colors">
+      View All Activity
+    </button>
+
+    <!-- Brand card -->
+    <div class="mt-4 rounded-xl overflow-hidden" style="background:linear-gradient(135deg,#810022 0%,#3d0010 100%);min-height:90px;display:flex;align-items:center;padding:20px">
+      <div>
+        <p class="text-white/80 text-label-sm italic mb-1">"Excellence through innovation."</p>
+        <p class="text-white/50 text-label-xs uppercase tracking-widest">Global Brand Standard</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+let _statsData = null;
+
+async function loadStats() {
+  try {
+    const res = await fetch('/api/admin/stats');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const d = await res.json();
+    _statsData = d;
+
+    // ── KPI cards ─────────────────────────────────────────────────────────────
+    const total = d.total_jds;
+    const weekDiff = d.this_week - d.last_week;
+    const weekPct  = d.last_week > 0 ? Math.abs(Math.round(weekDiff / d.last_week * 100)) : (d.this_week > 0 ? 100 : 0);
+    const trendDir = weekDiff >= 0 ? 'up' : 'down';
+    const trendColor = weekDiff >= 0 ? '#16a34a' : '#dc2626';
+    const aiScore = d.ai_score !== null ? d.ai_score + '%' : 'N/A';
+    const aiLabel = d.ai_score !== null ? (d.ai_score >= 80 ? 'High Accuracy' : 'Moderate') : 'No data yet';
+
+    document.getElementById('kpiGrid').innerHTML = `
+      <div class="kpi-card">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-label-xs text-on-surface-variant uppercase tracking-widest font-bold">LLM API Calls</p>
+          <div class="kpi-icon" style="background:#fff0f3">
+            <span class="material-symbols-outlined text-[20px]" style="color:#810022">smart_toy</span>
+          </div>
+        </div>
+        <p class="text-[36px] font-bold leading-none text-on-surface mb-1">${total}</p>
+        <p class="text-label-sm font-semibold" style="color:${trendColor}">
+          ${trendDir === 'up' ? '↑' : '↓'} ${weekPct}% vs last week
+        </p>
+      </div>
+
+      <div class="kpi-card">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-label-xs text-on-surface-variant uppercase tracking-widest font-bold">This Week</p>
+          <div class="kpi-icon" style="background:#f0fdf4">
+            <span class="material-symbols-outlined text-[20px]" style="color:#16a34a">today</span>
+          </div>
+        </div>
+        <p class="text-[36px] font-bold leading-none text-on-surface mb-1">${d.this_week}</p>
+        <p class="text-label-sm text-on-surface-variant">Last week: ${d.last_week}</p>
+      </div>
+
+      <div class="kpi-card">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-label-xs text-on-surface-variant uppercase tracking-widest font-bold">AI Alignment Score</p>
+          <div class="kpi-icon" style="background:#fefce8">
+            <span class="material-symbols-outlined text-[20px]" style="color:#ca8a04">verified</span>
+          </div>
+        </div>
+        <p class="text-[36px] font-bold leading-none text-on-surface mb-1">${aiScore}</p>
+        <p class="text-label-sm text-on-surface-variant">${aiLabel} · ${d.feedback_count} ratings</p>
+      </div>`;
+
+    // ── Dept bars ─────────────────────────────────────────────────────────────
+    const entries = Object.entries(d.dept_counts).sort((a,b) => b[1]-a[1]);
+    const grandTotal = entries.reduce((s,[,v]) => s+v, 0) || 1;
+    const maxVal = entries[0]?.[1] || 1;
+    document.getElementById('deptBars').innerHTML = entries.map(([dept, count]) => {
+      const pct = Math.round(count / grandTotal * 100);
+      const barW = Math.round(count / maxVal * 100);
+      return `
+        <div class="flex items-center gap-3">
+          <span class="text-label-sm text-on-surface w-36 shrink-0 truncate">${dept}</span>
+          <div class="bar-track"><div class="bar-fill" data-w="${barW}"></div></div>
+          <span class="text-label-sm font-bold text-primary w-8 text-right shrink-0">${pct}%</span>
+        </div>`;
+    }).join('');
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.bar-fill').forEach(el => el.style.width = el.dataset.w + '%');
+    });
+
+    // ── 7-day spark bars ──────────────────────────────────────────────────────
+    const series = d.daily_series || [];
+    const maxDay = Math.max(...series.map(s => s.count), 1);
+    document.getElementById('sparkBars').innerHTML = series.map(s => {
+      const h = Math.round(s.count / maxDay * 100);
+      return `<div class="flex-1 day-bar" style="height:0%" data-h="${h}%" title="${s.date}: ${s.count} JDs"></div>`;
+    }).join('') || '<p class="text-label-xs text-on-surface-variant col-span-7">No daily data</p>';
+    document.getElementById('sparkLabels').innerHTML = series.map(s =>
+      `<p class="flex-1 text-center text-label-xs text-on-surface-variant truncate">${s.date.slice(5)}</p>`
+    ).join('');
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.day-bar').forEach(el => el.style.height = el.dataset.h);
+    });
+
+    // ── Activity table ────────────────────────────────────────────────────────
+    const actRows = d.recent_activity;
+    if (!actRows.length) {
+      document.getElementById('activityTable').innerHTML =
+        '<tr><td colspan="3" class="px-4 py-8 text-center text-label-sm text-on-surface-variant">No activity yet.</td></tr>';
+    } else {
+      document.getElementById('activityTable').innerHTML = actRows.slice(0,8).map((r, i) => {
+        const isNewest = r.is_newest;
+        const statusClass = i === 0 ? 'badge-published' : (i % 3 === 1 ? 'badge-review' : 'badge-draft');
+        const statusText  = i === 0 ? 'Published' : (i % 3 === 1 ? 'Review' : 'Draft');
+        return `
+          <tr class="hover:bg-surface-container-low/20 transition-colors">
+            <td class="px-4 py-3">
+              <div class="flex items-center gap-2">
+                ${isNewest ? '<span class="green-dot"></span>' : ''}
+                <span class="text-body-sm text-on-surface font-semibold leading-tight">${r.role}</span>
+              </div>
+            </td>
+            <td class="px-3 py-3 text-label-sm text-on-surface-variant">${r.dept}</td>
+            <td class="px-3 py-3"><span class="status-badge ${statusClass}">${statusText}</span></td>
+          </tr>`;
+      }).join('');
+    }
+
+    // ── Access Log sidebar ────────────────────────────────────────────────────
+    const timeAgo = (dateStr) => {
+      if (!dateStr || dateStr === '—') return '';
+      const d = new Date(dateStr + 'T00:00:00');
+      const diff = Math.floor((Date.now() - d) / 86400000);
+      return diff === 0 ? 'Today' : diff === 1 ? '1 day ago' : diff + ' days ago';
+    };
+    document.getElementById('accessLog').innerHTML = actRows.slice(0,8).map((r, i) => {
+      const actions = ['Created New JD', 'Modified Job Description', 'Approved JD', 'Updated Template'];
+      const actionColors = ['#16a34a', '#810022', '#0369a1', '#7c3aed'];
+      const action = actions[i % actions.length];
+      const color = actionColors[i % actionColors.length];
+      const isNewest = r.is_newest;
+      return `
+        <div class="access-row">
+          <div class="flex justify-between items-start">
+            <p class="text-label-sm font-bold text-on-surface">${r.by}</p>
+            <p class="text-label-xs text-on-surface-variant shrink-0 ml-2">${timeAgo(r.date)}</p>
+          </div>
+          <p class="text-label-xs font-bold mt-0.5 flex items-center gap-1.5" style="color:${color}">
+            ${isNewest ? '<span class="green-dot"></span>' : ''}
+            ${action}
+          </p>
+          <p class="text-label-xs text-on-surface-variant mt-0.5">Target: ${r.role}</p>
+        </div>`;
+    }).join('');
+
+    // ── User breakdown table ──────────────────────────────────────────────────
+    const users = Object.entries(d.user_stats || {}).sort((a,b) => b[1].total - a[1].total);
+    const totalJDs = users.reduce((s,[,u]) => s + u.total, 0) || 1;
+    if (!users.length) {
+      document.getElementById('userTable').innerHTML =
+        '<tr><td colspan="4" class="px-5 py-8 text-center text-label-sm text-on-surface-variant">No user data yet.</td></tr>';
+    } else {
+      document.getElementById('userTable').innerHTML = users.map(([email, u]) => {
+        const topDept = Object.entries(u.depts).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—';
+        const pct = Math.round(u.total / totalJDs * 100);
+        const initials = email.substring(0, 2).toUpperCase();
+        return `
+          <tr class="hover:bg-surface-container-low/20 transition-colors">
+            <td class="px-5 py-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-label-xs font-bold text-primary shrink-0">${initials}</div>
+                <span class="text-label-sm text-on-surface truncate max-w-[180px]">${email}</span>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-label-md font-bold text-primary">${u.total}</td>
+            <td class="px-4 py-3"><span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-label-xs font-bold">${topDept}</span></td>
+            <td class="px-4 py-3">
+              <div class="flex items-center gap-2">
+                <div class="h-1.5 flex-1 bg-surface-container rounded-full overflow-hidden">
+                  <div class="h-full bg-primary rounded-full" style="width:${pct}%"></div>
+                </div>
+                <span class="text-label-xs text-on-surface-variant w-8">${pct}%</span>
+              </div>
+            </td>
+          </tr>`;
+      }).join('');
+    }
+
+  } catch(e) {
+    document.getElementById('kpiGrid').innerHTML =
+      `<div class="col-span-3 p-6 bg-error/5 rounded-xl text-label-sm text-error flex items-center gap-2">
+         <span class="material-symbols-outlined">error</span> Failed to load stats: ${e.message}
+       </div>`;
+  }
+}
+
+function exportCSV() {
+  if (!_statsData) return;
+  const rows = [['Department','JD Count']];
+  Object.entries(_statsData.dept_counts).sort((a,b)=>b[1]-a[1]).forEach(([k,v]) => rows.push([k,v]));
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'jd_dept_stats.csv'; a.click();
+}
+
+loadStats();
+</script>
+{% endblock %}

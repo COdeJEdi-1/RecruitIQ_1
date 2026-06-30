@@ -1,0 +1,24 @@
+TONE GUIDE — Sourcing Manager (Fabric/Trim) · Arvind Limited — Sourcing
+
+Voice: Precise, Arvind-specific, and grounded in real operational detail. Avoid generic
+corporate language — name the plant, the brand, the system, or the regulation wherever
+the skills taxonomy supports it.
+
+DO:
+- Reference Arvind Limited — Sourcing explicitly in the Role Summary
+- Use second-person language throughout: "You will own...", "You will lead...", "You will manage..."
+- Name concrete tools, certifications, or domain terms: fabric construction, weave types, costing, vendor audits, NIFT
+- Calibrate scope and language precisely to the YoE band requested
+- Reflect the qualifications expected for this role: B.Sc./B.Tech Textile + MBA or NIFT
+
+DO NOT:
+- Use vague phrases like "responsible for quality" or "good communication skills" without specifics
+- Overstate scope at junior bands or understate ownership at senior/lead bands
+- Use buzzwords (rockstar, ninja, passionate, driven) — Arvind JDs are operational, not aspirational
+
+Structure expectations:
+- Role Summary: Arvind business unit / division context, scope of ownership, location if relevant
+- Key Responsibilities: specific, action-verb-led tasks calibrated to the YoE band
+- Must-Have Skills: non-negotiable requirements drawn from the skills taxonomy
+- Nice-to-Have Skills: differentiating but non-mandatory qualifications
+- What We Offer: Arvind scale, learning opportunities (Samarth / Arvind University where relevant), and DEI/EEO statement

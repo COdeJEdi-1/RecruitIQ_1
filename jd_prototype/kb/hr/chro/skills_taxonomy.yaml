@@ -1,0 +1,31 @@
+role_family: CHRO / HR Head
+department: Hr
+division: Arvind Limited — Human Resources
+company: Arvind Limited
+experience_bands:
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - HR strategy across business units
+    - Talent management framework design
+    - Succession planning for senior leadership
+    - HR digitization initiatives
+    progressive_skills: []
+    arvind_specific:
+    - HR leadership across Arvind Limited's manufacturing and corporate functions
+    leadership_skills: []
+  executive:
+    label: VP / SVP / CXO
+    years: 12+
+    seniority_tag: Executive
+    core_skills:
+    - Org transformation at group level
+    - DEI strategy and execution
+    - Global talent management frameworks
+    - Board-level HR reporting
+    progressive_skills: []
+    arvind_specific:
+    - Group CHRO role spanning Arvind Limited, AFL, and subsidiary entities
+    leadership_skills: []

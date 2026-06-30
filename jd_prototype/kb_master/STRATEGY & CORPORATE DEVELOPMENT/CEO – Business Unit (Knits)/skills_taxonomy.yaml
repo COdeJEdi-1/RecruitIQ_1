@@ -1,0 +1,67 @@
+role_family: CEO – Business Unit (Knits)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CEO Knits.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - 'Strategic Leadership: define and execute the company''s long-term strategy in alignment with business
+      goals and market trends'
+    - 'P&L Management: full ownership of the company''s P&L; drive revenue growth, cost efficiency, and
+      profitability across all business verticals'
+    - 'Operational Oversight: supervise all functional departments including manufacturing, sales, sourcing,
+      HR and finance to ensure smooth day-to-day operations'
+    - 'Production Excellence: oversee production planning and quality control, ensuring high standards
+      and on-time delivery in line with customer expectations'
+    - 'Market & Customer Focus: build strong relationships with key customers (domestic and export), identify
+      new market opportunities, drive product innovation'
+    - 'Team Leadership: build and lead a high-performance leadership team; foster a performance-driven,
+      accountable, and collaborative work culture'
+    - 'Compliance & Governance: ensure compliance with legal, environmental, and industry standards; maintain
+      strong governance practices'
+    arvind_specific:
+    - Knits-based apparel business, Bangalore — Garments-Knits industry
+    leadership_skills:
+    - CEO-level leadership driving performance across production, merchandising, marketing, supply chain
+      and finance
+    qualifications:
+    - Bachelor's degree in Apparel or BE in any stream Engg. and/or MBA
+    - Minimum 25 years of experience, with at least 5 years in a senior leadership role in the knits garments
+      business
+    - Proven experience in managing P&L in a manufacturing-driven environment
+    - Strong understanding of textile manufacturing processes, supply chain management, and global market
+      dynamics
+    - Excellent leadership, communication, and decision-making skills
+    - Demonstrated ability to scale businesses, optimize operations, and manage diverse teams
+    kpis: []
+    reporting_to: ''

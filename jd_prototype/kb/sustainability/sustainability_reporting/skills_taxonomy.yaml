@@ -1,0 +1,86 @@
+role_family: "Sustainability Reporting"
+department: "Sustainability / ESG"
+division: "Corporate / Shared Functions"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Data collection for ESG metrics (energy, water, waste, emissions)
+      - GRI standards awareness (GRI 303, 305, 306, 308)
+      - BRSR (Business Responsibility & Sustainability Report) data support
+      - Excel-based ESG data management
+    progressive_skills:
+      - Sustainability survey responses (EcoVadis, CDP, DJSI)
+    arvind_specific:
+      - Water consumption data from dyeing and processing plants
+      - Chemical management: ZDHC MRSL compliance data
+      - OEKO-TEX / GOTS / BCI (Better Cotton) certification support
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - GRI/BRSR report section writing and data verification
+      - Scope 1, 2, 3 carbon accounting (GHG Protocol)
+      - Supplier sustainability audits and scorecards
+      - ESG data platform management (Watershed, Sweep, or similar)
+    arvind_specific:
+      - Arvind's water stewardship program data management
+      - Textile-specific sustainability: yarn sourcing, dye house effluents
+      - Buyer sustainability requirements (H&M, PVH, VF Corp standards)
+    leadership_skills:
+      - Cross-functional coordination with plant teams for data collection
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Full GRI/BRSR/TCFD report ownership
+      - Science-based targets (SBTi) development
+      - Materiality assessment facilitation
+      - ESG investor engagement support
+      - Integrated reporting framework
+    arvind_specific:
+      - Arvind Annual Report sustainability chapter ownership
+      - SEBI BRSR Core metrics compliance
+      - Multi-plant ESG data consolidation
+    leadership_skills:
+      - Leading a team of 2-3 ESG analysts
+      - Presenting to sustainability committee / board
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Sustainability strategy development (5-10 year roadmap)
+      - Net-zero pathway planning
+      - ESG rating agency management (MSCI, Sustainalytics, ISS)
+      - Green finance: sustainability-linked loans, green bonds
+    arvind_specific:
+      - Arvind Group sustainability strategy across all business units
+      - Textile sector sustainability advocacy (CII, FICCI)
+    leadership_skills:
+      - Head of Sustainability / VP ESG
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Board-level ESG governance
+      - M&A sustainability due diligence
+    arvind_specific: []
+    leadership_skills:
+      - Chief Sustainability Officer

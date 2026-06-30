@@ -1,0 +1,42 @@
+---METADATA---
+{
+  "role_family": "FP&A",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "2–5",
+  "seniority_label": "Senior Executive / Assistant Manager",
+  "source_doc": "FP&A_ Sr Analyst_Job_Descriptions.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+JOB DESCRIPTION
+Job Title: Senior Analyst – Financial Planning & Analysis (FP&A)
+Location: Ahmedabad, Gujarat, India
+Department: Finance & Accounts – GCC
+Employment Type: Full-Time
+About the Role:
+We are looking for a detail-oriented and insight-driven Senior Analyst – Financial Planning & Analysis (FP&A) to support end-to-end planning, forecasting, and management reporting operations within a Shared Services environment of a leading Indian conglomerate. The role requires hands-on expertise across periodic forecasting and variance analysis, flash and MIS reporting, working capital review, project evaluation, and business partnering, along with strong analytical and financial modelling skills and SAP experience.
+Key Responsibilities:
+Prepare timely and accurate Flash Reports and month-end MIS reports for leadership, ensuring consistency, accuracy, and meaningful business insight.
+Conduct working capital review across receivables, payables, and inventory, highlighting trends, blockages, and improvement opportunities.
+Partner on inventory management analytics — ageing, provisioning inputs, slow/non-moving stock analysis, and inventory KPI tracking.
+Build and maintain, dashboards, and reporting templates to improve speed, accuracy, and decision usefulness of FP&A outputs.
+Ensure compliance with internal controls, reporting standards, and defined SLAs across all planning and reporting deliverables.
+Monitor reporting accuracy, turnaround time, and other operational KPIs to ensure process efficiency.
+Identify opportunities for standardization, automation, and process improvement, and contribute towards operational excellence initiatives.
+Work independently with minimal supervision in a fast-paced Shared Services environment, and provide guidance to junior team members.
+Required Qualifications & Skills:
+Graduate in Commerce/Accounting (B.Com) or equivalent; CA / CMA / MBA (Finance) preferred.
+3–5 years of relevant experience in FP&A / business finance / management reporting.
+Strong understanding of forecasting, variance analysis, MIS reporting, and working capital concepts.
+Mandatory hands-on experience working on SAP (CO / FI); exposure to BPC or planning tools is an advantage Strong financial modelling and analytical skills with the ability to translate data into insight.
+Advanced working knowledge of MS Excel; exposure to reporting/analytics tools (e.g., Power BI) strongly preferred.
+Good verbal and written communication skills, with the ability to present analysis to senior stakeholders.
+Strong analytical, problem-solving, and organizational abilities.
+Experience working in Shared Services / GCC / large corporate environment preferred.
+Ideal Candidate Profile:
+The ideal candidate is a self-driven finance professional with strong FP&A expertise, sound commercial and analytical acumen, SAP proficiency, and advanced reporting skills. The candidate should possess strong communication and stakeholder management skills, demonstrate ownership and attention to detail, and be capable of managing planning, forecasting, and reporting activities independently in a process-driven Shared Services environment.

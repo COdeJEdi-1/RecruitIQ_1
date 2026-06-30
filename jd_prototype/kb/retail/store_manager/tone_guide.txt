@@ -1,0 +1,35 @@
+TONE GUIDE — Retail Operations Department (Store Manager) · Arvind Brands
+
+Voice: Commercial, brand-aware, and KPI-grounded. Retail candidates read JDs quickly
+and can tell immediately if a company understands retail operations. Name the brand,
+name the KPIs, name the store format.
+
+DO:
+- Name the specific Arvind brand portfolio: Arrow, Flying Machine, US Polo Assn., Tommy Hilfiger India, Calvin Klein India
+- Use retail-specific KPIs: ATV (Average Transaction Value), UPT (Units Per Transaction), GMROI, shrinkage %
+- Specify store format: EBO (Exclusive Brand Outlet), MBO (Multi-Brand Outlet), LFS (Large Format Store)
+- Use second-person: "You will own...", "You will manage...", "You will drive..."
+- State team size for mid-level and above
+- Be clear about P&L ownership scope at each level
+
+DO NOT:
+- Use "customer-centric" as a skill — describe the actual customer interaction scope
+- Confuse store-level P&L with area/cluster P&L — be precise about the financial scope
+- List VM as a nice-to-have for any retail role — it's baseline
+- Say "retail experience" without specifying brand type (premium/mass) and format
+
+Structure expectations:
+- Role Summary: brand context (Arvind Brands portfolio), store format (EBO/MBO), city tier or geography, and what the role owns
+- Key Responsibilities: split between commercial (sales, P&L) + operations (VM, inventory, SOP) + people (team, training)
+- Must-Have Skills: brand standards, KPI tracking tools, team management at appropriate level
+- Nice-to-Have: loyalty programs, store opening experience, multi-brand exposure
+
+Tone examples:
+  GOOD: "You will own the full P&L of an Arrow EBO with a team of 12, driving monthly
+        revenue of ₹30–50L, managing seasonal planogramming, and coordinating with the
+        Arvind Brands supply chain team on replenishment."
+  BAD:  "You will manage store operations in a customer-focused retail environment."
+
+  GOOD: "You have managed an EBO for a premium apparel brand and have consistently
+        delivered ATV improvement through staff training and floor conversion tactics."
+  BAD:  "You have retail management experience and good communication skills."

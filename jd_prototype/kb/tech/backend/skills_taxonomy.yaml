@@ -1,0 +1,65 @@
+role_family: Backend Engineer
+department: Tech
+
+core_skills:
+  - Version control with Git (branching strategy, PRs, code review)
+  - REST API design and HTTP fundamentals
+  - Relational database design and querying (SQL)
+  - Basic understanding of system design principles
+  - Writing and maintaining unit and integration tests
+  - Reading and writing technical documentation
+
+stack_skills:
+  languages:
+    - Python (FastAPI, Django, Flask)
+    - Go
+    - Java (Spring Boot)
+    - Node.js (Express, NestJS)
+  databases:
+    - PostgreSQL
+    - MySQL
+    - Redis
+    - MongoDB
+  cloud_and_infra:
+    - AWS (EC2, RDS, S3, Lambda)
+    - GCP (Cloud Run, Cloud SQL)
+    - Docker
+    - Kubernetes (basic)
+  messaging:
+    - Kafka
+    - RabbitMQ
+    - SQS/SNS
+
+nice_to_have:
+  - GraphQL API experience
+  - Event-driven architecture patterns
+  - Service mesh (Istio, Linkerd)
+  - OpenTelemetry / distributed tracing
+  - Data pipeline experience (Airflow, dbt)
+
+level_gates:
+  Junior: >
+    Executes well-scoped tickets independently. Asks for help before getting blocked
+    for more than a day. Writes code that passes review without major rework.
+    Understands the team's primary stack. Not yet expected to design systems or
+    lead projects. Requires 30–60% of time in pairing or close review.
+
+  Mid: >
+    Owns features end-to-end from design to deployment. Participates meaningfully
+    in system design discussions. Reviews Junior PRs and catches real issues.
+    Navigates ambiguity with some guidance. Expected to raise scope or risk concerns
+    proactively. Works mostly independently; escalates blockers appropriately.
+
+  Senior: >
+    Leads the technical design of multi-sprint projects. Defines standards and
+    patterns that other engineers follow. Identifies architectural risks before
+    they become incidents. Mentors 1–2 junior engineers formally. Comfortable
+    pushing back on product scope when technical cost is underestimated.
+    Cross-team influence on shared services or platforms.
+
+  Lead: >
+    Sets the technical direction for a team of 5–10 engineers. Owns the team's
+    reliability, performance, and delivery metrics. Partners with the engineering
+    manager on roadmap prioritization. Represents the team in cross-functional
+    planning. Runs design reviews. Grows senior engineers toward broader impact.
+    Accountable for on-call health and incident response culture.

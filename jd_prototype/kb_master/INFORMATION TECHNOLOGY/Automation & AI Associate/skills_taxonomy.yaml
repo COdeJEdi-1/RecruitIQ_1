@@ -1,0 +1,70 @@
+role_family: Automation & AI Associate
+department: INFORMATION TECHNOLOGY
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Job Description - Associate Automation & AI.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    core_skills:
+    - Design, build, and deploy automation workflows across business functions (Finance, HR, Procurement,
+      Ops, Business teams)
+    - Develop Python-based scripts/tools for process automation, data handling, and integrations
+    - Build and experiment with AI-led use cases (LLMs, copilots, agents, internal tools)
+    - Use Microsoft Power Platform (Power Apps, Power Automate)
+    - Use RPA tools (Automation Anywhere / UiPath / equivalent)
+    - Rapidly prototype and ship internal products/tools
+    - Integrate APIs, SaaS tools, and internal systems to create end-to-end automation
+    - Identify manual processes and convert them into scalable automation solutions
+    - Work directly with business stakeholders to translate problems into working solutions
+    progressive_skills: []
+    arvind_specific:
+    - Core of the Automation & AI capability within the Arvind GCC
+    leadership_skills: []
+    qualifications:
+    - 1 – 3 years of experience
+    - Background irrelevant (Tech, Ops, Consulting, Startup, etc.)
+    - Strong hands-on capability in Python scripting
+    - 'Experience with automation tools: Power Automate / Power Apps; RPA tools (Automation Anywhere,
+      UiPath, etc.)'
+    - Working knowledge of APIs & integrations
+    - Working knowledge of data handling (Excel, SQL, basic data pipelines)
+    - Exposure to AI tools / LLMs / automation frameworks (OpenAI, Azure AI, or similar ecosystems)
+    - Ability to build prototypes quickly and iterate
+    - Builder mindset (has created something real)
+    - High ownership (doesn't wait for instructions)
+    - Bias for action (ships fast, learns faster)
+    - Comfortable working in zero-structure environments
+    kpis:
+    - Ships working automations, not concepts
+    - Reduces manual effort and turnaround time measurably
+    - Builds reusable tools/products, not one-off hacks
+    - Operates with speed and ownership, not dependency
+    reporting_to: ''
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

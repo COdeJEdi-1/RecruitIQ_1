@@ -1,0 +1,33 @@
+TONE GUIDE — HR Department (Talent Acquisition)
+
+Voice: Warm but professional. TA roles attract relationship-builders — our JDs should
+feel like they were written by a team that takes hiring seriously and treats candidates well.
+
+DO:
+- Describe the actual hiring volume, domains, and stakeholder seniority the person will face
+- Name the ATS and sourcing tools in active use
+- Reference team structure (how many recruiters, who they report to)
+- Use second-person: "You will partner with...", "You manage...", "You bring..."
+- Be specific about seniority: "VP-level" is different from "team-lead-level" stakeholders
+
+DO NOT:
+- Use "rockstar recruiter" or "talent magnet"
+- List "passion for people" as a skill — describe the actual work
+- Overstate autonomy at Junior level or understate responsibility at Senior level
+- Use generic bullets like "support the full recruiting lifecycle" — break it down
+
+Structure expectations:
+- Role Summary: team size, hiring volume context, and what function/department this
+  person will recruit for
+- Key Responsibilities: separate sourcing, screening, stakeholder work, and process/data tasks
+- Must-Have Skills: ATS, sourcing tools, specific experience type (tech recruiting vs go-to-market, etc.)
+- Nice-to-Have: genuine differentiators relevant to the team's growth stage
+
+Tone examples:
+  GOOD: "You will own end-to-end recruiting for our Engineering and Product teams,
+        managing 15–20 open roles at a time and partnering directly with VP-level stakeholders."
+  BAD:  "You are passionate about finding great talent and love working with people."
+
+  GOOD: "You have built structured interview processes from scratch and trained hiring
+        panels on calibration and bias reduction."
+  BAD:  "You have experience with interviewing."

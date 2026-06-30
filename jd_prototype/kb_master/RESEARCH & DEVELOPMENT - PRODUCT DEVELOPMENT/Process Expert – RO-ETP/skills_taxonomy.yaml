@@ -1,0 +1,70 @@
+role_family: Process Expert – RO/ETP
+department: RESEARCH & DEVELOPMENT / PRODUCT DEVELOPMENT
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- Accel positions.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    core_skills: []
+    progressive_skills:
+    - Process design, Detail Engineering of industrial/waste water and/or water, DM Plant, UF, RO, Desalination
+      plant, thermal power plant
+    - FEED Process selection, process design calculation, Estimation, proposals, Mass balance, hydraulic
+      calculations, Flow diagram (PFD), Piping & instrumentation (P&ID) diagram, Layout Plan, HAZOP, Basic
+      Engineering Package
+    - Sizing chemical handling facilities for water/wastewater; Sizing Pumping system
+    - Developing and operating field/pilot testing for design
+    - Process selection for the handling, treatment, and disposal of solid, liquid, hazardous and toxic
+      wastes; Recycle & Reuse of Industrial wastewater
+    - Detail engineering during project execution
+    - Knowledge of energy recovery devices for energy conservation
+    - Updated with latest software used for RO-UF Projection
+    - Expert in designing ETP Plants preferably in food and beverages, Chemical, Pulp and paper, and oil
+      and gas sector
+    - Knowledge of technology for oil removal, suspended solids removal, BOD and COD reduction technology
+    - Conduct feasibility study & technical validation of Service (O&M, Retrofits, Revamp, Modification,
+      Water Audit) & System proposals
+    - Review customer's Service PO, submission of BoM to SCM, plan for mobilization of manpower
+    - Provide inputs for successful troubleshooting by Service Engineers and O&M Site Managers
+    - Ensure customer satisfaction targets, response time, turnaround time, warranty & contract service
+      delivery
+    - After-sales warranty / contract management of all sites under warranty/contract
+    - Conduct periodic and regular training for Branch/HO Service Engineers and O&M crew at all sites
+    - Technical evaluation of vendor offers for Service Orders
+    arvind_specific:
+    - Arvind Envisol — Process Expert for RO and ETP technologies
+    leadership_skills: []
+    qualifications:
+    - '>6-7 Years of experience'
+    - B.E. Chemical/Mechanical
+    - CTC range 10-15 LAC
+    kpis: []
+    reporting_to: ''
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

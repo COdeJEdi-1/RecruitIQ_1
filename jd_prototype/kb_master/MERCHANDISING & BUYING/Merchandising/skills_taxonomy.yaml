@@ -1,0 +1,146 @@
+role_family: Merchandising
+department: MERCHANDISING & BUYING
+division: RETAIL & BRANDS (ARVIND BRANDS)
+company: Arvind Limited
+source_docs:
+- Chief Merchandising Officer.doc
+- Chief Merchandising Officer_Internet.doc
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    core_skills: []
+    progressive_skills:
+    - Manage all aspects of the supply chain including procurement, pricing, merchandising, assortment
+      planning, inventory management, new product range execution, logistics and distribution in a timely
+      and cost-effective manner to meet sales and contribution targets
+    - Work with reporting officer in seasonal merchandise planning for each product category
+    - Plan product ranges and prepare sales and stock plans to meet sales targets, meeting budgeted contribution
+      targets
+    - Plan re-order levels and replenishments to minimize stock outs and optimize sales
+    - Establish prices for profit maximization to manage performance of seasonal ranges
+    - Plan budgets and present sales forecasts and figures for new ranges
+    - Carry out product line and product profitability analysis regularly to ensure conformance to budgeted
+      contributions
+    - Monitor product margins at all times to ensure no dilution of product profitability
+    - Review price points for weak-selling product categories; implement solutions for slow lines and
+      ends of range
+    - Implement markdowns for non-selling goods based on sales performance / stock levels
+    - Responsible for procurement activities related to store merchandise based on seasonal procurement
+      schedules
+    - Develop Terms And Conditions (TAC) for procurement activity in line with merchandise planning
+    - Ensure order booking process per TACs; monitor TACs of supplies and delivery schedules
+    - Ensure re-order levels met and maintenance of inventory per defined standards
+    - Ensure replenishment of merchandise at warehouse and stores; manage store-wise and category-wise
+      inventory turnover
+    - Analyse stock movements daily for efficient inventory management; minimize inventory holding cost
+      and monitor inventory ageing
+    - Work towards shorter merchandise replenishment cycle
+    - Resolve issues of slides in procurement delivery dates; update retail operations team and EBO head
+      for delays
+    - Track high-demand categories to minimize stock outs and lost sales
+    - Carry out competitor shopping for comparison of products, range, quality, pricing
+    - Work towards reduction in procurement costs and lead times without compromising quality; measure
+      and monitor time to market
+    - Implement promotions and markdowns for slow-moving lines, ends of range, excess stock
+    - Procure store consumables and packaging material at optimum costs and in a timely manner
+    - Responsible for monthly report generation of Source to Plan Deviation Reports, root cause analysis
+      to reduce future deviations
+    - Ensure implementation of standard operating procedures for merchandise handling and movement
+    - Ensure efficient management of merchandise to various stores in time to meet sales targets
+    - Manage transportation of merchandise to stores and logistics from store to warehouse
+    - Control storage and in-transit losses; undertake preventive steps
+    - Budget warehousing and distribution costs and monitor actual expenses against budget
+    - Ensure legal compliances and documentation pertaining to logistics and distribution
+    - Analyse category-wise product profitability to ensure GMROI and GMROF targets are met
+    - Carry out contribution reconciliation to bridge gaps between actual and predicted contributions
+    - 'Analyse and report on: GMROI, stock turnover rate, markdown goods %, shrinkage to net sales, average
+      selling price, ageing, reorder levels, liquidation plans'
+    - Work with reporting officer to execute product development and commercialization strategies across
+      stores
+    - Keep abreast of market developments related to pricing, fashion trends, customer requirements, competitor's
+      product mix
+    arvind_specific:
+    - Ankur Textiles division — Voiles Business, Merchandising Manager (M3 / Chief Manager grade)
+    - Role requires frequent traveling to meet vendors and store locations throughout India
+    leadership_skills:
+    - No direct reportees at this level (Merchandising Mgr. band)
+    qualifications:
+    - Business/Marketing related degree from a recognized institute or university, with at least 50% marks
+      or equivalent CGPA
+    - 5+ years experience, of which at least three years in handling merchandising and supply chain functions
+      for an apparel retail organization
+    - Strong knowledge of retail merchandising and supply chain activities, budgeting, forecasting
+    - Proficient in MS Office 2000 or later (particularly Excel and Word); Internet and email
+    - Strong knowledge of and exposure to Retail MIS/ERP
+    - Excellent planning and organizing skills, strong analytical and creative thinking skills, meticulous
+      attention to detail, time management, strong interpersonal and negotiation skills, problem solving
+      and decision making skills, professional presentation skills
+    kpis:
+    - GMROI
+    - stock turnover rate
+    - markdown goods %
+    - shrinkage to net sales
+    - average selling price
+    - ageing
+    - reorder levels
+    - liquidation plans
+    reporting_to: Chief Mgr. (Merchandising & Supply Chain) — Functional and Administrative
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Responsible for all Arvind Brands, brands of 3rd party & foreign JV/collaborations
+    - Own the complete merchandising operations
+    - Own the P&L accountability of Merchandising activity
+    - Plan seasonal merchandising for each product category for profit maximization across all brands
+    - Market intelligence on competitor's data for comparison of products, range, quality, pricing
+    - New product development and commercialization strategies planned & executed across stores
+    arvind_specific:
+    - Arvind Internet Limited — Chief Merchandising Officer role, team size growing from 5-10 to 30-50
+      people over 2-3 years
+    leadership_skills:
+    - Build and Manage Teams
+    - Reports to COO or ED
+    - P&L accountability of Merchandising activity
+    qualifications:
+    - Graduate, specialization in NID or NIFT
+    - Minimum 10+ years of experience
+    - Fully conversant with all qualitative and technical aspects of apparel and other fashion/lifestyle
+      merchandise
+    - Should have handled more than one brand; experience in handling shoes & accessories preferred
+    - Excellent understanding of Products and customer dynamics
+    - Planning and organizing skills, strong analytical and creative thinking skills, meticulous attention
+      to detail, strong interpersonal and negotiation skills, problem solving and decision making skills,
+      presentation skills
+    kpis:
+    - ROI
+    - stock turnover rate
+    - markdown goods %
+    - shrinkage to net sales
+    - average selling price
+    - ageing
+    - reorder levels
+    - liquidation plans
+    reporting_to: COO or ED

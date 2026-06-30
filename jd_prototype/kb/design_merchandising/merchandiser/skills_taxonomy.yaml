@@ -1,0 +1,41 @@
+role_family: Merchandiser / Buying Manager
+department: Design Merchandising
+division: Arvind Fashions Limited
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Range planning support
+    - Open-to-buy (OTB) tracking
+    - Vendor coordination for sampling and delivery
+    progressive_skills: []
+    arvind_specific:
+    - Merchandising support for an Arvind Fashions brand category
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Full range planning and OTB management
+    - Trend analysis integration into buying decisions
+    - Vendor negotiation and capacity planning
+    progressive_skills: []
+    arvind_specific:
+    - OTB ownership for a brand category within Arvind Fashions
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Category-level buying strategy
+    - Cross-functional alignment with Design and Retail
+    - Margin and markdown strategy ownership
+    progressive_skills: []
+    arvind_specific:
+    - Category buying leadership across Arvind Fashions' brand portfolio
+    leadership_skills: []

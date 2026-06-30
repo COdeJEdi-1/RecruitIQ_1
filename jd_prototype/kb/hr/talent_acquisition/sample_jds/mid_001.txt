@@ -1,0 +1,29 @@
+{"role_family": "Talent Acquisition", "seniority_level": "Mid", "team_context": "TA team of 6, recruiting for Tech and Product", "primary_stack": "Greenhouse, LinkedIn Recruiter, Gem", "date_added": "2024-09-15", "approved_by": "hr_hiring_committee"}
+
+---
+
+Recruiter — Tech & Product (Mid-Level)
+
+Role Summary
+You will join our Talent Acquisition team as a Mid-Level Recruiter, owning full-cycle recruiting for Engineering and Product roles across three squads. You will manage 12–15 open requisitions at a time, partnering directly with Engineering Managers and Product Directors. We use Greenhouse as our ATS and Gem for sourcing outreach. This is an individual contributor role reporting to the Head of TA.
+
+Key Responsibilities
+- You will manage full-cycle recruiting for Software Engineering, Product Management, and Design roles, from sourcing through offer close
+- You will build and maintain talent pipelines for recurring role types, keeping passive candidates warm through Gem
+- You will partner with hiring managers to calibrate on role requirements, write structured scorecards, and train interview panels on consistent evaluation
+- You will own offer preparation and negotiation, coordinating with the Compensation team for benchmarking data
+- You will track and report on your pipeline metrics (time-to-fill, offer acceptance rate, source mix) in our weekly TA team meeting
+- You will contribute to employer branding initiatives, including job description reviews and LinkedIn content
+
+Must-Have Skills
+- You have 3+ years of full-cycle technical recruiting experience, in-house or agency
+- You are proficient in Greenhouse or a comparable ATS and can build and manage pipeline views without help
+- You have used LinkedIn Recruiter for proactive sourcing and can run Boolean searches to find passive candidates
+- You have conducted structured interviews and can train others on how to score against a defined rubric
+- You have closed offers in the $120K–$200K base range and are comfortable navigating competing offers
+
+Nice-to-Have Skills
+- You have recruited for ML/AI or data engineering roles specifically
+- You have used a candidate CRM (Gem, Beamery, or similar) for multi-touch outreach sequences
+- You have contributed to DEI sourcing strategies or diverse slate commitments
+- You have recruiting experience at a high-growth SaaS company during a scale-up phase

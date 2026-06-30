@@ -1,0 +1,43 @@
+{"jd_id": "42ce2f27", "role_family": "Learning Development", "department_caps": "HUMAN RESOURCES", "yoe_band": "5-8", "generation_id": "bb9b90db-bd2f-478c-b884-ca736ecc3dc4", "date_added": "2026-06-29", "approved_at": "2026-06-29T11:00:33.556079", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the design and delivery of learning programs, HR operations, and compliance initiatives for Arvind Limited's GCC, driving business outcomes through effective talent development and process automation. As an HR Operations & Learning Partner, you will work closely with internal stakeholders, including business leaders, HR teams, and external vendors to identify training needs, design curricula, and facilitate learning experiences. Your work will have a direct impact on employee engagement, leadership development, and overall HR efficiency within the organization.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Lead the training needs analysis (TNA) process to identify skill gaps and design targeted learning interventions, leveraging Darwinbox/SAP SuccessFactors to track employee development.
+•  Design and deliver curriculum content, facilitating workshops, and training sessions to enhance leadership development, employee engagement, and HR process automation.
+•  Drive the onboarding design process, ensuring seamless integration of new hires into the organization, and administering the Learning Management System (LMS) to track learning outcomes.
+•  Collaborate with HR teams to automate HR processes, ensuring compliance with regulatory requirements, and maintaining accurate records within Darwinbox/SAP SuccessFactors.
+•  Mentor junior team members in HR operations, learning design, and facilitation, guiding them to develop their skills and expertise.
+•  Partner with business stakeholders to measure the impact of learning initiatives, using data analytics to inform future program design and optimization.
+•  Own the administration of the LMS, ensuring that all learning content is up-to-date, relevant, and accessible to employees.
+•  Develop and maintain compliance frameworks, ensuring that all HR operations and learning initiatives adhere to regulatory requirements.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Darwinbox/SAP SuccessFactors — HR information system management, employee data analysis, and compliance tracking.
+•  LMS administration — learning content management, user management, and reporting.
+•  Training needs analysis (TNA) — identifying skill gaps, designing targeted learning interventions.
+•  Curriculum / content design — creating engaging learning experiences, leveraging adult learning principles.
+•  Facilitation & delivery — leading workshops, training sessions, and presentations to diverse audiences.
+•  Learning impact measurement — assessing the effectiveness of learning initiatives, using data analytics to inform program design.
+•  Onboarding Design — creating comprehensive onboarding programs, ensuring seamless integration of new hires.
+•  HR Ops — HR process automation, compliance, and employee engagement.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Certification in instructional design, adult learning, or a related field — enhancing expertise in learning design and delivery.
+•  Experience with HR analytics tools, such as Tableau or Power BI — enabling data-driven decision-making in HR operations.
+•  Knowledge of organizational development principles — informing the design of learning initiatives and HR processes.
+•  Familiarity with agile project management methodologies — facilitating collaborative and iterative approaches to HR operations and learning design.
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Darwinbox/SAP SuccessFactors, and leverage data analytics to drive HR operations and learning initiatives.
+•  A collaborative and dynamic work environment, with exposure to cross-functional teams and business stakeholders, enabling a comprehensive understanding of the organization.
+•  Access to learning and development programs, including leadership development, instructional design, and HR operations, supporting your growth and expertise.
+•  The chance to drive business outcomes through effective talent development and process automation, making a meaningful impact on the organization's success.

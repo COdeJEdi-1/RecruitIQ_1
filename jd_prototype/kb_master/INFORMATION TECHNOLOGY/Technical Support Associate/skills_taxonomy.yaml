@@ -1,0 +1,71 @@
+role_family: Technical Support Associate
+department: INFORMATION TECHNOLOGY
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Technical_Support_Associate_JD.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    core_skills: []
+    progressive_skills:
+    - Pick up tickets, calls, and walk-ups from GCC users and resolve hardware, software, and account
+      issues — laptops, printers, peripherals, OS, standard business applications
+    - Provide deskside support for issues that need a physical visit, and remote support for everything
+      else, using standard remote-assistance tools
+    - Set up new laptops and desktops for joiners — imaging, software installs, standard configuration;
+      handle returns/recovery when people exit or move
+    - Handle routine Active Directory and Microsoft 365 tasks — password resets, account unlocks, mailbox
+      access, basic license/license-group changes
+    - Troubleshoot everyday connectivity issues — Wi-Fi drops, VPN access, network printer setup; escalate
+      to network team when fix is beyond desk-level access
+    - 'Log every ticket properly: clear notes, accurate categorization, timely updates'
+    - Recognize when something is beyond Tier 1–2 scope and escalate to the IT Support Manager or the
+      right specialist team
+    - Keep IT asset records current — tagging new equipment, updating allocations, flagging missing/due-for-return
+      items
+    arvind_specific:
+    - Arvind GCC — IT Operations, Tier 1 and Tier 2 support
+    leadership_skills: []
+    qualifications:
+    - 3-5 years in a helpdesk, desktop support, or technical support role, with real Tier 1-2 ticket ownership
+    - Bachelor's degree in IT, Computer Science, or related field, or equivalent hands-on experience
+    - Hands-on troubleshooting on Windows 11 hardware, OS, and common business software
+    - Basic Active Directory and Microsoft 365 administration — account, password, and access tasks
+    - Comfortable doing both deskside visits and remote sessions in the same day
+    - Basic networking know-how — Wi-Fi, VPN, network printers
+    - Clear, patient communication with users who don't think in technical terms
+    - Disciplined ticket hygiene
+    - Experience supporting a GCC, shared services centre, or similar multi-business-unit setup (good
+      to have)
+    - Basic exposure to O365 administration (good to have)
+    - CompTIA A+ or equivalent foundational certification (good to have)
+    - Familiarity with imaging/deployment tools such as Intune or Autopilot (good to have)
+    kpis: []
+    reporting_to: IT Support Manager
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

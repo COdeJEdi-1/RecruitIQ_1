@@ -1,0 +1,66 @@
+role_family: Procure to Pay (P2P)
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Manager - P2P.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Manage end-to-end Procure-to-Pay (P2P) operations including invoice processing, vendor payments,
+      vendor reconciliations, vendor master management, and T&E processing
+    - Ensure timely and accurate processing of invoices in compliance with company policies, accounting
+      standards, and defined SLAs
+    - Perform invoice verification, PO/GRN matching, discrepancy resolution, and payment processing activities
+    - Maintain and update vendor master data with proper documentation, approvals, and internal controls
+    - Handle vendor and stakeholder queries effectively, ensure timely issue resolution
+    - Support month-end and year-end closing activities related to Accounts Payable and P2P processes
+    - Ensure compliance with Indian statutory requirements including GST, TDS, and related accounting
+      regulations
+    - Adhere to SOPs, audit requirements, compliance standards, and internal financial controls
+    - Coordinate with procurement, finance, treasury, auditors, and business teams for smooth process
+      execution
+    - Monitor process accuracy, turnaround time, aging, and other operational KPIs
+    arvind_specific:
+    - Shared Services environment within a leading Indian conglomerate (GCC)
+    leadership_skills:
+    - Team Manager role type; must have experience managing a team
+    qualifications:
+    - Graduate in Commerce/Accounting (B.Com) or equivalent qualification
+    - 10+ years of relevant experience in Procure-to-Pay (P2P) / Accounts Payable operations
+    - Must have experience in managing a team
+    - Strong understanding of end-to-end P2P lifecycle and accounting concepts
+    - Mandatory hands-on experience working on SAP
+    - Understanding of Indian accounting practices and statutory compliance including GST and TDS
+    - Good working knowledge of MS Excel
+    - Experience working in Shared Services / GCC / large corporate environment preferred
+    kpis: []
+    reporting_to: ''
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

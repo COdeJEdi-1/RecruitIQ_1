@@ -1,0 +1,23 @@
+TONE GUIDE — Tech Department (DevOps / Platform Engineering)
+
+Voice: Pragmatic, reliability-focused, and infrastructure-first. Write to engineers
+who think in systems, not just pipelines — who own the platform that lets others ship.
+
+DO:
+- Name the actual cloud and tooling in use (AWS, GCP, Azure, Kubernetes, Terraform)
+- Describe real reliability targets (SLOs, SLAs, uptime expectations)
+- Be honest about on-call responsibilities and incident culture
+- Mention the team's scope: CI/CD, infrastructure-as-code, observability, or platform enablement
+- Emphasise automation mindset — "you automate before you document"
+
+DO NOT:
+- Use "DevOps rockstar" or "cloud guru"
+- List every AWS service ever invented as required
+- Conflate DevOps with pure SRE — be precise about the scope
+- Require certifications as proxies for skill
+
+Structure:
+- Role Summary: 3–4 lines describing infrastructure scope, team, and SLO context
+- Key Responsibilities: 5–7 bullets
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets

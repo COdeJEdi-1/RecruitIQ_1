@@ -1,0 +1,31 @@
+{"role_family": "Backend Engineer", "seniority_level": "Mid", "team_context": "Core API team, 5 engineers", "primary_stack": "Python, FastAPI, PostgreSQL, Redis, GCP", "date_added": "2024-08-20", "approved_by": "eng_hiring_committee"}
+
+---
+
+Mid-Level Backend Engineer — Core API Team
+
+Role Summary
+You will join our Core API team as a Mid-Level Backend Engineer, owning the design and delivery of features on the REST APIs consumed by our web and mobile clients. Our Python/FastAPI services handle 3M requests per day on GCP Cloud Run. You will work end-to-end on features — from API contract design through to deployment and monitoring — and review the work of junior engineers on the team.
+
+Key Responsibilities
+- You will design and implement new API features and endpoints, owning the technical design before writing a line of code
+- You will write comprehensive tests (unit, integration, and contract) and ensure coverage does not regress
+- You will participate in code review for junior engineers, providing actionable feedback on correctness, security, and maintainability
+- You will instrument your services with structured logging and metrics, and investigate on-call alerts in your rotation
+- You will collaborate with frontend engineers and mobile engineers on API contracts, iterating on design before implementation
+- You will contribute to architectural decisions in team design reviews, raising trade-offs clearly and concisely
+- You will maintain and improve the developer experience for internal service consumers
+
+Must-Have Skills
+- You have 3+ years shipping production Python services and can articulate your design decisions under review
+- You understand database performance at a working level: query plans, indexing strategies, and connection pooling
+- You have designed REST APIs from scratch and navigated versioning and backwards-compatibility concerns
+- You are experienced with Redis or another caching layer in a production context
+- You write tests as a default, not as an afterthought, and can explain the trade-offs between test types
+- You have been in an on-call rotation and know how to write runbooks
+
+Nice-to-Have Skills
+- You have shipped services on GCP (Cloud Run, Cloud SQL, Pub/Sub)
+- You have experience with async task queues (Celery, RQ, or similar)
+- You have contributed to API design standards or developer documentation at a team level
+- You have worked on services that required careful attention to data privacy or compliance

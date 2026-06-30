@@ -1,0 +1,32 @@
+{"jd_id": "c7639c8a", "role_family": "Data Analyst Powerbi", "department_caps": "INFORMATION TECHNOLOGY", "yoe_band": "2-5", "generation_id": "92d41caf-7c3a-4352-a2e0-a94b01cdd7c2", "date_added": "2026-06-25", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+Role Summary
+You will own data analysis initiatives within Arvind Limited's IT department, focusing on enhancing business intelligence capabilities. As part of a team of 10, you will work closely with stakeholders to identify areas for improvement and develop data-driven solutions. Your work will have a direct impact on Arvind's operations, contributing to informed decision-making across the organization. You will be based in our Ahmedabad office.
+
+Key Responsibilities
+* You will build and maintain datasets to support business intelligence initiatives, leveraging your understanding of data structures and analysis techniques.
+* Deliver insightful reports and dashboards using Power BI, incorporating filters, slicers, and drill-throughs to facilitate stakeholder engagement.
+* You will write DAX measures to calculate key performance indicators such as YTD, MTD, and period-over-period variances, ensuring data accuracy and integrity.
+* Coordinate with cross-functional teams to gather requirements and develop targeted data visualizations, addressing specific business needs and questions.
+* You will diagnose and resolve report performance issues, optimizing data queries and DAX formulas to ensure seamless user experience.
+* Develop and maintain documentation for all reports and datasets, outlining data sources, methodology, and intended audience to ensure transparency and reuse.
+* You will improve data quality and integrity by identifying and addressing data inconsistencies, working closely with data owners and stakeholders to implement corrective actions.
+
+Must-Have Skills
+* You have experience with Power BI, including report design, DAX measures, and data modeling.
+* Strong understanding of data analysis principles, including data visualization and storytelling techniques.
+* You are familiar with Microsoft Fabric and its applications in data analysis and business intelligence.
+* You possess manufacturing or retail domain knowledge, with understanding of key performance indicators such as OEE, OTIF, sell-through, and shrinkage.
+* You have excellent stakeholder communication skills, with ability to distill complex data insights into actionable recommendations.
+* You are proficient in writing DAX measures, including calculations for YTD, MTD, and period-over-period variances.
+
+Nice-to-Have Skills
+* You hold a PL-300 certification, demonstrating expertise in Power BI and data analysis.
+* You have experience with Power BI mobile layout design, enabling seamless user experience across devices.
+* You are familiar with data pipeline management, including deployment pipelines and data governance.
+* You have basic understanding of data science concepts, including machine learning and predictive analytics.
+
+What We Offer
+You will be part of Arvind Limited's growing analytics function, with opportunities to work on large-scale data initiatives and collaborate with business leaders. We offer a dynamic work environment, exposure to cutting-edge technologies, and access to learning opportunities through Samarth and Arvind University.

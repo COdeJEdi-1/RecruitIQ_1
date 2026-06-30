@@ -1,0 +1,67 @@
+role_family: Chief Financial Officer (Institutional)
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CFO JD.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Oversee the financial management of the education society
+    - Develop and manage the annual budget and long-term financial plans
+    - Provide strategic financial guidance to the senior leadership team and Board of Governors
+    - Analyze financial data and provide recommendations to improve financial performance
+    - Ensure accuracy and integrity of financial records and compliance with financial reporting requirements
+    - Oversee investment and debt management programs
+    - Manage financial risk, including financial modeling and forecasting
+    - Develop and implement financial policies and procedures to ensure compliance with applicable laws
+      and regulations
+    - Oversee procurement and contracts management activities
+    - 'Manage financial relationships with external stakeholders: lenders, investors, donors'
+    - Lead and manage the finance team, including hiring, training, and performance management
+    arvind_specific: []
+    leadership_skills:
+    - CFO-level leadership of the finance team
+    - Reports to Chairman, Board of Governors
+    qualifications:
+    - CA with 25 to 30 years of experience
+    - Experience of working in premier universities/educational institutes desirable
+    - Strong leadership, communication, and interpersonal skills
+    - Excellent analytical and problem-solving skills
+    kpis:
+    - 'Financial Performance: revenue growth, profitability, cash flow management, cost management'
+    - 'Risk Management: risk exposure and risk mitigation strategies'
+    - 'Strategic Planning: financial planning and analysis, capital allocation, ROI'
+    - 'Compliance: audit outcomes, regulatory compliance, financial reporting accuracy'
+    - 'Team Management: productivity, employee engagement, talent retention'
+    reporting_to: Chairman, Board of Governors
+note: Not a core Arvind business unit — client is a non-profit Education Society (Ahmedabad-based, est.
+  1935). Mapped to closest-fit department per instructions.

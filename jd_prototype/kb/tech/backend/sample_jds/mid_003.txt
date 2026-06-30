@@ -1,0 +1,29 @@
+{"role_family": "Backend", "seniority_level": "Mid", "team_context": "Generated via JD Generator", "primary_stack": "", "date_added": "2026-06-23", "approved_by": "dev@company.com"}
+
+---
+
+Role Summary
+You will join our Payments Engineering team as a Mid-Level Backend Engineer, owning the design and delivery of features on our payment processing pipeline. Our team handles 1M transactions per day, and you will work end-to-end on features — from API contract design through to deployment and monitoring. You will collaborate with other engineers to ensure seamless integration with our core services.
+
+Key Responsibilities
+- You will design and implement new payment features, including API integrations with third-party gateways and payment method handling
+- You will own the quality of your work through unit, integration, and end-to-end tests, ensuring high availability and reliability
+- You will participate in code review for junior engineers, providing actionable feedback on correctness, security, and maintainability
+- You will investigate and resolve production issues, using logging and metrics to diagnose problems
+- You will collaborate with frontend engineers and product managers on payment flow design and optimization
+- You will contribute to architectural decisions in team design reviews, raising trade-offs clearly and concisely
+- You will maintain and improve the developer experience for internal service consumers, including documentation and API guides
+
+Must-Have Skills
+- You have 3+ years shipping production backend services in a professional context, with experience in Python or Java
+- You understand database performance at a working level: query plans, indexing strategies, and connection pooling
+- You have designed and implemented REST APIs from scratch, navigating versioning and backwards-compatibility concerns
+- You are experienced with payment gateways (e.g. Stripe, PayPal) and payment method handling (e.g. credit cards, bank transfers)
+- You write tests as a default, not as an afterthought, and can explain the trade-offs between test types
+- You have been in an on-call rotation and know how to write runbooks and handle incident response
+
+Nice-to-Have Skills
+- You have experience with cloud-based payment platforms (e.g. AWS Payments, GCP Cloud Billing)
+- You have worked on services that required careful attention to data privacy or compliance (e.g. PCI-DSS, GDPR)
+- You have contributed to API design standards or developer documentation at a team level
+- You have worked on high-volume transaction systems, optimizing performance and scalability

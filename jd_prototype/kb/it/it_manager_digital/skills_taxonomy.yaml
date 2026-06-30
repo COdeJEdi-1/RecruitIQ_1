@@ -1,0 +1,31 @@
+role_family: IT Manager / Digital Transformation
+department: It
+division: Arvind Limited — IT
+company: Arvind Limited
+experience_bands:
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - ERP rollout and system integration management
+    - Data governance frameworks
+    - Digital initiative project management
+    - Infrastructure planning and vendor management
+    progressive_skills: []
+    arvind_specific:
+    - SAP core module rollout across Arvind plants
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Digital transformation strategy across business units
+    - API integration architecture
+    - Cybersecurity governance oversight
+    - Cross-functional digital roadmap ownership
+    progressive_skills: []
+    arvind_specific:
+    - Digital transformation leadership ahead of Arvind's GCC expansion
+    leadership_skills: []

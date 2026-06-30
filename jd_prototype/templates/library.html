@@ -1,0 +1,630 @@
+{% extends "base.html" %}
+{% block title %}Sample JD Library | JD Generator{% endblock %}
+
+{% block extra_style %}
+  .lib-card { transition: all 0.15s ease; cursor: pointer; }
+  .lib-card:hover { box-shadow: 0 4px 16px rgba(129,0,34,0.1); border-color: #810022; }
+  .editable-section[contenteditable="true"] {
+    outline: none; cursor: text; min-height: 1em;
+  }
+  mark.edit-highlight {
+    background: #fef08a;
+    border-radius: 3px;
+    padding: 0 2px;
+    color: inherit;
+  }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .fade-in { animation: fadeIn 0.2s ease-out forwards; }
+{% endblock %}
+
+{% block content %}
+<div class="mb-space-xl flex items-start justify-between flex-wrap gap-3">
+  <div>
+    <h1 class="text-headline-lg text-on-surface">Sample JD Library</h1>
+    <p class="text-body-md text-on-surface-variant mt-1">Browse pre-curated JDs across every Arvind department — zero AI calls.</p>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-gutter items-start">
+
+  <!-- ── Filter sidebar ───────────────────────────────────────────────── -->
+  <div class="bg-white rounded-xl border border-outline-variant shadow-sm p-space-lg sticky top-24 flex flex-col gap-space-md">
+    <h2 class="text-label-md font-bold text-on-surface">Filters</h2>
+
+    <div class="flex flex-col gap-1.5">
+      <label class="text-label-sm text-on-surface-variant">Division</label>
+      <select id="fDivision" onchange="onDivisionChange()"
+              class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+        <option value="">All Divisions</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label class="text-label-sm text-on-surface-variant">Department</label>
+      <select id="fDept" onchange="onDeptChange()"
+              class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+        <option value="">All Departments</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label class="text-label-sm text-on-surface-variant">Role Family</label>
+      <select id="fFamily" onchange="applyFilters()"
+              class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+        <option value="">All Role Families</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label class="text-label-sm text-on-surface-variant">Years of Experience</label>
+      <select id="fYoe" onchange="applyFilters()"
+              class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+        <option value="">All Bands</option>
+      </select>
+    </div>
+
+    <button onclick="clearFilters()"
+            class="mt-1 w-full py-2 text-label-sm text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+      Clear Filters
+    </button>
+  </div>
+
+  <!-- ── Card grid ────────────────────────────────────────────────────── -->
+  <div>
+    <p id="resultCount" class="text-label-sm text-on-surface-variant mb-3">Loading…</p>
+    <div id="cardGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-space-xl bg-surface-container-low border border-outline-variant rounded-xl p-6 text-center">
+      <p class="text-body-md text-on-surface mb-3">Not finding the JD you need?</p>
+      <a href="{{ url_for('generator') }}"
+         class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors">
+        <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+        Build a new one with AI
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Confirm-edit modal ────────────────────────────────────────────── -->
+<div id="confirmEditModal" class="hidden fixed inset-0 bg-black/50 z-[70] flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6">
+    <div class="flex items-center gap-3 mb-3">
+      <span class="material-symbols-outlined text-primary text-[28px]">edit_note</span>
+      <h3 class="text-headline-md text-on-surface">Edit a Copy?</h3>
+    </div>
+    <p class="text-body-sm text-on-surface-variant mb-5">
+      This will open a local editable copy of the JD alongside the original so you can compare changes.
+      Your edits stay local and are not saved to the knowledge base.
+    </p>
+    <div class="flex gap-3 justify-end">
+      <button onclick="document.getElementById('confirmEditModal').classList.add('hidden')"
+              class="px-5 py-2 rounded-lg text-label-sm font-bold text-on-surface-variant border border-outline-variant hover:bg-surface-container-low transition-colors">
+        Cancel
+      </button>
+      <button onclick="confirmEnterEdit()"
+              class="px-5 py-2 rounded-lg text-label-sm font-bold bg-primary text-on-primary hover:bg-on-primary-fixed-variant transition-colors">
+        Yes, Edit
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Preview / Edit-a-Copy modal ─────────────────────────────────────── -->
+<div id="previewModal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div id="previewModalInner" class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar relative">
+
+    <!-- Edit banner -->
+    <div id="editBanner" class="hidden bg-amber-50 border-b border-amber-200 px-6 py-2.5 text-label-sm text-amber-800 flex items-center gap-2 sticky top-0 z-10">
+      <span class="material-symbols-outlined text-[16px]">edit_note</span>
+      You are editing a local copy — changes are not saved to your history.
+    </div>
+
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant sticky bg-white" style="top: 0;">
+      <div>
+        <h3 id="pmTitle" class="text-headline-md text-on-surface">Role Title</h3>
+        <p id="pmSubtitle" class="text-label-sm text-on-surface-variant mt-0.5"></p>
+      </div>
+      <button onclick="closePreview()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center transition-colors">
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant">close</span>
+      </button>
+    </div>
+
+    <!-- Read-only: single-pane. Edit mode: two-pane injected by JS -->
+    <div id="pmBody" class="px-6 py-5 flex flex-col gap-5">
+      <!-- sections injected by JS -->
+    </div>
+
+    <div class="px-6 py-4 border-t border-outline-variant flex items-center justify-between sticky bottom-0 bg-white flex-wrap gap-2">
+      <div id="readOnlyActions" class="flex gap-2">
+        <button onclick="enterEditMode()"
+                class="px-5 py-2 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">edit</span>
+          Edit a Copy
+        </button>
+      </div>
+      <div id="editActions" class="hidden flex gap-2 flex-wrap">
+        <button onclick="exportCopy('pdf', this)"
+                class="px-4 py-2 bg-surface-container text-primary rounded-lg text-label-sm font-bold hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+          Save as PDF
+        </button>
+        <button onclick="exportCopy('docx', this)"
+                class="px-4 py-2 bg-surface-container text-primary rounded-lg text-label-sm font-bold hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">download</span>
+          Save as DOCX
+        </button>
+        <button onclick="openShareModal()"
+                class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-lg text-label-sm font-bold hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">share</span>
+          Share
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Share placeholder modal ──────────────────────────────────────────── -->
+<div id="shareModal" class="hidden fixed inset-0 bg-black/40 z-[60] flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6">
+    <h3 class="text-headline-md text-on-surface mb-2">Share via SSO link</h3>
+    <p class="text-body-sm text-on-surface-variant mb-4">Configuration required. Set up Microsoft SSO credentials to enable sharing.</p>
+    <div class="flex gap-2">
+      <input type="text" disabled placeholder="Share link will appear here"
+             class="flex-1 border border-outline-variant rounded-lg px-3 py-2 text-body-sm bg-surface-container-low text-on-surface-variant"/>
+      <button disabled class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-lg text-label-sm font-bold opacity-60 cursor-not-allowed">
+        Copy Link
+      </button>
+    </div>
+    <button onclick="closeShareModal()" class="mt-4 w-full py-2 text-label-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+      Close
+    </button>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  let FILTERS = { divisions: {}, dept_families: {}, dept_labels: {}, family_labels: {}, yoe_bands: [], yoe_labels: {} };
+  let currentJd = null;       // the JD object currently shown in the modal
+  let isEditing = false;
+
+  // Canonical display label — backend provides the correctly-cased name
+  // (e.g. 'hr' -> 'HR', 'qa_manager' -> 'QA Manager'); fall back to a
+  // simple title-case if a slug isn't in the map yet.
+  function deptLabel(s) {
+    if (!s) return '';
+    return FILTERS.dept_labels[s] || FILTERS.family_labels[s] ||
+      s.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  }
+
+  async function loadFilters() {
+    const res = await fetch('/api/sample/filters');
+    FILTERS = await res.json();
+
+    const divSel = document.getElementById('fDivision');
+    Object.keys(FILTERS.divisions).forEach(div => {
+      const opt = document.createElement('option');
+      opt.value = div; opt.textContent = div;
+      divSel.appendChild(opt);
+    });
+
+    const yoeSel = document.getElementById('fYoe');
+    FILTERS.yoe_bands.forEach(band => {
+      const opt = document.createElement('option');
+      opt.value = band; opt.textContent = FILTERS.yoe_labels[band] || band;
+      yoeSel.appendChild(opt);
+    });
+
+    populateDeptDropdown();
+  }
+
+  function populateDeptDropdown() {
+    const division = document.getElementById('fDivision').value;
+    const deptSel = document.getElementById('fDept');
+    deptSel.innerHTML = '<option value="">All Departments</option>';
+
+    const depts = division ? (FILTERS.divisions[division] || []) : Object.keys(FILTERS.dept_families);
+    depts.forEach(d => {
+      const opt = document.createElement('option');
+      opt.value = d; opt.textContent = deptLabel(d);
+      deptSel.appendChild(opt);
+    });
+  }
+
+  function populateFamilyDropdown() {
+    const dept = document.getElementById('fDept').value;
+    const famSel = document.getElementById('fFamily');
+    famSel.innerHTML = '<option value="">All Role Families</option>';
+    if (!dept) return;
+    (FILTERS.dept_families[dept] || []).forEach(f => {
+      const opt = document.createElement('option');
+      opt.value = f; opt.textContent = deptLabel(f);
+      famSel.appendChild(opt);
+    });
+  }
+
+  function onDivisionChange() { populateDeptDropdown(); populateFamilyDropdown(); applyFilters(); }
+  function onDeptChange() { populateFamilyDropdown(); applyFilters(); }
+
+  function clearFilters() {
+    document.getElementById('fDivision').value = '';
+    document.getElementById('fDept').value = '';
+    document.getElementById('fFamily').value = '';
+    document.getElementById('fYoe').value = '';
+    populateDeptDropdown();
+    populateFamilyDropdown();
+    applyFilters();
+  }
+
+  async function applyFilters() {
+    const dept = document.getElementById('fDept').value;
+    const family = document.getElementById('fFamily').value;
+    const yoe = document.getElementById('fYoe').value;
+
+    const params = new URLSearchParams();
+    if (dept) params.set('dept', dept);
+    if (family) params.set('family', family);
+    if (yoe) params.set('yoe_band', yoe);
+
+    const grid = document.getElementById('cardGrid');
+    const countEl = document.getElementById('resultCount');
+    grid.innerHTML = '';
+    countEl.textContent = 'Loading…';
+
+    try {
+      const res = await fetch('/api/sample/list?' + params.toString());
+      const data = await res.json();
+      const jds = data.jds || [];
+      countEl.textContent = `${jds.length} sample JD${jds.length === 1 ? '' : 's'} found`;
+
+      if (!jds.length) {
+        grid.innerHTML = `<p class="text-label-sm text-on-surface-variant col-span-full">No sample JDs match these filters.</p>`;
+        return;
+      }
+
+      grid.innerHTML = jds.map((j, i) => `
+        <div class="lib-card fade-in bg-white rounded-xl border border-outline-variant p-4" style="animation-delay:${i*30}ms" onclick="openPreview('${j.ref}')">
+          <p class="text-label-sm font-bold text-on-surface-variant uppercase tracking-wide">${deptLabel(j.dept)}</p>
+          <p class="text-label-md font-bold text-on-surface mt-0.5">${j.role_title}</p>
+          <div class="flex items-center gap-2 mt-2 text-label-xs text-on-surface-variant">
+            <span class="px-2 py-0.5 rounded-full bg-surface-container">${j.yoe_band ? j.yoe_band + ' yrs' : 'N/A'}</span>
+            <span>${j.date_added || ''}</span>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      countEl.textContent = 'Failed to load samples.';
+    }
+  }
+
+  async function openPreview(ref) {
+    const res = await fetch('/api/sample/get?ref=' + encodeURIComponent(ref));
+    const data = await res.json();
+    if (!res.ok || data.error) { alert(data.error || 'Could not load JD.'); return; }
+
+    currentJd = data.jd;
+    isEditing = false;
+    renderModal(false);
+    document.getElementById('editBanner').classList.add('hidden');
+    document.getElementById('readOnlyActions').classList.remove('hidden');
+    document.getElementById('editActions').classList.add('hidden');
+    document.getElementById('previewModal').classList.remove('hidden');
+  }
+
+  function renderModal(editable) {
+    document.getElementById('pmTitle').textContent = currentJd.role_title;
+    document.getElementById('pmSubtitle').textContent =
+      `${currentJd.dept_label} · ${currentJd.division} · ${currentJd.yoe_band ? currentJd.yoe_band + ' yrs' : ''}`;
+
+    const sections = [
+      ['Role Summary', currentJd.role_summary, 'text'],
+      ['Key Responsibilities', currentJd.key_responsibilities, 'list'],
+      ['Must-Have Skills', currentJd.must_have, 'list'],
+      ['Nice-to-Have Skills', currentJd.nice_to_have, 'list'],
+      ['What We Offer', currentJd.what_we_offer, 'list'],
+    ];
+
+    document.getElementById('pmBody').innerHTML = sections.map(([heading, content, kind]) => {
+      if (!content || (Array.isArray(content) && !content.length)) return '';
+      const editAttr = editable ? 'contenteditable="true"' : '';
+      const editCls = editable ? 'editable-section' : '';
+      let inner;
+      if (kind === 'text') {
+        inner = `<p class="text-body-md text-on-surface leading-relaxed ${editCls}" ${editAttr} data-field="role_summary">${content}</p>`;
+      } else {
+        inner = `<ul class="list-disc pl-5 text-body-md text-on-surface leading-relaxed ${editCls}" ${editAttr} data-field="${heading}">
+          ${content.map(i => `<li>${i}</li>`).join('')}
+        </ul>`;
+      }
+      return `<div><h4 class="text-label-sm font-bold text-primary uppercase tracking-wide mb-2">${heading}</h4>${inner}</div>`;
+    }).join('');
+  }
+
+  function enterEditMode() {
+    // Show confirmation dialog first
+    document.getElementById('confirmEditModal').classList.remove('hidden');
+  }
+
+  function confirmEnterEdit() {
+    document.getElementById('confirmEditModal').classList.add('hidden');
+    isEditing = true;
+
+    // Expand modal to wide side-by-side layout
+    document.getElementById('previewModalInner').classList.remove('max-w-3xl');
+    document.getElementById('previewModalInner').classList.add('max-w-6xl');
+
+    // Build side-by-side panes
+    const sections = [
+      ['Role Summary', currentJd.role_summary, 'text'],
+      ['Key Responsibilities', currentJd.key_responsibilities, 'list'],
+      ['Must-Have Skills', currentJd.must_have, 'list'],
+      ['Nice-to-Have Skills', currentJd.nice_to_have, 'list'],
+      ['What We Offer', currentJd.what_we_offer, 'list'],
+    ];
+
+    function buildSection(heading, content, kind, editable) {
+      if (!content || (Array.isArray(content) && !content.length)) return '';
+      const editAttr = editable ? 'contenteditable="true"' : '';
+      const editCls = editable ? 'editable-section' : '';
+      let inner;
+      if (kind === 'text') {
+        inner = `<p class="text-body-md text-on-surface leading-relaxed ${editCls}" ${editAttr} data-field="role_summary">${content}</p>`;
+      } else {
+        inner = `<ul class="list-disc pl-5 text-body-md text-on-surface leading-relaxed ${editCls}" ${editAttr} data-field="${heading}">
+          ${content.map(i => `<li>${i}</li>`).join('')}
+        </ul>`;
+      }
+      return `<div><h4 class="text-label-sm font-bold text-primary uppercase tracking-wide mb-2">${heading}</h4>${inner}</div>`;
+    }
+
+    const originalHTML = sections.map(([h, c, k]) => buildSection(h, c, k, false)).join('');
+    const editableHTML = sections.map(([h, c, k]) => buildSection(h, c, k, true)).join('');
+
+    const pmBody = document.getElementById('pmBody');
+    pmBody.className = 'grid grid-cols-2 divide-x divide-outline-variant/40';
+    pmBody.innerHTML = `
+      <div class="px-6 py-5 flex flex-col gap-5 bg-surface-container-lowest/60">
+        <p class="text-label-xs text-on-surface-variant uppercase tracking-widest font-bold flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">lock</span> Original
+        </p>
+        ${originalHTML}
+      </div>
+      <div class="px-6 py-5 flex flex-col gap-5 bg-amber-50/40 border-l-2 border-amber-300" id="editPane">
+        <p class="text-label-xs text-primary uppercase tracking-widest font-bold flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">edit</span> Your Copy — edits highlighted
+        </p>
+        ${editableHTML}
+      </div>`;
+
+    // Word-level diff highlight on the edited copy
+    const origTexts = {};
+    sections.forEach(([h, c, k]) => {
+      origTexts[k === 'text' ? 'role_summary' : h] =
+        k === 'text' ? String(c || '') : (c || []).join('\n');
+    });
+
+    // LCS-based word diff: returns HTML with <mark> around added/changed words
+    function wordDiffHTML(origStr, newStr) {
+      const ow = origStr.trim().split(/\s+/).filter(Boolean);
+      const nw = newStr.trim().split(/\s+/).filter(Boolean);
+
+      // Build LCS table
+      const m = ow.length, n = nw.length;
+      const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+      for (let i = 1; i <= m; i++)
+        for (let j = 1; j <= n; j++)
+          dp[i][j] = ow[i-1] === nw[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+
+      // Trace back to get diff
+      const parts = [];
+      let i = m, j = n;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && ow[i-1] === nw[j-1]) {
+          parts.unshift({t: nw[j-1], changed: false}); i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+          parts.unshift({t: nw[j-1], changed: true}); j--;
+        } else {
+          i--;
+        }
+      }
+
+      return parts.map(p =>
+        p.changed
+          ? `<mark class="edit-highlight">${p.t}</mark>`
+          : p.t
+      ).join(' ');
+    }
+
+    function applyDiff(el, origPlain) {
+      const curPlain = el.innerText.trim();
+      if (curPlain === origPlain.trim()) {
+        // No changes — strip any marks
+        el.innerText = curPlain;
+        return;
+      }
+      // Save caret position as char offset before innerHTML change
+      const sel = window.getSelection();
+      let caretOffset = 0;
+      if (sel.rangeCount && el.contains(sel.anchorNode)) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        range.setEnd(sel.anchorNode, sel.anchorOffset);
+        caretOffset = range.toString().length;
+      }
+
+      el.innerHTML = wordDiffHTML(origPlain, curPlain);
+
+      // Restore caret position
+      try {
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        let node, chars = 0;
+        while ((node = walker.nextNode())) {
+          if (chars + node.length >= caretOffset) {
+            const r = document.createRange();
+            r.setStart(node, caretOffset - chars);
+            r.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(r);
+            break;
+          }
+          chars += node.length;
+        }
+      } catch(e) {}
+    }
+
+    document.getElementById('editPane').querySelectorAll('[contenteditable]').forEach(el => {
+      const field = el.dataset.field;
+      const origPlain = origTexts[field] || '';
+      let debounceTimer;
+
+      el.addEventListener('input', () => {
+        _saveDraftToLocalStorage();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => applyDiff(el, origPlain), 600);
+      });
+
+      el.addEventListener('blur', () => {
+        clearTimeout(debounceTimer);
+        applyDiff(el, origPlain);
+        _saveDraftToLocalStorage();
+      });
+    });
+
+    // Save initial draft entry
+    _saveDraftToLocalStorage();
+
+    document.getElementById('editBanner').classList.remove('hidden');
+    document.getElementById('readOnlyActions').classList.add('hidden');
+    document.getElementById('editActions').classList.remove('hidden');
+  }
+
+  function _saveDraftToLocalStorage() {
+    if (!currentJd) return;
+    const draftId = 'draft_' + (currentJd.ref || currentJd.role_title).replace(/\W+/g,'_');
+    const editPane = document.getElementById('editPane');
+    const content = editPane ? editPane.innerText : '';
+    const drafts = JSON.parse(localStorage.getItem('jd_drafts') || '{}');
+    drafts[draftId] = {
+      id: draftId,
+      role_title: currentJd.role_title,
+      dept_label: currentJd.dept_label || '',
+      family_label: currentJd.family_label || currentJd.role_family || '',
+      yoe_band: currentJd.yoe_band || '',
+      content: content,
+      jd_data: currentJd,
+      saved_at: new Date().toISOString(),
+    };
+    localStorage.setItem('jd_drafts', JSON.stringify(drafts));
+  }
+
+  function closePreview() {
+    document.getElementById('previewModal').classList.add('hidden');
+    // Reset modal width for next open
+    const inner = document.getElementById('previewModalInner');
+    inner.classList.remove('max-w-6xl');
+    inner.classList.add('max-w-3xl');
+    currentJd = null;
+    isEditing = false;
+  }
+
+  function _collectEditedText() {
+    // In edit mode, read from the editable pane only
+    const body = document.getElementById('editPane') || document.getElementById('pmBody');
+    let lines = [];
+    body.querySelectorAll(':scope > div').forEach(block => {
+      const heading = block.querySelector('h4').textContent.trim();
+      lines.push(heading);
+      const ul = block.querySelector('ul');
+      const p = block.querySelector('p');
+      if (ul) {
+        ul.querySelectorAll('li').forEach(li => lines.push('- ' + li.textContent.trim()));
+      } else if (p) {
+        lines.push(p.textContent.trim());
+      }
+      lines.push('');
+    });
+    return lines.join('\n');
+  }
+
+  async function exportCopy(format, btnEl) {
+    const jdText = _collectEditedText();
+    const payload = {
+      jd_text: jdText,
+      role_title: currentJd.role_title,
+      department: currentJd.dept_label,
+      division: currentJd.division,
+      yoe_band: currentJd.yoe_band,
+    };
+
+    const origHTML = btnEl.innerHTML;
+    btnEl.disabled = true;
+    btnEl.innerHTML = `<span class="material-symbols-outlined text-[16px]">hourglass_empty</span> …`;
+
+    try {
+      const res = await fetch(`/api/sample/export-${format}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        alert(err.error || 'Export failed.');
+        return;
+      }
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const cd = res.headers.get('Content-Disposition') || '';
+      const match = cd.match(/filename="(.+)"/);
+      const filename = match ? match[1] : `COPY_${currentJd.role_title}.${format}`;
+
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); document.body.removeChild(a); }, 500);
+    } finally {
+      btnEl.disabled = false;
+      btnEl.innerHTML = origHTML;
+    }
+  }
+
+  function openShareModal() { document.getElementById('shareModal').classList.remove('hidden'); }
+  function closeShareModal() { document.getElementById('shareModal').classList.add('hidden'); }
+
+  // Real-time: when a JD is approved in the generator tab, refresh the card grid
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'jd_approved_event') applyFilters();
+  });
+
+  // Resume a library edit draft from History
+  (function resumeLibraryEditIfPending() {
+    const editId = localStorage.getItem('jd_resume_library_edit_id');
+    if (!editId) return;
+    localStorage.removeItem('jd_resume_library_edit_id');
+
+    const drafts = JSON.parse(localStorage.getItem('jd_drafts') || '{}');
+    const draft = drafts[editId];
+    if (!draft || !draft.jd_data) return;
+
+    // Restore the saved JD data and open directly in edit mode
+    currentJd = draft.jd_data;
+    isEditing = false;
+    // Show modal first (read-only header), then immediately enter edit
+    document.getElementById('pmTitle').textContent = currentJd.role_title || '';
+    document.getElementById('pmSubtitle').textContent =
+      [currentJd.dept_label, currentJd.division, currentJd.yoe_band ? currentJd.yoe_band + ' yrs' : ''].filter(Boolean).join(' · ');
+    document.getElementById('editBanner').classList.add('hidden');
+    document.getElementById('readOnlyActions').classList.remove('hidden');
+    document.getElementById('editActions').classList.add('hidden');
+    document.getElementById('previewModal').classList.remove('hidden');
+
+    // Skip confirm dialog and jump straight to edit mode
+    confirmEnterEdit();
+  })();
+
+  loadFilters().then(applyFilters);
+</script>
+{% endblock %}

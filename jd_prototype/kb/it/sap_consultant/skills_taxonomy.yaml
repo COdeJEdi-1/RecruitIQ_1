@@ -1,0 +1,81 @@
+role_family: "SAP Consultant"
+department: "Information Technology"
+division: "Corporate / Shared Functions"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - SAP module basics (MM, PP, FICO, SD, or WM — at least one)
+      - Ticket resolution and L1/L2 support
+      - User training documentation
+      - Test script execution for SAP changes
+    progressive_skills:
+      - Configuration support in primary module
+      - Basic ABAP debugging understanding (not coding)
+    arvind_specific:
+      - SAP usage in textile manufacturing: production orders, batch management, inventory
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - End-to-end process knowledge in primary module
+      - Functional specification writing for ABAP developments
+      - SAP project implementation (1+ full cycle preferred)
+      - Integration knowledge between modules (e.g., MM-FI, SD-FICO)
+      - User acceptance testing leadership
+    arvind_specific:
+      - Plant-wise SAP configuration for Arvind manufacturing sites
+      - Textile-specific processes: fabric receipt, quality inspection, production BOM
+    leadership_skills:
+      - Coordinating between business users and IT
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - SAP solution architecture for 2+ modules
+      - Rollout project management
+      - SAP S/4HANA migration experience
+      - Change management and training delivery
+    arvind_specific:
+      - Group-level SAP rollout across Arvind plants and offices
+      - Custom developments for textile industry processes
+    leadership_skills:
+      - Managing a team of SAP analysts/consultants
+      - Reporting to IT Head / CIO
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Enterprise architecture: SAP + non-SAP integration landscape
+      - IT strategy and ERP roadmap
+      - Vendor management (SAP, Accenture, TCS, Wipro)
+    arvind_specific:
+      - Digital transformation roadmap for Arvind (S/4HANA, IoT integration)
+    leadership_skills:
+      - IT function head or ERP program director
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - CIO-level technology strategy
+      - M&A IT integration
+    arvind_specific: []
+    leadership_skills:
+      - CIO or VP IT

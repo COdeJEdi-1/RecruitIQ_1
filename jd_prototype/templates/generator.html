@@ -1,0 +1,1425 @@
+{% extends "base.html" %}
+{% block title %}JD Generator{% endblock %}
+
+{% block extra_style %}
+  .jd-output {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+    resize: none;
+    outline: none;
+    min-height: 520px;
+    white-space: pre-wrap;
+  }
+  .jd-output:focus { box-shadow: none; }
+  #outputPanel { transition: opacity 0.3s ease; }
+  .loader-dots div { animation-timing-function: cubic-bezier(0,1,1,0); }
+  .loader-dots div:nth-child(1) { left:8px; animation:ld1 0.6s infinite; }
+  .loader-dots div:nth-child(2) { left:8px; animation:ld2 0.6s infinite; }
+  .loader-dots div:nth-child(3) { left:32px; animation:ld2 0.6s infinite; }
+  .loader-dots div:nth-child(4) { left:56px; animation:ld3 0.6s infinite; }
+  @keyframes ld1 { 0%{transform:scale(0)} 100%{transform:scale(1)} }
+  @keyframes ld3 { 0%{transform:scale(1)} 100%{transform:scale(0)} }
+  @keyframes ld2 { 0%{transform:translate(0,0)} 100%{transform:translate(24px,0)} }
+  .fade-up { animation: fadeUp 0.4s ease-out forwards; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .star-btn { font-size: 28px; cursor: pointer; color: #d1d5db; transition: color 0.1s; }
+  .star-btn:hover, .star-btn.active { color: #f59e0b; }
+  .section-score-btn { padding: 4px 12px; border-radius: 999px; border: 1px solid #e2e8f0; font-size: 12px; cursor: pointer; transition: all 0.15s; }
+  .section-score-btn.sel { background: #810022; color: white; border-color: #810022; }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .tag-pill { padding: 5px 14px; border-radius: 999px; border: 1px solid #e2e8f0; font-size: 12px; cursor: pointer; transition: all 0.15s; }
+  .tag-pill.sel-pos { background: #dcfce7; color: #166534; border-color: #86efac; }
+  .tag-pill.sel-imp { background: #fee2e2; color: #991b1b; border-color: #fca5a5; }
+  .skill-chip { display:inline-flex; align-items:center; gap:5px; padding:4px 10px 4px 12px;
+    background:#f0e8eb; color:#810022; border:1px solid #d4a0ac; border-radius:999px;
+    font-size:12px; font-weight:500; white-space:nowrap; }
+  .skill-chip .rm { cursor:pointer; font-size:14px; line-height:1; color:#810022; opacity:.6; }
+  .skill-chip .rm:hover { opacity:1; }
+  .skill-chip.suggested { background:#f0f7ff; color:#1d4ed8; border-color:#93c5fd; }
+  .skill-chip.suggested .rm { color:#1d4ed8; }
+  .toggle-btn.selected { border-color:#810022 !important; background:rgba(129,0,34,0.07) !important;
+    color:#810022 !important; font-weight:600; }
+{% endblock %}
+
+{% block content %}
+<!-- Page header -->
+<div class="mb-space-xl">
+  <h1 class="text-headline-lg text-on-surface">Generate Job Description</h1>
+  <p class="text-body-md text-on-surface-variant mt-1">Fill in the role details and get one Arvind-calibrated JD in ~5–10 seconds.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-gutter items-start">
+
+  <!-- ── LEFT: Input Form Card ─────────────────────────────────────────── -->
+  <div class="bg-white rounded-xl border border-outline-variant shadow-sm p-space-lg sticky top-24 flex flex-col gap-space-md">
+    <h2 class="text-label-md font-bold text-on-surface">Role Details</h2>
+
+    <form id="jdForm" class="flex flex-col gap-space-md" onsubmit="return false;">
+
+      <!-- Role Title -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant" for="roleTitle">Role Title <span class="text-error">*</span></label>
+        <input id="roleTitle" type="text" placeholder="e.g. QA Manager — Denim Division"
+               class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"
+               required/>
+      </div>
+
+      <!-- Role Type -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant">Role Type <span class="text-error">*</span></label>
+        <div class="flex gap-3">
+          <label class="flex items-center gap-2 flex-1 cursor-pointer border border-outline-variant rounded-lg px-3 py-2.5 transition-colors hover:border-secondary has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+            <input type="radio" name="roleType" id="roleTypeIC" value="individual_contributor" checked
+                   class="accent-[#810022]" onchange="onRoleTypeChange()"/>
+            <span class="text-body-sm text-on-surface select-none">Individual Contributor</span>
+          </label>
+          <label class="flex items-center gap-2 flex-1 cursor-pointer border border-outline-variant rounded-lg px-3 py-2.5 transition-colors hover:border-secondary has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+            <input type="radio" name="roleType" id="roleTypeMgr" value="team_manager"
+                   class="accent-[#810022]" onchange="onRoleTypeChange()"/>
+            <span class="text-body-sm text-on-surface select-none">Team Manager</span>
+          </label>
+        </div>
+      </div>
+
+
+      <!-- Department -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant" for="department">Department <span class="text-error">*</span></label>
+        <select id="department" onchange="populateFamilies()"
+                class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"
+                required>
+          <option value="">Select department</option>
+          {% for group in department_caps_groups %}
+          <optgroup label="{{ group.division }}">
+            {% for dept in group.departments %}
+            <option value="{{ dept.value }}">{{ dept.label }}</option>
+            {% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Role Family (dynamic) -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant" for="family">Role Family <span class="text-error">*</span></label>
+        <select id="family"
+                class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                required disabled onchange="onFamilyChange()">
+          <option value="">Select department first</option>
+        </select>
+      </div>
+
+      <!-- Years of Experience Band -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant" for="yoeBand">Years of Experience <span class="text-error">*</span></label>
+        <select id="yoeBand"
+                class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"
+                required>
+          <option value="">Select experience band</option>
+          {% for band in yoe_bands %}
+          <option value="{{ band }}">{{ yoe_labels[band] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- Employment Type -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant">Employment Type</label>
+        <div class="flex gap-2" id="empTypeGroup">
+          {% for et in [("Full-Time","full_time"),("Contract","contract"),("Intern / Trainee","intern")] %}
+          <button type="button" data-value="{{ et[1] }}"
+                  onclick="selectToggle('empTypeGroup', this)"
+                  class="emp-toggle flex-1 px-3 py-2 rounded-lg border text-body-sm transition-colors border-outline-variant text-on-surface-variant hover:border-secondary {% if et[1] == 'full_time' %}!border-secondary !bg-secondary/10 !text-secondary font-medium selected{% endif %}">
+            {{ et[0] }}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Work Mode -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant">Work Mode</label>
+        <div class="flex gap-2" id="workModeGroup">
+          {% for wm in [("Onsite","onsite"),("Hybrid","hybrid"),("Remote","remote")] %}
+          <button type="button" data-value="{{ wm[1] }}"
+                  onclick="selectToggle('workModeGroup', this)"
+                  class="wm-toggle flex-1 px-3 py-2 rounded-lg border text-body-sm transition-colors border-outline-variant text-on-surface-variant hover:border-secondary {% if wm[1] == 'onsite' %}!border-secondary !bg-secondary/10 !text-secondary font-medium selected{% endif %}">
+            {{ wm[0] }}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Reporting line -->
+      <div class="flex gap-3">
+        <div class="flex flex-col gap-1.5 flex-1">
+          <label class="text-label-sm text-on-surface-variant" for="reportsTo">Reports To <span class="font-normal">(optional)</span></label>
+          <input id="reportsTo" type="text" placeholder="e.g. Head of Analytics"
+                 class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"/>
+        </div>
+        <div id="teamSizeRow" class="flex flex-col gap-1.5 flex-1 hidden">
+          <label class="text-label-sm text-on-surface-variant" for="teamSize">Team Size</label>
+          <input id="teamSize" type="number" min="1" max="500" placeholder="e.g. 8"
+                 class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"/>
+        </div>
+      </div>
+
+      <!-- Must-Have Skills -->
+      <div class="flex flex-col gap-1.5">
+        <div class="flex items-center justify-between">
+          <label class="text-label-sm text-on-surface-variant">Key Skills <span class="font-normal">(auto-suggested · editable)</span></label>
+          <span id="skillsLoading" class="hidden text-label-xs text-on-surface-variant animate-pulse">Suggesting…</span>
+        </div>
+        <!-- Chip container -->
+        <div id="skillChips" class="flex flex-wrap gap-1.5 min-h-[36px] p-2 bg-surface-container-low rounded-lg border border-outline-variant">
+          <span class="text-label-xs text-on-surface-variant italic self-center" id="skillsPlaceholder">Select a role to get skill suggestions</span>
+        </div>
+        <!-- Add custom skill -->
+        <div class="flex gap-2 mt-0.5">
+          <input id="skillInput" type="text" placeholder="Type a skill and press Enter or +"
+                 class="flex-1 bg-white border border-outline-variant rounded-lg px-3 py-1.5 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"
+                 onkeydown="if(event.key==='Enter'){event.preventDefault();addSkill();}"/>
+          <button type="button" onclick="addSkill()"
+                  class="px-3 py-1.5 bg-secondary/10 text-secondary border border-secondary/30 rounded-lg text-body-sm font-medium hover:bg-secondary/20 transition-colors">
+            + Add
+          </button>
+        </div>
+      </div>
+
+      <!-- Focus Areas -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant" for="focusAreas">
+          Focus Areas <span class="font-normal">(optional)</span>
+        </label>
+        <input id="focusAreas" type="text" placeholder="e.g. denim, inline inspection, AQL"
+               class="w-full bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none"/>
+        <p class="text-label-sm text-on-surface-variant">1–2 specialisations to emphasise in the JD.</p>
+      </div>
+
+      <!-- Generate Button -->
+      <button id="generateBtn" onclick="generateJD()"
+              class="mt-1 w-full py-2.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed">
+        <span class="material-symbols-outlined text-[18px]" id="btnIcon">auto_awesome</span>
+        <span id="btnText">Generate JD</span>
+      </button>
+      <p class="text-label-sm text-on-surface-variant text-center -mt-1">Generates one JD tailored to Arvind Limited · ~5–10 seconds</p>
+
+    </form>
+  </div>
+
+  <!-- ── RIGHT: Output Panel ───────────────────────────────────────────── -->
+  <div id="outputPanel" class="relative">
+
+    <!-- Empty state -->
+    <div id="emptyState" class="bg-white rounded-xl border border-outline-variant shadow-sm p-12 flex flex-col items-center justify-center text-center min-h-[520px]">
+      <div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center mb-space-md">
+        <span class="material-symbols-outlined text-[36px] text-on-surface-variant">article</span>
+      </div>
+      <h3 class="text-headline-md text-on-surface mb-2">Your generated JD will appear here</h3>
+      <p class="text-body-md text-on-surface-variant max-w-sm">Fill in the form and click <strong>Generate JD</strong>.</p>
+    </div>
+
+    <!-- Loading state -->
+    <div id="loadingState" class="hidden bg-white rounded-xl border border-outline-variant shadow-sm p-12 flex-col items-center justify-center text-center min-h-[520px]">
+      <div class="loader-dots inline-block relative w-20 h-5 mb-space-lg">
+        <div class="absolute top-0 w-3 h-3 rounded-full bg-primary"></div>
+        <div class="absolute top-0 w-3 h-3 rounded-full bg-primary"></div>
+        <div class="absolute top-0 w-3 h-3 rounded-full bg-primary"></div>
+        <div class="absolute top-0 w-3 h-3 rounded-full bg-primary"></div>
+      </div>
+      <p class="text-label-md text-primary">Generating your JD for Arvind Limited...</p>
+      <p class="text-label-sm text-on-surface-variant mt-1">Retrieving KB context and feedback signals</p>
+    </div>
+
+    <!-- ── Edit panel ─────────────────────────────────────────────────────── -->
+    <div id="outputCard" class="hidden fade-up bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+
+      <!-- Output toolbar -->
+      <div class="flex items-center justify-between px-space-lg py-3 border-b border-outline-variant bg-surface-container-low flex-wrap gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+          <span class="text-label-md text-on-surface" id="outputMeta">Generated JD — review and edit before approving</span>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <!-- Copy -->
+          <button onclick="copyJD()" title="Copy to clipboard"
+                  class="flex items-center gap-1.5 px-3 py-1.5 text-label-sm text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+            <span class="material-symbols-outlined text-[16px]">content_copy</span>
+            <span id="copyLabel">Copy</span>
+          </button>
+          <!-- Regenerate -->
+          <button id="regenerateBtn" onclick="regenerateJD(this)" title="Regenerate at temperature 0.9"
+                  class="flex items-center gap-1.5 px-3 py-1.5 text-label-sm text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+            <span class="material-symbols-outlined text-[16px]">refresh</span>
+            Regenerate
+          </button>
+          <!-- Download DOCX -->
+          <button onclick="downloadDocx(this)" title="Download as Word document"
+                  class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-primary text-label-sm font-bold hover:bg-surface-container-high rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            DOCX
+          </button>
+          <!-- Download PDF -->
+          <button onclick="downloadPdf(this)" title="Download as PDF"
+                  class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-primary text-label-sm font-bold hover:bg-surface-container-high rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+            <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+            PDF
+          </button>
+          <!-- Arvind Branded HTML -->
+          <button onclick="previewBranded(this)" title="Open Arvind-branded preview (save as PDF from browser)"
+                  class="flex items-center gap-1.5 px-3 py-1.5 bg-[#B01030] text-white text-label-sm font-bold hover:bg-[#8c0d25] rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+            <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+            Branded
+          </button>
+          <!-- Approve & Save -->
+          <button onclick="approveJD()" title="Approve and save to knowledge base"
+                  class="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary text-label-sm font-bold hover:bg-on-primary-fixed-variant rounded-lg transition-colors">
+            <span class="material-symbols-outlined text-[16px]">check_circle</span>
+            Approve & Save
+          </button>
+        </div>
+      </div>
+
+      <!-- Editable textarea -->
+      <div class="relative">
+        <textarea id="jdOutput"
+                  class="jd-output w-full px-space-lg py-space-lg border-0 focus:ring-0 custom-scrollbar text-on-surface bg-white"
+                  placeholder="Your generated JD will appear here..."></textarea>
+        <div class="absolute bottom-3 right-4 flex items-center gap-1 text-label-sm text-on-surface-variant opacity-60 pointer-events-none" id="editHint">
+          <span class="material-symbols-outlined text-[14px]">edit</span>
+          Click to edit
+        </div>
+      </div>
+
+      <!-- Per-section AI Ideas bar (shown after generation) -->
+      <div id="sectionIdeasBar" class="hidden border-t border-outline-variant px-space-lg py-3 bg-surface-container-low">
+        <div class="flex items-center gap-2 flex-wrap">
+          <div class="flex items-center gap-1.5 text-label-xs text-on-surface-variant mr-1">
+            <span class="material-symbols-outlined text-[14px] text-secondary">auto_awesome</span>
+            <span>AI Ideas per section:</span>
+          </div>
+          <div id="sectionIdeasBtns" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+
+    </div><!-- /outputCard -->
+
+    <!-- ── Section AI Ideas Drawer ──────────────────────────────────────────── -->
+    <div id="drawerBackdrop" class="hidden fixed inset-0 bg-black/25 z-40" onclick="closeSectionDrawer()"></div>
+    <div id="sectionDrawer"
+         class="fixed top-0 right-0 h-full w-[440px] max-w-[95vw] bg-white shadow-2xl border-l border-outline-variant z-50 flex flex-col"
+         style="transform: translateX(100%); transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);">
+
+      <!-- Drawer header -->
+      <div class="flex items-start justify-between px-6 py-4 border-b border-outline-variant flex-shrink-0 bg-surface-container-low">
+        <div>
+          <p class="text-label-xs text-on-surface-variant uppercase tracking-widest mb-0.5">Editing section</p>
+          <h3 id="drawerSectionTitle" class="text-title-md text-on-surface font-bold">Section</h3>
+        </div>
+        <button onclick="closeSectionDrawer()" class="p-1.5 hover:bg-surface-container rounded-lg transition-colors">
+          <span class="material-symbols-outlined text-on-surface-variant text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Scrollable body — two panels stacked -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar">
+
+        <!-- Panel A: Current bullets in section (editable / removable) -->
+        <div class="px-5 pt-4 pb-3 border-b border-outline-variant">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-label-xs font-semibold text-on-surface-variant uppercase tracking-wide">Current content</p>
+            <span class="text-label-xs text-on-surface-variant">× to remove a line</span>
+          </div>
+          <div id="drawerCurrentBullets" class="space-y-1.5"></div>
+        </div>
+
+        <!-- Panel B: AI suggestions -->
+        <div class="px-5 pt-3 pb-5">
+          <!-- Tabs -->
+          <div class="flex gap-0 mb-3 border-b border-outline-variant">
+            <button class="drawer-tab px-4 py-2 text-label-sm font-medium transition-colors border-b-2 border-secondary text-secondary"     data-action="suggest" onclick="setDrawerAction('suggest',this)">Add Ideas</button>
+            <button class="drawer-tab px-4 py-2 text-label-sm font-medium transition-colors border-b-2 border-transparent text-on-surface-variant" data-action="rewrite" onclick="setDrawerAction('rewrite',this)">Rewrite</button>
+            <button class="drawer-tab px-4 py-2 text-label-sm font-medium transition-colors border-b-2 border-transparent text-on-surface-variant" data-action="more"    onclick="setDrawerAction('more',this)">More Options</button>
+          </div>
+
+          <div id="drawerLoading" class="flex flex-col items-center justify-center py-10 gap-3">
+            <div class="w-7 h-7 border-2 border-secondary border-t-transparent rounded-full" style="animation:spin 0.8s linear infinite;"></div>
+            <p class="text-label-sm text-on-surface-variant">Generating ideas…</p>
+          </div>
+          <div id="drawerItems" class="hidden space-y-2"></div>
+          <div id="drawerError" class="hidden p-4 bg-red-50 border border-red-200 rounded-xl">
+            <p class="text-label-sm text-error">Failed to generate. <button onclick="_fetchSectionIdeas()" class="underline">Try again</button></p>
+          </div>
+        </div>
+
+      </div><!-- /scroll body -->
+
+      <!-- Footer -->
+      <div class="px-5 py-3 border-t border-outline-variant flex-shrink-0 bg-surface-container-low">
+        <p class="text-label-xs text-on-surface-variant">Changes auto-save · removed lines are highlighted in the JD</p>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 px-5 py-3 rounded-lg shadow-lg text-label-md flex items-center gap-2 z-50">
+      <span class="material-symbols-outlined text-[16px]" id="toastIcon">check_circle</span>
+      <span id="toastMsg"></span>
+    </div>
+
+  </div><!-- /outputPanel -->
+
+</div><!-- /grid -->
+
+<!-- ── Feedback Modal ───────────────────────────────────────────────────────── -->
+<div id="feedbackModal" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant">
+      <div>
+        <h3 class="text-headline-md text-on-surface">Rate this JD</h3>
+        <p class="text-label-sm text-on-surface-variant mt-0.5">Your feedback improves future generations for this role.</p>
+      </div>
+      <button onclick="closeFeedbackModal()" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center transition-colors">
+        <span class="material-symbols-outlined text-[20px] text-on-surface-variant">close</span>
+      </button>
+    </div>
+
+    <div class="px-6 py-5 flex flex-col gap-5">
+
+      <!-- Overall rating -->
+      <div>
+        <p class="text-label-md text-on-surface mb-2">Overall quality</p>
+        <div class="flex gap-1" id="starRating">
+          <button class="star-btn" data-star="1" onclick="setStar(1)">★</button>
+          <button class="star-btn" data-star="2" onclick="setStar(2)">★</button>
+          <button class="star-btn" data-star="3" onclick="setStar(3)">★</button>
+          <button class="star-btn" data-star="4" onclick="setStar(4)">★</button>
+          <button class="star-btn" data-star="5" onclick="setStar(5)">★</button>
+        </div>
+      </div>
+
+      <!-- Section scores -->
+      <div>
+        <p class="text-label-md text-on-surface mb-2">Section quality <span class="text-label-sm text-on-surface-variant font-normal">(optional)</span></p>
+        <div class="flex flex-col gap-2">
+          {% for section in ['Role Summary','Key Responsibilities','Must-Have Skills','Nice-to-Have Skills'] %}
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-body-sm text-on-surface w-44 shrink-0">{{ section }}</span>
+            <div class="flex gap-1">
+              {% for score in [1,2,3,4,5] %}
+              <button class="section-score-btn" data-section="{{ section | lower | replace(' ','-') }}" data-score="{{ score }}" onclick="setSectionScore('{{ section | lower | replace(' ','-') }}', {{ score }})">{{ score }}</button>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- What worked -->
+      <div>
+        <p class="text-label-md text-on-surface mb-2">What worked well <span class="text-label-sm text-on-surface-variant font-normal">(select all that apply)</span></p>
+        <div class="flex flex-wrap gap-2" id="posTags">
+          {% for tag in ['Tone','Specificity','Structure','Skill depth','Buyer references','Certification names','Responsibilities','Length'] %}
+          <button class="tag-pill" data-tag="{{ tag }}" onclick="toggleTag(this,'pos')">{{ tag }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- What to improve -->
+      <div>
+        <p class="text-label-md text-on-surface mb-2">What needs improvement</p>
+        <div class="flex flex-wrap gap-2" id="impTags">
+          {% for tag in ['Too generic','Too long','Wrong level','Missing tech stack','Weak responsibilities','Vague skills','Wrong tone','Needs more context'] %}
+          <button class="tag-pill" data-tag="{{ tag }}" onclick="toggleTag(this,'imp')">{{ tag }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Better than manual -->
+      <div>
+        <p class="text-label-md text-on-surface mb-2">Compared to writing manually:</p>
+        <div class="flex gap-2 flex-wrap">
+          {% for opt in [('yes','Better'),('about_the_same','About the same'),('no','Worse')] %}
+          <button class="section-score-btn" id="btm_{{ opt[0] }}" onclick="setBTM('{{ opt[0] }}')">{{ opt[1] }}</button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Free text -->
+      <div>
+        <label class="text-label-md text-on-surface mb-1 block">Any instructions for next generation? <span class="text-label-sm font-normal text-on-surface-variant">(optional)</span></label>
+        <textarea id="feedbackFreeText" rows="3" placeholder="e.g. Always include AQL sampling plan details for QA roles"
+                  class="w-full border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none resize-none"></textarea>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="px-6 py-4 border-t border-outline-variant flex justify-end gap-3">
+      <button onclick="closeFeedbackModal()" class="px-4 py-2 text-label-sm text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+        Skip
+      </button>
+      <button onclick="submitFeedback()"
+              class="px-5 py-2 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">send</span>
+        Submit Feedback
+      </button>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  // Data from Flask
+  const DEPARTMENTS   = {{ departments | tojson }};
+  const FAMILY_LABELS = {{ family_labels | tojson }};
+  const YOE_LABELS    = {{ yoe_labels | tojson }};
+
+  // Generation state
+  let currentGenerationId = null;
+  let approvedJdId = null;
+
+  // ── Local draft helpers (persists generated JDs to localStorage) ──────────
+  function _saveGeneratedDraft(inputs, jdText, generationId) {
+    if (!generationId) return;
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    drafts[generationId] = {
+      id: generationId,
+      role_title: inputs.role_title,
+      department: inputs.department,
+      family: inputs.family,
+      yoe_band: inputs.yoe_band,
+      jd_text: jdText,
+      status: 'pending',   // 'pending' | 'approved'
+      saved_at: new Date().toISOString(),
+    };
+    localStorage.setItem('jd_generated_drafts', JSON.stringify(drafts));
+  }
+
+  function _markDraftApproved(generationId, jdId) {
+    if (!generationId) return;
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    if (drafts[generationId]) {
+      drafts[generationId].status = 'approved';
+      drafts[generationId].jd_id = jdId;
+      drafts[generationId].approved_at = new Date().toISOString();
+      localStorage.setItem('jd_generated_drafts', JSON.stringify(drafts));
+    }
+  }
+
+  // ── Dropdown helpers ──────────────────────────────────────────────────────
+
+  function populateFamilies() {
+    const dept = document.getElementById('department').value;
+    const familySelect = document.getElementById('family');
+    familySelect.innerHTML = '';
+    if (!dept) {
+      familySelect.innerHTML = '<option value="">Select department first</option>';
+      familySelect.disabled = true;
+      return;
+    }
+    const families = DEPARTMENTS[dept] || [];
+    familySelect.innerHTML = '<option value="">Select role family</option>';
+    families.forEach(f => {
+      const opt = document.createElement('option');
+      opt.value = f;
+      opt.textContent = FAMILY_LABELS[f] || f.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      familySelect.appendChild(opt);
+    });
+    familySelect.disabled = false;
+  }
+
+  function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+
+  // ── JD text formatter — strips markdown ## and presents clean section headers ──
+  function _formatJD(raw) {
+    const sectionMap = {
+      'Role Summary':         '◆  ROLE SUMMARY',
+      'Key Responsibilities': '◆  KEY RESPONSIBILITIES',
+      'Must-Have Skills':     '◆  MUST-HAVE SKILLS',
+      'Good to Have':         '◆  GOOD TO HAVE',
+      'What We Offer':        '◆  WHAT WE OFFER',
+      // common variations
+      'Nice-to-Have Skills':  '◆  GOOD TO HAVE',
+      'Nice to Have':         '◆  GOOD TO HAVE',
+      'What We offer':        '◆  WHAT WE OFFER',
+    };
+    const divider = '─'.repeat(46);
+    return raw
+      .replace(/^#{1,3}\s*(.+)$/gm, (_, heading) => {
+        const clean = heading.trim();
+        const mapped = sectionMap[clean] || ('◆  ' + clean.toUpperCase());
+        return `\n${mapped}\n${divider}`;
+      })
+      .replace(/^\*\s+/gm, '•  ')        // * bullets → •
+      .replace(/^-\s{2,}/gm, '•  ')      // -   bullets → •
+      .replace(/\n{3,}/g, '\n\n')         // collapse excess blank lines
+      .trimStart();
+  }
+
+  // ── Auto-save edits back to the draft in localStorage ────────────────────
+  let _autosaveTimer = null;
+  function _autosaveDraft() {
+    if (!currentGenerationId) return;
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    if (!drafts[currentGenerationId]) return;
+    drafts[currentGenerationId].jd_text    = document.getElementById('jdOutput').value;
+    drafts[currentGenerationId].edited_at  = new Date().toISOString();
+    drafts[currentGenerationId].has_edits  = true;
+    localStorage.setItem('jd_generated_drafts', JSON.stringify(drafts));
+    // Broadcast to History tab
+    localStorage.setItem('jd_draft_updated', currentGenerationId + '_' + Date.now());
+  }
+
+  document.getElementById('jdOutput').addEventListener('input', function() {
+    autoResize(this);
+    document.getElementById('editHint').style.display = 'none';
+    clearTimeout(_autosaveTimer);
+    _autosaveTimer = setTimeout(_autosaveDraft, 800);   // debounce 800ms
+  });
+  document.getElementById('jdOutput').addEventListener('focus', function() {
+    document.getElementById('editHint').style.display = 'none';
+  });
+
+  // ── Generate (single JD, temperature 0.9) ──────────────────────────────────
+
+  // ── Toggle button helper (Employment Type / Work Mode) ───────────────────
+  function selectToggle(groupId, btn) {
+    document.querySelectorAll(`#${groupId} button`).forEach(b => {
+      b.classList.remove('selected', '!border-secondary', '!bg-secondary/10', '!text-secondary', 'font-medium');
+      b.classList.add('border-outline-variant', 'text-on-surface-variant');
+    });
+    btn.classList.add('selected');
+    btn.classList.remove('border-outline-variant', 'text-on-surface-variant');
+  }
+  function _toggleVal(groupId) {
+    const sel = document.querySelector(`#${groupId} button.selected`);
+    return sel ? sel.dataset.value : '';
+  }
+
+  // ── Family change — clear stale skills and immediately fetch suggestions ──
+  function onFamilyChange() {
+    _skills = [];
+    _renderChips();
+    clearTimeout(_suggestTimer);
+    _fetchSuggestedSkills();   // no debounce — user made an explicit selection
+  }
+
+  // ── Role type toggle ──────────────────────────────────────────────────────
+  function onRoleTypeChange() {
+    const isMgr = document.getElementById('roleTypeMgr').checked;
+    const row = document.getElementById('teamSizeRow');
+    row.classList.toggle('hidden', !isMgr);
+    if (!isMgr) document.getElementById('teamSize').value = '';
+  }
+
+  // ── Skill chips ───────────────────────────────────────────────────────────
+  let _skills = [];   // {label, suggested}
+
+  function _renderChips() {
+    const container = document.getElementById('skillChips');
+    const placeholder = document.getElementById('skillsPlaceholder');
+    if (_skills.length === 0) {
+      container.innerHTML = '';
+      if (placeholder) { placeholder.style.display = ''; container.appendChild(placeholder); }
+      return;
+    }
+    if (placeholder) placeholder.style.display = 'none';
+    container.innerHTML = _skills.map((s, i) =>
+      `<span class="skill-chip ${s.suggested ? 'suggested' : ''}">
+        ${s.label}
+        <span class="rm" onclick="removeSkill(${i})" title="Remove">×</span>
+      </span>`
+    ).join('');
+  }
+
+  function addSkill(label) {
+    const input = document.getElementById('skillInput');
+    const val = (label || input.value).trim();
+    if (!val) return;
+    if (_skills.some(s => s.label.toLowerCase() === val.toLowerCase())) {
+      if (input) input.value = '';
+      return;
+    }
+    _skills.push({ label: val, suggested: false });
+    _renderChips();
+    if (input) input.value = '';
+  }
+
+  function removeSkill(idx) {
+    _skills.splice(idx, 1);
+    _renderChips();
+  }
+
+  let _suggestTimer = null;
+  function triggerSkillSuggest() {
+    clearTimeout(_suggestTimer);
+    _suggestTimer = setTimeout(_fetchSuggestedSkills, 400);
+  }
+
+  async function _fetchSuggestedSkills() {
+    const roleTitle  = document.getElementById('roleTitle').value.trim();
+    const department = document.getElementById('department').value;
+    const family     = document.getElementById('family').value;
+    if (!roleTitle && !department) return;
+
+    document.getElementById('skillsLoading').classList.remove('hidden');
+    try {
+      const params = new URLSearchParams({ role_title: roleTitle, department, family });
+      const res  = await fetch(`/api/jd/suggest-skills?${params}`);
+      const data = await res.json();
+      if (data.must_have && data.must_have.length > 0) {
+        // Add suggested skills not already in the list
+        data.must_have.forEach(skill => {
+          if (!_skills.some(s => s.label.toLowerCase() === skill.toLowerCase())) {
+            _skills.push({ label: skill, suggested: true });
+          }
+        });
+        _renderChips();
+        document.getElementById('skillsPlaceholder') && (document.getElementById('skillsPlaceholder').style.display = 'none');
+      }
+    } catch(e) { /* silent */ }
+    finally { document.getElementById('skillsLoading').classList.add('hidden'); }
+  }
+
+  // Attach suggest trigger to role title + family/dept changes
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('roleTitle').addEventListener('input', triggerSkillSuggest);
+    // family change is handled by onFamilyChange() via HTML onchange attribute
+    // department change clears skills (onFamilyChange re-fetches when family is re-selected)
+    document.getElementById('department').addEventListener('change', () => {
+      _skills = [];
+      _renderChips();
+    });
+  });
+
+  // ── Form inputs ───────────────────────────────────────────────────────────
+  function _currentFormInputs() {
+    const isMgr   = document.getElementById('roleTypeMgr').checked;
+    const teamSize = document.getElementById('teamSize').value.trim();
+    const empMap  = { full_time: 'Full-Time', contract: 'Contract', intern: 'Intern / Trainee' };
+    const wkMap   = { onsite: 'Onsite', hybrid: 'Hybrid', remote: 'Remote' };
+    return {
+      role_title:       document.getElementById('roleTitle').value.trim(),
+      role_type:        isMgr ? 'team_manager' : 'individual_contributor',
+      team_size:        isMgr && teamSize ? parseInt(teamSize, 10) : null,
+      employment_type:  empMap[_toggleVal('empTypeGroup')] || 'Full-Time',
+      work_mode:        wkMap[_toggleVal('workModeGroup')]  || 'Onsite',
+      reports_to:       document.getElementById('reportsTo').value.trim(),
+      must_have_skills: _skills.map(s => s.label),
+      department:       document.getElementById('department').value,
+      family:           document.getElementById('family').value,
+      yoe_band:         document.getElementById('yoeBand').value,
+      focus_areas:      document.getElementById('focusAreas').value.trim(),
+    };
+  }
+
+  async function _callGenerate(inputs) {
+    const res = await fetch('/api/jd/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inputs),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || 'Generation failed.');
+    return data;
+  }
+
+  async function generateJD() {
+    const inputs = _currentFormInputs();
+    if (!inputs.role_title || !inputs.department || !inputs.family || !inputs.yoe_band) {
+      showToast('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    setGenerating(true);
+    document.getElementById('emptyState').classList.add('hidden');
+    document.getElementById('loadingState').classList.remove('hidden');
+    document.getElementById('loadingState').classList.add('flex');
+    document.getElementById('outputCard').classList.add('hidden');
+
+    try {
+      const data = await _callGenerate(inputs);
+      currentGenerationId = data.generation_id;
+
+      const textarea = document.getElementById('jdOutput');
+      textarea.value = _formatJD(data.jd);
+      autoResize(textarea);
+      document.getElementById('editHint').style.display = 'flex';
+
+      document.getElementById('loadingState').classList.add('hidden');
+      document.getElementById('loadingState').classList.remove('flex');
+      document.getElementById('outputCard').classList.remove('hidden');
+
+      // Build per-section AI Ideas bar
+      _buildSectionIdeasBar(textarea.value);
+
+      // Save formatted text as local draft so History shows it even before approval
+      _saveGeneratedDraft(inputs, textarea.value, data.generation_id);
+
+    } catch (err) {
+      document.getElementById('loadingState').classList.add('hidden');
+      document.getElementById('loadingState').classList.remove('flex');
+      document.getElementById('emptyState').classList.remove('hidden');
+      showToast(err.message, 'error');
+    } finally {
+      setGenerating(false);
+    }
+  }
+
+  async function regenerateJD(btnEl) {
+    const inputs = _currentFormInputs();
+    if (!inputs.role_title || !inputs.department || !inputs.family || !inputs.yoe_band) {
+      showToast('Missing role details — cannot regenerate.', 'error');
+      return;
+    }
+
+    const origHTML = btnEl.innerHTML;
+    btnEl.disabled = true;
+    btnEl.innerHTML = `<span class="material-symbols-outlined text-[16px]">hourglass_empty</span> Regenerating…`;
+
+    try {
+      const data = await _callGenerate(inputs);
+      currentGenerationId = data.generation_id;
+
+      const textarea = document.getElementById('jdOutput');
+      textarea.value = _formatJD(data.jd);
+      autoResize(textarea);
+      _buildSectionIdeasBar(textarea.value);
+      showToast('Regenerated at temperature 0.9.', 'success');
+
+    } catch (err) {
+      showToast(err.message, 'error');
+    } finally {
+      btnEl.disabled = false;
+      btnEl.innerHTML = origHTML;
+    }
+  }
+
+  // ── Approve & Save ────────────────────────────────────────────────────────
+
+  async function approveJD() {
+    const jd         = document.getElementById('jdOutput').value.trim();
+    const roleTitle  = document.getElementById('roleTitle').value.trim();
+    const department = document.getElementById('department').value;
+    const family     = document.getElementById('family').value;
+    const yoeBand    = document.getElementById('yoeBand').value;
+
+    if (!jd) { showToast('No JD to approve.', 'error'); return; }
+
+    try {
+      const res = await fetch('/api/jd/approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          generation_id: currentGenerationId,
+          jd,
+          role_title: roleTitle,
+          department,
+          family,
+          yoe_band: yoeBand,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save.');
+
+      approvedJdId = data.jd_id;
+
+      const ratioMsg = data.edit_ratio > 0
+        ? ` (edit ratio: ${Math.round(data.edit_ratio * 100)}%)`
+        : ' (no edits made)';
+      showToast(`Saved to knowledge base${ratioMsg}`, 'success');
+
+      // Mark draft as approved and broadcast to other tabs
+      _markDraftApproved(currentGenerationId, data.jd_id);
+      localStorage.setItem('jd_approved_event', JSON.stringify({
+        jd_id: data.jd_id, ts: Date.now()
+      }));
+
+      // Show feedback modal after short delay
+      setTimeout(() => openFeedbackModal(), 800);
+
+    } catch (err) {
+      showToast(err.message, 'error');
+    }
+  }
+
+  // ── Download ──────────────────────────────────────────────────────────────
+
+  function copyJD() {
+    const text = document.getElementById('jdOutput').value;
+    navigator.clipboard.writeText(text).then(() => {
+      document.getElementById('copyLabel').textContent = 'Copied!';
+      setTimeout(() => document.getElementById('copyLabel').textContent = 'Copy', 2000);
+    });
+  }
+
+  function _getExportPayload() {
+    return {
+      jd:          document.getElementById('jdOutput').value.trim(),
+      role_title:  document.getElementById('roleTitle').value.trim() || 'Job Description',
+      department:  document.getElementById('department').value,
+      family:      document.getElementById('family').value,
+      yoe_band:    document.getElementById('yoeBand').value,
+    };
+  }
+
+  async function _downloadBlob(endpoint, ext, btnEl) {
+    const payload = _getExportPayload();
+    if (!payload.jd) { showToast('No JD content to download.', 'error'); return; }
+
+    const origHTML = btnEl ? btnEl.innerHTML : '';
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.innerHTML = `<span class="material-symbols-outlined text-[16px]" style="animation:spin 1s linear infinite">progress_activity</span> …`;
+    }
+
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        let errMsg = 'Download failed.';
+        try { const e = await res.json(); errMsg = e.error || errMsg; } catch(_) {}
+        showToast(errMsg, 'error'); return;
+      }
+
+      const blob = await res.blob();
+      const url  = URL.createObjectURL(blob);
+      const d    = new Date();
+      const filename = `${payload.role_title.replace(/\s+/g,'_')}_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.${ext}`;
+
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); document.body.removeChild(a); }, 500);
+      showToast(`${ext.toUpperCase()} downloaded — ${filename}`, 'success');
+
+    } catch (err) {
+      showToast('Download error: ' + err.message, 'error');
+    } finally {
+      if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = origHTML; }
+    }
+  }
+
+  async function previewBranded(btnEl) {
+    const payload = _getExportPayload();
+    if (!payload.jd) { showToast('No JD content to preview.', 'error'); return; }
+
+    const origHTML = btnEl ? btnEl.innerHTML : '';
+    if (btnEl) { btnEl.disabled = true; btnEl.innerHTML = `<span class="material-symbols-outlined text-[16px]">hourglass_empty</span> …`; }
+
+    try {
+      const res = await fetch('/api/jd/preview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        let errMsg = 'Preview failed.';
+        try { const e = await res.json(); errMsg = e.error || errMsg; } catch(_) {}
+        showToast(errMsg, 'error'); return;
+      }
+      const html = await res.text();
+      const blob = new Blob([html], { type: 'text/html' });
+      const url  = URL.createObjectURL(blob);
+      const win  = window.open(url, '_blank');
+      if (!win) showToast('Allow pop-ups to open the branded preview.', 'error');
+      else showToast('Branded preview opened — use Ctrl/Cmd+P to save as PDF.', 'success');
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch (err) {
+      showToast('Preview error: ' + err.message, 'error');
+    } finally {
+      if (btnEl) { btnEl.disabled = false; btnEl.innerHTML = origHTML; }
+    }
+  }
+
+  function downloadDocx(btn) { _downloadBlob('/api/download', 'docx', btn); }
+  function downloadPdf(btn)  { _downloadBlob('/api/jd/download-pdf', 'pdf', btn); }
+
+  // ── UI helpers ────────────────────────────────────────────────────────────
+
+  function setGenerating(loading) {
+    const btn  = document.getElementById('generateBtn');
+    const icon = document.getElementById('btnIcon');
+    const txt  = document.getElementById('btnText');
+    btn.disabled = loading;
+    icon.textContent = loading ? 'hourglass_empty' : 'auto_awesome';
+    txt.textContent  = loading ? 'Generating...' : 'Generate JD';
+  }
+
+  let toastTimer = null;
+  function showToast(msg, type='success') {
+    const toast = document.getElementById('toast');
+    const icon  = document.getElementById('toastIcon');
+    const label = document.getElementById('toastMsg');
+    label.textContent = msg;
+    icon.textContent  = type === 'error' ? 'error' : 'check_circle';
+    toast.className = `fixed bottom-6 right-6 px-5 py-3 rounded-lg shadow-lg text-label-md flex items-center gap-2 z-50 ${
+      type === 'error' ? 'bg-error-container text-on-error-container' : 'bg-inverse-surface text-inverse-on-surface'
+    }`;
+    toast.classList.remove('hidden');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.add('hidden'), 4000);
+  }
+
+  // ── Feedback modal ────────────────────────────────────────────────────────
+
+  let _starRating = 0;
+  let _sectionScores = {};
+  let _posTags = new Set();
+  let _impTags = new Set();
+  let _btm = '';
+
+  function openFeedbackModal() {
+    // Reset state
+    _starRating = 0; _sectionScores = {}; _posTags = new Set(); _impTags = new Set(); _btm = '';
+    document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.section-score-btn').forEach(b => b.classList.remove('sel'));
+    document.querySelectorAll('.tag-pill').forEach(b => { b.classList.remove('sel-pos','sel-imp'); });
+    document.getElementById('feedbackFreeText').value = '';
+    document.getElementById('feedbackModal').classList.remove('hidden');
+  }
+
+  function closeFeedbackModal() {
+    document.getElementById('feedbackModal').classList.add('hidden');
+  }
+
+  function setStar(n) {
+    _starRating = n;
+    document.querySelectorAll('.star-btn').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.star) <= n);
+    });
+  }
+
+  function setSectionScore(sectionKey, score) {
+    _sectionScores[sectionKey] = score;
+    document.querySelectorAll(`.section-score-btn[data-section="${sectionKey}"]`).forEach(b => {
+      b.classList.toggle('sel', parseInt(b.dataset.score) === score);
+    });
+  }
+
+  function toggleTag(btn, type) {
+    const tag = btn.dataset.tag;
+    if (type === 'pos') {
+      if (_posTags.has(tag)) { _posTags.delete(tag); btn.classList.remove('sel-pos'); }
+      else { _posTags.add(tag); btn.classList.add('sel-pos'); }
+    } else {
+      if (_impTags.has(tag)) { _impTags.delete(tag); btn.classList.remove('sel-imp'); }
+      else { _impTags.add(tag); btn.classList.add('sel-imp'); }
+    }
+  }
+
+  function setBTM(val) {
+    _btm = val;
+    ['yes','about_the_same','no'].forEach(v => {
+      document.getElementById(`btm_${v}`).classList.toggle('sel', v === val);
+    });
+  }
+
+  async function submitFeedback() {
+    if (_starRating === 0) { showToast('Please give an overall star rating.', 'error'); return; }
+
+    const department = document.getElementById('department').value;
+    const family     = document.getElementById('family').value;
+    const yoeBand    = document.getElementById('yoeBand').value;
+    const roleTitle  = document.getElementById('roleTitle').value.trim();
+
+    try {
+      const res = await fetch('/api/jd/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jd_id: approvedJdId || 'unknown',
+          department,
+          family,
+          yoe_band: yoeBand,
+          role_title: roleTitle,
+          overall_rating: _starRating,
+          section_ratings: _sectionScores,
+          positive_tags: [..._posTags],
+          improvement_tags: [..._impTags],
+          free_text: document.getElementById('feedbackFreeText').value.trim(),
+          better_than_manual: _btm || 'about_the_same',
+        }),
+      });
+      const data = await res.json();
+      closeFeedbackModal();
+      showToast(data.message || 'Feedback saved!', 'success');
+    } catch (err) {
+      showToast('Could not save feedback.', 'error');
+    }
+  }
+
+  // ── Resume draft from History ─────────────────────────────────────────────
+  (function resumeDraftIfPending() {
+    const draftId = localStorage.getItem('jd_resume_draft_id');
+    if (!draftId) return;
+    localStorage.removeItem('jd_resume_draft_id');
+
+    const drafts = JSON.parse(localStorage.getItem('jd_generated_drafts') || '{}');
+    const d = drafts[draftId];
+    if (!d || !d.jd_text) return;
+
+    // Pre-fill form fields
+    const deptEl   = document.getElementById('department');
+    const familyEl = document.getElementById('family');
+    const yoeEl    = document.getElementById('yoeBand');
+    const titleEl  = document.getElementById('roleTitle');
+
+    if (d.department && deptEl) { deptEl.value = d.department; populateFamilies(); }
+    if (d.family && familyEl)   { familyEl.value = d.family; }
+    if (d.yoe_band && yoeEl)    { yoeEl.value = d.yoe_band; }
+    if (d.role_title && titleEl){ titleEl.value = d.role_title; }
+
+    currentGenerationId = draftId;
+
+    // Show JD output area with draft content
+    const textarea = document.getElementById('jdOutput');
+    textarea.value = d.jd_text;
+    autoResize(textarea);
+    document.getElementById('editHint').style.display = 'flex';
+    document.getElementById('emptyState').classList.add('hidden');
+    document.getElementById('loadingState').classList.add('hidden');
+    document.getElementById('outputCard').classList.remove('hidden');
+
+    showToast('Draft loaded — review and approve when ready.', 'success');
+    _buildSectionIdeasBar(textarea.value);
+  })();
+
+  // ── Per-section AI Ideas ───────────────────────────────────────────────────
+
+  let _drawerSectionIdx  = null;   // index into _jdSectionsCache
+  let _drawerAction      = 'suggest';
+  let _drawerSuggestions = [];     // last fetched suggestions array
+  let _drawerRawText     = '';     // last fetched raw text (for rewrite)
+
+  function _escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Parse formatted JD text → [{title, content, lines:[]}]
+  function _parseJDSections(text) {
+    const sections = [];
+    const lines    = text.split('\n');
+    let title = null, buf = [];
+    for (const ln of lines) {
+      if (/^◆\s+/.test(ln)) {
+        if (title !== null) sections.push({ title, content: buf.join('\n').trim(), lines: buf });
+        title = ln.replace(/^◆\s+/, '').trim();
+        buf   = [];
+      } else if (/^─{5,}$/.test(ln.trim())) {
+        // skip divider line
+      } else if (title !== null) {
+        buf.push(ln);
+      }
+    }
+    if (title !== null) sections.push({ title, content: buf.join('\n').trim(), lines: buf });
+    return sections;
+  }
+
+  // ── Section Ideas Bar ──────────────────────────────────────────────────────
+  function _buildSectionIdeasBar(text) {
+    const sections = _parseJDSections(text);
+    const bar  = document.getElementById('sectionIdeasBar');
+    const btns = document.getElementById('sectionIdeasBtns');
+    if (!bar || !btns || !sections.length) return;
+    btns.innerHTML = sections.map((sec, i) =>
+      `<button onclick="openSectionDrawer(${i})"
+               class="flex items-center gap-1 px-3 py-1.5 bg-white border border-outline-variant text-label-xs text-on-surface-variant rounded-full hover:border-secondary hover:text-secondary hover:bg-secondary/5 transition-all">
+         <span class="material-symbols-outlined text-[12px]">auto_awesome</span>
+         ${_escHtml(sec.title)}
+       </button>`
+    ).join('');
+    bar.classList.remove('hidden');
+  }
+
+  // ── Open / close drawer ────────────────────────────────────────────────────
+  function openSectionDrawer(idx) {
+    const secs = _parseJDSections(document.getElementById('jdOutput').value);
+    if (!secs[idx]) return;
+    _drawerSectionIdx = idx;
+
+    document.getElementById('drawerSectionTitle').textContent = secs[idx].title;
+    _renderCurrentBullets(secs[idx]);
+
+    // Reset to "Add Ideas" tab
+    _activateTab(document.querySelector('.drawer-tab[data-action="suggest"]'));
+    _drawerAction = 'suggest';
+
+    document.getElementById('sectionDrawer').style.transform = 'translateX(0)';
+    document.getElementById('drawerBackdrop').classList.remove('hidden');
+    _fetchSectionIdeas();
+  }
+
+  function closeSectionDrawer() {
+    document.getElementById('sectionDrawer').style.transform = 'translateX(100%)';
+    document.getElementById('drawerBackdrop').classList.add('hidden');
+  }
+
+  // ── Tab switching ──────────────────────────────────────────────────────────
+  function setDrawerAction(action, btn) {
+    _drawerAction = action;
+    _activateTab(btn);
+    _fetchSectionIdeas();
+  }
+
+  function _activateTab(activeBtn) {
+    document.querySelectorAll('.drawer-tab').forEach(t => {
+      t.classList.remove('border-secondary','text-secondary');
+      t.classList.add('border-transparent','text-on-surface-variant');
+    });
+    if (activeBtn) {
+      activeBtn.classList.add('border-secondary','text-secondary');
+      activeBtn.classList.remove('border-transparent','text-on-surface-variant');
+    }
+  }
+
+  // ── "Current content" panel — shows existing bullets with × remove ─────────
+  function _renderCurrentBullets(sec) {
+    const container = document.getElementById('drawerCurrentBullets');
+    if (!container) return;
+
+    // Extract non-empty lines from current section
+    const rawLines = sec.content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+
+    if (!rawLines.length) {
+      container.innerHTML = '<p class="text-label-xs text-on-surface-variant italic">No content yet.</p>';
+      return;
+    }
+
+    container.innerHTML = rawLines.map((line, i) => {
+      const display = line.replace(/^[•\-\*]\s*/, '').trim();
+      return `<div class="flex items-start gap-2 group" id="cb-${i}">
+        <span class="text-secondary mt-0.5 text-body-sm flex-shrink-0">•</span>
+        <p class="flex-1 text-body-sm text-on-surface leading-snug">${_escHtml(display)}</p>
+        <button onclick="_removeBulletFromSection(${i})"
+                title="Remove this line"
+                class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 hover:text-error rounded">
+          <span class="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-error">remove_circle_outline</span>
+        </button>
+      </div>`;
+    }).join('');
+  }
+
+  // Remove a bullet from the section in the textarea
+  function _removeBulletFromSection(lineIdx) {
+    const ta   = document.getElementById('jdOutput');
+    const secs = _parseJDSections(ta.value);
+    const sec  = secs[_drawerSectionIdx];
+    if (!sec) return;
+
+    const rawLines = sec.content.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    if (!rawLines[lineIdx]) return;
+
+    const lineToRemove = rawLines[lineIdx];
+    const bounds = _getSectionBounds(ta.value, sec.title);
+    if (!bounds) return;
+
+    // Remove only that line from the section content
+    const contentSlice  = ta.value.substring(bounds.contentStart, bounds.contentEnd);
+    const cleanedContent = contentSlice.split('\n')
+      .filter(ln => ln.trim() !== lineToRemove && !(ln.replace(/^[•\-\*]\s*/,'').trim() === lineToRemove.replace(/^[•\-\*]\s*/,'')))
+      .join('\n');
+
+    ta.value = ta.value.substring(0, bounds.contentStart) + cleanedContent + ta.value.substring(bounds.contentEnd);
+    autoResize(ta);
+    _flashTextarea();
+    _triggerAutosave();
+    _buildSectionIdeasBar(ta.value);
+
+    // Re-render the current bullets panel
+    const newSecs = _parseJDSections(ta.value);
+    if (newSecs[_drawerSectionIdx]) _renderCurrentBullets(newSecs[_drawerSectionIdx]);
+    showToast('Line removed.', 'success');
+  }
+
+  // ── Fetch AI suggestions ───────────────────────────────────────────────────
+  async function _fetchSectionIdeas() {
+    const secs = _parseJDSections(document.getElementById('jdOutput').value);
+    const sec  = secs[_drawerSectionIdx];
+    if (!sec) return;
+
+    document.getElementById('drawerLoading').classList.remove('hidden');
+    document.getElementById('drawerItems').classList.add('hidden');
+    document.getElementById('drawerItems').innerHTML = '';
+    document.getElementById('drawerError').classList.add('hidden');
+
+    const inp = _currentFormInputs();
+    try {
+      const res = await fetch('/api/jd/improve-section', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          section:      sec.title,
+          current_text: sec.content,
+          role_title:   inp.role_title,
+          department:   inp.department,
+          family:       inp.family,
+          yoe_band:     inp.yoe_band,
+          role_type:    inp.role_type,
+          action:       _drawerAction,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || 'Failed');
+
+      _drawerSuggestions = data.suggestions || [];
+      _drawerRawText     = data.raw || '';
+      _renderDrawerItems();
+    } catch (e) {
+      document.getElementById('drawerLoading').classList.add('hidden');
+      document.getElementById('drawerError').classList.remove('hidden');
+    }
+  }
+
+  // ── Render suggestion cards ────────────────────────────────────────────────
+  function _renderDrawerItems() {
+    document.getElementById('drawerLoading').classList.add('hidden');
+    const container = document.getElementById('drawerItems');
+    container.innerHTML = '';
+
+    if (_drawerAction === 'rewrite') {
+      // Single "replace all" block
+      const div = document.createElement('div');
+      div.className = 'p-4 bg-surface-container-low border border-outline-variant rounded-xl space-y-3';
+      const pre = document.createElement('p');
+      pre.className = 'text-body-sm text-on-surface whitespace-pre-wrap leading-relaxed';
+      pre.textContent = _drawerRawText;
+      div.appendChild(pre);
+      const btn = document.createElement('button');
+      btn.className = 'w-full py-2 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-on-primary-fixed-variant transition-colors';
+      btn.textContent = 'Replace entire section';
+      btn.onclick = () => _doApply(_drawerRawText, 'replace');
+      div.appendChild(btn);
+      container.appendChild(div);
+    } else {
+      _drawerSuggestions.forEach((s, i) => {
+        if (!s.trim()) return;
+        const div = document.createElement('div');
+        div.className = 'group flex items-start gap-3 p-3 bg-surface-container-low border border-outline-variant rounded-xl hover:border-secondary/40 transition-all';
+        const bullet = document.createElement('span');
+        bullet.className = 'text-secondary font-bold mt-0.5 flex-shrink-0 text-body-sm';
+        bullet.textContent = '•';
+        div.appendChild(bullet);
+
+        const right = document.createElement('div');
+        right.className = 'flex-1 min-w-0 space-y-2';
+        const p = document.createElement('p');
+        p.className = 'text-body-sm text-on-surface leading-relaxed';
+        p.textContent = s;
+        right.appendChild(p);
+
+        const btns = document.createElement('div');
+        btns.className = 'flex gap-2';
+
+        const appendBtn = document.createElement('button');
+        appendBtn.className = 'px-3 py-1 bg-secondary/10 text-secondary border border-secondary/20 rounded-full text-label-xs font-medium hover:bg-secondary/20 transition-colors';
+        appendBtn.textContent = '+ Append';
+        appendBtn.onclick = () => _doApply(s, 'append');
+
+        const replaceBtn = document.createElement('button');
+        replaceBtn.className = 'px-3 py-1 bg-surface-container text-on-surface-variant border border-outline-variant rounded-full text-label-xs hover:border-secondary hover:text-secondary transition-colors';
+        replaceBtn.textContent = 'Replace all';
+        replaceBtn.onclick = () => _doApply(_drawerSuggestions.filter((_,j)=>j===i).join('\n'), 'replace');
+
+        btns.appendChild(appendBtn);
+        btns.appendChild(replaceBtn);
+        right.appendChild(btns);
+        div.appendChild(right);
+        container.appendChild(div);
+      });
+    }
+
+    container.classList.remove('hidden');
+  }
+
+  // ── Core apply logic ───────────────────────────────────────────────────────
+
+  // Find a section's content bounds in the raw textarea text
+  function _getSectionBounds(text, sectionTitle) {
+    // Match ◆  TITLE (case-insensitive, flexible spacing)
+    const escaped = sectionTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const headerRe = new RegExp('◆\\s+' + escaped + '\\s*\\n', 'i');
+    const m = headerRe.exec(text);
+    if (!m) return null;
+
+    const afterHeaderLine = m.index + m[0].length;
+    // Skip optional divider line (─────)
+    let contentStart = afterHeaderLine;
+    const maybeDivider = text.indexOf('\n', contentStart);
+    if (maybeDivider !== -1) {
+      const potentialDivider = text.substring(contentStart, maybeDivider).trim();
+      if (/^─{5,}$/.test(potentialDivider)) {
+        contentStart = maybeDivider + 1;
+      }
+    }
+
+    // Content ends at next ◆ or end of string
+    const nextSecIdx = text.indexOf('\n◆  ', contentStart);
+    const contentEnd = nextSecIdx === -1 ? text.length : nextSecIdx;
+
+    return { headerStart: m.index, contentStart, contentEnd };
+  }
+
+  function _doApply(newText, mode) {
+    const ta   = document.getElementById('jdOutput');
+    const secs = _parseJDSections(ta.value);
+    const sec  = secs[_drawerSectionIdx];
+    if (!sec) { showToast('Section not found.', 'error'); return; }
+
+    const bounds = _getSectionBounds(ta.value, sec.title);
+    if (!bounds) { showToast('Could not locate section in JD.', 'error'); return; }
+
+    const before = ta.value.substring(0, bounds.contentStart);
+    const after  = ta.value.substring(bounds.contentEnd);
+
+    let newContent;
+    if (mode === 'append') {
+      const existing = ta.value.substring(bounds.contentStart, bounds.contentEnd).trimEnd();
+      const bullet   = /^[•\-\*]/.test(newText.trim()) ? newText.trim() : '•  ' + newText.trim();
+      newContent = existing + '\n' + bullet;
+    } else {
+      // replace: format each line as a bullet
+      const lines = newText.split('\n').map(l => l.trim()).filter(l => l);
+      newContent = '\n' + lines.map(l => /^[•\-\*]/.test(l) ? l : '•  ' + l).join('\n');
+    }
+
+    ta.value = before + newContent + '\n' + after;
+    autoResize(ta);
+    _flashTextarea();
+    _triggerAutosave();
+    _buildSectionIdeasBar(ta.value);
+
+    // Refresh current-bullets panel
+    const newSecs = _parseJDSections(ta.value);
+    if (newSecs[_drawerSectionIdx]) _renderCurrentBullets(newSecs[_drawerSectionIdx]);
+
+    showToast(mode === 'append' ? 'Added to ' + sec.title + '.' : sec.title + ' replaced.', 'success');
+  }
+
+  // Flash the textarea to signal a change was applied
+  function _flashTextarea() {
+    const ta = document.getElementById('jdOutput');
+    ta.style.transition = 'background 0.15s';
+    ta.style.background = 'rgba(129,0,34,0.06)';
+    setTimeout(() => { ta.style.background = ''; }, 500);
+  }
+
+  function _triggerAutosave() {
+    clearTimeout(_autosaveTimer);
+    _autosaveTimer = setTimeout(_autosaveDraft, 800);
+  }
+</script>
+{% endblock %}

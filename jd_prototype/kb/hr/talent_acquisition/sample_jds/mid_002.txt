@@ -1,0 +1,28 @@
+{"role_family": "Talent Acquisition", "seniority_level": "Mid", "team_context": "Generated via JD Generator", "primary_stack": "", "date_added": "2026-06-23", "approved_by": "dev@company.com"}
+
+---
+
+Role Summary
+You will join our HR department as a Mid-Level Consultant, responsible for driving strategic initiatives and providing expert advice to internal stakeholders. You will own projects from conception to delivery, working closely with cross-functional teams to achieve business objectives. Your mission is to identify areas for improvement and implement solutions that drive growth and efficiency.
+
+Key Responsibilities
+- You will conduct organizational analyses to identify opportunities for improvement and develop strategic recommendations
+- You will design and implement process improvements, working closely with stakeholders to ensure successful adoption
+- You will develop and deliver training programs to enhance employee skills and knowledge
+- You will provide coaching and guidance to employees and managers on HR-related matters
+- You will analyze data and metrics to inform business decisions and measure the effectiveness of HR initiatives
+- You will partner with senior leaders to develop and implement strategic plans that align with business objectives
+
+Must-Have Skills
+- You have 3+ years of experience in HR consulting or a related field, with a strong understanding of HR principles and practices
+- You are skilled in organizational design, process improvement, and change management
+- You have excellent communication and interpersonal skills, with the ability to build strong relationships with stakeholders
+- You are proficient in data analysis and interpretation, with experience using HR metrics to inform business decisions
+- You have a strong understanding of employment law and regulatory requirements
+- You are able to work independently and as part of a team, with a flexible and adaptable approach to changing priorities
+
+Nice-to-Have Skills
+- You have experience with HR technology and systems, including HRIS and performance management software
+- You have a certification in HR, such as SHRM-CP or PHR
+- You have experience working in a consulting environment, with a strong understanding of client relationships and project management
+- You have knowledge of diversity, equity, and inclusion principles and practices, with experience developing and implementing DEI initiatives

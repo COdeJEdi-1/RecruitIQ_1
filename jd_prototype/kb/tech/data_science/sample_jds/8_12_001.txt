@@ -1,0 +1,41 @@
+{"jd_id": "5289df47", "role_family": "Data Science", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "8-12", "generation_id": "b7ea7571-9399-42ba-b819-92138508025d", "date_added": "2026-06-29", "approved_at": "2026-06-29T11:27:28.724382", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+•  As a technical lead in automation engineering, you will dive deep into the design and development of automated solutions, leveraging advanced technologies such as machine learning, natural language processing, and robotic process automation to drive business efficiency. You will collaborate with cross-functional teams to identify areas for automation and implement solutions that meet business requirements, ensuring seamless integration with existing systems. Your expertise in programming languages such as Python, R, and Java will be essential in developing and deploying automated solutions. You will stay up-to-date with emerging trends and technologies to continuously improve automation capabilities.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Lead the development and deployment of automated solutions using Python, R, and ML algorithms to drive business efficiency and scalability.
+•  Set team goals, run performance reviews, and coach direct reports to ensure they are meeting their full potential and contributing to the team's objectives.
+•  Hire, onboard, and develop team members to build a high-performing team of automation engineers.
+•  Represent the team in cross-functional forums and stakeholder reviews to communicate project status, progress, and outcomes.
+•  Collaborate with business stakeholders to identify areas for automation and implement solutions that meet business requirements.
+•  Balance hands-on delivery with people management, ensuring that the team is delivering high-quality solutions while also developing their skills and expertise.
+•  Drive architecture decisions and define standards for automation solutions, ensuring that they are scalable, reliable, and maintainable.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Python / R — data wrangling, feature engineering, EDA, and automation scripting.
+•  Statistical modelling — hypothesis testing, confidence intervals, and regression analysis.
+•  ML algorithms — supervised and unsupervised learning, neural networks, and deep learning.
+•  Model deployment — deploying models to production environments using tools such as Replit.
+•  Experiment design / A-B testing — designing and executing experiments to measure the effectiveness of automated solutions.
+•  Pandas / NumPy — data manipulation, analysis, and visualization.
+•  Replit — deploying and managing automated solutions in a cloud-based environment.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with automation frameworks such as Selenium or Playwright.
+•  Knowledge of containerization using Docker and Kubernetes.
+•  Familiarity with agile development methodologies such as Scrum or Kanban.
+•  Certification in automation engineering or a related field.
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work on complex business problems and develop automated solutions that drive real business value.
+•  A collaborative and dynamic work environment with a team of experienced automation engineers.
+•  Access to cutting-edge technologies and tools, including Python, R, ML algorithms, and Replit.
+•  Opportunities for learning and development, including training and certification programs, to help you advance your career in automation engineering.

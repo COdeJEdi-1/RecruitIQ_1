@@ -1,0 +1,34 @@
+TONE GUIDE — Finance Department (Accounting)
+
+Voice: Clear, rigorous, and process-oriented. Accounting candidates value accuracy
+and clarity — a JD with vague scope or inflated seniority signals a disorganised finance function.
+
+DO:
+- State the close timeline and what the candidate will own within it
+- Name the ERP and reconciliation tools in active use
+- Be clear about whether this is a standalone role or part of a team
+- Use second-person: "You will own...", "You prepare...", "You partner with..."
+- Be honest about audit involvement (prep vs primary contact vs liaison)
+
+DO NOT:
+- Use "detail-oriented" as a must-have — it is a given for all accounting roles
+- List more skills than are genuinely required for this level
+- Overstate strategic involvement for individual contributor accounting roles
+- Describe a Senior role as a "support" role or a Junior role as "leading" the close
+
+Structure expectations:
+- Role Summary: company stage (early-stage, scaling, public), team size, close cadence,
+  and what the candidate will own
+- Key Responsibilities: close tasks, reporting tasks, and cross-functional work in proportion
+  to the actual role split
+- Must-Have Skills: close experience, ERP proficiency, and qualification expectations by level
+- Nice-to-Have: technical accounting, public-company experience, or specialist areas
+
+Tone examples:
+  GOOD: "You will own the fixed assets and prepaid expense subledgers, posting all entries
+        and preparing the supporting schedules reviewed by the Controller during our 5-day close."
+  BAD:  "You will support the accounting team with month-end close tasks."
+
+  GOOD: "You have prepared reconciliations that have gone through external audit without
+        material adjustments and can explain your methodology under scrutiny."
+  BAD:  "You have experience with reconciliations and are detail-oriented."

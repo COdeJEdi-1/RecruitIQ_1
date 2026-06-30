@@ -1,0 +1,82 @@
+role_family: "Store Manager"
+department: "Retail Operations"
+division: "Arvind Brands"
+company: "Arvind Limited"
+
+experience_bands:
+  junior:
+    label: "Junior / Executive"
+    years: "0-2"
+    seniority_tag: "Junior"
+    core_skills:
+      - Customer service and floor operations
+      - Daily sales reporting and cashiering
+      - Basic VM (Visual Merchandising) execution
+      - Stock replenishment and inventory counts
+    progressive_skills:
+      - Handling customer complaints and escalations
+    arvind_specific:
+      - Arvind Brands portfolio: Arrow, Flying Machine, US Polo Assn., Tommy Hilfiger, Calvin Klein India
+      - Brand standards compliance (VM guidelines, dress code, store SOPs)
+    leadership_skills: []
+
+  mid:
+    label: "Senior Executive / Assistant Manager"
+    years: "2-5"
+    seniority_tag: "Mid"
+    inherits_from: "junior"
+    progressive_skills:
+      - Store P&L basics (sales targets, shrinkage, conversion)
+      - Team management (3-8 store staff)
+      - KPI tracking: ATV, UPT, footfall conversion, shrinkage
+      - Seasonal stock planning and markdown management
+    arvind_specific:
+      - Managing an Arvind Brands EBO (Exclusive Brand Outlet)
+      - Liaison with zonal VM and supply chain teams
+    leadership_skills:
+      - Leading floor staff and team leads
+
+  senior:
+    label: "Manager / Senior Manager"
+    years: "5-8"
+    seniority_tag: "Senior"
+    inherits_from: "mid"
+    progressive_skills:
+      - Full store P&L ownership
+      - Staff hiring, training, and performance management
+      - Customer loyalty program management
+      - Opening new stores (setup, hiring, training)
+    arvind_specific:
+      - Multi-brand store operations (MBO/LFS context)
+      - Coordinating with Arvind Brands HQ on promos, launches
+    leadership_skills:
+      - Managing a store team of 10-25
+      - Reporting to Area Sales Manager
+
+  lead:
+    label: "Deputy General Manager / General Manager"
+    years: "8-12"
+    seniority_tag: "Lead"
+    inherits_from: "senior"
+    progressive_skills:
+      - Area / cluster management (5-10 stores)
+      - Retail expansion: site selection, LOI, fit-out planning
+      - Zonal P&L management
+      - Retail analytics: sell-through, GMROI, same-store growth
+    arvind_specific:
+      - Arvind Brands zonal/regional retail head
+    leadership_skills:
+      - Area Sales Manager / Regional Manager
+      - Managing a team of Store Managers
+
+  executive:
+    label: "Vice President / Chief Officer"
+    years: "12+"
+    seniority_tag: "Executive"
+    inherits_from: "lead"
+    progressive_skills:
+      - Retail strategy: channel mix, omnichannel, franchisee model
+      - National retail operations head
+    arvind_specific: []
+    leadership_skills:
+      - VP Retail / Head of Retail Operations

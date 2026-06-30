@@ -1,0 +1,68 @@
+role_family: Chief Operating Officer (Institutional)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Ahmedabad University - JD.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Oversee organization's ongoing operations and procedures to maintain control of operations
+    - Oversee HR, Campus Operations, IT, Finance
+    - Coordinate on large construction projects (internal customer requirements)
+    - Build and coordinate non-faculty organization
+    - Drive organizational & digital transformation & service excellence
+    - Oversee Residential Life
+    - Coordinate campus projects
+    - Medium & Long-term Planning and annual budgeting
+    - 'Local community relations: maintain peace on campus'
+    - Campus health services
+    - Campus technical facilities
+    - Oversee Bookstore, café & merchandize operations
+    - Classrooms, Audio-visual, Instructional Technology
+    - Assist in closure of schools, new school development
+    arvind_specific: []
+    leadership_skills:
+    - COO-level institutional operations leadership
+    qualifications:
+    - 'Preferable Background: some tech background, MBA, COO experience, diverse background (some experience
+      in health care/hospitality may help)'
+    - Research skills
+    - Confidence
+    - Determination
+    - Self-motivation
+    - Ability to work effectively under pressure
+    - IT skill
+    kpis: []
+    reporting_to: ''
+note: Not a core Arvind business unit — Ahmedabad University is affiliated with Ahmedabad Education Society
+  (AES), founded with involvement of Kasturbhai Lalbhai. Mapped to closest-fit department (STRATEGY &
+  CORPORATE DEVELOPMENT) per instructions.

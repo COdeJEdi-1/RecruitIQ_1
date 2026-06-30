@@ -1,0 +1,48 @@
+---METADATA---
+{
+  "role_family": "Direct Tax",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "2–5",
+  "seniority_label": "Senior Executive / Assistant Manager",
+  "source_doc": "Direct Tax_ Sr Analyst_Job_Descriptions.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+JOB DESCRIPTION
+Job Title: Senior Analyst – Direct Tax
+Location: Ahmedabad, Gujarat, India
+Department: Finance & Accounts (Taxation) – GCC
+Employment Type: Full-Time
+About the Role:
+We are looking for a detail-oriented and compliance-driven Senior Analyst – Direct Tax to support end-to-end direct tax operations within a Shared Services environment of a leading Indian conglomerate. The role requires hands-on expertise across income tax computation and return filing, tax provisioning, tax audit, advance tax, TDS/TCS compliance, and assessment/litigation support, along with strong knowledge of the Income Tax Act and SAP experience.
+Key Responsibilities:
+Prepare computation of total income and support filing of Income Tax Returns (ITR) for the relevant entities within statutory timelines.
+Compute current tax and deferred tax provisions, and support tax-related disclosures for financial statements and reporting.
+Support tax audit compliance, including preparation of Form 3CD details, schedules, and supporting documentation.
+Compute and arrange for advance tax payments based on projected income, ensuring accuracy and timeliness.
+Support income tax assessments and litigation by preparing submissions, data, and documentation, and coordinating with consultants and tax authorities.
+Perform TDS/TCS reconciliation (books vs. returns vs. Form 26AS) and ensure timely correction of mismatches.
+Prepare and validate Form 15CA / 15CB documentation for foreign remittances, and assess TDS applicability on forex payments including treaty/withholding considerations.
+Ensure statutory compliance reporting and adherence to direct tax due dates across all applicable obligations.
+Compute Professional Tax and support periodic Professional Tax return filing across applicable states.
+Manage tax queries from business, finance, and auditors, providing timely and accurate responses.
+Prepare MIS and tax dashboards covering compliance status, provisions, demands, and refunds.
+Adhere to SOPs, audit requirements, internal controls, and defined SLAs, and identify opportunities for process improvement and automation.
+Work independently with minimal supervision in a fast-paced Shared Services environment, and provide guidance to junior team members.
+Required Qualifications & Skills:
+Graduate in Commerce/Accounting (B.Com) or equivalent; CA / Inter-CA / CMA preferred.
+3–5 years of relevant experience in Direct Tax / corporate taxation / tax compliance.
+Strong understanding of the Income Tax Act, TDS/TCS provisions, tax provisioning (current and deferred), and tax audit requirements.
+Working knowledge of Form 15CA/15CB and withholding tax on foreign remittances.
+Mandatory hands-on experience working on SAP (FI); familiarity with tax filing utilities and TDS software preferred.
+Understanding of Indian statutory compliance and reporting requirements.
+Good verbal and written communication skills.
+Strong analytical, problem-solving, and organizational abilities, with good working knowledge of MS Excel.
+Experience working in Shared Services / GCC / large corporate environment preferred.
+Ideal Candidate Profile:
+The ideal candidate is a self-driven tax professional with strong direct tax expertise, sound knowledge of Indian income tax law and compliance, SAP proficiency, and attention to detail. The candidate should possess good communication and stakeholder management skills, demonstrate ownership and discipline around statutory timelines, and be capable of managing direct tax compliance and reporting activities independently in a process-driven Shared Services environment.

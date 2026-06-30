@@ -1,0 +1,59 @@
+---METADATA---
+{
+  "role_family": "IT Support Manager",
+  "department": "INFORMATION TECHNOLOGY",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "8–12",
+  "seniority_label": "Deputy General Manager / General Manager",
+  "source_doc": "IT_Support_Manager_JD.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+ARVIND GCC
+Role Title:	IT Support Manager
+Function:	Information Technology GCC IT Operations
+Reports To:	Chief Information Officer (CIO)
+Experience:	8-10 years, with prior GCC / shared services / captive centre support strongly preferred
+Location:	Ahmedabad
+Role Overview
+Arvind GCC is building the IT operations backbone that will support multiple business units across the Arvind Group. The IT Support Manager owns day-to-day IT operations for the GCC: keeping infrastructure, applications, and end-user services running reliably while building the processes, vendor relationships, and tooling that let the function scale as the GCC grows. This is a hands-on operational leadership role, not a pure helpdesk function the person in this seat is expected to bring order, accountability, and continuous improvement to an environment that is still being stood up.
+Key Responsibilities
+Own end-to-end IT operations for the GCC, ensuring uptime, security, and service quality across desktops, servers, network, and core applications including Active Directory, Microsoft 365.
+Administer and govern Active Directory and Microsoft 365 user lifecycle, access provisioning, license allocation, and email/data security while coordinating with functional teams on support issues.
+Maintain fundamental oversight of network infrastructure - switches, routers, Wi-Fi, internet/ISP links and connectivity across GCC locations and act as the escalation point for connectivity and infrastructure issues.
+Design and enforce backup and disaster recovery practices, including backup scheduling, restore testing, and recovery time/point objectives, to protect business-critical data.
+Manage IT vendors and service providers negotiating SLAs, tracking performance, and resolving escalations to ensure the GCC gets reliable, cost-effective external support.
+Maintain a single source of truth for IT asset and inventory management, covering procurement, allocation, tracking, and retirement of hardware and software across business units.
+Run IT support operations on ITIL-aligned principles - incident, problem, change, and request management using ITSM and monitoring tools, and continuously improve processes as ticket volume and complexity grow.
+Act as the primary stakeholder interface for IT support across business teams, translating business needs into IT priorities and keeping leadership informed through exception-based reporting.
+Build, mentor, and manage the GCC's IT support team, setting clear ownership, escalation paths, and performance standards as the team scales.
+Key Skills at a Glance
+Required Qualifications
+8-10 years of progressive experience in IT support / IT operations, including at least 2–3 years in a managerial or team-lead capacity.
+Prior experience supporting a GCC, shared services centre, or captive/MNC environment is strongly preferred  this role requires someone who understands multi-business-unit IT operations from day one.
+Hands-on experience with Active Directory, Microsoft 365 / Office 365 administration,
+Solid fundamental understanding of networking switches, routers, LAN/WAN, Wi-Fi, and internet connectivity sufficient to triage and escalate effectively, even without a dedicated network engineering background.
+Working knowledge of backup and disaster recovery tools and practices.
+Demonstrated experience in vendor management, stakeholder management, and IT asset/inventory management.
+Comfort working across multiple ITSM, monitoring, and productivity tools simultaneously; fundamental understanding of ITIL practices.
+Bachelor's degree in IT, Computer Science, or a related field, or equivalent practical experience.
+Preferred Qualifications
+ITIL Foundation (v4) certification.
+Microsoft certifications
+Exposure to AI-powered IT support tools
+Experience operating across multiple legal entities or business units within a conglomerate structure.
+About You
+You're someone who treats IT operations as a discipline, not a series of fires to put out. You bring structure to ambiguity comfortable building processes from scratch in a GCC that's still taking shape, while never losing sight of the end user's experience. You manage vendors and stakeholders with equal confidence: firm on SLAs, clear in escalation, and easy to work with across business teams that don't always speak the same technical language. You stay current curious about how AI and automation can take routine support work off your team's plate but you don't chase tools for their own sake; everything you adopt has to make the operation more reliable, not more complicated.
+What We Offer
+A high-visibility seat in the build-out of a new GCC, with direct exposure to the CIO and senior leadership across the Arvind Group. The scope to shape IT support processes, tooling, and team structure from an early stage, with a clear path to grow into broader IT operations leadership as the GCC scales.
+Technical Skills | Operational & Leadership Skills
+Active Directory administration & identity/access management | Stakeholder management across business units & legal entities
+Microsoft 365 / Office 365 administration (Exchange, Teams, SharePoint) | Vendor management SLAs, contracts, performance reviews
+Networking fundamentals LAN/WAN, switches, routers, Wi-Fi, firewalls, internet/ISP links | IT asset & inventory management (procurement to retirement lifecycle)
+Backup & disaster recovery backup tools, RPO/RTO planning, DR drills | ITIL-aligned service management incident, problem, change, request
+Working knowledge of AI-enabled IT tools  Copilot, AI-assisted ITSM, chat-based triage | Multi-tool fluency ITSM/ticketing, RMM, MDM, monitoring dashboards
+| People leadership — team management, escalation ownership, mentoring

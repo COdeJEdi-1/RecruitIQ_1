@@ -1,0 +1,28 @@
+{"jd_id": "18dffdfb", "role_family": "Sustainability Reporting Manager", "yoe_band": "mid", "source": "kb_seed", "date_added": "2026-06-25", "approved_by": "kb_seed"}
+
+---
+
+Role Summary
+You will own Arvind's Scope 1 and Scope 2 emissions data consolidation across manufacturing plants, prepare the GHG Protocol inventory, and support BRSR Core disclosure for the listed entity.
+
+Key Responsibilities
+- Consolidate Scope 1/2 emissions data across plant-level EHS teams
+- Prepare GHG Protocol inventory and BRSR Core disclosure inputs
+- Coordinate with plant EHS, supply chain, and finance teams on data collection
+- Track Arvind's water stewardship program metrics
+- Maintain OEKO-TEX, GOTS, ZDHC MRSL, and BCI certification documentation
+- Support buyer sustainability audits (H&M Higg Index, PVH Corp standards)
+
+Must-Have Skills
+- GRI, BRSR, and GHG Protocol framework knowledge
+- Data consolidation across multiple plant sites
+- ZDHC MRSL / RSL compliance understanding
+- Stakeholder coordination across EHS, supply chain, and finance functions
+
+Nice-to-Have Skills
+- SBTi target-setting exposure
+- Familiarity with sustainability data platforms (Watershed, Sweep)
+- TCFD reporting experience
+
+What We Offer
+Direct ownership of Arvind's operational sustainability disclosure, with exposure to global buyer ESG standards and BRSR compliance for a listed entity.

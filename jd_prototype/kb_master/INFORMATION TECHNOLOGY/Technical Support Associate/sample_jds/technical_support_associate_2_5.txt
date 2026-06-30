@@ -1,0 +1,48 @@
+---METADATA---
+{
+  "role_family": "Technical Support Associate",
+  "department": "INFORMATION TECHNOLOGY",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "2–5",
+  "seniority_label": "Senior Executive / Assistant Manager",
+  "source_doc": "Technical_Support_Associate_JD.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+ARVIND GCC
+Role Title:	Technical Support Associate
+Function:	Information Technology - GCC IT Operations
+Reports To:	IT Support Manager
+Experience:	3-5 years; prior experience in a GCC/shared services environment preferred
+Location:	Ahmedabad
+Role Overview
+The Technical Support Associate handles the day-to-day technical needs of GCC users fixing what's broken, setting up what's new, and keeping people working. This is a hands-on, ticket-by-ticket role covering Tier 1 and Tier 2 support, delivered in person at the desk and remotely. It's an execution role, not a planning one: the IT Support Manager sets direction and process; this role is where that process gets carried out, issue by issue, every day.
+What You'll Do
+Pick up tickets, calls, and walk-ups from GCC users and resolve hardware, software, and account issues  laptops, printers, peripherals, OS, and standard business applications.
+Provide deskside support for issues that need a physical visit, and remote support for everything else, using standard remote-assistance tools.
+Set up new laptops and desktops for joiners  imaging, software installs, and standard configuration  and handle returns/recovery when people exit or move.
+Handle routine Active Directory and Microsoft 365 tasks as assigned  password resets, account unlocks, mailbox access, basic license/license-group changes.
+Troubleshoot everyday connectivity issues  Wi-Fi drops, VPN access, network printer setup  and escalate to the network team when the fix is beyond desk-level access.
+Log every ticket properly: clear notes, accurate categorization, and timely updates so users always know where their issue stands.
+Recognize when something is beyond Tier 1–2 scope and escalate it to the IT Support Manager or the right specialist team, with the diagnostic steps you've already tried.
+Keep IT asset records current  tagging new equipment, updating allocations, flagging anything missing or due for return.
+Must-Have Skills
+Hands-on troubleshooting on Windows 11 hardware, OS, and common business software.
+Basic Active Directory and Microsoft 365 administration  account, password, and access tasks.
+Comfortable doing both deskside visits and remote sessions in the same day.
+Basic networking know-how  Wi-Fi, VPN, network printers  enough to fix the simple stuff and describe the complex stuff clearly when escalating.
+Clear, patient communication with users who don't think in technical terms.
+Disciplined ticket hygiene  nothing falls through the cracks.
+Good to Have
+Experience supporting a GCC, shared services centre, or similar multi-business-unit setup.
+Basic exposure to O365 administration
+CompTIA A+ or an equivalent foundational certification.
+Familiarity with imaging/deployment tools such as Intune or Autopilot.
+Experience & Education
+3-5 years in a helpdesk, desktop support, or technical support role, with real Tier 1-2 ticket ownership  not just call-taking. Bachelor's degree in IT, Computer Science, or a related field, or equivalent hands-on experience.
+What We Offer
+A front-row seat to every part of the GCC's IT environment, working directly under the IT Support Manager, with room to grow into Tier 3 specialist or systems administration work as you build experience here.

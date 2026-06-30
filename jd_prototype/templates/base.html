@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>{% block title %}JD Generator{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: { extend: {
+        colors: {
+          "tertiary-fixed":"#a5f1e1","secondary-container":"#d6e0f3",
+          "on-primary":"#ffffff","primary-fixed-dim":"#ffb3b6",
+          "on-tertiary-fixed-variant":"#005046","on-primary-fixed":"#40000c",
+          "secondary":"#555f6f","surface-bright":"#fff8f7","on-secondary-fixed":"#121c2a",
+          "surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#89d4c5",
+          "secondary-fixed":"#d9e3f6","error-container":"#ffdad6",
+          "on-surface":"#251819","on-tertiary-container":"#8cd8c8",
+          "on-primary-container":"#ffb7ba","tertiary-container":"#006054",
+          "on-surface-variant":"#594142","background":"#fff8f7",
+          "outline-variant":"#e0bebf","surface-variant":"#f6dddd",
+          "on-background":"#251819","secondary-fixed-dim":"#bdc7d9",
+          "on-primary-fixed-variant":"#900829","primary":"#810022",
+          "primary-container":"#a41d36","error":"#ba1a1a","primary-fixed":"#ffdada",
+          "on-tertiary-fixed":"#00201b","tertiary":"#00463d","on-tertiary":"#ffffff",
+          "on-error":"#ffffff","on-secondary-container":"#596373",
+          "on-error-container":"#93000a","surface-tint":"#b1283f",
+          "outline":"#8c7071","surface-container-low":"#fff0f0",
+          "surface-container":"#ffe9e9","surface-container-highest":"#f6dddd",
+          "on-secondary":"#ffffff","surface-container-high":"#fce2e2",
+          "inverse-surface":"#3c2d2d","inverse-on-surface":"#ffedec",
+          "surface-dim":"#edd4d4","inverse-primary":"#ffb3b6",
+          "on-secondary-fixed-variant":"#3d4756","surface":"#fff8f7",
+        },
+        borderRadius: { DEFAULT:"0.125rem", lg:"0.25rem", xl:"0.5rem", full:"0.75rem" },
+        spacing: {
+          "space-2xl":"64px","gutter":"24px","space-lg":"24px","space-sm":"8px",
+          "margin-mobile":"16px","space-md":"16px","unit":"4px","space-xs":"4px",
+          "container-max-width":"1200px","space-xl":"40px",
+          "margin-desktop":"48px","container-max":"1280px",
+        },
+        fontFamily: {
+          sans:["\"Source Sans 3\"","sans-serif"],
+          "headline-lg":["Red Hat Display"],
+          "headline-md":["Red Hat Display"],
+          "display-lg":["Red Hat Display"],
+          "label-sm":["\"Source Sans 3\""],
+          "body-md":["\"Source Sans 3\""],
+          "body-lg":["\"Source Sans 3\""],
+          "editorial-italic":["EB Garamond"],
+        },
+        fontSize: {
+          "label-sm": ["12px",{lineHeight:"1",letterSpacing:"0.05em",fontWeight:"600"}],
+          "label-md": ["14px",{lineHeight:"1.4",letterSpacing:"0.01em",fontWeight:"600"}],
+          "label-xs": ["11px",{lineHeight:"1.3",fontWeight:"500"}],
+          "display-lg":["48px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],
+          "body-sm":  ["14px",{lineHeight:"1.5",fontWeight:"400"}],
+          "body-md":  ["16px",{lineHeight:"1.5",fontWeight:"400"}],
+          "body-lg":  ["18px",{lineHeight:"1.6",fontWeight:"400"}],
+          "headline-md":["24px",{lineHeight:"1.3",fontWeight:"600"}],
+          "headline-lg":["32px",{lineHeight:"1.2",fontWeight:"600"}],
+          "title-lg": ["20px",{lineHeight:"1.4",fontWeight:"500"}],
+          "editorial-italic":["20px",{lineHeight:"1.4",fontWeight:"400"}],
+        }
+      }}
+    }
+  </script>
+  <style>
+    body { font-family:"Source Sans 3",sans-serif; background-color:#fff8f7; }
+    .material-symbols-outlined {
+      font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+      display:inline-block; vertical-align:middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width:6px; height:6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background:transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background:#e0bebf; border-radius:10px; }
+    /* Page transition — fade+slide in on every load */
+    @keyframes pageEnter {
+      from { opacity:0; transform:translateY(10px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    main { animation: pageEnter 0.28s cubic-bezier(.4,0,.2,1) both; }
+
+    /* Nav link underline slide-in on hover */
+    header nav a { position:relative; }
+    header nav a::after {
+      content:''; position:absolute; bottom:0; left:0; width:0; height:2px;
+      background:#810022; transition:width 0.22s ease;
+    }
+    header nav a:hover::after { width:100%; }
+    header nav a.border-primary::after { width:100%; }
+
+    /* Logo hover pulse */
+    #logoLink { transition:opacity .15s ease; }
+    #logoLink:hover { opacity:.82; }
+
+    /* Header shadow on scroll */
+    header { transition:box-shadow .25s ease; }
+
+    /* Avatar ring on hover */
+    #userAvatar { transition:box-shadow .2s ease; cursor:default; }
+    #userAvatar:hover { box-shadow:0 0 0 3px rgba(129,0,34,0.25); }
+
+    .watermark-overlay {
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDy5o3rcAXepkTQD_ORD8QVeXMNddSn35DIkvHBs0ybRtX2SwzZw4QowVSOfcRSpkWWBEw0PGtE5mkkG_GvXNs_0WHxvJHLp1qQVKpUcFgtrAZ40wAyalU9U9oav2pRuWRjSYkYH_cR-DKm63SGFR9z635fqrIe75Cs552u_y1ewsjUPRmgWhOgvywvWVkmzxglgzKac9ZOPdLV7QovAvY4ja_yrRnB7KLoPPby3HEvJMlx6mJk9ITBOy4OwSU3ygIYwo0');
+      background-size: 60%;
+      background-position: center 20%;
+      background-repeat: no-repeat;
+      opacity: 0.04;
+      filter: grayscale(100%) brightness(1.2);
+      mix-blend-mode: multiply;
+    }
+    {% block extra_style %}{% endblock %}
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+
+<!-- Watermark -->
+<div class="fixed inset-0 pointer-events-none -z-10 watermark-overlay"></div>
+
+<!-- Top Nav -->
+<header class="bg-surface shadow-sm sticky top-0 z-50 h-16 w-full border-b border-outline-variant">
+  <div class="flex justify-between items-center w-full px-4 md:px-6 h-16 max-w-container-max-width mx-auto">
+
+    <!-- Left: Logo (leftmost) + Nav Links -->
+    <div class="flex items-center gap-8">
+      <a id="logoLink" href="{{ url_for('library') }}" title="Home">
+        <img alt="Arvind GCC" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXXQnEzGyNK3qf5qjlo40GFUjaaUabnbY6Wy2NNqO5OHCRv0uXFIPEWq9FQOV4zjldXK3SaR_c24amSG91g3C6u-gOKiKsdLamORpoFzgV834_v3S149H6jrGTprgdgTakstjQLObaOgAgEZHL0ZYGAJUU8WdkiY-GF472LFxGq_Kl1JOgDhPvszk2IOoh-K9qaYIcev7oO3q38Re8RJtEn2tK4Z9AmmgPSQ_kEkvVP9e-kNyasvjwdSIlwjvBv2P4joE"/>
+      </a>
+
+      <nav class="hidden md:flex gap-6 items-center h-16">
+        <a href="{{ url_for('library') }}"
+           class="flex items-center h-full text-label-md transition-colors border-b-2
+                  {% if request.endpoint == 'library' %}font-bold text-primary border-primary{% else %}text-on-surface-variant hover:text-primary border-transparent{% endif %}">
+          Library
+        </a>
+        <a href="{{ url_for('generator') }}"
+           class="flex items-center h-full text-label-md transition-colors border-b-2
+                  {% if request.endpoint == 'generator' %}font-bold text-primary border-primary{% else %}text-on-surface-variant hover:text-primary border-transparent{% endif %}">
+          Generator
+        </a>
+        <a href="{{ url_for('history') }}"
+           class="flex items-center h-full text-label-md transition-colors border-b-2
+                  {% if request.endpoint == 'history' %}font-bold text-primary border-primary{% else %}text-on-surface-variant hover:text-primary border-transparent{% endif %}">
+          History
+        </a>
+        {% if user.is_admin %}
+        <a href="{{ url_for('admin_panel') }}"
+           class="flex items-center h-full text-label-md transition-colors border-b-2
+                  {% if request.endpoint == 'admin_panel' %}font-bold text-primary border-primary{% else %}text-on-surface-variant hover:text-primary border-transparent{% endif %}">
+          Admin Panel
+        </a>
+        {% endif %}
+      </nav>
+    </div>
+
+    <!-- Right: Search, Notifications, Avatar, Sign Out — flush right -->
+    <div class="flex items-center gap-3 ml-auto">
+      <!-- Search -->
+      <div class="hidden lg:flex items-center bg-surface-container-low border border-outline-variant/30 px-3 py-1.5 rounded-lg w-48 gap-2 transition-all focus-within:w-56 focus-within:border-primary/40">
+        <span class="material-symbols-outlined text-outline" style="font-size:18px;">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface placeholder-outline w-full outline-none" placeholder="Search JDs..." type="text"/>
+      </div>
+
+      <!-- Notifications -->
+      <button class="relative p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full">
+        <span class="material-symbols-outlined" style="font-size:20px;display:block">notifications</span>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+      </button>
+
+      <!-- User Avatar -->
+      <div id="userAvatar" class="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold select-none">
+        {% if user.picture %}
+          <img src="{{ user.picture }}" class="w-full h-full rounded-full object-cover" alt="{{ user.name }}"/>
+        {% else %}
+          {{ user.initials }}
+        {% endif %}
+      </div>
+
+      <!-- Sign Out -->
+      <a href="{{ url_for('logout') }}" class="text-label-sm text-on-surface-variant hover:text-primary transition-colors px-2 py-1 rounded hover:bg-surface-container-low">Sign Out</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- Page Content -->
+<main class="w-full min-h-screen p-space-xl">
+  <div class="max-w-container-max-width mx-auto">
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+{% block extra_scripts %}{% endblock %}
+
+<script>
+  // Deepen header shadow on scroll
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 8) {
+      header.style.boxShadow = '0 4px 24px rgba(129,0,34,0.10)';
+    } else {
+      header.style.boxShadow = '';
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>

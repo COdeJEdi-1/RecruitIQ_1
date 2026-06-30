@@ -1,0 +1,65 @@
+---METADATA---
+{
+  "role_family": "Legal Entity Controller",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "8–12",
+  "seniority_label": "Deputy General Manager / General Manager",
+  "source_doc": "Legal Entity Controller.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+Job Title: Legal Entity Controller – Global Capability Centre (GCC)
+Location: Ahmedabad, India
+Company: Arvind Limited
+Role Overview
+We are establishing a Global Capability Centre (GCC) to support group businesses and are looking for a Legal Entity Controller to lead the finance, accounting, and compliance framework for the GCC entity.
+The role will be responsible for end-to-end financial governance of the GCC legal entity, including statutory accounting, taxation, transfer pricing, and cross-charge allocations to group companies. The position will play a critical role in establishing robust financial controls, compliance standards, and reporting mechanisms in alignment with group policies.
+Key Responsibilities
+Financial Accounting & Reporting
+Lead end-to-end accounting and financial management for the GCC legal entity.
+Ensure accurate monthly, quarterly, and annual financial reporting in compliance with applicable accounting standards and group policies.
+Oversee general ledger management, reconciliations, financial close, and audit readiness.
+Establish strong internal controls and financial governance frameworks for the GCC.
+Taxation & Regulatory Compliance
+Ensure full compliance with direct and indirect tax regulations, including:
+GST
+TDS
+Corporate tax filings
+Manage tax assessments, audits, and liaison with tax authorities.
+Coordinate with external advisors on regulatory and compliance matters.
+Transfer Pricing & Intercompany Allocations
+Manage transfer pricing framework for services provided by the GCC to various group entities.
+Design and administer cost allocation and cross-charge mechanisms across business units.
+Ensure compliance with transfer pricing regulations and documentation requirements.
+Work closely with group finance teams to ensure alignment with global policies.
+Audit & Governance
+Lead statutory audits, internal audits, and tax audits for the GCC entity.
+Implement and monitor financial controls and risk mitigation processes.
+Ensure adherence to corporate governance and compliance standards.
+Systems & Process Excellence
+Drive finance operations on SAP ERP, ensuring data integrity and efficient financial processes.
+Establish scalable finance processes suitable for a growing GCC environment.
+Stakeholder Management
+Partner with Group Finance, Tax, and Business Finance teams across the organization.
+Act as the primary finance point of contact for the GCC entity.
+Support leadership with financial insights, budgeting, and cost management.
+Candidate Profile
+Qualifications
+Chartered Accountant (CA) – Mandatory
+10–12 years of experience in controllership, taxation, and financial governance
+Experience
+Strong experience in GST, TDS, corporate taxation, and transfer pricing
+Experience managing intercompany cross-charges and allocation models
+Hands-on experience with SAP ERP
+Experience in shared services / GCC / multi-entity environments preferred
+Key Competencies
+Strong financial controllership and compliance orientation
+Expertise in Indian taxation and regulatory environment
+Ability to build finance processes from ground up
+Strong stakeholder management and cross-functional collaboration
+High degree of ownership, integrity, and attention to detail

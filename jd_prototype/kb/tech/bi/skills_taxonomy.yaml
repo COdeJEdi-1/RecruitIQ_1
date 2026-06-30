@@ -1,0 +1,44 @@
+role_family: Business Intelligence
+department: Tech
+
+core_skills:
+  - Advanced SQL (CTEs, window functions, performance tuning)
+  - Dashboard and report development in Power BI or Tableau
+  - Data modelling (star schema, dimensional modelling, DAX / calculated fields)
+  - Business requirements gathering and translating to analytical solutions
+  - KPI definition, metric trees, and business performance storytelling
+  - Data quality validation and anomaly detection
+  - Cross-functional stakeholder communication
+
+stack_skills:
+  visualisation:
+    - Power BI (DAX, Power Query, dataflows)
+    - Tableau (calculated fields, LOD expressions)
+    - Looker (LookML)
+    - Google Data Studio / Looker Studio
+  warehousing:
+    - Snowflake
+    - Google BigQuery
+    - Amazon Redshift
+    - Azure Synapse
+  etl_tools:
+    - dbt (data build tool)
+    - Azure Data Factory
+    - Informatica
+  scripting:
+    - Python (pandas, matplotlib for ad-hoc analysis)
+    - R (optional, domain-specific)
+
+domain_expertise:
+  - Finance and FP&A analytics
+  - Supply chain and operations analytics
+  - Sales and CRM analytics (Salesforce, Dynamics)
+  - HR and workforce analytics
+  - Retail and merchandising analytics
+
+yoe_bands:
+  associate: "0-2"
+  analyst: "2-5"
+  senior_analyst: "5-8"
+  lead: "8-12"
+  head: "12+"

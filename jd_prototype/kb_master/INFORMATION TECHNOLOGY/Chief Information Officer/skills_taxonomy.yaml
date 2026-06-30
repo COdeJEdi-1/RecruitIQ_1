@@ -1,0 +1,94 @@
+role_family: Chief Information Officer
+department: INFORMATION TECHNOLOGY
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CIO.doc
+- Chief Info and Digital Officer.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Lead IT as a business function focusing on Process innovations, Business Model setup, Business Engagements,
+      IT Management — governance setup, with specialization in Business Intelligence and functional skills
+    - Create an environment for Business Excellence through IT enablers
+    - Responsible for leading and providing strategic direction for developing business applications
+    - Prepare IT Budgets and ensure compliance to IT budget, optimized resource utilization, setup IT
+      organization
+    - Responsible for driving projects and tracking budgets and KRAs
+    - Synergize & align IT applications to businesses & Group
+    - Help business reduce overall operation cost by process revamping, process automations
+    - Lead a team managing IT Infrastructure, Business Applications, ERP activities across businesses
+    - Vendor management for IT facilities & procurement of IT Infrastructure
+    - Setup of IT organization structure, recruitment of right talent
+    - Develop IT Roadmap, IT Policy and Standards for the Group
+    - Establish network across locations
+    - Disaster Recovery System, assuring near zero downtime
+    - Institutionalize key processes in Operations, Security, Support, Documentation
+    - Project management and support to SAP implementations and up-gradations
+    - Evaluate emerging technologies for deployment across the Group
+    - Develop Information Security Policy for the Group, establish Governance structure and measurement
+      processes
+    - Improve the baseline of security across the Group at minimal cost and time
+    - Management of outsourcing for IT Facility management services across the group
+    - IT Procurement with effective evaluation and negotiation, stringent SLAs
+    - Develop IT competencies of team through job analysis & skill evaluation, deliver training (classroom
+      & e-learning)
+    - Implementation and maintenance of Knowledge management systems and document management systems
+    - Develop and execute a comprehensive digital strategy aligned with the organization's vision and
+      business objectives
+    - Drive digital innovation and serve as a change agent, fostering a culture of continuous improvement
+      and digital-first mindset
+    - Collaborate with stakeholders to integrate digital initiatives with business processes and strategies
+    - Oversee management of digital projects, ensuring they deliver value and meet ROI expectations
+    - Stay abreast of emerging technologies and digital trends, recommend new technologies
+    - Identify and prepare roadmap for deploying Robotic processes in functions like manufacturing, procurement,
+      warehouse
+    arvind_specific:
+    - IT leadership across the Group's diversified businesses, SAP implementation across Group entities
+    leadership_skills:
+    - 'Team size: 40'
+    - Leads IT department, sets objectives and strategies for technology use
+    qualifications:
+    - Graduate in any discipline / B.Tech in Computers, IT, BCA; PG Degree IT Management; certificate
+      course related to the job
+    - Minimum 20 years of experience in IT department and in Manufacturing Industry, at least 3 years
+      handling IT function for a diversified Group
+    - Proven experience as CIDO, CIO, CTO, or similar leadership role in digital transformation and IT
+      management in diversified industries
+    - 'Strong understanding of digital technologies: cloud computing, data analytics, cybersecurity, enterprise
+      software'
+    - SAP Implementation Exposure
+    - Bachelor's or Master's degree in Information Technology, Computer Science, Business Administration,
+      or related field
+    - Inter-personal Skills, Conflict Management, Execution Skills, Negotiation Skills, Strategic Thinker,
+      Leadership Skills
+    kpis: []
+    reporting_to: Chief Finance Officer (CFO) / Business CEOs

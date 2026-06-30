@@ -1,0 +1,33 @@
+role_family: Shift Supervisor – Dyeing (Cotton Yarn / CCM)
+department: Manufacturing
+division: Arvind Limited — Textile Manufacturing
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Develop and formulate dyeing recipes for cotton yarn per shade requirements
+    - Perform lab dyeing trials and colour matching
+    - Operate and manage Computer Colour Matching (CCM) system
+    - Analyze colour deviations and adjust recipes
+    - Maintain dye formulation and lab trial records
+    progressive_skills: []
+    arvind_specific:
+    - CCM-based recipe generation for Arvind's cotton yarn dyeing operations in Ahmedabad
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Ensure lab-to-bulk reproducibility across shifts
+    - Optimize recipes for cost, quality, and process efficiency
+    - Conduct fastness/quality evaluations per customer standards
+    - Troubleshoot dyeing and shade variation issues
+    - Collaborate with production, QA, and merchandising for shade approvals
+    progressive_skills: []
+    arvind_specific:
+    - Shade approval ownership across customer accounts for Arvind's yarn dyeing unit
+    leadership_skills: []

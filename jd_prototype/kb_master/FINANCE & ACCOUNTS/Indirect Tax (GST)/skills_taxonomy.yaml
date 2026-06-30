@@ -1,0 +1,73 @@
+role_family: Indirect Tax (GST)
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Indirect Tax_ Sr Analyst_Job_Descriptions.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    core_skills: []
+    progressive_skills:
+    - Manage GST registrations and amendments across applicable states and entities
+    - 'Prepare and file periodic GST returns: GSTR-1, GSTR-3B, GSTR-6 (ISD), GSTR-7 (TDS), GSTR-8 (TCS),
+      and the annual GSTR-9, within statutory timelines'
+    - Prepare and file ITC-04 for goods sent to and received from job workers, ensuring accurate tracking
+      and reconciliation
+    - 'Perform GST reconciliations: GSTR-2B vs. books for input tax credit, GSTR-1 vs. GSTR-3B, books
+      vs. returns; resolve mismatches'
+    - Manage and optimize Input Tax Credit (ITC) — eligibility checks, reversals, timely availment per
+      GST provisions
+    - Prepare and file GST refund applications and follow up with authorities for timely processing
+    - Support handling of GST tax queries, notices, and litigations by preparing data, replies, and documentation
+    - Ensure statutory compliance reporting and adherence to GST due dates
+    - Manage GST-related queries from business, finance, and auditors
+    - Prepare MIS and dashboards covering GST compliance status, ITC, refunds, and open notices/litigation
+    - Adhere to SOPs, audit requirements, internal controls, and defined SLAs
+    - Work independently with minimal supervision in a fast-paced Shared Services environment; provide
+      guidance to junior team members
+    arvind_specific:
+    - Shared Services environment within a leading Indian conglomerate (GCC)
+    leadership_skills:
+    - Provides guidance to junior team members
+    qualifications:
+    - Graduate in Commerce/Accounting (B.Com) or equivalent; CA / Inter-CA / CMA preferred
+    - 3–5 years of relevant experience in Indirect Tax / GST compliance
+    - Strong understanding of GST law, return filing (GSTR-1, 3B, 6, 7, 8, 9), ITC provisions, and refund
+      processes
+    - Working knowledge of GST reconciliations (GSTR-2B, GSTR-1 vs. 3B) and handling of notices/litigation
+    - Mandatory hands-on experience working on SAP (FI); familiarity with GST filing/reconciliation tools
+      (GSP/ASP solutions) preferred
+    - Understanding of Indian statutory compliance and reporting requirements
+    - Good verbal and written communication skills
+    - Strong analytical, problem-solving, and organizational abilities with good working knowledge of
+      MS Excel
+    - Experience working in Shared Services / GCC / large corporate environment preferred
+    kpis: []
+    reporting_to: ''
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

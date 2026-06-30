@@ -1,0 +1,33 @@
+role_family: Proposal / Process Engineer
+department: Environmental
+division: Arvind Envisol Limited
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Study enquiries, prepare preliminary drawings, and create cost estimations
+    - Process engineering for water and wastewater treatment plants
+    - 'Prepare BEP and Basic Engineering Drawings: PFD, P&ID, HFD'
+    - Process equipment selection and technical specification
+    progressive_skills: []
+    arvind_specific:
+    - Proposal engineering for Arvind Envisol's water/wastewater treatment projects
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - 'Lead proposal preparation: design, process description, control philosophy,
+      scope of supply'
+    - Tender study, specification analysis, and pre-bid query resolution
+    - Process scheme selection across MBR, RO, ZLD technologies
+    - Technical evaluation and cost estimation of process equipment
+    progressive_skills: []
+    arvind_specific:
+    - Process scheme leadership for Arvind Envisol's ZLD and patented polymeric film
+      evaporation technology
+    leadership_skills: []

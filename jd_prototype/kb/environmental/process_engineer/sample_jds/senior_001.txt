@@ -1,0 +1,27 @@
+{"jd_id": "07b1da32", "role_family": "Associate/Deputy Manager \u2013 Proposal & Costing", "yoe_band": "senior", "source": "real_scraped_jd", "date_added": "2026-06-25", "approved_by": "kb_import"}
+
+---
+
+Role Summary
+You will lead proposal engineering and cost estimation for water and wastewater treatment projects at Arvind Envisol Limited, based in Pune or Ahmedabad. Arvind Envisol delivers world-class water management — water treatment, industrial wastewater, sewage treatment, and Zero Liquid Discharge (ZLD) solutions — including patented polymeric film evaporation technology.
+
+Key Responsibilities
+- Study enquiries and prepare preliminary drawings, estimations, and offers
+- Lead proposal preparation, project bidding, tendering, and cost estimation for water and wastewater treatment projects
+- Own process engineering for water and wastewater treatment plants
+- Select process schemes for plants based on technical and commercial requirements
+- Prepare BEP and Basic Engineering Drawings: PFD, P&IDs, HFD
+- Select process equipment and prepare technical specifications
+- Conduct technical evaluation and cost estimation of process equipment
+- Study tenders, analyze specifications, resolve pre-bid queries, and select schemes
+- Develop technical proposals: design, process description, control philosophy, scope of supply
+
+Must-Have Skills
+- Process Design and Proposal Engineering
+- Cost Estimation
+- BEP / PFD / P&ID / HFD preparation
+- Water & Wastewater Treatment domain knowledge: ETP, STP, ZLD, MBR, RO
+- Strong technical writing skills
+
+What We Offer
+Direct exposure to Arvind Envisol's patented ZLD technology and a ₹266 Cr revenue water management business, with end-to-end ownership of the proposal lifecycle.

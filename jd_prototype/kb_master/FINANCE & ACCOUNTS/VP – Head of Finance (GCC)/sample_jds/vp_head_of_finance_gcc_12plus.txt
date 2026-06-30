@@ -1,0 +1,62 @@
+---METADATA---
+{
+  "role_family": "VP – Head of Finance (GCC)",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "12+",
+  "seniority_label": "Vice President / Chief Officer",
+  "source_doc": "JD_Head of Finance.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+Job Title: Vice President – Head of Finance (Global Capability Centre)
+Location: Ahmedabad, India
+Reporting To: Head of Global Capability Centre (GCC)
+Role Purpose
+The Vice President – Head of Finance will be responsible for establishing, stabilising, and scaling Finance Operations at the Global Capability Centre (GCC). The role will lead end-to-end delivery of Procure-to-Pay (PTP), Order-to-Cash (OTC), Controllership (CTR), and Consolidation processes for multiple entities, managing a team of 200+ FTEs.
+This is a senior leadership role with a strong mandate around GCC setup, transitions, finance transformation, operational excellence, and stakeholder management, ensuring best-in-class service delivery and continuous value creation.
+Key Responsibilities
+1. GCC Setup & Leadership
+- Lead the end-to-end setup and scaling of Finance operations at the GCC, including organisation design, governance, operating model, and capability build.
+- Build a strong leadership team across PTP, OTC, CTR, and Consolidation.
+- Establish a high-performance culture focused on accountability, continuous improvement, and talent development.
+2. Finance Operations & Service Delivery
+- Ensure adherence to SLAs, KPIs, internal controls, SOX, and compliance requirements.
+- Drive standardisation, harmonisation, and documentation of global finance processes.
+- Act as the single point of accountability for finance service delivery to multiple stakeholders.
+3. Transitions & Knowledge Migration
+- Lead large-scale finance transitions into the GCC.
+- Define and execute structured transition methodologies including process migration, shadowing, reverse shadowing, and stabilisation.
+- Manage transition risks, change management, and stakeholder communication.
+4. Finance Transformation & Digital Enablement
+- Drive finance transformation initiatives including: process re-engineering and simplification; automation (RPA, workflow tools); ERP optimisation (SAP & S4 HANA); advanced analytics and reporting.
+- Partner with IT and Transformation teams to build a future-ready finance function.
+- Deliver measurable productivity, cost, and quality improvements year-on-year.
+5. Governance & Stakeholder Management
+- Establish robust governance mechanisms including SteerCos, Ops Reviews, and performance dashboards.
+- Partner closely with Group CFOs, Business Finance leaders, Internal Audit, and external auditors.
+- Provide strategic insights and recommendations to finance leadership.
+6. Talent Management & Capability Building
+- Lead hiring, capability development, and succession planning for finance teams.
+- Build strong functional expertise across accounting, reporting, compliance, and analytics.
+- Drive learning agendas including leadership development, digital skills, and functional depth.
+Key Skills & Competencies
+Functional & Technical
+- Deep expertise across PTP, OTC, RTR/CTR, and Consolidation.
+- Proven experience with SAP and S4 HANA (Non-Negotiable).
+- Strong exposure to finance transformation and automation.
+Leadership & Behavioural
+- Proven people leader with experience managing large finance teams.
+- Strong executive presence and stakeholder management skills.
+- Transformation mindset with ability to lead change in complex environments.
+- Structured, data-driven, and execution-focused.
+Experience & Qualifications
+- Chartered Accountant (CA) – Preferred.
+- 15+ years of progressive finance experience (SAP and S4 HANA Mandatory).
+- Minimum 5 years in GCC / Shared Services setup or leadership roles.
+- Proven experience in: setting up or scaling GCCs; leading multi-process finance operations; managing large transitions and transformations.
+- Prior experience in manufacturing environments preferred.

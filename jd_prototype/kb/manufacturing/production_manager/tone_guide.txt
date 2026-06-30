@@ -1,0 +1,34 @@
+TONE GUIDE — Manufacturing Department (Production Manager) · Arvind Limited
+
+Voice: Direct, floor-grounded, and technically precise. Production candidates evaluate
+whether the role is real — vague JDs signal an organisation that doesn't understand
+its own operations. Name machines, name targets, name the plant context.
+
+DO:
+- Reference specific loom types (rapier, airjet, projectile), fabric types (denim, woven), and processes (sizing, warping, finishing)
+- State shift targets in metres/shift or machine efficiency (OEE %) wherever possible
+- Name the plant geography where relevant (Gujarat, Karnataka, Jharkhand, Maharashtra)
+- Use second-person: "You will plan...", "You will own...", "You will drive..."
+- Be honest about the leadership scope — state team size and reporting line
+- Reference Arvind's sustainability commitments (OEKO-TEX, ISO 14001) for mid+ levels
+
+DO NOT:
+- Use abstract corporate language — this is a plant floor role
+- Say "fast-paced environment" — every textile plant is fast-paced
+- Overstate autonomy for junior roles or understate accountability for senior ones
+- List certifications (ISO, OEKO-TEX) as must-haves at junior level
+
+Structure expectations:
+- Role Summary: name the plant or department, the fabric category, the scale (number of machines or metres/day)
+- Key Responsibilities: split between daily operations, improvement initiatives, and people/stakeholder work
+- Must-Have Skills: loom/machine-specific + OEE/5S + reporting tool (SAP PP, Excel)
+- Nice-to-Have: automation, sustainability certs, Lean/Six Sigma at junior; capex, IR at senior
+
+Tone examples:
+  GOOD: "You will manage weaving operations across 120 rapier looms, owning shift efficiency
+        targets of 82% OEE and leading a team of 25 operators and 3 shift supervisors."
+  BAD:  "You will work in a dynamic textile manufacturing environment."
+
+  GOOD: "You have 5S certification and have implemented Kaizen projects that improved
+        fabric yield by 3%+ in a previous plant role."
+  BAD:  "You have experience in manufacturing and are detail-oriented."

@@ -1,0 +1,32 @@
+{"jd_id": "095e710f", "role_family": "Backend", "department_caps": "TECHNOLOGY", "yoe_band": "2-5", "generation_id": "bb34786e-baa9-4a70-ae16-af91877ca11a", "date_added": "2026-06-26", "approved_at": "2026-06-26T10:23:57.472678", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+Role Summary
+You will join Arvind's Tech department as an Automation Engineer, responsible for designing and implementing automated solutions to enhance operational efficiency across our manufacturing and business units. As part of a 10-member team, you will collaborate with cross-functional stakeholders to identify areas for automation and develop scalable solutions. You will own the development and maintenance of automation frameworks, working closely with our IT and engineering teams.
+
+Key Responsibilities
+- You will design, develop, and deploy automation scripts using Python, Ansible, or similar tools to streamline business processes and reduce manual errors
+- You will work with stakeholders to identify opportunities for automation, assessing feasibility and prioritizing projects based on business impact
+- You will develop and maintain automated testing frameworks to ensure high-quality deployments and minimize downtime
+- You will collaborate with our IT team to integrate automation solutions with existing infrastructure, including cloud services and on-premise systems
+- You will troubleshoot automation issues, analyzing logs and system metrics to resolve problems quickly and efficiently
+- You will contribute to the development of automation standards and best practices, sharing knowledge and expertise with the team
+- You will participate in code reviews, providing constructive feedback on code quality, readability, and maintainability
+
+Must-Have Skills
+- You have 2+ years of experience in automation engineering, with a strong foundation in programming languages such as Python, Java, or C++
+- You have hands-on experience with automation tools like Ansible, Puppet, or Chef, and can design and implement automated workflows
+- You understand IT service management frameworks like ITIL, and can apply them to automation projects
+- You have experience with cloud-based automation platforms, including AWS or Azure, and can integrate automation solutions with cloud services
+- You are familiar with agile development methodologies, including Scrum or Kanban, and can work in a fast-paced, iterative environment
+- You have a strong understanding of networking fundamentals, including protocols and architectures, and can troubleshoot network-related issues
+
+Nice-to-Have Skills
+- You have experience with robotic process automation (RPA) tools like UiPath or Automation Anywhere, and can apply RPA principles to business process automation
+- You have knowledge of machine learning or artificial intelligence, and can apply these technologies to automation projects
+- You have experience with DevOps tools like Jenkins or GitLab CI/CD, and can integrate automation solutions with continuous integration and delivery pipelines
+- You have a certification in automation engineering, such as a Certified Automation Professional (CAP) or a Certified IT Professional (CITP)
+
+What We Offer
+At Arvind, you will be part of a large-scale, diversified business with a strong focus on innovation and technology. You will have opportunities to learn and grow with our team, working on complex automation projects and developing your skills in a dynamic, collaborative environment. We offer a competitive salary, comprehensive benefits, and a chance to be part of a company that is shaping the future of manufacturing and business in India.

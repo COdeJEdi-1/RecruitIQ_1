@@ -1,0 +1,33 @@
+{"jd_id": "ef8b77f3", "role_family": "Sr. Specialist \u2013 Power BI Reporting (Data Analyst)", "yoe_band": "senior", "source": "real_scraped_jd", "date_added": "2026-06-25", "approved_by": "kb_import"}
+
+---
+
+Role Summary
+You will build Power BI reports and dashboards from a Microsoft Fabric data lake for Arvind Limited's manufacturing and retail operations in Ahmedabad. Manufacturing or retail domain experience is mandatory. You will work directly with operations managers, commercial leads, and finance teams to translate business questions into clear, performant reports.
+
+Key Responsibilities
+- Design Power BI reports: daily ops views through multi-page reports with filters, slicers, and drill-throughs
+- Write DAX measures: YTD, MTD, period-over-period, running totals, % calculations, conditional formatting
+- Apply bookmarks, tooltips, dynamic titles, and page navigation purposefully
+- Build executive summary AND operational detail views for the same dataset
+- Diagnose and resolve report performance issues — slow visuals, heavy queries, inefficient DAX
+- Gather requirements directly from operations managers, commercial leads, and finance teams
+- Manage Power BI deployment pipelines across dev, test, and production environments
+- Maintain documentation for every report: what it shows, data source, and intended audience
+
+Must-Have Skills
+- Power BI (full toolkit) including bookmarks, tooltips, and drill-through navigation
+- DAX: YTD/MTD/variance/rolling average calculations
+- Microsoft Fabric (Direct Lake / import mode)
+- Manufacturing or retail domain knowledge: OEE, OTIF, sell-through, shrinkage, margin
+- Strong stakeholder communication skills
+- Clean, readable report design sensibility
+
+Nice-to-Have Skills
+- PL-300 certification
+- Power BI mobile layout design
+- Experience managing deployment pipelines
+- Basic data pipeline understanding
+
+What We Offer
+Exposure to Arvind's manufacturing and retail data at scale, direct collaboration with business leadership, and the opportunity to shape reporting standards as part of Arvind's growing analytics function.

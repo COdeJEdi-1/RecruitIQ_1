@@ -1,0 +1,56 @@
+role_family: Supply Chain Manager
+department: Supply Chain
+division: Arvind Limited — Supply Chain
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Demand planning and inventory management
+    - Vendor coordination and PO management
+    - SAP MM/SD transaction processing
+    - Logistics tracking and dispatch coordination
+    progressive_skills: []
+    arvind_specific:
+    - SAP MM/SD for Arvind plant operations
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - End-to-end supply chain strategy
+    - Vendor management and contract negotiation
+    - Logistics optimization across plants
+    - S&OP (Sales & Operations Planning)
+    progressive_skills: []
+    arvind_specific:
+    - Multi-plant logistics across Gujarat/Karnataka/Rajasthan facilities
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Multi-site supply chain leadership
+    - 3PL management and cost reduction programs
+    - Demand forecasting at group level
+    - Cross-functional alignment with Sales and Finance
+    progressive_skills: []
+    arvind_specific:
+    - Supply chain harmonisation across Arvind Limited and Arvind Fashions
+    leadership_skills: []
+  executive:
+    label: VP / SVP / CXO
+    years: 12+
+    seniority_tag: Executive
+    core_skills:
+    - Group supply chain strategy and transformation
+    - Network design across business units
+    - Strategic vendor partnerships at CXO level
+    progressive_skills: []
+    arvind_specific:
+    - SVP Supply Chain — group-wide ownership
+    leadership_skills: []

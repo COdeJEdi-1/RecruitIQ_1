@@ -1,0 +1,31 @@
+{"role_family": "Backend Engineer", "seniority_level": "Senior", "team_context": "Infrastructure Platform team, 7 engineers", "primary_stack": "Python, Go, PostgreSQL, Redis, Kafka, AWS", "date_added": "2024-07-10", "approved_by": "eng_hiring_committee"}
+
+---
+
+Senior Backend Engineer — Infrastructure Platform
+
+Role Summary
+You will join our Infrastructure Platform team as a Senior Backend Engineer, leading the technical design and delivery of the internal developer platform used by 60+ engineers across five product squads. The platform includes our deployment tooling, service mesh, internal APIs, and observability stack. You will set the technical direction for major platform initiatives and mentor two mid-level engineers on the team.
+
+Key Responsibilities
+- You will lead the design of multi-sprint platform projects, writing RFCs and driving alignment across engineering teams before implementation begins
+- You will define and enforce coding standards, testing practices, and API design conventions for the platform
+- You will own on-call for the platform tier and drive post-incident reviews that result in durable reliability improvements
+- You will mentor two mid-level engineers: weekly 1:1s, PR review with written feedback, and quarterly growth conversations
+- You will evaluate and introduce new tooling (e.g. new observability integrations, service mesh components) with clear rationale and rollout plans
+- You will represent the Platform team in cross-functional architecture reviews and flag risks to the engineering leadership team
+- You will instrument services for SLO tracking and own the team's error budget
+
+Must-Have Skills
+- You have 5+ years of backend engineering experience with at least 2 years working on platform, infrastructure, or developer-experience teams
+- You have led the technical design of projects that took 3+ months to deliver and involved multiple engineers
+- You have deep experience with at least one of: Python or Go in production at scale
+- You understand distributed systems trade-offs: consistency vs availability, synchronous vs async communication, service boundaries
+- You have designed and operated Kafka-based event streaming systems and can reason about consumer group lag, partitioning strategy, and exactly-once semantics
+- You have a strong opinion on observability: you instrument services with metrics, structured logs, and distributed traces by default
+
+Nice-to-Have Skills
+- You have contributed to or led a migration from a monolith to microservices
+- You have experience with internal developer platforms (Backstage, or bespoke tooling)
+- You have used Terraform or Pulumi to manage AWS infrastructure as code
+- You have spoken at an engineering all-hands or external conference about a technical topic

@@ -1,0 +1,47 @@
+---METADATA---
+{
+  "role_family": "Indirect Tax (GST)",
+  "department": "FINANCE & ACCOUNTS",
+  "division": "CORPORATE / SHARED FUNCTIONS",
+  "yoe_band": "2–5",
+  "seniority_label": "Senior Executive / Assistant Manager",
+  "source_doc": "Indirect Tax_ Sr Analyst_Job_Descriptions.docx",
+  "extracted_date": "2026-06-25",
+  "approved_by": "seed",
+  "generation_version": "v1.0",
+  "feedback_score": null
+}
+---END METADATA---
+
+JOB DESCRIPTION
+Job Title: Senior Analyst – Indirect Tax (GST)
+Location: Ahmedabad, Gujarat, India
+Department: Finance & Accounts (Taxation) – GCC
+Employment Type: Full-Time
+About the Role:
+We are looking for a detail-oriented and compliance-driven Senior Analyst – Indirect Tax (GST) to support end-to-end GST operations within a Shared Services environment of a leading Indian conglomerate. The role requires hands-on expertise across GST registrations and amendments, periodic GST return filing, ITC management, refunds, and handling of notices and litigation support, along with strong knowledge of GST law and SAP experience.
+Key Responsibilities:
+Manage GST registrations and amendments across applicable states and entities, ensuring accurate and up-to-date registration data.
+Prepare and file periodic GST returns, including GSTR-1, GSTR-3B, GSTR-6 (ISD), GSTR-7 (TDS), GSTR-8 (TCS), and the annual GSTR-9, within statutory timelines.
+Prepare and file ITC-04 for goods sent to and received from job workers, ensuring accurate tracking and reconciliation.
+Perform GST reconciliations, including GSTR-2B vs. books for input tax credit, GSTR-1 vs. GSTR-3B, and books vs. returns, and resolve mismatches.
+Manage and optimize Input Tax Credit (ITC) — eligibility checks, reversals, and timely availment in line with GST provisions.
+Prepare and file GST refund applications and follow up with authorities for timely processing.
+Support handling of GST tax queries, notices, and litigations by preparing data, replies, and documentation, and coordinating with consultants and authorities.
+Ensure statutory compliance reporting and adherence to GST due dates across all applicable obligations.
+Manage GST-related queries from business, finance, and auditors, providing timely and accurate responses.
+Prepare MIS and dashboards covering GST compliance status, ITC, refunds, and open notices/litigation.
+Adhere to SOPs, audit requirements, internal controls, and defined SLAs, and identify opportunities for process improvement and automation.
+Work independently with minimal supervision in a fast-paced Shared Services environment, and provide guidance to junior team members.
+Required Qualifications & Skills:
+Graduate in Commerce/Accounting (B.Com) or equivalent; CA / Inter-CA / CMA preferred.
+3–5 years of relevant experience in Indirect Tax / GST compliance.
+Strong understanding of GST law, return filing (GSTR-1, 3B, 6, 7, 8, 9), ITC provisions, and refund processes.
+Working knowledge of GST reconciliations (GSTR-2B, GSTR-1 vs. 3B) and handling of notices/litigation.
+Mandatory hands-on experience working on SAP (FI); familiarity with GST filing/reconciliation tools (e.g., GSP/ASP solutions) preferred.
+Understanding of Indian statutory compliance and reporting requirements.
+Good verbal and written communication skills.
+Strong analytical, problem-solving, and organizational abilities, with good working knowledge of MS Excel.
+Experience working in Shared Services / GCC / large corporate environment preferred.
+Ideal Candidate Profile:
+The ideal candidate is a self-driven tax professional with strong indirect tax (GST) expertise, sound knowledge of GST law and compliance, SAP proficiency, and attention to detail. The candidate should possess good communication and stakeholder management skills, demonstrate ownership and discipline around statutory timelines, and be capable of managing GST compliance, reconciliation, and reporting activities independently in a process-driven Shared Services environment.

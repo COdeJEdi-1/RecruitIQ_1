@@ -1,0 +1,64 @@
+role_family: Director – Textile Research Institute (ATIRA)
+department: RESEARCH & DEVELOPMENT / PRODUCT DEVELOPMENT
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- ATIRA - Dy Director or Director-31 10 17.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Head the research institute, focusing on creative applications for the textile industry
+    - Centre of Excellence work for Composites, GeoTextiles and Nano Technology
+    - Collaborate with reputed international textile R&D institutes in Germany and the UK
+    - Lead a team of young, dynamic & qualified professionals for multifaceted institute growth
+    arvind_specific:
+    - ATIRA — Textile Industry Research Association, founded by Dr Vikram Sarabhai and Shri Kasturbhai
+      Lalbhai
+    leadership_skills:
+    - Director / Deputy Director-level leadership of the research institute
+    qualifications:
+    - Great leadership skills
+    - 'Enough Industry/Technology handling experience (Age bracket: 45-50 years)'
+    - Good textile background with extensive experience in product development, Industrial interface;
+      can effectively run the Institute
+    - Doctorate degree an added credential
+    - Publications in scientific/international journals
+    - Patented/patentable research work
+    - International exposure to industry/R&D/scientific work preferred
+    - Flair and passion for R&D
+    - Passion for Techno Start-ups / monetizing technology, ideas, innovation
+    - Good communication skills, good administrative abilities, effective networking skills
+    - Exposure to working with Government agencies
+    kpis: []
+    reporting_to: ''
+note: ATIRA (Textile Industry Research Association) is an affiliated research institute founded by Dr.
+  Vikram Sarabhai and Shri Kasturbhai Lalbhai — not a direct Arvind Limited business unit, but closely
+  tied to the Lalbhai family/textile ecosystem. Mapped to closest-fit department per instructions.

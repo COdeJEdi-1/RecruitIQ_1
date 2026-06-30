@@ -1,0 +1,83 @@
+role_family: VP – Head of Finance (GCC)
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- JD_Head of Finance.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Establish, stabilise, and scale Finance Operations at the Global Capability Centre (GCC)
+    - Lead end-to-end delivery of Procure-to-Pay (PTP), Order-to-Cash (OTC), Controllership (CTR), and
+      Consolidation processes for multiple entities, managing a team of 200+ FTEs
+    - Lead end-to-end setup and scaling of Finance operations at the GCC, including organisation design,
+      governance, operating model, and capability build
+    - Build a strong leadership team across PTP, OTC, CTR, and Consolidation
+    - Establish a high-performance culture focused on accountability, continuous improvement, and talent
+      development
+    - Ensure adherence to SLAs, KPIs, internal controls, SOX, and compliance requirements
+    - Drive standardisation, harmonisation, and documentation of global finance processes
+    - Act as the single point of accountability for finance service delivery to multiple stakeholders
+    - Lead large-scale finance transitions into the GCC
+    - Define and execute structured transition methodologies including process migration, shadowing, reverse
+      shadowing, and stabilisation
+    - Manage transition risks, change management, and stakeholder communication
+    - 'Drive finance transformation initiatives: process re-engineering and simplification, automation
+      (RPA, workflow tools), ERP optimisation (SAP & S/4HANA), advanced analytics and reporting'
+    - Partner with IT and Transformation teams to build a future-ready finance function
+    - Deliver measurable productivity, cost, and quality improvements year-on-year
+    - Establish robust governance mechanisms including SteerCos, Ops Reviews, and performance dashboards
+    - Partner closely with Group CFOs, Business Finance leaders, Internal Audit, and external auditors
+    - Provide strategic insights and recommendations to finance leadership
+    - Lead hiring, capability development, and succession planning for finance teams
+    - Build strong functional expertise across accounting, reporting, compliance, and analytics
+    - Drive learning agendas including leadership development, digital skills, and functional depth
+    arvind_specific:
+    - Arvind Limited's Global Capability Centre (GCC) — Finance Operations setup and scaling
+    leadership_skills:
+    - VP-level leadership managing a team of 200+ FTEs
+    qualifications:
+    - Chartered Accountant (CA) – Preferred
+    - 15+ years of progressive finance experience (SAP and S4 HANA Mandatory)
+    - Minimum 5 years in GCC / Shared Services setup or leadership roles
+    - Proven experience setting up or scaling GCCs
+    - Proven experience leading multi-process finance operations
+    - Proven experience managing large transitions and transformations
+    - Prior experience in manufacturing environments preferred
+    - Deep expertise across PTP, OTC, RTR/CTR, and Consolidation
+    - Proven experience with SAP and S4 HANA (Non-Negotiable)
+    - Strong exposure to finance transformation and automation
+    - Proven people leader with experience managing large finance teams
+    - Strong executive presence and stakeholder management skills
+    - Transformation mindset with ability to lead change in complex environments
+    - Structured, data-driven, and execution-focused
+    kpis: []
+    reporting_to: Head of Global Capability Centre (GCC)

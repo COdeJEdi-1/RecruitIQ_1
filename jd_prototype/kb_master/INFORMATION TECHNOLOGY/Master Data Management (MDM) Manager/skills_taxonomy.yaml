@@ -1,0 +1,91 @@
+role_family: Master Data Management (MDM) Manager
+department: INFORMATION TECHNOLOGY
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- MDM - JD.docx
+- MDM - Manager.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Lead the design, setup, and scaling of the Master Data Management (MDM) function within the GCC
+    - Define and implement the MDM vision, roadmap, and operating model for GCC
+    - Establish centralized MDM services for Vendor and Customer master data
+    - Drive transition of MDM activities from business units / locations into GCC
+    - Develop SOPs, policies, and standard templates for data governance
+    - 'Set up and lead data governance framework: data ownership & stewardship model, data standards,
+      policies, and controls'
+    - Define KPIs/KRAs for data quality, accuracy, completeness, and timeliness
+    - Implement data quality tools, audits, and monitoring dashboards
+    - 'Oversee end-to-end vendor/customer master data lifecycle: creation, modification, blocking, archival'
+    - Ensure proper validations (KYC, tax details, banking, credit limits)
+    - Drive standardization and deduplication initiatives
+    - Collaborate with Procurement, Finance, Sales, and IT teams
+    arvind_specific:
+    - Arvind GCC — Master Data Management function for Vendor and Customer master data
+    leadership_skills:
+    - Manager-level MDM leadership; builds and leads MDM team within GCC
+    qualifications:
+    - 10–12 years of experience (Manager band)
+    - Strong experience in Master Data Management (Vendor/Customer)
+    - Shared Services / GCC setup or transformation roles
+    - Process migration / transitions experience
+    - Experience in manufacturing / textile / retail domains preferred
+    - Strong knowledge of ERP systems (SAP S/4HANA preferred)
+    - Exposure to MDM tools (SAP MDG, Informatica, Collibra, etc.)
+    kpis:
+    - Data accuracy and completeness %
+    - Reduction in duplicate records
+    - Turnaround time for master data requests
+    - Audit compliance and error rates
+    reporting_to: ''
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    inherits_from: lead
+    core_skills: []
+    progressive_skills:
+    - Identify and implement opportunities for process automation (RPA, workflows) and digital tools (MDM
+      platforms, data catalogs)
+    - Drive continuous improvement and process re-engineering
+    - Leverage analytics for proactive data quality management
+    - Partner with senior stakeholders across Finance, Procurement, Sales, Supply Chain, IT
+    - Act as SPOC for MDM governance and escalations
+    - Define roles like Data Stewards, Analysts, and Specialists
+    - Drive training, capability building, and knowledge management
+    arvind_specific:
+    - Senior Manager-level MDM governance across the Arvind GCC
+    leadership_skills:
+    - Builds and leads a high-performing MDM team within GCC; SPOC for MDM governance and escalations
+    qualifications:
+    - 12–15 years of experience (Sr. Manager band)
+    - Workflow and automation tools (RPA – UiPath, Automation Anywhere, etc.)
+    - Strong stakeholder management and influencing skills
+    - Ability to work in ambiguity and build from scratch
+    kpis:
+    - '% automation in MDM processes'
+    - Stakeholder satisfaction scores
+    reporting_to: ''

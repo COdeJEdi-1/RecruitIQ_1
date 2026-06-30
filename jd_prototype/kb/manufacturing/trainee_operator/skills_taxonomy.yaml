@@ -1,0 +1,30 @@
+role_family: Trainee Operator / Machine Operator
+department: Manufacturing
+division: Arvind Limited — Manufacturing
+company: Arvind Limited
+experience_bands:
+  junior:
+    label: Junior / Trainee
+    years: 0-2
+    seniority_tag: Junior
+    core_skills:
+    - Machine operation (weaving/spinning/finishing)
+    - Basic quality checks
+    - Shift discipline and safety protocols
+    progressive_skills: []
+    arvind_specific:
+    - Arvind plant operations at Kalol/Naroda/Santej
+    leadership_skills: []
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Skilled machine operation across multiple lines
+    - Preventive maintenance adherence
+    - Mentoring trainee operators
+    - Quality defect identification
+    progressive_skills: []
+    arvind_specific:
+    - Senior operator role on Arvind's denim/woven production lines
+    leadership_skills: []

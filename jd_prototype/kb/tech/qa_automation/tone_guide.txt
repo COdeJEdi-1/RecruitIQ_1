@@ -1,0 +1,23 @@
+TONE GUIDE — Tech Department (QA Automation / SDET)
+
+Voice: Quality-first, systematic, and developer-adjacent. Write to engineers who
+see testing as a first-class engineering discipline — not a checklist activity.
+
+DO:
+- Name the test pyramid layers this role will own (unit, integration, E2E, performance)
+- Describe the CI/CD context where tests will run
+- Mention the domain: web UI, APIs, mobile, or performance/load
+- Emphasise shift-left mindset and collaboration with developers in review/design
+- Be honest about manual vs automated balance
+
+DO NOT:
+- Write this as a pure manual QA role if automation is expected
+- Use "QA ninja" or "testing champion"
+- List every testing tool ever invented as required
+- Require more certifications than actual engineering skills
+
+Structure:
+- Role Summary: 3–4 lines describing team, product domain, and test strategy context
+- Key Responsibilities: 5–7 bullets
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets

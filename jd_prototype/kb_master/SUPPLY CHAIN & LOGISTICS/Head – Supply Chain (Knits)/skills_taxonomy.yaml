@@ -1,0 +1,79 @@
+role_family: Head – Supply Chain (Knits)
+department: SUPPLY CHAIN & LOGISTICS
+division: MANUFACTURING & PLANT OPERATIONS
+company: Arvind Limited
+source_docs:
+- About Arvind and JD - Head SCM, Indigo knits.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - 'Oversee supply chain (quality, production, product development, technical services) operations
+      of Indigo Knitted fabric (circular, jacquard, warp knits) and Seamless/full Garment (Shimaseiki)
+      operations: Production, Quality, Procurement, Product Development'
+    - As a member of the core team, manage complete operations for indigo knit fabrics and seamless to
+      deliver on bottom line performance measures
+    - Ensure targets are met year-on-year; work with stakeholders for smooth operations
+    - Manage production activities through better planning to ascertain viability of production plans
+    - Ensure timely conduct of daily meetings, discuss/follow up issues until resolved
+    - Investigate/review all operations, identify failures, ensure implementation of permanent corrective
+      actions
+    - Contribute to process improvement through continuous improvement initiatives
+    - Analyze training needs for special operations/attachment requirements
+    - Ensure accurate and timely reporting of output to management
+    - Set up and accreditation of knits lab; set up the technical service department
+    - Manage and ensure implementation of quality/control systems/processes to meet product/process quality
+      requirements
+    - 'Manage the quality assurance department: set targets, plan work, obtain feedback, address issues,
+      allocate resources'
+    - Monitor audits; implement, maintain, review and improve quality assurance and control systems/processes
+    - Liaise with customers and suppliers; evaluate feasibility of new embellishment plants and non-conformity
+      issues
+    - Develop, implement, and manage the Procurement Strategy
+    - 'Lead development and implementation of procurement policies and system strategies: tendering, contracts
+      management, spend analytics, supplier performance management'
+    - Drive continuous improvement, best value and quality improvements within team and departments
+    - Develop new products or improve existing products with thrust on reducing cost
+    - Develop fabrics in line with the strategic vision of the Company
+    - Develop innovation pipeline with new performance materials for unique customer experiences on performance,
+      delivery, and cost
+    - New edge technology upgradation or introduction
+    - Drive development & fabric delivery timings with clear understanding of development cycle and production
+      strategy
+    - Build on existing expertise in fabrics processing with focus on best-in-class; apply environmental
+      knowledge to fabric knitting & processing selection
+    arvind_specific:
+    - Indigo Knitted fabric and Seamless/full Garment (Shimaseiki) operations
+    leadership_skills:
+    - Core team member managing complete operations for indigo knit fabrics and seamless garmenting
+    qualifications:
+    - Around 20 years of experience in Knit Fabric & Garmenting Operations
+    kpis: []
+    reporting_to: ''

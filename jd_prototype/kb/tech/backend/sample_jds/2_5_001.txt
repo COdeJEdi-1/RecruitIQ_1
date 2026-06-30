@@ -1,0 +1,32 @@
+{"jd_id": "2523b9b4", "role_family": "Backend", "yoe_band": "2-5", "generation_id": "4d64d669-1531-4560-86a3-1c4e21aa92dc", "variant_selected": 2, "date_added": "2026-06-24", "approved_by": "chahatdholakia27@gmail.com"}
+
+---
+
+Role Summary
+You will join Arvind's Tech department as an AI Engineer, working on the development and deployment of artificial intelligence and machine learning models to drive business growth. As part of a team of 10 engineers, you will own the design and implementation of AI solutions, collaborating with cross-functional teams to integrate these models into our products and services. You will work on a wide range of problems, from natural language processing to computer vision, and contribute to the development of our AI strategy.
+
+Key Responsibilities
+- You will design and implement AI and machine learning models using Python, TensorFlow, and PyTorch, owning the technical design and implementation of these models.
+- You will work with large datasets to train and test AI models, ensuring high accuracy and reliability.
+- You will collaborate with data engineers to design and implement data pipelines to support AI model development.
+- You will participate in code review for junior engineers, providing actionable feedback on correctness, security, and maintainability.
+- You will investigate and resolve production issues with AI models, using logging and metrics to diagnose problems.
+- You will contribute to architectural decisions in team design reviews, raising trade-offs clearly and concisely.
+- You will maintain and improve the developer experience for internal service consumers, including documentation and API guides.
+
+Must-Have Skills
+- You have 2+ years of experience in developing and deploying AI and machine learning models in a professional context.
+- You are proficient in Python and have experience with popular AI frameworks such as TensorFlow, PyTorch, or Keras.
+- You have a strong understanding of machine learning algorithms, including supervised and unsupervised learning, and deep learning.
+- You are experienced with data preprocessing, feature engineering, and model evaluation techniques.
+- You have worked with large datasets and have experience with data storage solutions such as relational databases or NoSQL databases.
+- You write tests and know when to use unit tests vs integration tests vs end-to-end tests.
+
+Nice-to-Have Skills
+- You have experience with natural language processing or computer vision applications.
+- You have worked with cloud-based AI services such as Google Cloud AI Platform, Amazon SageMaker, or Azure Machine Learning.
+- You have contributed to open-source AI projects or have published research papers on AI-related topics.
+- You have experience with containerization using Docker and Kubernetes.
+
+What We Offer
+You will be working at Arvind, a company with a large scale and a strong presence in the industry, providing opportunities for growth and learning. Our dynamic work environment encourages collaboration, innovation, and experimentation, allowing you to develop your skills and expertise in AI engineering. We offer a competitive salary, benefits, and a chance to work on challenging and impactful projects that can make a real difference.

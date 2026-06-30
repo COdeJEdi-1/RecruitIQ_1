@@ -1,0 +1,29 @@
+{"role_family": "Backend Engineer", "seniority_level": "Junior", "team_context": "Platform team, 6 engineers", "primary_stack": "Python, FastAPI, PostgreSQL, AWS", "date_added": "2024-09-01", "approved_by": "eng_hiring_committee"}
+
+---
+
+Junior Backend Engineer — Platform Team
+
+Role Summary
+You will join our Platform team as a Junior Backend Engineer, working on the internal services that power data ingestion and processing for our core product. You will write and ship production Python code under the guidance of senior engineers, contributing to a codebase that handles 500K API calls per day. This is a hands-on role where you will own small features end-to-end within your first 90 days.
+
+Key Responsibilities
+- You will implement and test new API endpoints in FastAPI, following existing patterns established by the team
+- You will write unit and integration tests for every feature you ship, targeting 80% coverage on changed code
+- You will participate in code review, giving and receiving feedback on at least two PRs per week
+- You will investigate and resolve assigned bugs in our PostgreSQL-backed data pipelines
+- You will document your work: API contracts, data models, and any non-obvious design decisions
+- You will join the on-call rotation after 3 months, initially shadowing a senior engineer
+
+Must-Have Skills
+- You have written Python professionally or in a substantial project (university, bootcamp, or open source counts)
+- You understand relational database fundamentals and can write SQL queries without a framework doing it for you
+- You are comfortable with Git: branching, pull requests, and resolving merge conflicts
+- You have built or consumed REST APIs and understand HTTP verbs, status codes, and headers
+- You can write unit tests and understand why they matter
+
+Nice-to-Have Skills
+- You have used FastAPI, Flask, or Django in a project
+- You have deployed something to AWS or another cloud provider, even a personal project
+- You have used Docker for local development
+- You have worked with Redis or another cache layer

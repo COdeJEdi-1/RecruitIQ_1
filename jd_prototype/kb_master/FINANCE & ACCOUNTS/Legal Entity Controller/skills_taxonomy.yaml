@@ -1,0 +1,69 @@
+role_family: Legal Entity Controller
+department: FINANCE & ACCOUNTS
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- Legal Entity Controller.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    core_skills: []
+    progressive_skills:
+    - Lead end-to-end financial governance of the GCC legal entity, including statutory accounting, taxation,
+      transfer pricing, and cross-charge allocations to group companies
+    - Lead end-to-end accounting and financial management for the GCC legal entity
+    - Ensure accurate monthly, quarterly, and annual financial reporting in compliance with applicable
+      accounting standards and group policies
+    - Oversee general ledger management, reconciliations, financial close, and audit readiness
+    - Establish strong internal controls and financial governance frameworks for the GCC
+    - 'Ensure full compliance with direct and indirect tax regulations: GST, TDS, corporate tax filings'
+    - Manage tax assessments, audits, and liaison with tax authorities
+    - Coordinate with external advisors on regulatory and compliance matters
+    - Manage transfer pricing framework for services provided by the GCC to various group entities
+    - Design and administer cost allocation and cross-charge mechanisms across business units
+    - Ensure compliance with transfer pricing regulations and documentation requirements
+    - Lead statutory audits, internal audits, and tax audits for the GCC entity
+    - Implement and monitor financial controls and risk mitigation processes
+    - Drive finance operations on SAP ERP, ensuring data integrity and efficient financial processes
+    - Establish scalable finance processes suitable for a growing GCC environment
+    - Partner with Group Finance, Tax, and Business Finance teams across the organization
+    - Act as the primary finance point of contact for the GCC entity
+    arvind_specific:
+    - Arvind Limited — Global Capability Centre (GCC) legal entity financial governance
+    leadership_skills:
+    - Primary finance point of contact for the GCC entity
+    qualifications:
+    - Chartered Accountant (CA) – Mandatory
+    - 10–12 years of experience in controllership, taxation, and financial governance
+    - Strong experience in GST, TDS, corporate taxation, and transfer pricing
+    - Experience managing intercompany cross-charges and allocation models
+    - Hands-on experience with SAP ERP
+    - Experience in shared services / GCC / multi-entity environments preferred
+    kpis: []
+    reporting_to: ''
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed

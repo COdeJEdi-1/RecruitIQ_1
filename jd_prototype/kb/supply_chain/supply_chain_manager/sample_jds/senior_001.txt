@@ -1,0 +1,28 @@
+{"jd_id": "89b7e8ac", "role_family": "Supply Chain Manager", "yoe_band": "senior", "source": "kb_seed", "date_added": "2026-06-25", "approved_by": "kb_seed"}
+
+---
+
+Role Summary
+You will own end-to-end supply chain strategy for a category within Arvind Limited's textile and apparel business, managing vendor relationships, logistics optimization, and demand planning across multiple plants.
+
+Key Responsibilities
+- Own end-to-end supply chain strategy for assigned product categories
+- Manage vendor relationships and contract negotiations
+- Drive logistics optimization across Gujarat, Karnataka, and Rajasthan plants
+- Lead S&OP (Sales & Operations Planning) cycles with Sales and Manufacturing
+- Manage SAP MM/SD transactions and master data governance
+- Drive cost reduction through 3PL management and route optimization
+
+Must-Have Skills
+- SAP MM/SD hands-on experience
+- Demand forecasting and S&OP process ownership
+- Vendor management and negotiation experience
+- Multi-site logistics coordination
+
+Nice-to-Have Skills
+- 3PL contract management experience
+- Experience in fashion/apparel or FMCG supply chains
+- Power BI or analytics tool proficiency
+
+What We Offer
+End-to-end ownership of supply chain operations across Arvind's manufacturing footprint, with direct cross-functional exposure to Sales, Finance, and Manufacturing leadership.

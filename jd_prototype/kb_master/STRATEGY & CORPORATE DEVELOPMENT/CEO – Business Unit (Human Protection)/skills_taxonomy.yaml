@@ -1,0 +1,68 @@
+role_family: CEO – Business Unit (Human Protection)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CEO - Human Protection.pdf
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - 'Strategic Leadership: define and execute long-term vision and growth strategy for the division;
+      identify new markets, technologies, and partnerships to strengthen global presence'
+    - 'Operational Excellence: oversee manufacturing, R&D, and quality assurance for protective fabrics
+      and garments; ensure compliance with international safety standards (ISO, NFPA, EN norms)'
+    - 'Innovation & Product Development: drive development of next-generation protective solutions (FR
+      fabrics, combat gear, specialty protection); collaborate with global fiber and chemical partners
+      for advanced material integration'
+    - 'Financial Management: manage P&L, optimize costs, ensure sustainable profitability; align investments
+      with strategic priorities and ROI targets'
+    - 'Team Leadership: build and mentor a high-performing leadership team across operations, R&D, and
+      sales; foster a culture of safety, innovation, and accountability'
+    - 'Stakeholder Engagement: represent the division in global forums, client meetings, and strategic
+      alliances; maintain relationships with government bodies, defense agencies, and industrial clients'
+    arvind_specific:
+    - Arvind Human Protection Division, established 2008 — pioneer in high-performance flame-retardant
+      fabrics and protective garments for oil & gas, energy, construction, automotive, utilities, healthcare,
+      and defense forces
+    - IGNX™ — advanced solution for protection against electric arc, flash fire, molten metal splash,
+      foul weather, and biological hazards
+    leadership_skills:
+    - CEO-level strategic leadership and operational oversight for the Human Protection Division
+    qualifications:
+    - MBA or equivalent with strong technical background (Textiles/Materials Science preferred)
+    - 18+ years of experience in technical textiles or protective solutions, with at least 8 years in
+      senior leadership
+    - Proven track record in scaling businesses globally and managing complex operations
+    - Strong understanding of compliance standards and advanced material technologies
+    - Strategic Vision & Execution, Innovation Leadership, Global Business Acumen, Operational & Financial
+      Excellence, Stakeholder Management
+    kpis: []
+    reporting_to: ''

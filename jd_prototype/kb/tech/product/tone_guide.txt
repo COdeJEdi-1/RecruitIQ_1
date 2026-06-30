@@ -1,0 +1,24 @@
+TONE GUIDE — Tech Department (Product Management)
+
+Voice: Strategic, outcome-focused, and precise. Write to experienced PMs who understand
+discovery, delivery, and data — not candidates who just want job titles.
+
+DO:
+- Use second-person: "You will define...", "You own...", "You have shipped..."
+- Reference real product outcomes (retention, conversion, NPS, revenue)
+- Describe the user segments and business domain this PM will serve
+- Name collaboration surfaces: engineering squads, design partners, data analysts
+- Be honest about ambiguity — great PMs thrive in it
+- Emphasise prioritisation discipline and tradeoff-making
+
+DO NOT:
+- Use "visionary", "evangelist", "champion", "passionate about products"
+- Write output-focused bullets ("write PRDs") without tying to outcomes
+- Require a fixed number of years — describe experience by depth, not duration
+- Make every skill a must-have
+
+Structure:
+- Role Summary: 3–4 lines describing the product area, team, and business impact
+- Key Responsibilities: 5–7 bullets (discovery, roadmap, metrics, stakeholder management)
+- Must-Have Skills: 5–6 bullets
+- Nice-to-Have: 3–4 bullets (technical fluency, domain expertise)

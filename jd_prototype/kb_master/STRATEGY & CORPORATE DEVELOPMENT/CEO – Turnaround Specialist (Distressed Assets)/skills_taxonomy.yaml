@@ -1,0 +1,61 @@
+role_family: CEO – Turnaround Specialist (Distressed Assets)
+department: STRATEGY & CORPORATE DEVELOPMENT
+division: CORPORATE / SHARED FUNCTIONS
+company: Arvind Limited
+source_docs:
+- CEO- Envisol.docx
+- CEO- Turnaround Specialist.docx
+experience_bands:
+  junior:
+    label: Junior / Executive
+    years: 0–2
+    seniority_tag: Junior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  mid:
+    label: Senior Executive / Assistant Manager
+    years: 2–5
+    seniority_tag: Mid
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  senior:
+    label: Manager / Senior Manager
+    years: 5–8
+    seniority_tag: Senior
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  lead:
+    label: Deputy General Manager / General Manager
+    years: 8–12
+    seniority_tag: Lead
+    data_available: false
+    note: No document found for this band — infer from adjacent band if needed
+  executive:
+    label: Vice President / Chief Officer
+    years: 12+
+    seniority_tag: Executive
+    core_skills: []
+    progressive_skills:
+    - Identify distressed assets in textile domain and independently evaluate present circumstances
+    - Prepare the current state assessment of distressed assets
+    - Prepare the business plan outlining and suggesting possible courses of action
+    - Implement the business plan and build the team both inside the company and from outside resources
+    - Monitor the business plan — analyze variances to determine causes and validity of underlying assumptions
+    - Focus on cash flow — stabilize cash flow, analyze sales and profit centers and asset utilization
+    - Rebuild credibility and confidence with lenders, trade suppliers, employees, customers, shareholders,
+      local community
+    - Serve as liaison/intermediary with outside constituencies to calm troubled waters and present a
+      recovery plan
+    arvind_specific:
+    - Acquiring and turning around distressed textile-domain assets for Arvind Ltd.
+    leadership_skills:
+    - Works in tandem with promoters/senior management team of Arvind Ltd.
+    qualifications:
+    - Management graduate with minimum 20 years of experience in a manufacturing company
+    - Currently working as a Business Head with a minimum of 2 turnaround experiences from earlier companies
+    - Good understanding of financial ratios — the 'Z Score' for evaluating a distressed manufacturing
+      company
+    - Goal-oriented professional capable of taking hard decisions
+    - Experienced negotiator with creditors
+    kpis: []
+    reporting_to: ''

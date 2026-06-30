@@ -1,0 +1,30 @@
+{"jd_id": "8839d082", "role_family": "Shift Supervisor \u2013 Dyeing (Cotton Yarn / CCM)", "yoe_band": "mid", "source": "real_scraped_jd", "date_added": "2026-06-25", "approved_by": "kb_import"}
+
+---
+
+Role Summary
+You will develop and manage dyeing recipes for cotton yarn at Arvind Limited's Ahmedabad textile manufacturing facility, owning the Computer Colour Matching (CCM) system and ensuring lab-to-bulk shade reproducibility for customer orders.
+
+Key Responsibilities
+- Develop and formulate dyeing recipes for cotton yarn per customer shade requirements
+- Perform lab dyeing trials and colour matching against approved standards
+- Operate and manage the Computer Colour Matching (CCM) System: recipe generation and shade correction
+- Analyze colour deviations and adjust recipes for the desired shade
+- Ensure lab-to-bulk reproducibility across production runs
+- Maintain records of dye formulations, lab trials, approvals, and colour data
+- Collaborate with production, QA, and merchandising teams for timely shade approvals
+- Optimize recipes for cost, quality, and process efficiency
+- Conduct fastness and quality evaluations per customer and industry standards
+- Troubleshoot dyeing and shade variation issues
+- Ensure safety, environmental, and QMS compliance
+
+Must-Have Skills
+- Dyeing recipe formulation
+- CCM System operation
+- Colour matching and deviation analysis
+- Lab-to-bulk consistency management
+- Fastness testing standards knowledge
+- QMS compliance
+
+What We Offer
+Hands-on ownership of the colour matching function for Arvind's cotton yarn dyeing operations, with direct collaboration across production, QA, and merchandising teams.

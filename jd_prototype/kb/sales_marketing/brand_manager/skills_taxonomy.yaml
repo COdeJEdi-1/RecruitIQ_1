@@ -1,0 +1,42 @@
+role_family: Brand Manager / Senior Brand Manager
+department: Sales Marketing
+division: Arvind Fashions Limited
+company: Arvind Limited
+experience_bands:
+  mid:
+    label: Executive / Assistant Manager
+    years: 2-5
+    seniority_tag: Mid
+    core_skills:
+    - Brand campaign planning and execution
+    - Trade marketing coordination
+    - Retail rollout support and merchandising alignment
+    progressive_skills: []
+    arvind_specific:
+    - Brand support for Arrow, U.S. Polo Assn, or Flying Machine
+    leadership_skills: []
+  senior:
+    label: Manager / Senior Manager
+    years: 5-8
+    seniority_tag: Senior
+    core_skills:
+    - Brand P&L ownership
+    - GTM strategy and licensing management
+    - Agency management for ATL/BTL campaigns
+    - Trend forecasting integration into brand strategy
+    progressive_skills: []
+    arvind_specific:
+    - P&L ownership for a brand within Arvind Fashions' portfolio
+    leadership_skills: []
+  lead:
+    label: Deputy GM / GM
+    years: 8-12
+    seniority_tag: Lead
+    core_skills:
+    - Multi-brand portfolio strategy
+    - Cross-functional leadership across Design, Retail, and Supply Chain
+    - Brand licensing negotiation and management
+    progressive_skills: []
+    arvind_specific:
+    - Portfolio strategy across Arvind Fashions' Premium Formal / Smart Casual segments
+    leadership_skills: []
