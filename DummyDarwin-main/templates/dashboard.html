@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}Document Library — DarwinBox{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="page-header">
+    <div class="page-header-text">
+        <h1>Document Library</h1>
+        <p class="subtitle">Centralized storage for Job Descriptions and Candidate Documents.</p>
+    </div>
+</header>
+
+<!-- Statistics Section -->
+<section class="stats-section">
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-jd">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ stats.jd_count }}</span>
+            <span class="stat-label">Total JD Documents</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-candidate">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ stats.candidate_count }}</span>
+            <span class="stat-label">Total Candidate Documents</span>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon stat-icon-total">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            </svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ stats.total_count }}</span>
+            <span class="stat-label">Total Files</span>
+        </div>
+    </div>
+</section>
+
+<!-- Document Libraries -->
+<section class="library-section" id="library">
+    <!-- JD Library Card -->
+    <article class="library-card">
+        <div class="library-card-header">
+            <div class="library-card-title">
+                <div class="library-icon library-icon-jd">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>JD Library</h2>
+                    <p class="library-description">Upload and manage Job Description files.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <form action="{{ url_for('upload.upload_jd') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+                <label class="upload-area" for="jd-file">
+                    <input type="file" id="jd-file" name="file" accept=".pdf,.doc,.docx,.txt" hidden>
+                    <span class="upload-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </span>
+                    <span class="upload-text">Choose file or drag here</span>
+                    <button type="button" class="btn btn-primary btn-upload" onclick="document.getElementById('jd-file').click()">
+                        Upload
+                    </button>
+                </label>
+                <p class="format-hint">Accepted formats: <span>PDF</span> <span>DOCX</span> <span>DOC</span> <span>TXT</span></p>
+            </form>
+        </div>
+
+        <div class="file-list-wrapper {% if jd_documents|length > 10 %}scrollable{% endif %}">
+            {% if jd_documents %}
+                <ul class="file-list">
+                    {% for doc in jd_documents %}
+                        <li class="file-item">
+                            <div class="file-info">
+                                <span class="file-icon" aria-hidden="true">📄</span>
+                                <div class="file-details">
+                                    <span class="file-name" title="{{ doc.original_filename }}">{{ doc.original_filename }}</span>
+                                    <span class="file-date">{{ doc.formatted_date() }}</span>
+                                </div>
+                            </div>
+                            <div class="file-actions">
+                                <a href="{{ url_for('upload.view_document', document_id=doc.id) }}" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">View</a>
+                                <a href="{{ url_for('upload.download_document', document_id=doc.id) }}" class="btn btn-ghost btn-sm">Download</a>
+                                <form action="{{ url_for('upload.delete_document', document_id=doc.id) }}" method="POST" class="delete-form">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-filename="{{ doc.original_filename }}">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty-state">
+                    <span class="empty-icon">📂</span>
+                    <p>No documents uploaded yet.</p>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+
+    <!-- Candidate Library Card -->
+    <article class="library-card">
+        <div class="library-card-header">
+            <div class="library-card-title">
+                <div class="library-icon library-icon-candidate">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Candidate Library</h2>
+                    <p class="library-description">Upload and manage candidate resumes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <form action="{{ url_for('upload.upload_candidate') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+                <label class="upload-area" for="candidate-file">
+                    <input type="file" id="candidate-file" name="file" accept=".pdf,.doc,.docx,.txt,.xls,.xlsx" hidden>
+                    <span class="upload-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </span>
+                    <span class="upload-text">Choose file or drag here</span>
+                    <button type="button" class="btn btn-primary btn-upload" onclick="document.getElementById('candidate-file').click()">
+                        Upload
+                    </button>
+                </label>
+                <p class="format-hint">Accepted formats: <span>PDF</span> <span>DOCX</span> <span>DOC</span> <span>TXT</span> <span>XLS</span> <span>XLSX</span></p>
+            </form>
+        </div>
+
+        <div class="file-list-wrapper {% if candidate_documents|length > 10 %}scrollable{% endif %}">
+            {% if candidate_documents %}
+                <ul class="file-list">
+                    {% for doc in candidate_documents %}
+                        <li class="file-item">
+                            <div class="file-info">
+                                <span class="file-icon" aria-hidden="true">📄</span>
+                                <div class="file-details">
+                                    <span class="file-name" title="{{ doc.original_filename }}">{{ doc.original_filename }}</span>
+                                    <span class="file-date">{{ doc.formatted_date() }}</span>
+                                </div>
+                            </div>
+                            <div class="file-actions">
+                                <a href="{{ url_for('upload.view_document', document_id=doc.id) }}" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">View</a>
+                                <a href="{{ url_for('upload.download_document', document_id=doc.id) }}" class="btn btn-ghost btn-sm">Download</a>
+                                <form action="{{ url_for('upload.delete_document', document_id=doc.id) }}" method="POST" class="delete-form">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-filename="{{ doc.original_filename }}">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="empty-state">
+                    <span class="empty-icon">📂</span>
+                    <p>No documents uploaded yet.</p>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+</section>
+{% endblock %}

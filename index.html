@@ -346,15 +346,17 @@
         <div class="w-8 h-8 rounded-full bg-primary-fixed-dim flex items-center justify-center text-primary font-bold text-xs">AR</div>
         <span class="text-sm font-semibold font-label-md">Admin Portal</span>
       </div>
-      <!-- Clearance pending button — wire up once access is approved -->
-      <button
-        title="Access pending clearance approval"
-        class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-dashed border-outline text-on-surface-variant text-xs font-semibold font-label-md opacity-60 hover:opacity-100 hover:border-primary hover:text-primary transition-all cursor-not-allowed"
-        disabled
+      <!-- Darwinbox — links to Darwin HRIS module -->
+      <a
+        href="http://localhost:5002"
+        target="_blank"
+        rel="noopener"
+        title="Open Darwinbox HRIS"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-outline text-on-surface-variant text-xs font-semibold font-label-md hover:border-primary hover:text-primary hover:bg-surface-container-low transition-all"
       >
-        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 0;">lock_clock</span>
-        Pending
-      </button>
+        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings:'FILL' 1;">manage_accounts</span>
+        Darwinbox
+      </a>
     </div>
   </header>
 
@@ -407,8 +409,8 @@
           </div>
 
           <div class="mt-8">
-            <a href="http://localhost:5001" class="btn-primary" target="_blank" rel="noopener">
-              Launch Generator
+            <a href="http://localhost:5001/library" class="btn-primary" target="_blank" rel="noopener">
+              Open JD Admin
               <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
             </a>
           </div>
@@ -450,7 +452,7 @@
           </div>
 
           <div class="mt-8">
-            <a href="http://localhost:5173" class="btn-outline" target="_blank" rel="noopener">
+            <a href="http://localhost:5173/" class="btn-outline" target="_blank" rel="noopener">
               Launch Dashboard
               <span class="material-symbols-outlined text-[18px]">dashboard</span>
             </a>

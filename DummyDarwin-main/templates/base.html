@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DarwinBox{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <ul class="navbar-links">
+                <li>
+                    <a href="{{ url_for('dashboard.index') }}" class="nav-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard.index') }}#library" class="nav-link">
+                        Library
+                    </a>
+                </li>
+                <li class="nav-dropdown">
+                    <button class="nav-link nav-link-muted" disabled>
+                        Future Modules
+                        <span class="badge-soon">Soon</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>JD Generator</li>
+                        <li>Resume Ranking</li>
+                        <li>Voice Calling Campaign</li>
+                        <li>Interview Analytics</li>
+                        <li>Offer Letter Generator</li>
+                        <li>Reports</li>
+                        <li>Admin Panel</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <a href="{{ url_for('dashboard.index') }}" class="navbar-brand">
+                <img
+                    src="{{ url_for('static', filename='img/darwinbox-logo.png') }}"
+                    alt="DarwinBox"
+                    class="brand-logo"
+                    width="36"
+                    height="36"
+                >
+                <span class="brand-text">DarwinBox</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}" role="alert">
+                        <span class="flash-icon">
+                            {% if category == 'success' %}✓{% else %}!{% endif %}
+                        </span>
+                        <span>{{ message }}</span>
+                        <button class="flash-close" aria-label="Dismiss">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 DarwinBox · AI-powered recruitment middleware</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

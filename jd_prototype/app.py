@@ -145,7 +145,16 @@ def _make_initials(name: str) -> str:
 
 @app.route("/")
 def index():
-    return redirect(url_for("library") if "user" in session else url_for("login"))
+    return redirect(url_for("hub"))
+
+
+@app.route("/hub")
+def hub():
+    """Platform landing page — no auth required. Entry point for both modules."""
+    landing = Path(__file__).parent.parent / "index.html"
+    if landing.exists():
+        return landing.read_text(encoding="utf-8")
+    return redirect(url_for("login"))
 
 
 @app.route("/login")
@@ -1968,4 +1977,6 @@ if __name__ == "__main__":
     debug = os.getenv("FLASK_ENV", "development") == "development"
     if DEV_MODE:
         print("⚠  No SUPABASE_URL found — running in dev mode (auth bypassed).")
-    app.run(debug=debug, port=port)
+    # use_reloader=False prevents the reloader from spawning a child process
+    # that holds the port — avoids "Address already in use" on restart
+    app.run(debug=debug, port=port, use_reloader=False)

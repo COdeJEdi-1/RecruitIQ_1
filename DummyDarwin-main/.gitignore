@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Database (auto-created on first run)
+database.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploaded files (keep directory structure)
+static/uploads/jd/*
+static/uploads/candidates/*
+!static/uploads/jd/.gitkeep
+!static/uploads/candidates/.gitkeep
