@@ -159,8 +159,6 @@ def hub():
 
 @app.route("/login")
 def login():
-    if "user" in session:
-        return redirect(url_for("library"))
     return render_template("login.html", dev_mode=DEV_MODE)
 
 

@@ -27,16 +27,7 @@ kill_port 5173
 # ── start JD Prototype (Flask) ───────────────────────────────────────────────
 echo "→ Starting JD Generator (Flask) on port 5001..."
 cd "$ROOT/jd_prototype"
-# Use --no-reload to avoid the reloader child-process holding the port on restart
-FLASK_ENV=development python3 -c "
-import os, sys
-sys.path.insert(0, '.')
-from dotenv import load_dotenv
-load_dotenv()
-from app import app
-port = int(os.getenv('PORT', 5001))
-app.run(debug=True, port=port, use_reloader=False)
-" > "$ROOT/logs/flask.log" 2>&1 &
+python3 app.py > "$ROOT/logs/flask.log" 2>&1 &
 FLASK_PID=$!
 echo "  Flask PID: $FLASK_PID"
 

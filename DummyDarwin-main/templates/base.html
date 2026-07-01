@@ -11,6 +11,23 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
+<!-- Back button — fixed top left -->
+<button onclick="window.history.back()"
+   title="Go back"
+   style="position:fixed;top:16px;left:16px;z-index:9999;display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);border:1px solid #e0bec0;font-size:11px;font-weight:600;color:#594142;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,0.08);transition:all .2s;"
+   onmouseover="this.style.color='#830026';this.style.borderColor='#830026';"
+   onmouseout="this.style.color='#594142';this.style.borderColor='#e0bec0';">
+  ← Back
+</button>
+
+<!-- Home button — fixed top right -->
+<a href="http://localhost:5001"
+   title="Back to Platform Hub"
+   style="position:fixed;top:16px;right:16px;z-index:9999;display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);border:1px solid #e0bec0;font-size:11px;font-weight:600;color:#594142;text-decoration:none;box-shadow:0 1px 4px rgba(0,0,0,0.08);transition:all .2s;"
+   onmouseover="this.style.color='#830026';this.style.borderColor='#830026';"
+   onmouseout="this.style.color='#594142';this.style.borderColor='#e0bec0';">
+  🏠 Hub
+</a>
     <!-- Top Navigation -->
     <nav class="navbar">
         <div class="navbar-inner">

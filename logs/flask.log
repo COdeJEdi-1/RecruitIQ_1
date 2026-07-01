@@ -1,0 +1,36 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [30/Jun/2026 15:29:00] "GET /hub HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:08] "GET /hub HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:09] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:18] "POST /api/auth/signin HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:18] "GET /library HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:18] "GET /api/sample/filters HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:18] "GET /api/sample/list HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:20] "GET /generate HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:23] "GET /api/jd/suggest-skills?role_title=QA&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:23] "GET /api/jd/suggest-skills?role_title=QA&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:25] "GET /api/jd/suggest-skills?role_title=QA+Manager&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:29] "GET /api/jd/suggest-skills?role_title=QA+Manager&department=quality&family=qa_manager HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:29:36] "POST /api/jd/generate HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:25] "GET /hub HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:44] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:51] "POST /api/auth/signin HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:51] "GET /library HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:51] "GET /api/sample/filters HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:53] "GET /api/sample/list HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:53] "GET /generate HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:56] "GET /api/jd/suggest-skills?role_title=W&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:56] "GET /api/jd/suggest-skills?role_title=QA&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:56] "GET /api/jd/suggest-skills?role_title=Q&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:58] "GET /api/jd/suggest-skills?role_title=QA+Manag&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:45:59] "GET /api/jd/suggest-skills?role_title=QA+Manager&department=&family= HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:46:04] "GET /api/jd/suggest-skills?role_title=QA+Manager&department=quality&family=qa_manager HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:46:11] "POST /api/jd/generate HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:46:15] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jun/2026 15:46:15] "GET /hub HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 15:46:43] "[32mGET / HTTP/1.1[0m" 302 -
+127.0.0.1 - - [30/Jun/2026 15:46:43] "GET /hub HTTP/1.1" 200 -
