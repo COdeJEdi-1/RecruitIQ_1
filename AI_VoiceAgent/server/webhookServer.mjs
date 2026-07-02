@@ -207,6 +207,17 @@ async function dispatchInboundCandidate(record, options = {}) {
   );
 }
 
+/** Dispatches everyone held with dispatchStatus 'paused' — called when auto-calling is resumed. */
+async function dispatchHeldCandidates() {
+  const held = listInboundCandidates(5000).filter((c) => c.dispatchStatus === 'paused');
+  if (held.length === 0) return;
+
+  console.log(`[Settings] Resuming — dispatching ${held.length} candidate(s) held while paused`);
+  for (const record of held) {
+    await dispatchInboundCandidate(record);
+  }
+}
+
 function checkExpiredBatches() {
   for (const batch of findExpiredOpenBatches()) {
     closeBatch(batch.id);
@@ -437,6 +448,11 @@ const server = http.createServer(async (req, res) => {
       const enabled = setAutoCallEnabled(body.enabled);
       console.log(`[Settings] Auto-calling ${enabled ? 'ENABLED' : 'PAUSED'}`);
       sendJson(res, 200, { success: true, enabled });
+
+      if (enabled) {
+        dispatchHeldCandidates().catch((err) => console.error('[Settings] Backlog dispatch error:', err));
+      }
+
       return;
     }
 
