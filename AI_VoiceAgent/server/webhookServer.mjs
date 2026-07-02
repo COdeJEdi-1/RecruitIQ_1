@@ -59,6 +59,9 @@ function sendJson(res, statusCode, payload) {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Webhook-Secret',
+    // Modern Chrome blocks cross-origin localhost-to-localhost requests
+    // (Private Network Access) unless the server explicitly allows it.
+    'Access-Control-Allow-Private-Network': 'true',
   });
   res.end(JSON.stringify(payload));
 }
