@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { getCandidatesForBatch, markBatchReported, markCandidateDispatched } from './webhookStore.mjs';
+import { getCandidatesForBatch, isAutoCallEnabled, markBatchReported, markCandidateDispatched } from './webhookStore.mjs';
 import { classifyCallStatus, dispatchToPhone, fetchCallLogForPhone, sleep } from './omnidimClient.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -63,6 +63,11 @@ async function resolveCallOutcome(candidate) {
 
     const status = classifyCallStatus(log?.call_status);
     if (status !== 'retry' || attempts >= MAX_CALL_ATTEMPTS) {
+      return { log, attempts };
+    }
+
+    if (!isAutoCallEnabled()) {
+      console.log(`[BatchReport] Auto-calling is paused — not redialing ${candidate.name}`);
       return { log, attempts };
     }
 
