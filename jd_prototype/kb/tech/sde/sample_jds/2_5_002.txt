@@ -1,0 +1,43 @@
+{"jd_id": "ed383285", "role_family": "Sde", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "94d2777d-97f8-4b89-b951-9a82f3c79f1a", "date_added": "2026-07-03", "approved_at": "2026-07-03T15:05:03.298404", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the development and maintenance of business intelligence solutions, working closely with internal stakeholders and the Tech team to drive data-driven decision-making across Arvind Limited's businesses. As a Software Engineer in the GCC, you will collaborate with cross-functional teams to design, build, and deploy Power BI reports and dashboards that meet business requirements. Your work will directly impact the company's ability to analyze and act on key performance indicators, driving business growth and optimization. You will work with stakeholders to identify areas for automation and implement efficient solutions.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Build and maintain scalable data models using star schema and Power BI data modeling capabilities to support complex business reporting requirements
+•  Deliver Power BI reports and dashboards, leveraging DAX and Power Query (M) to create interactive and dynamic visualizations
+•  Own the implementation of data governance and security standards, ensuring row-level security and access control in Power BI
+•  Coordinate with stakeholders to gather requirements and define report specifications, translating business needs into technical solutions
+•  Improve existing Power BI reports and dashboards, ensuring high performance and data freshness
+•  Review and provide feedback on junior team members' work, promoting best practices for data modeling, Power BI development, and data visualization
+•  Develop and maintain technical documentation for Power BI reports and dashboards, including data sources, data models, and DAX measures
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  DAX — creating calculated measures, tables, and columns for data analysis and visualization
+•  Power Query (M) — data transformation, filtering, and loading for Power BI reports
+•  Data modelling / star schema — designing and implementing scalable data models for business intelligence
+•  Power BI Service & Gateway — publishing, managing, and securing Power BI reports and dashboards
+•  SQL (query-only) — writing efficient SQL queries for data extraction and analysis
+•  Stakeholder reporting — creating and presenting reports to business stakeholders
+•  DSA — designing and analyzing data structures for optimal performance
+•  LLD — creating low-level designs for Power BI reports and dashboards
+•  HLD — developing high-level designs for business intelligence solutions
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Microsoft Certified: Data Analyst Associate — demonstrating expertise in data analysis and visualization
+•  Experience with data warehousing and ETL tools, such as Azure Synapse or Informatica PowerCenter
+•  Knowledge of data governance and security best practices, including data encryption and access control
+•  Familiarity with Agile development methodologies and version control systems, such as Git
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Power BI, Azure, and Microsoft SQL Server
+•  Collaborative and dynamic work environment with cross-functional teams, including business stakeholders, data analysts, and IT professionals
+•  Professional development and growth opportunities, including training and certification programs in data analytics and business intelligence
+•  Exposure to complex business problems and the chance to drive business outcomes through data-driven decision-making

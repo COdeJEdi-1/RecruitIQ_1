@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply — {{ job.role_title }} | Arvind GCC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #fff8f7; }
+    .platform-badge-linkedin { background: #0077b5; color: #fff; }
+    .platform-badge-naukri   { background: #ff7555; color: #fff; }
+    .jd-body { white-space: pre-wrap; font-size: 14px; line-height: 1.7; color: #374151; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+
+    .jd-next-steps-footer {
+      display: flex; align-items: stretch; margin-bottom: 24px; border-radius: 16px;
+      background: linear-gradient(135deg, #7a0b22 0%, #b01030 55%, #9a1028 100%);
+      color: #fff; overflow: hidden;
+    }
+    .jd-next-steps-footer__main { flex: 1; display: flex; align-items: center; gap: 14px; padding: 18px 22px; min-width: 0; }
+    .jd-next-steps-footer__icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+    .jd-next-steps-footer__title { margin: 0 0 4px; font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .jd-next-steps-footer__text { margin: 0; font-size: 12px; line-height: 1.45; opacity: 0.96; }
+    .jd-next-steps-footer__brand { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px 20px; border-left: 1px solid rgba(255,255,255,0.28); min-width: 108px; text-align: center; }
+    .jd-next-steps-footer__brand-label { font-size: 8px; font-weight: 600; letter-spacing: 0.14em; opacity: 0.78; margin-bottom: 4px; }
+    .jd-next-steps-footer__brand-name { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- Header -->
+<header class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
+  {% if platform == 'linkedin' %}
+  <div class="flex items-center gap-3">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <div>
+      <div class="font-bold text-[#0a66c2] text-sm leading-tight">LinkedIn Jobs</div>
+      <div class="text-xs text-gray-500">This job is posted on LinkedIn</div>
+    </div>
+  </div>
+  <span class="text-xs px-3 py-1 rounded-full font-semibold platform-badge-linkedin">via LinkedIn</span>
+  {% else %}
+  <div class="flex items-center gap-3">
+    <svg width="80" height="24" viewBox="0 0 120 36" fill="none"><text x="0" y="28" font-family="Arial,sans-serif" font-weight="800" font-size="28" fill="#ff7555">naukri</text></svg>
+    <div>
+      <div class="font-bold text-[#ff7555] text-sm leading-tight">Naukri.com</div>
+      <div class="text-xs text-gray-500">This job is posted on Naukri</div>
+    </div>
+  </div>
+  <span class="text-xs px-3 py-1 rounded-full font-semibold platform-badge-naukri">via Naukri</span>
+  {% endif %}
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-10 fade-in">
+
+  {% if submitted %}
+  <!-- Success state -->
+  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-10 text-center">
+    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <h1 class="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h1>
+    <p class="text-gray-500 text-sm">Thank you for applying for <strong>{{ job.role_title }}</strong> at Arvind GCC. Our team will review your application and reach out shortly.</p>
+  </div>
+
+  {% else %}
+
+  <div class="jd-next-steps-footer" role="note" aria-label="Next steps for candidates">
+    <div class="jd-next-steps-footer__main">
+      <div class="jd-next-steps-footer__icon" aria-hidden="true">🎙️</div>
+      <div>
+        <p class="jd-next-steps-footer__title">{{ jd_footer_heading }}</p>
+        <p class="jd-next-steps-footer__text">{{ jd_footer_text }}</p>
+      </div>
+    </div>
+    <div class="jd-next-steps-footer__brand">
+      <span class="jd-next-steps-footer__brand-label">{{ jd_footer_brand_label }}</span>
+      <span class="jd-next-steps-footer__brand-name">{{ jd_footer_brand_name }}</span>
+    </div>
+  </div>
+
+  <!-- Job header -->
+  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 mb-6">
+    <div class="flex items-start justify-between gap-4 mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-gray-900 font-['Playfair_Display']">{{ job.role_title }}</h1>
+        <p class="text-sm text-gray-500 mt-1">Arvind GCC &nbsp;·&nbsp; Version {{ job.version }}</p>
+      </div>
+      <span class="text-xs px-3 py-1 rounded-full font-semibold shrink-0
+        {% if platform == 'linkedin' %}platform-badge-linkedin{% else %}platform-badge-naukri{% endif %}">
+        {{ platform | capitalize }}
+      </span>
+    </div>
+
+    <!-- JD body (collapsible) -->
+    <details class="group">
+      <summary class="cursor-pointer text-sm font-semibold text-[#830026] hover:underline list-none flex items-center gap-1">
+        <svg class="w-4 h-4 transition-transform group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+        View Job Description
+      </summary>
+      <div class="mt-4 pt-4 border-t border-gray-100 jd-body">{{ job.jd_text }}</div>
+    </details>
+  </div>
+
+  <!-- Application form -->
+  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+    <h2 class="text-lg font-bold text-gray-900 mb-6">Apply for this Role</h2>
+
+    {% if error %}
+    <div class="mb-4 px-4 py-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-700">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="flex flex-col gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-gray-700">Full Name <span class="text-red-500">*</span></label>
+          <input name="name" type="text" required placeholder="Rahul Sharma"
+                 class="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#830026]"/>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label class="text-sm font-semibold text-gray-700">Email Address <span class="text-red-500">*</span></label>
+          <input name="email" type="email" required placeholder="rahul@example.com"
+                 class="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#830026]"/>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-gray-700">Phone Number</label>
+        <input name="phone" type="tel" placeholder="+91 98765 43210"
+               class="border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#830026]"/>
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-gray-700">Resume / CV <span class="text-gray-400 font-normal">(PDF, DOCX)</span></label>
+        <label class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 cursor-pointer hover:border-[#830026] hover:bg-red-50 transition-colors">
+          <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+          </svg>
+          <span class="text-sm text-gray-500" id="fileLabel">Click to upload your resume</span>
+          <input name="resume" type="file" accept=".pdf,.doc,.docx" class="hidden" id="resumeInput"
+                 onchange="document.getElementById('fileLabel').textContent = this.files[0]?.name || 'Click to upload'"/>
+        </label>
+      </div>
+
+      <button type="submit"
+              class="w-full bg-[#830026] hover:bg-[#6e001f] text-white font-semibold py-3 rounded-xl text-sm transition-colors">
+        Submit Application
+      </button>
+    </form>
+  </div>
+  {% endif %}
+
+</main>
+
+<footer class="text-center text-xs text-gray-400 py-8">
+  © 2026 Arvind Limited · Global Capability Centre · HR Intelligence Platform
+</footer>
+
+</body>
+</html>

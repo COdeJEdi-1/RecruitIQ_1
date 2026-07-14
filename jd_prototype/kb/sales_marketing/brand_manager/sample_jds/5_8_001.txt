@@ -1,0 +1,42 @@
+{"jd_id": "fe90c822", "role_family": "Brand Manager", "department_caps": "SALES, MARKETING & BRAND", "yoe_band": "5-8", "generation_id": "2653ca36-ca65-4d9a-a098-ec8e210d10c1", "date_added": "2026-07-02", "approved_at": "2026-07-02T22:34:46.317718", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the development and execution of marketing strategies for Arvind Fashions Limited's portfolio of brands, driving business growth and revenue expansion. As a Marketing Manager at Arvind GCC, you will work closely with internal teams such as sales, product, and retail, as well as external vendors and business stakeholders to deliver go-to-market plans and brand campaigns. Your primary focus will be on driving P&L ownership for assigned brands, leveraging consumer research and insights to inform marketing decisions. You will be responsible for analyzing market trends and competitor activity to identify opportunities for growth and optimization.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Lead the development of brand strategies and positioning for assigned brands, ensuring alignment with overall business objectives and consumer needs.
+•  Design and execute go-to-market plans, including campaign management, trade marketing coordination, and retail rollout support.
+•  Drive consumer research and insights to inform marketing decisions, using tools such as market trend analysis and customer feedback mechanisms.
+•  Manage P&L ownership for assigned brands, tracking key performance indicators such as sales, revenue, and profitability.
+•  Collaborate with external agencies to develop and execute ATL/BTL campaigns, ensuring effective brand messaging and media planning.
+•  Mentor junior team members on marketing best practices, campaign execution, and performance analysis.
+•  Define standards for marketing metrics and performance measurement, ensuring data-driven decision-making across the organization.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Brand strategy & positioning — developing and executing brand plans that drive business growth.
+•  Go-to-market planning — designing and executing launch plans for new products or services.
+•  Consumer research & insights — using tools such as market trend analysis, customer feedback, and consumer surveys.
+•  Campaign management — planning, executing, and measuring the effectiveness of marketing campaigns.
+•  P&L ownership for brand — managing financial performance and profitability for assigned brands.
+•  Microsoft Office (Excel, PowerPoint, Word) — creating reports, presentations, and marketing materials.
+•  Marketing automation platforms (Marketo, Pardot) — executing and measuring email marketing campaigns.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with brand support for Arrow, U.S. Polo Assn, or Flying Machine — developing and executing marketing strategies for these brands.
+•  Knowledge of trend forecasting and its integration into brand strategy — using tools such as WGSN or Fashion Snoops.
+•  Certification in marketing analytics or data science — using tools such as Google Analytics or R.
+•  Experience with licensing management — managing licensing agreements and partnerships for assigned brands.
+•  Familiarity with retail analytics and merchandising alignment — using tools such as RetailNext or SAS.
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a diverse portfolio of brands, including Arrow, U.S. Polo Assn, and Flying Machine, and drive business growth through marketing strategies.
+•  A dynamic and collaborative work environment, with cross-functional exposure to sales, product, and retail teams.
+•  Access to a range of learning and development opportunities, including training programs and workshops, to enhance your marketing skills and knowledge.
+•  The chance to work with a cutting-edge technology stack, including marketing automation platforms, data analytics tools, and cloud-based collaboration software.

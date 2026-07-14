@@ -1,0 +1,40 @@
+{"jd_id": "6c47cefb", "role_family": "Devops", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "48701ecd-9079-4c27-9e9a-0a6051a39c82", "date_added": "2026-07-02", "approved_at": "2026-07-02T12:46:26.345119", "approved_by": "recruiter2@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+As a DevOps Engineer at Arvind Limited GCC, you will own the design, implementation, and maintenance of our cloud-based infrastructure and CI/CD pipelines, working closely with our development teams to ensure seamless deployment and operation of our applications. You will collaborate with internal stakeholders, including developers, QA engineers, and business analysts, to drive business outcomes through reliable and efficient IT operations. Your primary focus will be on ensuring high uptime, scalability, and security of our cloud infrastructure, leveraging platforms like Azure, AWS, or GCP.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver and maintain CI/CD pipelines using GitHub Actions, Azure DevOps, or Jenkins, ensuring automated testing, building, and deployment of applications.
+•  Build and manage cloud infrastructure using IaC tools like Terraform or Ansible, focusing on scalability, security, and compliance.
+•  Own and operate Docker and Kubernetes clusters, ensuring containerized applications are properly deployed, monitored, and scaled.
+•  Coordinate with development teams to implement observability tools like Prometheus, Grafana, or ELK, providing insights into application performance and health.
+•  Improve and automate deployment scripts, leveraging tools like Bash, Python, or PowerShell, to reduce manual errors and increase efficiency.
+•  Review and refine the work of junior engineers, providing guidance on best practices and ensuring knowledge sharing across the team.
+•  Partner with the security team to implement and maintain security controls, adhering to organizational policies and compliance requirements.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  CI/CD pipelines (GitHub Actions / Azure DevOps / Jenkins) — designing and implementing automated deployment workflows.
+•  IaC (Terraform / Ansible) — building and managing cloud infrastructure as code.
+•  Docker & Kubernetes — deploying, managing, and scaling containerized applications.
+•  Cloud platforms (Azure / AWS / GCP) — designing, implementing, and operating cloud-based infrastructure.
+•  Observability (Prometheus / Grafana / ELK) — implementing monitoring, logging, and alerting systems for applications.
+•  Bash or Python — scripting and automating tasks, such as deployment scripts and data processing.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with container security tools like Docker Security Scanning or Kubernetes Network Policies.
+•  Knowledge of infrastructure monitoring tools like New Relic or Datadog.
+•  Familiarity with agile development methodologies like Scrum or Kanban.
+•  Certification in cloud platforms like Azure (AZ-104) or AWS (AWS Certified DevOps Engineer).
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including cloud platforms, containerization, and CI/CD pipelines.
+•  A collaborative and dynamic work environment, with cross-functional teams and a strong focus on innovation and learning.
+•  Professional development opportunities, including training, mentorship, and conferences, to help you grow in your career.
+•  The chance to work on complex and challenging projects, driving business outcomes and making a real impact on the organization.

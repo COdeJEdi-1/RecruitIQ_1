@@ -1,0 +1,41 @@
+{"jd_id": "1d694931", "role_family": "Data Science", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "058e1cde-11d3-4907-962e-a5d793a48275", "date_added": "2026-07-02", "approved_at": "2026-07-02T10:39:57.617229", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+As an ML Engineer at Arvind Limited GCC, you will own the development, deployment, and maintenance of machine learning models that drive business decisions and optimize processes. You will work closely with internal teams, such as data scientists, business stakeholders, and IT, to identify opportunities for ML adoption and deliver scalable solutions. Your work will have a direct impact on the business, enabling data-driven decision-making and process optimization. You will be an integral part of the Tech team, collaborating with cross-functional teams to drive business outcomes.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver high-quality machine learning models using Python, R, and ML algorithms to drive business insights and decision-making.
+•  Build and deploy models using scikit-learn, TensorFlow, or PyTorch to solve complex business problems.
+•  Own the design, development, and maintenance of data pipelines using Pandas, NumPy, and SQL to ensure data quality and integrity.
+•  Coordinate with business stakeholders to gather requirements and deliver data insights that meet their needs.
+•  Improve data analysis and reporting processes by identifying areas for optimization and implementing new tools and methodologies.
+•  Review and refine junior team members' work to ensure quality and consistency.
+•  Design and execute experiment designs and A-B testing to measure model performance and inform business decisions.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Python (pandas, NumPy) — data wrangling, feature engineering, EDA, and data visualization.
+•  R — statistical modeling, data analysis, and data visualization.
+•  Statistical modelling — hypothesis testing, confidence intervals, and regression analysis.
+•  ML algorithms — supervised and unsupervised learning, neural networks, and deep learning.
+•  Model deployment — deploying models to production environments using tools such as Docker.
+•  Pandas / NumPy — data manipulation, analysis, and visualization.
+•  Experiment design / A-B testing — designing and executing experiments to measure model performance.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with cloud-based data platforms such as AWS, GCP, or Azure.
+•  Knowledge of containerization using Docker and Kubernetes.
+•  Familiarity with agile development methodologies such as Scrum or Kanban.
+•  Certification in machine learning or a related field, such as Certified Machine Learning Engineer (CMLE) or Certified Data Scientist (CDS).
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work on complex business problems and develop scalable machine learning solutions that drive real business value.
+•  Access to cutting-edge technologies and tools, including Python, R, ML algorithms, and cloud-based data platforms.
+•  Collaborative and dynamic work environment with a team of experienced data scientists and engineers.
+•  Opportunities for learning and development, including training and certification programs, to help you advance your career in machine learning.

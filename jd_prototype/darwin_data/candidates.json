@@ -1,0 +1,1615 @@
+[
+  {
+    "candidate_id": "938851d0-27d2-4907-b43f-bb9d7c440d47",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "linkedin",
+    "name": "Chahat Dholakia",
+    "email": "chahat@example.com",
+    "phone": "9876543210",
+    "resume_file": "uploads/resumes/d01f107a-6e9b-4eb4-b6ee-cf7b02b04a48_Chahat_Dholakia_Resume_PM.docx",
+    "applied_at": "2026-07-01T12:23:42.462292"
+  },
+  {
+    "candidate_id": "b1103a25-7389-448d-a77c-07f5620abb77",
+    "darwinbox_job_id": "e2a8f094-1860-4554-8870-066d61497e9b",
+    "platform_source": "linkedin",
+    "name": "Kashish Bhagat",
+    "email": "kashish.bhagat@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/b546758a-72fe-4ca9-92eb-0bc905cbfcd9_Kashish_Bhagat_Resume_DataAnalyst.docx",
+    "applied_at": "2026-07-01T13:10:00.000000"
+  },
+  {
+    "candidate_id": "73805a73-940a-4027-ba62-5298a8719b04",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "linkedin",
+    "name": "Rohan Mehta",
+    "email": "rohan.mehta@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/5d29bfdc-c21a-463c-ba49-c76e727a6b82_Rohan_Mehta_Resume_PM.docx",
+    "applied_at": "2026-07-01T13:10:30.000000"
+  },
+  {
+    "candidate_id": "2f4d7879-c725-425b-9036-470ba5be839e",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "naukri",
+    "name": "Ananya Iyer",
+    "email": "ananya.iyer@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/778e8df4-613b-41dd-8aa6-2e6d0b30e7ed_Ananya_Iyer_Resume_PM.docx",
+    "applied_at": "2026-07-01T13:11:00.000000"
+  },
+  {
+    "candidate_id": "b79ed111-f1dd-4cec-adf8-4b0a19016d01",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "linkedin",
+    "name": "Arjun Sethi",
+    "email": "arjun.sethi@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/b72850a7-e830-4dbd-ac7c-6e98184a3b5e_Arjun_Sethi_Resume_PM.docx",
+    "applied_at": "2026-07-01T13:11:30.000000"
+  },
+  {
+    "candidate_id": "cf465819-189a-45a1-b343-8c97c29e2872",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "naukri",
+    "name": "Priya Nair",
+    "email": "priya.nair@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/f65b12af-4649-48cd-8e6b-d996f7299337_Priya_Nair_Resume_PM.docx",
+    "applied_at": "2026-07-01T13:12:00.000000"
+  },
+  {
+    "candidate_id": "89841318-1319-46c3-968c-4b33af889aff",
+    "darwinbox_job_id": "3d21150d-d3f4-44a6-acc5-727e620a4c8d",
+    "platform_source": "naukri",
+    "name": "Devansh Kapoor",
+    "email": "devansh.kapoor@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/b043c021-8204-4c49-8825-82a0cefca5d5_Devansh_Kapoor_Resume_PM.docx",
+    "applied_at": "2026-07-01T13:12:30.000000"
+  },
+  {
+    "candidate_id": "904b0429-13f3-4a0f-9960-c614cd3dd6e6",
+    "darwinbox_job_id": "e2a8f094-1860-4554-8870-066d61497e9b",
+    "platform_source": "linkedin",
+    "name": "neha",
+    "email": "fxgfxgfxgfx@gmail.com",
+    "phone": "8451885796",
+    "resume_file": "uploads/resumes/23ad1226-43a6-47ca-8d2c-d34e750fd7d0_Neha_Choudhary_Resume_DataAnalyst.docx",
+    "applied_at": "2026-07-01T13:25:36.975514",
+    "resume_profile": {
+      "candidate_skills": [
+        "SQL",
+        "Python",
+        "Excel",
+        "Google Data Studio",
+        "Matplotlib",
+        "Google Sheets",
+        "MS Office",
+        "Data Analysis",
+        "Data Visualization",
+        "Marketing Analytics",
+        "Customer Analytics",
+        "Data Cleaning",
+        "Statistical Analysis"
+      ],
+      "total_years_experience": 0,
+      "education": [
+        "B.Sc. Statistics"
+      ],
+      "past_titles": [
+        "Data Analytics Intern",
+        "Research Assistant"
+      ],
+      "domain_tags": [
+        "data",
+        "marketing",
+        "analytics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T13:25:38.060973"
+  },
+  {
+    "candidate_id": "ce7996b9-7752-4006-b886-8f42ce4f478d",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Farhan Ali",
+    "email": "farhan.ali@example.com",
+    "phone": "+91 9825184700",
+    "resume_file": "uploads/resumes/b48c44dd-4b10-4723-b32b-418e435643a4_Farhan_Ali_Resume_BIAnalyst.docx",
+    "applied_at": "2026-07-01T15:29:06.932862",
+    "resume_profile": {
+      "candidate_skills": [
+        "SQL",
+        "Power BI",
+        "Data Modeling",
+        "Data Validation",
+        "Data Cleaning",
+        "Dashboarding",
+        "Excel"
+      ],
+      "total_years_experience": 2,
+      "education": [
+        "B.Com, Business Analytics"
+      ],
+      "past_titles": [
+        "Junior BI Analyst",
+        "BI Intern"
+      ],
+      "domain_tags": [
+        "banking",
+        "data",
+        "analytics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T15:29:09.157378"
+  },
+  {
+    "candidate_id": "b7046b9f-4830-468f-9918-42e0a8915d11",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Karan Malhotra",
+    "email": "karan.malhotra@example.com",
+    "phone": "+91 9825184701",
+    "resume_file": "uploads/resumes/d0dfdac0-9359-4562-83a9-1b8c56c1c282_Karan_Malhotra_Resume_BIAnalyst.docx",
+    "applied_at": "2026-07-01T15:30:00.310395",
+    "resume_profile": {
+      "candidate_skills": [
+        "Power BI",
+        "DAX",
+        "Power Query",
+        "Tableau",
+        "SQL",
+        "Data Modeling",
+        "Star Schema Design"
+      ],
+      "total_years_experience": 6,
+      "education": [
+        "B.E. Information Technology"
+      ],
+      "past_titles": [
+        "Senior BI Analyst",
+        "BI Analyst"
+      ],
+      "domain_tags": [
+        "retail",
+        "FMCG",
+        "data"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:32:31.884323"
+  },
+  {
+    "candidate_id": "bb4e271f-dbcd-4849-bcfc-99fc51af2bcb",
+    "darwinbox_job_id": "f33b1802-c8c7-4618-976a-da29d42bbdd2",
+    "platform_source": "linkedin",
+    "name": "Aryan Chatterjee",
+    "email": "aryan.chatterjee@example.com",
+    "phone": "+91 9825184702",
+    "resume_file": "uploads/resumes/ac7935c5-8d59-4d8a-8c77-f4c7bb3ab61c_Aryan_Chatterjee_Resume_AIIntern.docx",
+    "applied_at": "2026-07-01T15:30:46.243201",
+    "resume_profile": {
+      "candidate_skills": [
+        "OpenCV",
+        "CNNs",
+        "YOLO",
+        "PyTorch",
+        "Python",
+        "C++",
+        "Git",
+        "Roboflow",
+        "LabelImg",
+        "Object Detection",
+        "Image Classification"
+      ],
+      "total_years_experience": 0,
+      "education": [
+        "B.Tech Computer Science (AI/ML)"
+      ],
+      "past_titles": [
+        "Computer Vision Intern"
+      ],
+      "domain_tags": [
+        "ai",
+        "computer vision",
+        "manufacturing"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T15:30:48.507880"
+  },
+  {
+    "candidate_id": "216ef79f-ed8c-4e55-8cd7-6fe7567b6d4f",
+    "darwinbox_job_id": "f33b1802-c8c7-4618-976a-da29d42bbdd2",
+    "platform_source": "linkedin",
+    "name": "Tanya Reddy",
+    "email": "tanya.reddy@example.com",
+    "phone": "+91 9825184703",
+    "resume_file": "uploads/resumes/8a18f545-8f2c-4782-b19a-a728ff91ed2e_Tanya_Reddy_Resume_AIIntern.docx",
+    "applied_at": "2026-07-01T15:31:26.036892",
+    "resume_profile": {
+      "candidate_skills": [
+        "NLP",
+        "transformers",
+        "Hugging Face",
+        "LangChain",
+        "Python",
+        "SQL",
+        "Git",
+        "Jupyter"
+      ],
+      "total_years_experience": 1,
+      "education": [
+        "B.Tech Computer Science (AI/ML)"
+      ],
+      "past_titles": [
+        "Research Assistant",
+        "AI Intern \u2014 NLP Focus"
+      ],
+      "domain_tags": [
+        "ai",
+        "nlp",
+        "ml"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T15:31:26.809316"
+  },
+  {
+    "candidate_id": "6713b6d8-51a1-4727-a1d3-f609e06a64d4",
+    "darwinbox_job_id": "3e4bf3eb-67c1-4587-bb40-fee814b8e349",
+    "platform_source": "linkedin",
+    "name": "Aakash Bhatia",
+    "email": "aakash.bhatia@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/c1918a9f-725d-40d4-ad4b-46ede9390b6f_Aakash_Bhatia_Resume_TalentAcquisition.docx",
+    "applied_at": "2026-07-01T15:33:34.908006",
+    "resume_profile": {
+      "candidate_skills": [
+        "Recruiting",
+        "Resume screening",
+        "Phone screening",
+        "Interview coordination",
+        "Naukri",
+        "Excel",
+        "Google Sheets"
+      ],
+      "total_years_experience": 2,
+      "education": [
+        "BBA, Human Resources"
+      ],
+      "past_titles": [
+        "Junior Talent Acquisition Executive",
+        "HR Intern"
+      ],
+      "domain_tags": [
+        "retail"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T15:33:36.410509"
+  },
+  {
+    "candidate_id": "e8c0ad7b-176f-437b-92bf-38f977bcde66",
+    "darwinbox_job_id": "ca5f409a-4c73-440f-840f-8c61f8e603a1",
+    "platform_source": "linkedin",
+    "name": "Karthik Menon",
+    "email": "karthik.menon@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/ae9ab696-43b2-431d-a2bf-927b8c2e7a70_Karthik_Menon_Resume_ProcurementManager.docx",
+    "applied_at": "2026-07-01T15:34:09.167110",
+    "resume_profile": {
+      "candidate_skills": [
+        "Procurement",
+        "Purchase order processing",
+        "Vendor comparison",
+        "Cost analysis",
+        "Excel",
+        "SAP"
+      ],
+      "total_years_experience": 0,
+      "education": [
+        "B.Com, with specialization in Supply Chain Management"
+      ],
+      "past_titles": [
+        "Procurement Intern"
+      ],
+      "domain_tags": [
+        "procurement",
+        "supply chain"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-01T15:34:11.021607"
+  },
+  {
+    "candidate_id": "1bb5bcca-278b-4c8f-a79f-744d0b2817c9",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Sneha Kulkarni",
+    "email": "sneha.kulkarni@example.com",
+    "phone": "+91 9825184705",
+    "resume_file": "uploads/resumes/61cc3b11-4ab2-49ca-a0ed-8856fb1cd40a_Sneha_Kulkarni_Resume_BIAnalyst.docx",
+    "applied_at": "2026-07-01T16:09:52.766188",
+    "resume_profile": {
+      "candidate_skills": [
+        "Power BI",
+        "DAX",
+        "Tableau",
+        "SQL",
+        "Data Warehousing",
+        "ETL Design"
+      ],
+      "total_years_experience": 7,
+      "education": [
+        "M.Sc. Statistics"
+      ],
+      "past_titles": [
+        "Senior BI Analyst",
+        "BI Analyst"
+      ],
+      "domain_tags": [
+        "healthcare",
+        "hospital operations"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:32:31.734504"
+  },
+  {
+    "candidate_id": "c0c02076-46ad-4767-bd7f-8ce0c4aed507",
+    "darwinbox_job_id": "f33b1802-c8c7-4618-976a-da29d42bbdd2",
+    "platform_source": "linkedin",
+    "name": "Ishaan",
+    "email": "ish@example.com",
+    "phone": "",
+    "resume_file": "",
+    "applied_at": "2026-07-02T10:47:07.442156",
+    "resume_profile": {
+      "candidate_skills": [],
+      "total_years_experience": 0,
+      "education": [],
+      "past_titles": [],
+      "domain_tags": []
+    },
+    "resume_profile_extracted_at": "2026-07-02T10:47:07.446875"
+  },
+  {
+    "candidate_id": "303dfd0c-f0bf-4d2f-82ec-99960a4640b1",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Ritika Sharma",
+    "email": "ritika.sharma@arvind.in",
+    "phone": "+91 9800000002",
+    "resume_file": "uploads/resumes/11dead7a-689b-4f9d-abb8-1c8ef4f18f45_Ritika_Sharma_Resume_BIAnalyst.docx",
+    "applied_at": "2026-07-02T10:48:13.395938",
+    "resume_profile": {
+      "candidate_skills": [
+        "Tableau",
+        "Power BI",
+        "SQL",
+        "Excel",
+        "Data Validation",
+        "Data Analysis",
+        "Reporting",
+        "Dashboard Building"
+      ],
+      "total_years_experience": 3,
+      "education": [
+        "B.Tech Computer Science"
+      ],
+      "past_titles": [
+        "BI Analyst",
+        "Junior BI Analyst"
+      ],
+      "domain_tags": [
+        "ecommerce",
+        "logistics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T10:48:14.291156"
+  },
+  {
+    "candidate_id": "85dcfe72-3861-4fe2-a230-577ccc844dd4",
+    "darwinbox_job_id": "f33b1802-c8c7-4618-976a-da29d42bbdd2",
+    "platform_source": "linkedin",
+    "name": "om",
+    "email": "om@example.com",
+    "phone": "",
+    "resume_file": "uploads/resumes/de1945b3-544c-4c4a-bdc7-64aa29244088_Om_Yadav_Resume_AIIntern.docx",
+    "applied_at": "2026-07-02T11:33:45.867877",
+    "resume_profile": {
+      "candidate_skills": [
+        "Scikit-learn",
+        "time-series forecasting",
+        "Python",
+        "SQL",
+        "Git",
+        "Jupyter",
+        "Excel",
+        "ML"
+      ],
+      "total_years_experience": 0,
+      "education": [
+        "B.Tech Computer Science (AI/ML)"
+      ],
+      "past_titles": [
+        "Machine Learning Intern"
+      ],
+      "domain_tags": [
+        "AI",
+        "ML"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:33:46.530481"
+  },
+  {
+    "candidate_id": "40e6fe44-f531-4f0c-9c68-c5b9792a6bc1",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Priya Nair",
+    "email": "priya.nair@example.com",
+    "phone": "9833774620",
+    "resume_file": "uploads/resumes/8175a050-d9db-4e85-a977-e2f95bc5809a_priya_nair_bi_analyst.docx",
+    "applied_at": "2026-07-02T11:40:42.624099",
+    "resume_profile": {
+      "candidate_skills": [
+        "Power BI",
+        "DAX",
+        "Power Query (M)",
+        "Data modelling",
+        "SQL",
+        "Tableau",
+        "Looker",
+        "Data warehouse design principles",
+        "Data governance",
+        "Agile development methodologies",
+        "Git",
+        "Data storytelling"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "B.Tech Computer Science"
+      ],
+      "past_titles": [
+        "BI Analyst"
+      ],
+      "domain_tags": [
+        "data",
+        "analytics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-03T15:13:50.366509"
+  },
+  {
+    "candidate_id": "ea6fc1fa-3125-4929-9562-9d34bc7ccb51",
+    "darwinbox_job_id": "f33b1802-c8c7-4618-976a-da29d42bbdd2",
+    "platform_source": "linkedin",
+    "name": "Rohan Verma",
+    "email": "rohan.verma@example.com",
+    "phone": "8780923369",
+    "resume_file": "uploads/resumes/676976a5-f6b5-4e41-bf89-e611db03f26f_rohan_verma_ai_intern.docx",
+    "applied_at": "2026-07-02T11:40:42.629601",
+    "resume_profile": {
+      "candidate_skills": [
+        "Python",
+        "R",
+        "Statistical modelling",
+        "ML algorithms",
+        "Model deployment",
+        "Pandas",
+        "NumPy",
+        "Experiment design",
+        "A/B testing",
+        "Data visualization tools",
+        "Cloud-based data platforms",
+        "Agile development methodologies"
+      ],
+      "total_years_experience": 2,
+      "education": [
+        "B.Sc in Statistics"
+      ],
+      "past_titles": [
+        "AI Intern / Junior Data Scientist",
+        "Data Science Intern"
+      ],
+      "domain_tags": [
+        "data",
+        "ai",
+        "ml"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T16:00:44.609646"
+  },
+  {
+    "candidate_id": "2dda7aaf-0cbf-4b09-bcc3-7308f86639a0",
+    "darwinbox_job_id": "0afcc7c8-4986-4120-ba96-7b1b509bfe4b",
+    "platform_source": "linkedin",
+    "name": "Ananya Iyer",
+    "email": "ananya.iyer@example.com",
+    "phone": "9825184700",
+    "resume_file": "uploads/resumes/54109769-5e7e-4915-8b5d-71c9788722c1_ananya_iyer_qa_manager.docx",
+    "applied_at": "2026-07-02T11:40:42.633426",
+    "resume_profile": {
+      "candidate_skills": [
+        "Test Strategy & Planning",
+        "Selenium",
+        "Cypress",
+        "Test Automation Frameworks",
+        "CI/CD (Jenkins)",
+        "JIRA",
+        "Defect Tracking",
+        "Agile/Scrum",
+        "Manual Testing",
+        "Performance Testing",
+        "Team Leadership",
+        "Quality Assurance Processes"
+      ],
+      "total_years_experience": 8,
+      "education": [
+        "B.E. in Information Technology"
+      ],
+      "past_titles": [
+        "QA Manager"
+      ],
+      "domain_tags": [
+        "software",
+        "quality assurance",
+        "testing"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:40:50.337391"
+  },
+  {
+    "candidate_id": "3c1a40e5-f948-46c0-8c3d-93a51eff4bc1",
+    "darwinbox_job_id": "88643ddc-b0f5-4da0-8e0d-50958f1ce049",
+    "platform_source": "linkedin",
+    "name": "Vikram Rao",
+    "email": "vikram.rao@example.com",
+    "phone": "8485934034",
+    "resume_file": "uploads/resumes/eaaad250-38a5-45ff-8504-a6a2609272c6_vikram_rao_software_developer.docx",
+    "applied_at": "2026-07-02T11:40:42.636642",
+    "resume_profile": {
+      "candidate_skills": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Node.js",
+        "REST APIs",
+        "PostgreSQL",
+        "MongoDB",
+        "Git",
+        "AWS",
+        "CI/CD",
+        "Agile development methodologies"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.Tech Computer Science"
+      ],
+      "past_titles": [
+        "Software Developer"
+      ],
+      "domain_tags": [
+        "software development",
+        "cloud computing"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:40:44.011919"
+  },
+  {
+    "candidate_id": "1fcafe39-5b1c-4ec5-94c9-93dbc4cf2c97",
+    "darwinbox_job_id": "39e571a1-fa4b-40b3-95ae-d2e90753aabc",
+    "platform_source": "linkedin",
+    "name": "Meera Pillai",
+    "email": "meera.pillai@example.com",
+    "phone": "+91 9800000005",
+    "resume_file": "uploads/resumes/7579b3ef-6cb3-485a-b084-fe16990a33d6_meera_pillai_ml_engineer.docx",
+    "applied_at": "2026-07-02T11:40:42.641625",
+    "resume_profile": {
+      "candidate_skills": [
+        "Python",
+        "TensorFlow",
+        "PyTorch",
+        "scikit-learn",
+        "MLOps",
+        "Docker",
+        "Kubernetes",
+        "Model deployment",
+        "Data pipelines",
+        "AWS SageMaker",
+        "Pandas",
+        "Spark"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "M.Tech in Computer Science (AI/ML specialization)"
+      ],
+      "past_titles": [
+        "ML Engineer"
+      ],
+      "domain_tags": [
+        "ai",
+        "ml",
+        "data"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:40:44.017007"
+  },
+  {
+    "candidate_id": "013162a4-d197-4970-853d-c0e2c70f9a95",
+    "darwinbox_job_id": "3e4bf3eb-67c1-4587-bb40-fee814b8e349",
+    "platform_source": "linkedin",
+    "name": "Priya Sharma",
+    "email": "priya.sharma@arvind.in",
+    "phone": "+91 9833774620",
+    "resume_file": "uploads/resumes/b0cfde55-0e6e-4722-a81d-1ca7dcec50f6_Priya_Sharma_Talent_Acquisition.pdf",
+    "applied_at": "2026-07-02T11:53:18.885322",
+    "resume_profile": {
+      "candidate_skills": [
+        "Full-Cycle Recruitment",
+        "Sourcing Strategy",
+        "ATS",
+        "Campus & Lateral Hiring",
+        "Employer Branding",
+        "Stakeholder Management",
+        "Offer Negotiation",
+        "HR Analytics & Recruitment Metrics",
+        "Interview Scheduling & Candidate Experience",
+        "Diversity Hiring",
+        "Boolean Search",
+        "LinkedIn Recruiter",
+        "Naukri",
+        "SAP SuccessFactors",
+        "Darwinbox"
+      ],
+      "total_years_experience": 6,
+      "education": [
+        "MBA \u2013 Human Resource Management, NMIMS Mumbai",
+        "B.Com, University of Mumbai"
+      ],
+      "past_titles": [
+        "Senior Talent Acquisition Specialist",
+        "Talent Acquisition Executive"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "textiles",
+        "IT",
+        "recruitment",
+        "HR"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T12:42:59.684238"
+  },
+  {
+    "candidate_id": "88e4fdcf-ca0c-49f9-b0bd-cf952986eb3d",
+    "darwinbox_job_id": "3e4bf3eb-67c1-4587-bb40-fee814b8e349",
+    "platform_source": "linkedin",
+    "name": "Rahul Verma",
+    "email": "rahul.verma@arvind.in",
+    "phone": "+91 8780923369",
+    "resume_file": "uploads/resumes/9ab9e3ca-f51a-4e83-be00-615d7559209f_Rahul_Verma_Talent_Acquisition.pdf",
+    "applied_at": "2026-07-02T11:54:39.815438",
+    "resume_profile": {
+      "candidate_skills": [
+        "ATS management",
+        "Boolean",
+        "X-Ray Sourcing",
+        "HRMS",
+        "Recruitment Marketing",
+        "Vendor Management",
+        "Talent Pipelining",
+        "Market Mapping",
+        "Compensation Benchmarking",
+        "Offer Management",
+        "Recruitment Analytics",
+        "Excel",
+        "Power BI",
+        "Behavioral Interviewing",
+        "Competency-Based Interviewing",
+        "Onboarding Coordination"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "MBA \u2013 HR & Marketing, Nirma University",
+        "B.B.A., Gujarat University"
+      ],
+      "past_titles": [
+        "Talent Acquisition Partner",
+        "Recruitment Consultant"
+      ],
+      "domain_tags": [
+        "hr",
+        "recruitment",
+        "manufacturing",
+        "technology"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T11:54:40.689653"
+  },
+  {
+    "candidate_id": "1bde79b0-6576-4bb6-b19c-cdc5b59925ee",
+    "darwinbox_job_id": "ca5f409a-4c73-440f-840f-8c61f8e603a1",
+    "platform_source": "linkedin",
+    "name": "Siya Patel",
+    "email": "siya.patel@arvind.in",
+    "phone": "+91 9800000003",
+    "resume_file": "uploads/resumes/6383931b-1fde-4802-9578-80d173ba0a7e_Siya_Patel_Procurement_Manager.pdf",
+    "applied_at": "2026-07-02T11:55:18.885507",
+    "resume_profile": {
+      "candidate_skills": [
+        "Strategic Sourcing",
+        "Category Management",
+        "Vendor Development",
+        "Supplier Relationship Management",
+        "Contract Negotiation",
+        "SAP MM",
+        "SAP Ariba",
+        "Coupa",
+        "Cost Reduction",
+        "Inventory Planning",
+        "Working Capital Optimization",
+        "Import Procurement",
+        "Incoterms",
+        "Purchase Order",
+        "P2P Cycle Management",
+        "Sustainability",
+        "Supplier Audits"
+      ],
+      "total_years_experience": 8,
+      "education": [
+        "MBA \u2013 Operations & Supply Chain, IIM Indore (Executive)",
+        "B.E. \u2013 Mechanical Engineering, L.D. College of Engineering, Ahmedabad"
+      ],
+      "past_titles": [
+        "Procurement Manager",
+        "Assistant Manager \u2013 Purchase"
+      ],
+      "domain_tags": [
+        "textiles",
+        "apparel",
+        "supply chain",
+        "procurement"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T13:03:19.601061"
+  },
+  {
+    "candidate_id": "779f7c15-a693-4d6b-82ac-82267f5ce1db",
+    "darwinbox_job_id": "ca5f409a-4c73-440f-840f-8c61f8e603a1",
+    "platform_source": "linkedin",
+    "name": "Ved Desai",
+    "email": "ved.desai@arvind.in",
+    "phone": "+91 8485934034",
+    "resume_file": "uploads/resumes/07f5c0ee-b3da-429a-b321-9990f704005a_Ved_Desai_Procurement_Manager.pdf",
+    "applied_at": "2026-07-02T12:01:41.800148",
+    "resume_profile": {
+      "candidate_skills": [
+        "Procurement",
+        "Sourcing",
+        "Negotiation",
+        "Supplier Governance",
+        "ERP",
+        "SAP MM",
+        "Oracle",
+        "Demand Forecasting",
+        "Inventory Optimization",
+        "Cross-functional Collaboration",
+        "Contract Management",
+        "Risk Mitigation",
+        "Business Continuity Planning",
+        "Global Sourcing",
+        "Imports",
+        "Customs Coordination",
+        "Budgeting",
+        "Spend Analysis"
+      ],
+      "total_years_experience": 7,
+      "education": [
+        "MBA Supply Chain Management",
+        "B.Tech Production Engineering"
+      ],
+      "past_titles": [
+        "Manager \u2013 Procurement",
+        "Senior Executive \u2013 Purchase"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "procurement",
+        "supplychain"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T13:02:58.817788"
+  },
+  {
+    "candidate_id": "19e49a3a-bd27-4e9a-8a06-6f5b43cf7ee3",
+    "darwinbox_job_id": "fb43f1be-4b2b-401f-b580-5210bb31d313",
+    "platform_source": "linkedin",
+    "name": "Ananya Iyer",
+    "email": "ananya.iyer@example.com",
+    "phone": "+91 9800000007",
+    "resume_file": "uploads/resumes/5ce879eb-6c06-45be-a353-5defaf1beb5e_Ananya_Iyer_Data_Scientist.pdf",
+    "applied_at": "2026-07-02T12:13:42.886488",
+    "resume_profile": {
+      "candidate_skills": [
+        "Python",
+        "SQL",
+        "Machine Learning",
+        "Deep Learning",
+        "NLP",
+        "Data Visualization",
+        "MLOps",
+        "Statistical Modeling",
+        "Time Series Forecasting",
+        "Feature Engineering",
+        "Cloud Computing",
+        "Data Warehousing"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "M.Tech Data Science",
+        "B.E. Computer Science"
+      ],
+      "past_titles": [
+        "Data Scientist"
+      ],
+      "domain_tags": [
+        "retail",
+        "ecommerce",
+        "manufacturing",
+        "data",
+        "ai"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T13:03:40.912788"
+  },
+  {
+    "candidate_id": "649d0820-5ae3-48bf-a4cb-27d7df685e72",
+    "darwinbox_job_id": "d2f909c1-f20c-41c4-a9f8-d2b36dd4b41f",
+    "platform_source": "linkedin",
+    "name": "Meera Nair",
+    "email": "meera.nair@arvind.in",
+    "phone": "+91 9800000004",
+    "resume_file": "uploads/resumes/e9b7a620-5c62-4edf-aa8f-2541c9cd76ae_Meera_Nair_DevOps_Engineer.pdf",
+    "applied_at": "2026-07-02T12:48:47.137769",
+    "resume_profile": {
+      "candidate_skills": [
+        "AWS",
+        "Kubernetes",
+        "Terraform",
+        "CI/CD",
+        "Docker",
+        "Helm",
+        "Ansible",
+        "CloudFormation",
+        "Jenkins",
+        "GitHub Actions",
+        "GitLab CI",
+        "ArgoCD",
+        "Prometheus",
+        "Grafana",
+        "ELK Stack",
+        "Datadog",
+        "Bash",
+        "Python",
+        "VPC",
+        "Load Balancers",
+        "DNS",
+        "TLS",
+        "IAM",
+        "Secrets Management",
+        "SAST/DAST integration",
+        "GitOps",
+        "Blue-Green/Canary Deployments",
+        "Linux Administration"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "B.E. \u2013 Information Technology, Pune Institute of Computer Technology"
+      ],
+      "past_titles": [
+        "DevOps Engineer",
+        "Cloud Engineer"
+      ],
+      "domain_tags": [
+        "cloud",
+        "devops",
+        "kubernetes",
+        "aws",
+        "azure",
+        "fintech",
+        "technology"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T12:48:48.796928"
+  },
+  {
+    "candidate_id": "6e1e3f1c-2927-4d09-b73c-3d9b02d28560",
+    "darwinbox_job_id": "68c61fc9-ed26-4e6d-ba2d-f1dc211ddb40",
+    "platform_source": "linkedin",
+    "name": "Arjun Rao",
+    "email": "arjun.rao@example.com",
+    "phone": "+91 9800000006",
+    "resume_file": "uploads/resumes/f8a2c518-6865-4426-8a5a-ba60bc89551e_Arjun_Rao_Cybersecurity_Analyst.pdf",
+    "applied_at": "2026-07-02T12:56:11.768649",
+    "resume_profile": {
+      "candidate_skills": [
+        "SIEM",
+        "Splunk",
+        "Microsoft Sentinel",
+        "QRadar",
+        "EDR",
+        "XDR",
+        "CrowdStrike",
+        "Defender for Endpoint",
+        "Incident Response",
+        "Digital Forensics",
+        "Vulnerability Management",
+        "Nessus",
+        "Qualys",
+        "OpenVAS",
+        "Threat Intelligence",
+        "MITRE ATT&CK",
+        "Network Security",
+        "Firewalls",
+        "IDS/IPS",
+        "Zero Trust",
+        "Cloud Security",
+        "AWS",
+        "Azure",
+        "CSPM",
+        "Scripting",
+        "Python",
+        "PowerShell",
+        "Compliance",
+        "ISO 27001",
+        "SOC 2",
+        "GDPR",
+        "Phishing Analysis",
+        "Email Security"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.Tech Computer Science (Cybersecurity)"
+      ],
+      "past_titles": [
+        "Cybersecurity Analyst (SOC L2)",
+        "Security Analyst (SOC L1)"
+      ],
+      "domain_tags": [
+        "cybersecurity",
+        "incident response",
+        "threat detection",
+        "cloud security",
+        "network security"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T13:02:43.215150"
+  },
+  {
+    "candidate_id": "bff31e6a-3134-4490-b59e-d8869849055c",
+    "darwinbox_job_id": "4644ae4e-69f4-4889-8869-5d7c442b4108",
+    "platform_source": "linkedin",
+    "name": "Nazir",
+    "email": "nazir@example.com",
+    "phone": "+91 9800000001",
+    "resume_file": "uploads/resumes/0d7d88f7-2d6a-4c7f-aa94-e04bbb8c0697_Nazeer_Ahmed_Automation%20engineer%202026.pdf",
+    "applied_at": "2026-07-02T13:29:24.033490",
+    "resume_profile": {
+      "candidate_skills": [
+        "UiPath",
+        "Power Automate Desktop",
+        "Power Automate Cloud",
+        "Power Apps",
+        "Power Virtual Agents",
+        "UiPath ReFramework",
+        "Bot Scheduling",
+        "Monitoring",
+        "Credential & Asset Management",
+        "AI Builder",
+        "Dataverse",
+        "Document Processing",
+        "Form Recognition",
+        "SharePoint Online",
+        "Microsoft Teams",
+        "SAP Integration",
+        "AWS",
+        "Python",
+        "VBScript",
+        "JavaScript",
+        "SQL",
+        "HTML",
+        "CSS",
+        "ReactJS",
+        "MySQL",
+        "MongoDB",
+        "Power BI",
+        "Microsoft Graph API",
+        "Jira",
+        "Figma",
+        "Microsoft Excel",
+        "BeautifulSoup",
+        "Data Extraction",
+        "Automation",
+        "Web Development"
+      ],
+      "total_years_experience": 2,
+      "education": [
+        "B.E. Computer Engineering"
+      ],
+      "past_titles": [
+        "Automation Engineer",
+        "Junior Web Developer & Backend Maintenance Intern",
+        "Chatbot Developer Intern"
+      ],
+      "domain_tags": [
+        "automation",
+        "fintech",
+        "data",
+        "product",
+        "artificial intelligence",
+        "cloud computing",
+        "web development"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T13:29:26.121191"
+  },
+  {
+    "candidate_id": "03137fb8-5408-40eb-926b-43cb2420efac",
+    "darwinbox_job_id": "38f2be34-a0df-441d-a625-f1e48d3f62c6",
+    "platform_source": "linkedin",
+    "name": "Rohan Joshi",
+    "email": "Rohan@example.com",
+    "phone": "+91 9800000008",
+    "resume_file": "uploads/resumes/8ea34390-2ebf-48f6-ac56-bfb3f2377186_Rohan_Joshi_Financial_Analyst.pdf",
+    "applied_at": "2026-07-02T14:11:50.381318",
+    "resume_profile": {
+      "candidate_skills": [
+        "Financial Planning & Analysis (FP&A;)",
+        "Budgeting",
+        "Forecasting",
+        "Variance Analysis",
+        "Financial Modeling",
+        "Advanced Excel",
+        "Power BI",
+        "SAP FICO",
+        "Oracle ERP",
+        "Management Reporting",
+        "Cost Accounting",
+        "Capex Evaluation",
+        "Working Capital",
+        "Cash Flow Analysis",
+        "US GAAP",
+        "Ind AS"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "MBA \u2013 Finance, IIM Ahmedabad",
+        "B.Com \u2013 Accounting & Finance, Gujarat University"
+      ],
+      "past_titles": [
+        "Financial Analyst \u2013 FP&A;",
+        "Analyst \u2013 Finance"
+      ],
+      "domain_tags": [
+        "fintech",
+        "manufacturing",
+        "retail"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T14:11:57.040267"
+  },
+  {
+    "candidate_id": "ba130d17-ef52-4021-9516-554ad2d9d806",
+    "darwinbox_job_id": "3e4bf3eb-67c1-4587-bb40-fee814b8e349",
+    "platform_source": "linkedin",
+    "name": "sunny baxi",
+    "email": "sunny.baxi@gmail.com",
+    "phone": "+91 9537556832",
+    "resume_file": "uploads/resumes/f8b635d6-642b-49fb-bfec-e88cad629e7f_Sunny_Baxi_Talent_Acquisition.pdf",
+    "applied_at": "2026-07-02T16:33:54.210225",
+    "resume_profile": {
+      "candidate_skills": [
+        "End-to-End Recruitment",
+        "Sourcing Strategy",
+        "ATS-driven Pipeline Management",
+        "Campus Hiring",
+        "Lateral Hiring",
+        "Hiring Manager Partnership",
+        "Boolean Search",
+        "HRMS",
+        "Darwinbox",
+        "Keka",
+        "Zoho Recruit",
+        "Screening",
+        "Competency-Based Interviewing",
+        "Offer Management",
+        "Negotiation",
+        "Pre-Onboarding Engagement",
+        "Employee Referral",
+        "Employer Branding",
+        "Recruitment MIS",
+        "Vendor Coordination"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "MBA \u2013 Human Resource Management, Gujarat University",
+        "B.B.A., GLS University, Ahmedabad"
+      ],
+      "past_titles": [
+        "Talent Acquisition Specialist",
+        "Recruitment Executive"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "textiles",
+        "IT/ITES",
+        "hiring",
+        "recruitment"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T16:33:55.602407"
+  },
+  {
+    "candidate_id": "4027d862-7cce-4c68-8b47-36f2a2b990ef",
+    "darwinbox_job_id": "55feefb2-0997-440b-92b9-01b96941a2e3",
+    "platform_source": "linkedin",
+    "name": "Nisha Kulkarni",
+    "email": "nisha.kulkarni.mkt@gmail.com",
+    "phone": "+91 9833774620",
+    "resume_file": "uploads/resumes/63e93047-fa86-4139-b15b-97b8a9240f34_Nisha_Kulkarni_Digital_Marketing_Manager.pdf",
+    "applied_at": "2026-07-02T22:37:22.731285",
+    "resume_profile": {
+      "candidate_skills": [
+        "Performance Marketing",
+        "SEO",
+        "Marketing Automation",
+        "Influencer Campaigns",
+        "Full-funnel Analytics",
+        "Google Ads",
+        "Meta Ads",
+        "Programmatic",
+        "DV360",
+        "Ahrefs",
+        "SEMrush",
+        "GA4",
+        "Google Tag Manager",
+        "Attribution Modeling",
+        "HubSpot",
+        "WebEngage",
+        "Email/WhatsApp Journeys",
+        "E-commerce Growth",
+        "Social Media",
+        "Budget Planning",
+        "ROAS Optimization",
+        "A/B Testing",
+        "Landing Page Optimization",
+        "Brand Campaigns",
+        "Media Planning",
+        "Team Leadership",
+        "Agency Management"
+      ],
+      "total_years_experience": 6,
+      "education": [
+        "MBA - Marketing, SIMSREE Mumbai",
+        "B.M.M. - Advertising, University of Mumbai"
+      ],
+      "past_titles": [
+        "Digital Marketing Manager",
+        "Senior Executive - Digital Marketing"
+      ],
+      "domain_tags": [
+        "fashion",
+        "retail",
+        "D2C",
+        "ecommerce",
+        "digital marketing"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T22:37:25.262307"
+  },
+  {
+    "candidate_id": "3a88aebd-3dd5-4863-878e-8c592def7bee",
+    "darwinbox_job_id": "cac4e670-73c4-4d2c-a23e-eba578f6402f",
+    "platform_source": "naukri",
+    "name": "Kashish Bhagat",
+    "email": "kashish.bhagat.it@gmail.com",
+    "phone": "+91 8780923369",
+    "resume_file": "uploads/resumes/c546da65-731a-4f97-878d-2f49377eaf9a_Kashish_Bhagat_IT_Consultant_(1).pdf",
+    "applied_at": "2026-07-02T22:46:55.817177",
+    "resume_profile": {
+      "candidate_skills": [
+        "ITSM",
+        "IT Service Management",
+        "Infrastructure Support",
+        "SLA Management",
+        "Windows",
+        "Linux",
+        "macOS",
+        "Active Directory",
+        "Azure AD",
+        "Networking",
+        "TCP/IP",
+        "DNS",
+        "DHCP",
+        "PowerShell",
+        "Bash",
+        "Cloud Platforms",
+        "Microsoft Azure",
+        "AWS",
+        "Vendor Management",
+        "Contract Coordination",
+        "End-User Support",
+        "Asset Management",
+        "Process Improvement",
+        "Knowledge-Base Documentation",
+        "ITIL",
+        "Jira Service Management",
+        "ServiceNow"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.E. - Information Technology, Gujarat Technological University"
+      ],
+      "past_titles": [
+        "IT Consultant",
+        "IT Support Engineer"
+      ],
+      "domain_tags": [
+        "IT",
+        "infrastructure",
+        "cloud",
+        "cybersecurity",
+        "service management"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-02T22:46:57.237885"
+  },
+  {
+    "candidate_id": "a006a9bd-b867-4f0e-8a4e-cc421b240721",
+    "darwinbox_job_id": "2d776995-5763-4483-81a3-99de3d68b491",
+    "platform_source": "naukri",
+    "name": "Harsh Vora",
+    "email": "harsh.vora@example.com",
+    "phone": "+91 8485934034",
+    "resume_file": "uploads/resumes/8408d0e1-a8cb-4439-9ac3-b0b2450c71a7_Sunny_Baxi_Talent_Acquisition.pdf",
+    "applied_at": "2026-07-03T11:33:46.072992",
+    "resume_profile": {
+      "candidate_skills": [
+        "End-to-End Recruitment",
+        "Sourcing Strategy",
+        "ATS-driven pipeline management",
+        "Campus Hiring",
+        "Lateral Hiring",
+        "Hiring Manager Partnership",
+        "Boolean Search",
+        "HRMS",
+        "Darwinbox",
+        "Keka",
+        "Zoho Recruit",
+        "Employee Referral",
+        "Employer Branding",
+        "Recruitment MIS",
+        "Time-to-Fill",
+        "Cost-per-Hire",
+        "Source Mix",
+        "Vendor Coordination"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "MBA \u2013 Human Resource Management, Gujarat University",
+        "B.B.A., GLS University, Ahmedabad"
+      ],
+      "past_titles": [
+        "Talent Acquisition Specialist",
+        "Recruitment Executive"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "textiles",
+        "IT/ITES",
+        "HR"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-03T11:33:48.788283"
+  },
+  {
+    "candidate_id": "2c66183a-a9bd-4507-9ff7-69bf116767c4",
+    "darwinbox_job_id": "7b2065e7-2a46-4c55-a160-affa62a39d91",
+    "platform_source": "linkedin",
+    "name": "Ishita Parekh",
+    "email": "ishita.parekh@example.com",
+    "phone": "+91 9833774620",
+    "resume_file": "uploads/resumes/00f701ee-72c4-4657-904c-9ecb84501e0c_Ishita_Parekh_Software_Engineer_BI.pdf",
+    "applied_at": "2026-07-03T15:14:49.774117",
+    "resume_profile": {
+      "candidate_skills": [
+        "DAX",
+        "Power Query",
+        "Data Modeling",
+        "SQL",
+        "Power BI",
+        "Star Schema",
+        "Data Structures",
+        "Algorithms",
+        "Agile",
+        "Scrum",
+        "Git",
+        "ETL",
+        "Data Warehousing",
+        "Azure Synapse",
+        "SSIS",
+        "Dataflows",
+        "Stakeholder Reporting",
+        "Technical Documentation"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.Tech Computer Science & Engineering"
+      ],
+      "past_titles": [
+        "Software Engineer \u2013 Business Intelligence",
+        "Associate Software Engineer \u2013 Data & BI"
+      ],
+      "domain_tags": [
+        "business intelligence",
+        "data",
+        "retail",
+        "manufacturing"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-03T15:15:16.448561"
+  },
+  {
+    "candidate_id": "5d25eef8-5973-4bce-b1bf-ef02fa526f08",
+    "darwinbox_job_id": "39e571a1-fa4b-40b3-95ae-d2e90753aabc",
+    "platform_source": "linkedin",
+    "name": "Vinod Chandrabhan",
+    "email": "Vinod.Chandrabhan@wxample.com",
+    "phone": "+91 7030742394",
+    "resume_file": "uploads/resumes/f72fc704-856d-4c23-b4df-71060afa0a77_Vinod_Chandrabhan_ML_Engineer.pdf",
+    "applied_at": "2026-07-03T15:46:03.769957",
+    "resume_profile": {
+      "candidate_skills": [
+        "Python",
+        "R",
+        "Pandas",
+        "NumPy",
+        "scikit-learn",
+        "TensorFlow",
+        "PyTorch",
+        "Docker",
+        "Kubernetes",
+        "Flask",
+        "FastAPI",
+        "CI/CD",
+        "MLflow",
+        "SQL",
+        "Airflow",
+        "AWS",
+        "Azure ML",
+        "Agile",
+        "Scrum",
+        "Git",
+        "Code Review",
+        "Mentoring",
+        "Statistical Modeling",
+        "Data Analysis",
+        "Data Visualization",
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Networks",
+        "Experiment Design",
+        "A/B Testing"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.E. Computer Engineering",
+        "Minor coursework in Statistics"
+      ],
+      "past_titles": [
+        "ML Engineer",
+        "Data Science Engineer"
+      ],
+      "domain_tags": [
+        "retail",
+        "manufacturing",
+        "machine learning",
+        "data science",
+        "cloud computing",
+        "artificial intelligence"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-03T15:46:14.875493"
+  },
+  {
+    "candidate_id": "6f5fe787-ce8b-4c69-b6f1-1902a5ae09c3",
+    "darwinbox_job_id": "fb9ff1b0-fcde-4201-a588-dbe063b6b999",
+    "platform_source": "linkedin",
+    "name": "Neetu",
+    "email": "neetu@example.com",
+    "phone": "+91 8238870051",
+    "resume_file": "uploads/resumes/59b3b95e-1c7f-49cd-b8c2-bc3e7ca3c2d0_Neetu_Sharma_BI_Analyst.pdf",
+    "applied_at": "2026-07-03T16:58:23.974142",
+    "resume_profile": {
+      "candidate_skills": [
+        "Power BI",
+        "DAX",
+        "Data Modelling",
+        "SQL",
+        "Power Query",
+        "Star Schema",
+        "Data Storytelling",
+        "Agile/Scrum",
+        "Git Version Control",
+        "Report Documentation",
+        "Data Warehouse Concepts",
+        "Data Governance Fundamentals"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.Tech Information Technology"
+      ],
+      "past_titles": [
+        "BI Analyst",
+        "Data Analyst"
+      ],
+      "domain_tags": [
+        "retail",
+        "manufacturing",
+        "data",
+        "analytics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-03T16:58:24.775521"
+  },
+  {
+    "candidate_id": "4d06487f-ee76-4ab5-aeed-fea756349be8",
+    "darwinbox_job_id": "297e5e0c-b7d2-47bf-97ee-046f056c5765",
+    "platform_source": "linkedin",
+    "name": "Ananya Kapoor",
+    "email": "ananya.kapoor.test@example.com",
+    "phone": "+91 98251 84700",
+    "resume_file": "uploads/resumes/840e3b71-118e-4887-8e1a-9c1960b8f9bc_resume_A_above9.pdf",
+    "applied_at": "2026-07-13T17:10:29.409520",
+    "resume_profile": {
+      "candidate_skills": [
+        "DAX",
+        "Power Query",
+        "Data modelling",
+        "Star schema",
+        "Power BI Service",
+        "SQL",
+        "Stakeholder reporting",
+        "Power BI",
+        "Tableau",
+        "Data warehouse design principles",
+        "Data governance",
+        "Git",
+        "Data storytelling"
+      ],
+      "total_years_experience": 4,
+      "education": [
+        "B.Tech Computer Science",
+        "Microsoft Certified: Data Analyst Associate"
+      ],
+      "past_titles": [
+        "Senior Power BI Analyst",
+        "Power BI Analyst"
+      ],
+      "domain_tags": [
+        "business intelligence",
+        "data",
+        "finance",
+        "supply chain",
+        "operations"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-13T17:10:30.992831"
+  },
+  {
+    "candidate_id": "ff7f7bdf-0b91-408b-a609-a5971fdf7786",
+    "darwinbox_job_id": "297e5e0c-b7d2-47bf-97ee-046f056c5765",
+    "platform_source": "linkedin",
+    "name": "Rohit Malhotra",
+    "email": "rohit.malhotra.test@example.com",
+    "phone": "+91 87809 23369",
+    "resume_file": "uploads/resumes/00a73601-2718-4711-9201-0b919503bf99_resume_B_7to9.pdf",
+    "applied_at": "2026-07-13T17:11:10.036468",
+    "resume_profile": {
+      "candidate_skills": [
+        "SQL",
+        "Power BI",
+        "DAX",
+        "Stakeholder reporting",
+        "Excel",
+        "Git",
+        "Data storytelling"
+      ],
+      "total_years_experience": 3,
+      "education": [
+        "B.Sc. in Statistics, Fergusson College, Pune"
+      ],
+      "past_titles": [
+        "Data Analyst",
+        "Reporting Analyst"
+      ],
+      "domain_tags": [
+        "data"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-13T17:11:10.890536"
+  },
+  {
+    "candidate_id": "31a18a2a-b526-4faf-953c-0dcfca074010",
+    "darwinbox_job_id": "297e5e0c-b7d2-47bf-97ee-046f056c5765",
+    "platform_source": "naukri",
+    "name": "Karan Singh",
+    "email": "karan.singh.test@example.com",
+    "phone": "+91 98337 74620",
+    "resume_file": "uploads/resumes/8590a642-39c2-4ff2-858c-d38aa98a1a66_resume_C_below7.pdf",
+    "applied_at": "2026-07-13T17:11:37.219153",
+    "resume_profile": {
+      "candidate_skills": [
+        "SQL",
+        "Java",
+        "Spring Boot",
+        "HTML/CSS",
+        "REST APIs"
+      ],
+      "total_years_experience": 1,
+      "education": [
+        "Diploma in Computer Applications"
+      ],
+      "past_titles": [
+        "Junior Software Developer"
+      ],
+      "domain_tags": [
+        "ecommerce"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-13T17:11:37.761310"
+  },
+  {
+    "candidate_id": "2834de42-bfa6-499b-bb9a-ea58ca92113e",
+    "darwinbox_job_id": "297e5e0c-b7d2-47bf-97ee-046f056c5765",
+    "platform_source": "naukri",
+    "name": "Priyanka Desai",
+    "email": "priyanka.desai.test@example.com",
+    "phone": "+91 98251 84700",
+    "resume_file": "uploads/resumes/daa9b983-bd27-46a9-9d0a-9b34dc6d7075_resume_D_above9_retry.pdf",
+    "applied_at": "2026-07-13T17:36:55.284714",
+    "resume_profile": {
+      "candidate_skills": [
+        "DAX",
+        "Power Query",
+        "Data modelling",
+        "star schema",
+        "Power BI Service",
+        "SQL",
+        "Stakeholder reporting",
+        "Tableau",
+        "Data warehouse design",
+        "Data governance",
+        "Git",
+        "Data storytelling",
+        "Agile development"
+      ],
+      "total_years_experience": 5,
+      "education": [
+        "B.Tech Computer Science",
+        "Microsoft Certified: Data Analyst Associate"
+      ],
+      "past_titles": [
+        "Lead Power BI Analyst",
+        "Power BI Analyst"
+      ],
+      "domain_tags": [
+        "finance",
+        "supply chain",
+        "operations",
+        "data",
+        "analytics"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-13T17:36:59.716634"
+  }
+]

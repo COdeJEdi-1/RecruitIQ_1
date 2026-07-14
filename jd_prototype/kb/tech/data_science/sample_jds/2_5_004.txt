@@ -1,0 +1,42 @@
+{"jd_id": "84daf547", "role_family": "Data Science", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "be063df2-e7b1-4be6-89ea-3bd84f7ac0c3", "date_added": "2026-07-01", "approved_at": "2026-07-01T15:13:34.035821", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+As an AI Intern at Arvind Limited GCC, you will own the development and deployment of machine learning models to drive business outcomes in the textile, retail, and diversified businesses. You will work closely with internal teams, such as business stakeholders and IT, to identify opportunities for AI-driven solutions and deliver insights that inform strategic initiatives. Your work will have a direct impact on the business, enabling data-driven decision-making and process optimization. You will be an integral part of the Tech team, collaborating with cross-functional teams to drive business outcomes.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver high-quality machine learning models using Python, R, and ML algorithms to drive business insights and decision-making.
+•  Build and deploy models using scikit-learn, TensorFlow, or PyTorch to solve complex business problems.
+•  Own the design, development, and maintenance of databases and data pipelines using Pandas, NumPy, and SQL to ensure data quality and integrity.
+•  Coordinate with business stakeholders to gather requirements and deliver data insights that meet their needs.
+•  Improve data analysis and reporting processes by identifying areas for optimization and implementing new tools and methodologies.
+•  Review and refine junior team members' work to ensure quality and consistency.
+•  Develop and maintain technical documentation of models, reports, and dashboards to ensure knowledge sharing and continuity.
+•  Design and execute experiments using statistical modelling and A-B testing to measure the impact of AI-driven solutions.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Python (pandas, NumPy) — data wrangling, feature engineering, EDA, and data visualization.
+•  R — statistical modeling, data analysis, and data visualization.
+•  Statistical modelling — hypothesis testing, confidence intervals, and regression analysis.
+•  ML algorithms — supervised and unsupervised learning, neural networks, and deep learning.
+•  Model deployment — deploying models to production environments using tools such as Docker.
+•  Pandas / NumPy — data manipulation, analysis, and visualization.
+•  Experiment design / A-B testing — designing and executing experiments to measure the impact of AI-driven solutions.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with cloud-based data platforms such as AWS, GCP, or Azure.
+•  Knowledge of data visualization tools such as Tableau, Power BI, or D3.js.
+•  Familiarity with agile development methodologies such as Scrum or Kanban.
+•  Certification in data science or a related field, such as Certified Data Scientist (CDS) or Certified Analytics Professional (CAP).
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work on complex business problems and develop AI-driven solutions that drive real business value.
+•  Access to cutting-edge technologies and tools, including Python, R, ML algorithms, and cloud-based data platforms.
+•  Collaborative and dynamic work environment with a team of experienced data analysts and scientists.
+•  Opportunities for learning and development, including training and certification programs, to help you advance your career in AI and data science.

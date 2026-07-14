@@ -8,10 +8,77 @@
     line-height: 1.75;
     resize: none;
     outline: none;
-    min-height: 520px;
+    min-height: 280px;
+    max-height: min(480px, 48vh);
+    overflow-y: auto;
     white-space: pre-wrap;
   }
   .jd-output:focus { box-shadow: none; }
+
+  .jd-next-steps-footer {
+    display: flex;
+    align-items: stretch;
+    margin: 0;
+    background: linear-gradient(135deg, #7a0b22 0%, #b01030 55%, #9a1028 100%);
+    color: #fff;
+    overflow: hidden;
+  }
+  .jd-next-steps-footer__main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    min-width: 0;
+  }
+  .jd-next-steps-footer__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .jd-next-steps-footer__icon .material-symbols-outlined {
+    font-size: 26px;
+    color: #fff;
+  }
+  .jd-next-steps-footer__title {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .jd-next-steps-footer__text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+    opacity: 0.96;
+  }
+  .jd-next-steps-footer__brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 18px;
+    border-left: 1px solid rgba(255,255,255,0.28);
+    min-width: 108px;
+    text-align: center;
+  }
+  .jd-next-steps-footer__brand-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    opacity: 0.78;
+    margin-bottom: 4px;
+  }
+  .jd-next-steps-footer__brand-name {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
   #outputPanel { transition: opacity 0.3s ease; }
   .loader-dots div { animation-timing-function: cubic-bezier(0,1,1,0); }
   .loader-dots div:nth-child(1) { left:8px; animation:ld1 0.6s infinite; }
@@ -38,6 +105,8 @@
   .skill-chip .rm:hover { opacity:1; }
   .skill-chip.suggested { background:#f0f7ff; color:#1d4ed8; border-color:#93c5fd; }
   .skill-chip.suggested .rm { color:#1d4ed8; }
+  .skill-chip.community { background:#f0fdf4; color:#15803d; border-color:#86efac; }
+  .skill-chip.community .rm { color:#15803d; }
   .toggle-btn.selected { border-color:#810022 !important; background:rgba(129,0,34,0.07) !important;
     color:#810022 !important; font-weight:600; }
 {% endblock %}
@@ -233,7 +302,7 @@
     </div>
 
     <!-- ── Edit panel ─────────────────────────────────────────────────────── -->
-    <div id="outputCard" class="hidden fade-up bg-white rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <div id="outputCard" class="hidden fade-up bg-white rounded-xl border border-outline-variant shadow-sm flex flex-col">
 
       <!-- Output toolbar -->
       <div class="flex items-center justify-between px-space-lg py-3 border-b border-outline-variant bg-surface-container-low flex-wrap gap-2">
@@ -292,6 +361,8 @@
         </div>
       </div>
 
+      {% include "partials/jd_footer_banner.html" %}
+
       <!-- Per-section AI Ideas bar (shown after generation) -->
       <div id="sectionIdeasBar" class="hidden border-t border-outline-variant px-space-lg py-3 bg-surface-container-low">
         <div class="flex items-center gap-2 flex-wrap">
@@ -302,6 +373,7 @@
           <div id="sectionIdeasBtns" class="flex flex-wrap gap-1.5"></div>
         </div>
       </div>
+
 
     </div><!-- /outputCard -->
 
@@ -479,6 +551,30 @@
   const DEPARTMENTS   = {{ departments | tojson }};
   const FAMILY_LABELS = {{ family_labels | tojson }};
   const YOE_LABELS    = {{ yoe_labels | tojson }};
+  const JD_FOOTER_TEXT = {{ jd_footer_text | tojson }};
+  const JD_FOOTER_HEADING = {{ jd_footer_heading | tojson }};
+  const JD_FOOTER_BRAND_LABEL = {{ jd_footer_brand_label | tojson }};
+  const JD_FOOTER_BRAND_NAME = {{ jd_footer_brand_name | tojson }};
+  const _LEGACY_FOOTERS = [JD_FOOTER_TEXT, "You will be getting a call shortly."];
+
+  function _stripJdFooter(text) {
+    let t = (text || '').trimEnd();
+    for (const f of _LEGACY_FOOTERS) {
+      if (t.endsWith(f)) t = t.slice(0, -f.length).trimEnd();
+    }
+    return t;
+  }
+
+  function _appendJdFooter(text) {
+    const body = _stripJdFooter(text);
+    return body ? `${body}\n\n${JD_FOOTER_TEXT}` : JD_FOOTER_TEXT;
+  }
+
+  function _jdBodyForExport() {
+    return _appendJdFooter(document.getElementById('jdOutput').value.trim());
+  }
+
+
 
   // Generation state
   let currentGenerationId = null;
@@ -536,7 +632,8 @@
 
   function autoResize(el) {
     el.style.height = 'auto';
-    el.style.height = el.scrollHeight + 'px';
+    const maxH = Math.min(480, Math.floor(window.innerHeight * 0.48));
+    el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
   }
 
   // ── JD text formatter — strips markdown ## and presents clean section headers ──
@@ -622,7 +719,7 @@
   }
 
   // ── Skill chips ───────────────────────────────────────────────────────────
-  let _skills = [];   // {label, suggested}
+  let _skills = [];   // {label, suggested, community}
 
   function _renderChips() {
     const container = document.getElementById('skillChips');
@@ -634,7 +731,8 @@
     }
     if (placeholder) placeholder.style.display = 'none';
     container.innerHTML = _skills.map((s, i) =>
-      `<span class="skill-chip ${s.suggested ? 'suggested' : ''}">
+      `<span class="skill-chip ${s.community ? 'community' : (s.suggested ? 'suggested' : '')}"
+            ${s.community ? 'title="Added by your team on past JDs for this role"' : ''}>
         ${s.label}
         <span class="rm" onclick="removeSkill(${i})" title="Remove">×</span>
       </span>`
@@ -677,10 +775,11 @@
       const res  = await fetch(`/api/jd/suggest-skills?${params}`);
       const data = await res.json();
       if (data.must_have && data.must_have.length > 0) {
+        const communitySet = new Set((data.community_skills || []).map(s => s.toLowerCase()));
         // Add suggested skills not already in the list
         data.must_have.forEach(skill => {
           if (!_skills.some(s => s.label.toLowerCase() === skill.toLowerCase())) {
-            _skills.push({ label: skill, suggested: true });
+            _skills.push({ label: skill, suggested: true, community: communitySet.has(skill.toLowerCase()) });
           }
         });
         _renderChips();
@@ -715,6 +814,7 @@
       work_mode:        wkMap[_toggleVal('workModeGroup')]  || 'Onsite',
       reports_to:       document.getElementById('reportsTo').value.trim(),
       must_have_skills: _skills.map(s => s.label),
+      custom_skills:    _skills.filter(s => !s.suggested).map(s => s.label),
       department:       document.getElementById('department').value,
       family:           document.getElementById('family').value,
       yoe_band:         document.getElementById('yoeBand').value,
@@ -751,7 +851,7 @@
       currentGenerationId = data.generation_id;
 
       const textarea = document.getElementById('jdOutput');
-      textarea.value = _formatJD(data.jd);
+      textarea.value = _stripJdFooter(_formatJD(data.jd));
       autoResize(textarea);
       document.getElementById('editHint').style.display = 'flex';
 
@@ -763,7 +863,7 @@
       _buildSectionIdeasBar(textarea.value);
 
       // Save formatted text as local draft so History shows it even before approval
-      _saveGeneratedDraft(inputs, textarea.value, data.generation_id);
+      _saveGeneratedDraft(inputs, _stripJdFooter(textarea.value), data.generation_id);
 
     } catch (err) {
       document.getElementById('loadingState').classList.add('hidden');
@@ -791,7 +891,7 @@
       currentGenerationId = data.generation_id;
 
       const textarea = document.getElementById('jdOutput');
-      textarea.value = _formatJD(data.jd);
+      textarea.value = _stripJdFooter(_formatJD(data.jd));
       autoResize(textarea);
       _buildSectionIdeasBar(textarea.value);
       showToast('Regenerated at temperature 0.9.', 'success');
@@ -807,7 +907,7 @@
   // ── Approve & Save ────────────────────────────────────────────────────────
 
   async function approveJD() {
-    const jd         = document.getElementById('jdOutput').value.trim();
+    const jd         = _stripJdFooter(document.getElementById('jdOutput').value.trim());
     const roleTitle  = document.getElementById('roleTitle').value.trim();
     const department = document.getElementById('department').value;
     const family     = document.getElementById('family').value;
@@ -829,14 +929,23 @@
         }),
       });
       const data = await res.json();
+      if (res.status === 401) {
+        showToast('Session expired — redirecting to sign in…', 'error');
+        setTimeout(() => { window.location.href = data.redirect || '/login'; }, 1500);
+        return;
+      }
       if (!res.ok || !data.success) throw new Error(data.error || 'Failed to save.');
+      if (data.darwin_error) console.warn('DarwinBox publish error:', data.darwin_error);
 
       approvedJdId = data.jd_id;
 
       const ratioMsg = data.edit_ratio > 0
-        ? ` (edit ratio: ${Math.round(data.edit_ratio * 100)}%)`
-        : ' (no edits made)';
-      showToast(`Saved to knowledge base${ratioMsg}`, 'success');
+        ? ` · edit ratio ${Math.round(data.edit_ratio * 100)}%`
+        : '';
+      const darwinMsg = data.darwinbox_job_id
+        ? ` · Pushed to Darwinbox (ID: ${data.darwinbox_job_id.slice(0,8)}…)`
+        : '';
+      showToast(`JD saved to Darwinbox${ratioMsg}${darwinMsg}`, 'success');
 
       // Mark draft as approved and broadcast to other tabs
       _markDraftApproved(currentGenerationId, data.jd_id);
@@ -855,8 +964,7 @@
   // ── Download ──────────────────────────────────────────────────────────────
 
   function copyJD() {
-    const text = document.getElementById('jdOutput').value;
-    navigator.clipboard.writeText(text).then(() => {
+    navigator.clipboard.writeText(_jdBodyForExport()).then(() => {
       document.getElementById('copyLabel').textContent = 'Copied!';
       setTimeout(() => document.getElementById('copyLabel').textContent = 'Copy', 2000);
     });
@@ -864,7 +972,7 @@
 
   function _getExportPayload() {
     return {
-      jd:          document.getElementById('jdOutput').value.trim(),
+      jd:          _stripJdFooter(document.getElementById('jdOutput').value.trim()),
       role_title:  document.getElementById('roleTitle').value.trim() || 'Job Description',
       department:  document.getElementById('department').value,
       family:      document.getElementById('family').value,
@@ -1087,7 +1195,7 @@
 
     // Show JD output area with draft content
     const textarea = document.getElementById('jdOutput');
-    textarea.value = d.jd_text;
+    textarea.value = _stripJdFooter(d.jd_text);
     autoResize(textarea);
     document.getElementById('editHint').style.display = 'flex';
     document.getElementById('emptyState').classList.add('hidden');

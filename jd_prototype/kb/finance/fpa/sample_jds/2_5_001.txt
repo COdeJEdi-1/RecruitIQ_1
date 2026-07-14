@@ -1,0 +1,41 @@
+{"jd_id": "47a5e3fd", "role_family": "Fpa", "department_caps": "FINANCE & ACCOUNTS", "yoe_band": "2-5", "generation_id": "21254968-b038-4572-a7a5-24933516747e", "date_added": "2026-07-02", "approved_at": "2026-07-02T14:10:18.464171", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the financial analysis and reporting for our business units, working closely with internal stakeholders to drive business outcomes. As a Financial Analyst at Arvind GCC, you will be responsible for delivering high-quality financial insights that inform strategic decisions, partnering with cross-functional teams to identify areas of improvement and optimize financial performance. You will work independently on assigned modules, contributing to design discussions and reviewing junior work to ensure the integrity of our financial planning and analysis. Your work will have a direct impact on our business unit's profitability and growth.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver monthly P&L reports, balance sheets, and cash flow statements for our business units, analyzing variances and identifying trends using Excel and Power BI.
+•  Build and maintain financial models to forecast revenue, expenses, and capital expenditures, ensuring data integrity and accuracy.
+•  Own the budgeting and forecasting process, coordinating with business unit heads to gather inputs and finalize financial plans.
+•  Conduct variance analysis to identify areas of discrepancy between actual and budgeted numbers, providing recommendations for improvement.
+•  Partner with business analysts to translate KPI requirements into Power BI report specifications, ensuring seamless integration with our financial data.
+•  Coordinate with plant finance teams to gather data and ensure consistency in financial reporting, using SAP FICO for data extraction.
+•  Improve financial reporting processes and systems, identifying opportunities for automation and efficiency gains.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Financial modelling (Excel / Power BI) — building and maintaining complex financial models for forecasting and analysis.
+•  Budgeting & forecasting — developing and managing financial plans and forecasts using driver-based models.
+•  Variance analysis — identifying and explaining discrepancies between actual and budgeted numbers.
+•  Management reporting — creating and presenting financial reports to senior management, including P&L, balance sheet, and cash flow statements.
+•  P&L / Balance sheet understanding — in-depth knowledge of financial statements and accounting principles.
+•  SAP FICO — extracting data and using it for financial analysis and reporting.
+•  Excel — advanced skills in financial modelling, data analysis, and visualization.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Certification in financial planning and analysis (FP&A) or a related field — demonstrating expertise in financial modelling and planning.
+•  Experience with data visualization tools like Tableau or D3.js — enhancing the ability to present complex financial data in a clear and concise manner.
+•  Knowledge of manufacturing cost structures and plant-wise profitability reporting — providing a deeper understanding of our business operations.
+•  Familiarity with annual operating plans (AOP) and budget building — contributing to the development of comprehensive financial plans.
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Power BI, SAP FICO, and Excel, to drive business outcomes and growth.
+•  Exposure to complex business problems and the chance to develop innovative solutions, working closely with cross-functional teams.
+•  A collaborative and dynamic work environment that encourages learning and development, with opportunities for professional growth and advancement.
+•  The chance to work on high-impact projects that drive real business results, with a focus on financial planning and analysis, and to present findings to senior management.

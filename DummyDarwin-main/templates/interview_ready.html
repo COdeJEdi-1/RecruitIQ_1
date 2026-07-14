@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}Interview Ready — DarwinBox{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="page-header">
+    <div class="page-header-text">
+        <h1>Interview Ready</h1>
+        <p class="subtitle">AI voice-screening results, scored from candidate call answers — who's ready to schedule for interview.</p>
+    </div>
+</header>
+
+{% if error %}
+<div class="empty-state" style="background:#fff3e0;border-radius:12px;padding:20px;">
+    <span class="empty-icon">⚠️</span>
+    <p>{{ error }}</p>
+</div>
+{% else %}
+
+<!-- Statistics Section -->
+<section class="stats-section">
+    <div class="stat-card">
+        <div class="stat-icon" style="background:#e8f5e9;color:#2e7d32;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ counts.get('Ready for Interview', 0) }}</span>
+            <span class="stat-label">Ready for Interview</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:#fff3e0;color:#e65100;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ counts.get('Manual Review', 0) }}</span>
+            <span class="stat-label">Manual Review</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:#ffebee;color:#c62828;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ counts.get('Not Suitable', 0) }}</span>
+            <span class="stat-label">Not Suitable</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background:#f5f5f5;color:#888;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="stat-content">
+            <span class="stat-value">{{ counts.get('Incomplete', 0) }}</span>
+            <span class="stat-label">Incomplete — Re-call Needed</span>
+        </div>
+    </div>
+</section>
+
+<section style="margin-top:2rem;">
+    <article class="library-card">
+        <div class="library-card-header">
+            <div class="library-card-title">
+                <div class="library-icon" style="background:#e8f5e9;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                    <h2>AI Voice Screening Results</h2>
+                    <p class="library-description">Sourced from call answers logged by the AI screening assistant. Click a row's score to view the full call transcript.</p>
+                </div>
+            </div>
+        </div>
+
+        {% if candidates %}
+        <div style="overflow-x:auto;margin-top:4px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                <thead>
+                    <tr style="background:#f9fbe7;border-bottom:2px solid #e8f5e9;">
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Candidate</th>
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Phone</th>
+                        <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Verdict</th>
+                        <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Score</th>
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Experience</th>
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">CTC (Current → Expected)</th>
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Notice / Joining</th>
+                        <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Location</th>
+                        <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Sentiment</th>
+                        <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Communication</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in candidates %}
+                    {% set verdict_color = {
+                        'Ready for Interview': ('#2e7d32', '#e8f5e9'),
+                        'Manual Review': ('#e65100', '#fff3e0'),
+                        'Not Suitable': ('#c62828', '#ffebee'),
+                        'Incomplete': ('#888', '#f5f5f5'),
+                    }[c.verdict] %}
+                    {% set sentiment_color = {
+                        'Positive': '#2e7d32', 'Negative': '#c62828', 'Neutral': '#888',
+                    }.get(c.computed_sentiment, '#bbb') %}
+                    {% set comm_color = {
+                        'Confident & Clear': ('#2e7d32', '#e8f5e9'),
+                        'Adequate': ('#e65100', '#fff3e0'),
+                        'Hesitant': ('#c62828', '#ffebee'),
+                    }.get(c.communication_label, ('#888', '#f5f5f5')) %}
+                    <tr style="border-bottom:1px solid #f0f0f0;cursor:pointer;"
+                        onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background=''"
+                        onclick="toggleBreakdown('vs-{{ loop.index }}')">
+                        <td style="padding:10px 14px;font-weight:600;">{{ c.name }}</td>
+                        <td style="padding:10px 14px;color:#555;font-size:12px;">{{ c.phone }}</td>
+                        <td style="padding:10px 8px;text-align:center;">
+                            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:{{ verdict_color[1] }};color:{{ verdict_color[0] }};">{{ c.verdict }}</span>
+                        </td>
+                        <td style="padding:10px 8px;text-align:center;font-weight:800;">{{ c.score if c.score is not none else '—' }}</td>
+                        <td style="padding:10px 14px;color:#555;font-size:12px;">{{ c.years_experience if c.years_experience is not none else '—' }}{% if c.years_experience is not none %} yr{% endif %}</td>
+                        <td style="padding:10px 14px;color:#555;font-size:12px;">{{ c.current_ctc }} → {{ c.expected_ctc }}</td>
+                        <td style="padding:10px 14px;color:#555;font-size:12px;">{{ c.notice_period }}</td>
+                        <td style="padding:10px 14px;color:#555;font-size:12px;">{{ c.current_location }}{% if c.willing_to_relocate == 'Yes' %} (open to relocate){% endif %}</td>
+                        <td style="padding:10px 8px;text-align:center;"
+                            {% if c.sentiment and c.sentiment != '—' and c.sentiment != c.computed_sentiment %}title="OmniDimension's own value: {{ c.sentiment }}"{% endif %}>
+                            {% if c.computed_sentiment %}
+                            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#f5f5f5;color:{{ sentiment_color }};">{{ c.computed_sentiment }}</span>
+                            {% else %}
+                            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#f5f5f5;color:#999;" title="Call too short or transcript empty — nothing to analyse">Not enough data</span>
+                            {% endif %}
+                        </td>
+                        <td style="padding:10px 8px;text-align:center;">
+                            {% if c.communication_score is not none %}
+                            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:{{ comm_color[1] }};color:{{ comm_color[0] }};">{{ c.communication_label }} · {{ c.communication_score }}</span>
+                            {% else %}
+                            <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:#f5f5f5;color:#999;" title="Call too short or transcript empty — nothing to analyse">Not enough data</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr id="breakdown-vs-{{ loop.index }}" style="display:none;background:#fafafa;border-bottom:1px solid #f0f0f0;">
+                        <td colspan="10" style="padding:16px;">
+                            {% if c.flags %}
+                            <div style="margin-bottom:10px;">
+                                {% for f in c.flags %}<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 8px;margin:2px;font-size:11px;">⚑ {{ f }}</span>{% endfor %}
+                            </div>
+                            {% endif %}
+                            <div style="font-size:12px;color:#666;margin-bottom:8px;"><strong>Job change reason:</strong> {{ c.job_change_reason }}</div>
+                            <div style="font-size:12px;color:#666;margin-bottom:8px;"><strong>Call summary:</strong> {{ c.summary or '—' }}</div>
+                            {% if c.recording_url %}
+                            <div style="font-size:12px;margin-bottom:8px;"><a href="{{ c.recording_url }}" target="_blank" style="color:#830026;font-weight:600;">🔊 Listen to recording</a></div>
+                            {% endif %}
+                            {% if c.full_conversation %}
+                            <details>
+                                <summary style="cursor:pointer;font-size:12px;font-weight:700;color:#333;">Full transcript</summary>
+                                <div style="font-size:12px;color:#555;white-space:pre-wrap;margin-top:8px;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:10px;">{{ c.full_conversation }}</div>
+                            </details>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <span class="empty-icon">📞</span>
+            <p>No call data found in the screening sheet yet.</p>
+        </div>
+        {% endif %}
+    </article>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/candidate-scoring.js') }}"></script>
+{% endblock %}

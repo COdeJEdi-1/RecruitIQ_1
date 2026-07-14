@@ -1,0 +1,42 @@
+{"jd_id": "86c01b8d", "role_family": "Sourcing Manager", "department_caps": "SUPPLY CHAIN & LOGISTICS", "yoe_band": "8-12", "generation_id": "1b881ea2-af0a-4e30-82fd-c7d7670916de", "date_added": "2026-07-01", "approved_at": "2026-07-01T15:25:31.284934", "approved_by": "recruiter2@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the procurement strategy and operations for Arvind Limited's GCC, working closely with internal stakeholders, external vendors, and business leaders to drive cost optimization, quality, and supply chain efficiency. As a Procurement Manager, you will lead initiatives to develop and implement strategic sourcing plans, negotiate contracts, and manage supplier relationships. Your work will have a direct impact on the company's bottom line, and you will be responsible for driving business outcomes that support Arvind's growth and profitability. You will collaborate with cross-functional teams, including supply chain, finance, and manufacturing, to ensure alignment and effective execution of procurement strategies.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Lead the development and implementation of strategic sourcing plans for raw materials, fabrics, and other goods, using tools like SAP MM and Ariba to optimize procurement processes.
+•  Manage RFQ/RFP processes, evaluating supplier responses, and negotiating contracts to ensure best-value agreements.
+•  Conduct supplier evaluations and audits, assessing their capabilities, quality, and reliability to ensure alignment with Arvind's quality standards.
+•  Own contract management, ensuring that all contracts are up-to-date, compliant, and aligned with business requirements.
+•  Collaborate with internal stakeholders to define and implement procurement strategies that support business objectives, such as cost reduction, quality improvement, and supply chain optimization.
+•  Drive cost optimization initiatives, analyzing market trends, and identifying opportunities to reduce costs without compromising quality or service.
+•  Develop and maintain relationships with key suppliers, ensuring that Arvind's interests are represented and that suppliers are aligned with company goals.
+•  Partner with internal teams to resolve procurement-related issues, providing guidance and support to ensure smooth operations.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  SAP MM — procurement process management, contract management, and supplier relationship management
+•  Ariba — strategic sourcing, contract management, and supplier management
+•  Strategic sourcing — development and implementation of sourcing strategies to drive cost optimization and quality
+•  RFQ/RFP management — management of request for quote and request for proposal processes to ensure best-value agreements
+•  Supplier evaluation & negotiation — assessment and negotiation of supplier contracts to ensure alignment with business requirements
+•  Contract management — management of contracts to ensure compliance, quality, and cost optimization
+•  Microsoft Office (Excel, Word, PowerPoint) — data analysis, reporting, and presentation
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Certification in procurement or supply chain management (e.g., CIPS, ISM)
+•  Experience with data analytics tools (e.g., Tableau, Power BI) to drive procurement insights and decision-making
+•  Knowledge of textile or manufacturing industry, with experience in sourcing raw materials or fabrics
+•  Familiarity with Arvind's quality standards and supplier audit processes
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a leading textile and manufacturing company, with a strong focus on innovation and sustainability
+•  A dynamic and supportive work environment, with opportunities for professional growth and development
+•  Access to cutting-edge technology and tools, including SAP MM and Ariba, to drive procurement excellence
+•  Collaborative cross-functional teams, with opportunities to work with supply chain, finance, and manufacturing teams to drive business outcomes

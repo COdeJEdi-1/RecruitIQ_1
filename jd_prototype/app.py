@@ -40,6 +40,7 @@ import json
 import os
 import re
 import sys
+import threading
 import uuid
 from datetime import datetime
 from functools import wraps
@@ -52,6 +53,7 @@ from flask import (Flask, jsonify, make_response, redirect, render_template,
 load_dotenv()
 
 sys.path.insert(0, os.path.dirname(__file__))
+import scoring_service as scoring
 from jd_parser import parse_jd_sections
 from generate_jd import (
     DEPARTMENTS, DIVISIONS, SENIORITY_LEVELS, YOE_BANDS, YOE_LABELS,
@@ -63,14 +65,28 @@ from feedback_engine import (
     store_explicit_feedback,
     build_feedback_digest,
 )
+from community_skills import record_custom_skill, get_promoted_skills
 from supabase_kb import upsert_sample_jd, SUPABASE_DB_ENABLED
 import supabase_db as sdb
+import darwinbox_service as darwin
+from jd_constants import (JD_FOOTER_TEXT, JD_FOOTER_HEADING, JD_FOOTER_BRAND_LABEL,
+                         JD_FOOTER_BRAND_NAME, append_jd_footer, strip_jd_footer)
 
 # ── App setup ────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-please-change-in-production")
 app.jinja_env.filters["display_name"] = display_name
+
+
+@app.context_processor
+def inject_jd_constants():
+    return {
+        "jd_footer_text": JD_FOOTER_TEXT,
+        "jd_footer_heading": JD_FOOTER_HEADING,
+        "jd_footer_brand_label": JD_FOOTER_BRAND_LABEL,
+        "jd_footer_brand_name": JD_FOOTER_BRAND_NAME,
+    }
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
@@ -101,9 +117,26 @@ def _load_logo(name: str) -> str:
 LOGO_MAIN = _load_logo("arvind_logo_1_b64.txt")   # full Arvind Limited logo (header)
 LOGO_GCC  = _load_logo("arvind_logo_2_b64.txt")   # compact GCC logo (footer)
 
-# In-memory store for pending generation results (keyed by generation_id)
-# In production, replace with Redis or Supabase table
-_pending_generations: dict = {}
+# Pending generation results — persisted to disk so server restarts don't lose them
+_PENDING_FILE = Path(__file__).parent / "darwin_data" / "pending_generations.json"
+
+
+def _load_pending() -> dict:
+    try:
+        return json.loads(_PENDING_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _save_pending(store: dict):
+    try:
+        _PENDING_FILE.parent.mkdir(exist_ok=True)
+        _PENDING_FILE.write_text(json.dumps(store, default=str), encoding="utf-8")
+    except Exception:
+        pass
+
+
+_pending_generations: dict = _load_pending()
 
 
 # ── Auth helpers ──────────────────────────────────────────────────────────────
@@ -111,7 +144,8 @@ _pending_generations: dict = {}
 def _enrich_user(user: dict) -> dict:
     """Add computed fields (is_admin) to the session user dict."""
     user = dict(user)
-    user["is_admin"] = DEV_MODE or user.get("email", "").lower() in ADMIN_EMAILS
+    role = user.get("role", "user")
+    user["is_admin"] = (role == "admin") or (not DEV_MODE and user.get("email", "").lower() in ADMIN_EMAILS)
     return user
 
 
@@ -119,6 +153,9 @@ def login_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         if "user" not in session:
+            # Return JSON 401 for API/XHR calls so the frontend can handle it
+            if request.path.startswith("/api/") or request.is_json:
+                return jsonify({"error": "Session expired. Please sign in again.", "redirect": url_for("login")}), 401
             return redirect(url_for("login"))
         return f(*args, **kwargs)
     return decorated
@@ -159,7 +196,8 @@ def hub():
 
 @app.route("/login")
 def login():
-    return render_template("login.html", dev_mode=DEV_MODE)
+    has_local_users = bool(_load_local_users())
+    return render_template("login.html", dev_mode=DEV_MODE or has_local_users)
 
 
 @app.route("/logout")
@@ -414,12 +452,41 @@ def api_ms_status():
 
 # ── Auth API endpoints ────────────────────────────────────────────────────────
 
+def _load_local_users() -> list:
+    """Load users from darwin_data/users.json for DEV_MODE auth."""
+    uf = Path(__file__).parent / "darwin_data" / "users.json"
+    try:
+        return json.loads(uf.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+
+
 @app.route("/api/auth/signin", methods=["POST"])
 def api_signin():
-    if DEV_MODE:
-        session["user"] = {"email": "dev@arvind.in", "name": "Dev User",
-                           "picture": "", "initials": "DU"}
+    from werkzeug.security import check_password_hash as _chk
+    data = request.get_json(silent=True) or {}
+    email = data.get("email", "").strip().lower()
+    password = data.get("password", "")
+
+    # Always try local users.json first (covers DEV_MODE and local recruiters
+    # even when Supabase is configured).
+    local_match = next((u for u in _load_local_users() if u.get("email", "").lower() == email), None)
+    if local_match:
+        if not _chk(local_match["password_hash"], password):
+            return jsonify({"error": "Invalid email or password."}), 401
+        name = local_match.get("full_name") or email.split("@")[0]
+        session["user"] = {
+            "user_id":  local_match["user_id"],
+            "email":    local_match["email"],
+            "name":     name,
+            "picture":  "",
+            "initials": _make_initials(name),
+            "role":     local_match.get("role", "user"),
+        }
         return jsonify({"redirect": url_for("library")})
+
+    if DEV_MODE:
+        return jsonify({"error": "Invalid email or password."}), 401
 
     data = request.get_json(silent=True) or {}
     email = data.get("email", "").strip()
@@ -582,7 +649,7 @@ def api_approve():
         "date_added": datetime.now().strftime("%Y-%m-%d"),
         "approved_by": session["user"]["email"],
     }
-    filename.write_text(json.dumps(metadata) + "\n\n---\n\n" + jd_text, encoding="utf-8")
+    filename.write_text(json.dumps(metadata) + "\n\n---\n\n" + append_jd_footer(jd_text), encoding="utf-8")
 
     return jsonify({
         "success": True,
@@ -612,6 +679,7 @@ def api_jd_generate():
     work_mode        = data.get("work_mode", "Onsite").strip()
     reports_to       = data.get("reports_to", "").strip()
     must_have_skills = data.get("must_have_skills") or []  # list[str]
+    custom_skills    = data.get("custom_skills") or []  # list[str] — user-typed, not auto-suggested
 
     if not all([role_title, department, family, yoe_band]):
         return jsonify({"error": "role_title, department, family, and yoe_band are required."}), 400
@@ -624,6 +692,10 @@ def api_jd_generate():
 
     # Fetch feedback digest to inject into prompts
     feedback_digest = build_feedback_digest(department, family, yoe_band)
+    if feedback_digest:
+        print(f"\n[FEEDBACK DIGEST INJECTED] {department}/{family} · {yoe_band} yrs:\n{feedback_digest}\n", flush=True)
+    else:
+        print(f"\n[NO PRIOR FEEDBACK YET] {department}/{family} · {yoe_band} yrs — nothing to apply.\n", flush=True)
 
     try:
         jd_text = generate_jd(
@@ -654,7 +726,9 @@ def api_jd_generate():
         "focus_areas": focus_areas,
         "text": jd_text,
         "user_email": session["user"]["email"],
+        "custom_skills": custom_skills,
     }
+    _save_pending(_pending_generations)
 
     # Persist draft to Supabase (best-effort)
     sdb.save_draft(
@@ -715,9 +789,24 @@ def api_jd_approve():
         "approved_at": now.isoformat(),
         "approved_by": session["user"]["email"],
     }
-    filename.write_text(json.dumps(metadata) + "\n\n---\n\n" + final_jd, encoding="utf-8")
+    final_for_diff = strip_jd_footer(final_jd)
+    final_jd_to_save = append_jd_footer(final_jd)
 
-    # Log Signal 2
+    # Log community-added custom skills (best-effort — never blocks the save)
+    try:
+        for skill in gen.get("custom_skills", []):
+            record_custom_skill(
+                dept=department,
+                family=family,
+                skill_raw=skill,
+                user_email=session["user"]["email"],
+                jd_id=jd_id,
+                role_title=role_title,
+            )
+    except Exception:
+        pass
+
+    # Log Signal 2 (body edits only — footer excluded from diff)
     edit_ratio = 0.0
     if original_text:
         edit_ratio = store_edit_diff(
@@ -727,18 +816,19 @@ def api_jd_approve():
             jd_id=jd_id,
             generation_id=generation_id,
             original_text=original_text,
-            final_text=final_jd,
+            final_text=final_for_diff,
             role_title=role_title,
             user_email=session["user"]["email"],
         )
 
     # Remove from pending cache
     _pending_generations.pop(generation_id, None)
+    _save_pending(_pending_generations)
 
     # Best-effort Supabase persistence (never blocks filesystem-based flow)
     sdb.approve_draft(
         generation_id=generation_id,
-        final_text=final_jd,
+        final_text=final_for_diff,
         jd_ref=jd_id,
         edit_ratio=edit_ratio,
     )
@@ -752,7 +842,7 @@ def api_jd_approve():
         role_title=role_title,
         edit_ratio=edit_ratio,
         original_text=original_text,
-        final_text=final_jd,
+        final_text=final_for_diff,
     )
     sdb.bump_jd_count(session["user"]["email"])
     sdb.bump_kb_version(department, family, yoe_band)
@@ -764,17 +854,32 @@ def api_jd_approve():
             role_family=metadata["role_family"],
             yoe_band=yoe_band,
             seniority_label="",
-            jd_text=final_jd,
+            jd_text=final_jd_to_save,
             metadata=metadata,
             added_by=session["user"]["email"],
         )
+
+    # Publish to Darwinbox — required for the JD to appear in DarwinBox portal
+    darwin_error = None
+    darwin_job = None
+    try:
+        darwin_job = darwin.publish_to_darwinbox(
+            jd_id=jd_id,
+            role_title=role_title or family.replace("_", " ").title(),
+            jd_text=final_jd_to_save,
+            created_by=session["user"].get("user_id"),
+        )
+    except Exception as exc:
+        darwin_error = str(exc)
 
     return jsonify({
         "success": True,
         "jd_id": jd_id,
         "edit_ratio": edit_ratio,
-        "message": f"JD approved and saved to knowledge base.",
+        "message": "JD approved and saved to knowledge base.",
         "file": str(filename.relative_to(Path(__file__).parent)),
+        "darwinbox_job_id": darwin_job["darwinbox_job_id"] if darwin_job else None,
+        "darwin_error": darwin_error,
     })
 
 
@@ -831,7 +936,7 @@ def api_jd_feedback():
 
 def _build_export_context(data: dict) -> dict:
     """Parse JD text + merge metadata into a template context dict."""
-    jd_text   = data.get("jd", "").strip()
+    jd_text   = strip_jd_footer(data.get("jd", "").strip())
     sections  = parse_jd_sections(jd_text)
     role_title = data.get("role_title", "Job Description").strip()
     return {
@@ -850,6 +955,10 @@ def _build_export_context(data: dict) -> dict:
         "generated_date":   datetime.now().strftime("%B %d, %Y"),
         "logo_main":        LOGO_MAIN,
         "logo_gcc":         LOGO_GCC,
+        "jd_footer_text":        JD_FOOTER_TEXT,
+        "jd_footer_heading":     JD_FOOTER_HEADING,
+        "jd_footer_brand_label": JD_FOOTER_BRAND_LABEL,
+        "jd_footer_brand_name":  JD_FOOTER_BRAND_NAME,
     }
 
 
@@ -1054,6 +1163,31 @@ def api_jd_download_pdf():
         _style("Disc", fontSize=10, textColor=MID_TEXT, leading=14)
     ))
 
+    story.append(Spacer(1, 16))
+    foot_left = (
+        f"<b>{JD_FOOTER_HEADING}</b><br/>"
+        f"<font size='9'>{JD_FOOTER_TEXT}</font>"
+    )
+    foot_right = (
+        f"<font size='7' color='#ffffffaa'>{JD_FOOTER_BRAND_LABEL}</font><br/>"
+        f"<b>{JD_FOOTER_BRAND_NAME}</b>"
+    )
+    foot_tbl = Table(
+        [[Paragraph(foot_left, _style("FootL", textColor=WHITE, fontSize=11, leading=14)),
+          Paragraph(foot_right, _style("FootR", textColor=WHITE, fontSize=11, leading=14, alignment=2))]],
+        colWidths=[doc.width * 0.72, doc.width * 0.28],
+    )
+    foot_tbl.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), ARVIND_RED),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("TOPPADDING", (0, 0), (-1, -1), 12),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 12),
+        ("LEFTPADDING", (0, 0), (0, 0), 14),
+        ("RIGHTPADDING", (-1, 0), (-1, -1), 14),
+        ("LINEAFTER", (0, 0), (0, -1), 0.5, colors.HexColor("#ffffff55")),
+    ]))
+    story.append(foot_tbl)
+
     doc.build(story)
     buf.seek(0)
 
@@ -1073,7 +1207,7 @@ def api_download():
     from docx.enum.text import WD_ALIGN_PARAGRAPH
 
     data = request.get_json(silent=True) or {}
-    jd_text = data.get("jd", "").strip()
+    jd_text = strip_jd_footer(data.get("jd", "").strip())
     role_title = data.get("role_title", "Job Description").strip()
 
     doc = Document()
@@ -1152,6 +1286,41 @@ def api_download():
             if p.runs:
                 p.runs[0].font.size = Pt(11)
 
+    doc.add_paragraph()
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+
+    def _shade(cell, fill):
+        sh = OxmlElement("w:shd")
+        sh.set(qn("w:fill"), fill)
+        sh.set(qn("w:val"), "clear")
+        cell._tc.get_or_add_tcPr().append(sh)
+
+    ft = doc.add_table(rows=1, cols=2)
+    ft.autofit = False
+    ft.columns[0].width = Pt(380)
+    ft.columns[1].width = Pt(120)
+    c0, c1 = ft.rows[0].cells
+    _shade(c0, "B01030")
+    _shade(c1, "B01030")
+    p0 = c0.paragraphs[0]
+    r0 = p0.add_run(JD_FOOTER_HEADING + "\n")
+    r0.bold = True
+    r0.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    r0.font.size = Pt(12)
+    r1 = p0.add_run(JD_FOOTER_TEXT)
+    r1.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    r1.font.size = Pt(10)
+    p1 = c1.paragraphs[0]
+    p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    b0 = p1.add_run(JD_FOOTER_BRAND_LABEL + "\n")
+    b0.font.size = Pt(7)
+    b0.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+    b1 = p1.add_run(JD_FOOTER_BRAND_NAME)
+    b1.bold = True
+    b1.font.size = Pt(11)
+    b1.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+
     buf = io.BytesIO()
     doc.save(buf)
     buf.seek(0)
@@ -1176,6 +1345,19 @@ def api_suggest_skills():
     family     = request.args.get("family", "").strip()
 
     result = suggest_skills(role_title, department, family)
+
+    # Merge in community-promoted skills for this role (dept/family), regardless
+    # of whether a canonical taxonomy match was found above.
+    if department and family:
+        promoted = get_promoted_skills(department, family)
+        existing_lower = {s.lower() for s in result.get("must_have", [])} \
+            | {s.lower() for s in result.get("nice_to_have", [])}
+        new_promoted = [s for s in promoted if s.lower() not in existing_lower]
+        if new_promoted:
+            result["must_have"] = [*result.get("must_have", []), *new_promoted]
+            result["community_skills"] = new_promoted
+            print(f"[COMMUNITY SKILLS SURFACED] {department}/{family}: {new_promoted}", flush=True)
+
     if result.get("must_have"):
         return jsonify(result)
 
@@ -1323,6 +1505,7 @@ def api_jd_archive():
         return jsonify({"error": "generation_id is required."}), 400
     sdb.archive_jd(generation_id, session["user"]["email"])
     _pending_generations.pop(generation_id, None)
+    _save_pending(_pending_generations)
     return jsonify({"success": True})
 
 
@@ -1968,6 +2151,182 @@ def view_shared_jd(share_token):
         "error": "Sharing is not yet configured for this workspace.",
         "share_token": share_token,
     }), 501
+
+
+# ── Darwinbox / Job Board Distribution routes ─────────────────────────────────
+
+@app.route("/api/darwin/jobs", methods=["GET"])
+@login_required
+def api_darwin_jobs():
+    """Active Darwinbox JD library — filtered view data."""
+    jobs = darwin.fetch_darwinbox_jobs(active_only=True)
+    # Attach postings to each job
+    for job in jobs:
+        job["postings"] = darwin.fetch_job_postings(job["darwinbox_job_id"])
+    return jsonify(jobs)
+
+
+@app.route("/api/darwin/publish", methods=["POST"])
+@login_required
+def api_darwin_publish():
+    """Publish a Darwinbox job to LinkedIn, Naukri, or both."""
+    data = request.get_json(silent=True) or {}
+    darwinbox_job_id = data.get("darwinbox_job_id", "").strip()
+    platforms = data.get("platforms", [])  # ["linkedin"], ["naukri"], or both
+
+    if not darwinbox_job_id or not platforms:
+        return jsonify({"error": "darwinbox_job_id and platforms required."}), 400
+
+    valid = {"linkedin", "naukri"}
+    platforms = [p for p in platforms if p in valid]
+    if not platforms:
+        return jsonify({"error": "platforms must include linkedin, naukri, or both."}), 400
+
+    base_url = request.host_url.rstrip("/")
+    postings = []
+    for platform in platforms:
+        posting = darwin.publish_to_platform(darwinbox_job_id, platform, base_url)
+        postings.append(posting)
+
+    return jsonify({"success": True, "postings": postings})
+
+
+@app.route("/api/darwin/candidates", methods=["GET"])
+@login_required
+def api_darwin_candidates():
+    """Candidate library — filterable by job_id and platform_source."""
+    job_id = request.args.get("job_id", "").strip() or None
+    platform = request.args.get("platform", "").strip() or None
+    candidates = darwin.fetch_candidates(darwinbox_job_id=job_id, platform_source=platform)
+    return jsonify(candidates)
+
+
+@app.route("/apply/<platform>/<darwinbox_job_id>", methods=["GET", "POST"])
+def apply_page(platform, darwinbox_job_id):
+    """Public-facing candidate application page — no auth required."""
+    if platform not in ("linkedin", "naukri"):
+        return "Invalid platform.", 404
+
+    job = darwin.get_darwinbox_job(darwinbox_job_id)
+    if not job:
+        return "This job posting is no longer available.", 404
+
+    if request.method == "GET":
+        return render_template(
+            "apply.html",
+            job=job,
+            platform=platform,
+            darwinbox_job_id=darwinbox_job_id,
+        )
+
+    # POST — handle application submission
+    name = request.form.get("name", "").strip()
+    email = request.form.get("email", "").strip()
+    phone = request.form.get("phone", "").strip()
+
+    if not all([name, email]):
+        return render_template(
+            "apply.html",
+            job=job,
+            platform=platform,
+            darwinbox_job_id=darwinbox_job_id,
+            error="Name and email are required.",
+        )
+
+    resume_path = ""
+    resume_file = request.files.get("resume")
+    if resume_file and resume_file.filename:
+        upload_dir = Path(__file__).parent / "static" / "uploads" / "resumes"
+        upload_dir.mkdir(parents=True, exist_ok=True)
+        safe_name = f"{uuid.uuid4()}_{resume_file.filename.replace(' ', '_')}"
+        resume_file.save(upload_dir / safe_name)
+        resume_path = f"uploads/resumes/{safe_name}"
+
+    candidate = darwin.submit_candidate(
+        darwinbox_job_id=darwinbox_job_id,
+        platform_source=platform,
+        name=name,
+        email=email,
+        phone=phone,
+        resume_file=resume_path,
+    )
+
+    # Fire-and-forget: score candidate asynchronously so submission isn't blocked
+    threading.Thread(
+        target=scoring.scoreCandidateOnSubmit,
+        args=(candidate["candidate_id"],),
+        daemon=True,
+    ).start()
+
+    return render_template(
+        "apply.html",
+        job=job,
+        platform=platform,
+        darwinbox_job_id=darwinbox_job_id,
+        submitted=True,
+    )
+
+
+@app.route("/api/candidates/score-pending", methods=["GET", "OPTIONS"])
+def api_score_pending():
+    """Score all candidates that don't have a score yet. Fire-and-forget per candidate."""
+    origin = request.headers.get("Origin", "")
+    cors = {
+        "Access-Control-Allow-Origin": origin or "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+    }
+    if request.method == "OPTIONS":
+        return ("", 204, cors)
+
+    from scoring_service import _load, _CANDIDATES_FILE, get_score
+    candidates = _load(_CANDIDATES_FILE)
+    pending = [c for c in candidates if not get_score(c["candidate_id"], c["darwinbox_job_id"])]
+
+    for c in pending:
+        threading.Thread(
+            target=scoring.scoreCandidateOnSubmit,
+            args=(c["candidate_id"],),
+            daemon=True,
+        ).start()
+
+    resp = jsonify({"queued": len(pending), "total": len(candidates)})
+    for k, v in cors.items():
+        resp.headers[k] = v
+    return resp
+
+
+@app.route("/api/candidates/rescore", methods=["POST", "OPTIONS"])
+def api_rescore_candidate():
+    # Allow cross-origin calls from DummyDarwin (localhost:5002)
+    origin = request.headers.get("Origin", "")
+    headers = {
+        "Access-Control-Allow-Origin": origin or "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Credentials": "true",
+    }
+    if request.method == "OPTIONS":
+        return ("", 204, headers)
+
+    data = request.get_json(silent=True) or {}
+    candidate_id = data.get("candidate_id")
+    darwinbox_job_id = data.get("darwinbox_job_id")
+    if not candidate_id or not darwinbox_job_id:
+        resp = jsonify({"success": False, "error": "candidate_id and darwinbox_job_id required"})
+        resp.status_code = 400
+        for k, v in headers.items():
+            resp.headers[k] = v
+        return resp
+
+    result = scoring.rescoreCandidate(candidate_id, darwinbox_job_id)
+    resp = jsonify({"success": True, "score": result} if result else
+                   {"success": False, "error": "Scoring failed — check GROQ_API_KEY and resume file"})
+    if not result:
+        resp.status_code = 500
+    for k, v in headers.items():
+        resp.headers[k] = v
+    return resp
 
 
 if __name__ == "__main__":

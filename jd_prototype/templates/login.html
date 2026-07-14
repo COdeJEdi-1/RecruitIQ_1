@@ -122,7 +122,10 @@
 
     {% if dev_mode %}
     <div class="mb-4 w-full px-4 py-3 rounded-lg bg-[#fff8e1] border border-[#ffc107] text-left">
-      <p class="text-[13px] text-[#7a5c00] font-medium">⚠ Dev mode — Supabase not configured. Sign in bypassed.</p>
+      <p class="text-[13px] text-[#7a5c00] font-medium mb-1">⚠ Dev mode — sign in with one of:</p>
+      <p class="text-[12px] text-[#7a5c00] font-mono">recruiter1@arvind.in / recruit123</p>
+      <p class="text-[12px] text-[#7a5c00] font-mono">recruiter2@arvind.in / recruit123</p>
+      <p class="text-[12px] text-[#7a5c00] font-mono">admin@arvind.in / darwin2026</p>
     </div>
     {% endif %}
 
@@ -173,6 +176,7 @@
 
     <!-- Password form -->
     <form id="passwordForm" onsubmit="signInPassword(event)" class="flex flex-col gap-4 w-full">
+      {% if not dev_mode %}
       <div class="flex bg-surface-container-low rounded-lg p-1 gap-1">
         <button type="button" id="modeSignIn" onclick="setMode('signin')"
                 class="flex-1 py-1.5 rounded-md text-[13px] font-semibold transition-all bg-white text-primary shadow-sm">
@@ -183,6 +187,7 @@
           Create Account
         </button>
       </div>
+      {% endif %}
       <div class="flex flex-col gap-1.5 text-left">
         <label class="text-[13px] font-semibold text-on-surface" for="emailP">Work email</label>
         <input id="emailP" type="email" placeholder="you@arvind.com" required

@@ -1,0 +1,39 @@
+{"jd_id": "3be4d97e", "role_family": "It Ops", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "77104905-3ffb-4f72-9b5d-9b9c78945ba6", "date_added": "2026-07-02", "approved_at": "2026-07-02T22:45:12.817776", "approved_by": "recruiter2@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the delivery of high-quality IT services to Arvind GCC's internal stakeholders, working closely with the Tech team to ensure seamless operations. As an IT consultant, you will collaborate with business stakeholders to understand their requirements and provide tailored solutions, driving business outcomes through effective IT service management. Your expertise will be crucial in maintaining the uptime and performance of our systems, ensuring that our business can operate efficiently. You will be part of a team that supports the technology and business-services centre, enabling Arvind Limited's textile, retail, and diversified businesses.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver high-quality IT services to internal stakeholders, ensuring timely resolution of incidents and requests through ITSM tools like ServiceNow or Jira Service.
+•  Troubleshoot and resolve Hardware & OS issues, applying your knowledge of Active Directory and Azure AD to ensure secure access to resources.
+•  Coordinate with networking teams to resolve TCP/IP, DNS, and DHCP-related issues, ensuring seamless connectivity across the organization.
+•  Own the management of SLAs, ensuring that service levels are met and exceeded, and working with stakeholders to identify areas for improvement.
+•  Build and maintain relationships with external vendors, negotiating contracts and ensuring that their services meet our business needs.
+•  Improve existing processes and procedures, identifying areas for automation and implementing changes to increase efficiency.
+•  Collaborate with junior team members, providing guidance and mentoring to help them develop their skills and expertise.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  ITSM tools (ServiceNow / Jira Service) — incident, problem, and change management
+•  Hardware & OS troubleshooting — Windows, Linux, and macOS operating systems
+•  Active Directory / Azure AD — user and group management, authentication, and authorization
+•  Networking basics (TCP/IP / DNS / DHCP) — network configuration, troubleshooting, and optimization
+•  SLA management — service level agreement creation, monitoring, and reporting
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  CompTIA A+ or equivalent certification — demonstrating expertise in IT hardware and software
+•  ITIL Foundation certification — showcasing knowledge of IT service management best practices
+•  Experience with scripting languages like PowerShell or Bash — automating tasks and improving efficiency
+•  Knowledge of cloud platforms like Azure or AWS — managing and deploying resources in the cloud
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including cloud-based services and emerging technologies
+•  A dynamic and supportive work environment, with opportunities for cross-functional exposure and collaboration
+•  A clear path for learning and development, with training and certification programs to help you grow your skills and expertise
+•  The chance to work on complex business problems, applying your technical expertise to drive business outcomes and make a real impact on the organization

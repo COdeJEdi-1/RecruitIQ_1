@@ -5,6 +5,7 @@ admin approves/rejects, recruiter gets notified and can then download.
 
 import io
 import json
+import sys
 import uuid
 import zipfile
 from collections import defaultdict
@@ -17,12 +18,18 @@ from routes.auth import login_required, is_admin, current_user_id
 
 downloads_bp = Blueprint("downloads", __name__)
 
-_DARWIN_DATA  = Path(__file__).parent.parent.parent / "jd_prototype" / "darwin_data"
+_JD_PROTOTYPE_DIR = Path(__file__).parent.parent.parent / "jd_prototype"
+_DARWIN_DATA  = _JD_PROTOTYPE_DIR / "darwin_data"
 _REQUESTS_FILE = _DARWIN_DATA / "download_requests.json"
 _CANDIDATES_FILE = _DARWIN_DATA / "candidates.json"
 _SCORES_FILE   = _DARWIN_DATA / "candidate_scores.json"
 _USERS_FILE    = _DARWIN_DATA / "users.json"
-_RESUME_BASE   = Path(__file__).parent.parent.parent / "jd_prototype" / "static" / "uploads" / "candidates"
+_RESUME_BASE   = _JD_PROTOTYPE_DIR / "static" / "uploads" / "candidates"
+
+if str(_JD_PROTOTYPE_DIR) not in sys.path:
+    sys.path.insert(0, str(_JD_PROTOTYPE_DIR))
+
+from scoring_service import AUTO_CALL_SCORE_THRESHOLD  # noqa: E402
 
 
 def _load(path: Path) -> list:
@@ -313,10 +320,9 @@ def top3_export():
     )
 
 
-# ── Qualified (score >= 80) candidates Excel export ───────────────────────────
-
-_VOICE_AGENT_PUSHES_FILE = _DARWIN_DATA / "voice_agent_pushes.json"
-QUALIFIED_SCORE_THRESHOLD = 80
+# ── Qualified (auto-call) candidates Excel export ─────────────────────────────
+# Filters on AUTO_CALL_SCORE_THRESHOLD (imported above) — this list is exactly
+# who the auto-screening call pipeline will call, by construction.
 
 
 @downloads_bp.route("/api/qualified-export")
@@ -331,7 +337,6 @@ def qualified_export():
     darwin_jobs = _load(_DARWIN_DATA / "darwinbox_jobs.json")
     all_cands   = _load(_CANDIDATES_FILE)
     scores      = {s["candidate_id"]: s for s in _load(_SCORES_FILE)}
-    pushed_ids  = set(_load(_VOICE_AGENT_PUSHES_FILE))
 
     if not admin:
         owned_ids = {j["darwinbox_job_id"] for j in darwin_jobs if j.get("created_by") == uid}
@@ -343,7 +348,7 @@ def qualified_export():
     for c in all_cands:
         sc = scores.get(c["candidate_id"])
         overall = sc["overall_score"] if sc else 0
-        if overall < QUALIFIED_SCORE_THRESHOLD:
+        if overall < AUTO_CALL_SCORE_THRESHOLD:
             continue
         qualified.append((overall, c))
 
@@ -352,21 +357,17 @@ def qualified_export():
     rows = []
     for score, c in qualified:
         rows.append({
-            "Role":                    job_map.get(c.get("darwinbox_job_id"), "Unknown Role"),
-            "Name":                    c.get("name", ""),
-            "Email":                   c.get("email", ""),
-            "Phone":                   c.get("phone", ""),
-            "Score":                   score,
-            "Platform":                c.get("platform_source", "").title(),
-            "Applied Date":            c.get("applied_at", "")[:10],
-            "Voice Screening Status":  "Sent" if c["candidate_id"] in pushed_ids else "Pending",
+            "Name":  c.get("name", ""),
+            "Phone": c.get("phone", ""),
+            "Email": c.get("email", ""),
+            "Role":  job_map.get(c.get("darwinbox_job_id"), "Unknown Role"),
         })
 
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Qualified Candidates"
 
-    headers  = ["Role", "Name", "Email", "Phone", "Score", "Platform", "Applied Date", "Voice Screening Status"]
+    headers  = ["Name", "Phone", "Email", "Role"]
     hdr_fill = PatternFill("solid", fgColor="830026")
     hdr_font = Font(bold=True, color="FFFFFF", size=11)
     thin     = Side(style="thin", color="E0E0E0")
@@ -379,16 +380,13 @@ def qualified_export():
         cell.alignment = Alignment(horizontal="center", vertical="center")
         cell.border    = border
 
-    status_colors = {"Sent": "E8F5E9", "Pending": "FFF3E0"}
     for row_idx, row in enumerate(rows, start=2):
-        fill = PatternFill("solid", fgColor=status_colors.get(row["Voice Screening Status"], "FFFFFF"))
         for col, h in enumerate(headers, start=1):
             cell           = ws.cell(row=row_idx, column=col, value=row[h])
-            cell.fill      = fill
             cell.border    = border
             cell.alignment = Alignment(vertical="center")
 
-    for i, w in enumerate([28, 22, 30, 16, 8, 12, 14, 20], start=1):
+    for i, w in enumerate([22, 16, 30, 22], start=1):
         ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
     ws.row_dimensions[1].height = 20
 

@@ -1,0 +1,43 @@
+{"jd_id": "836e6ab6", "role_family": "Bi", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "f7ea3fda-9836-43ce-b30c-eeb5c373361b", "date_added": "2026-07-01", "approved_at": "2026-07-01T15:11:51.582808", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will work as a BI analyst in the Tech department at Arvind Limited GCC, focusing on driving business outcomes through data-driven insights. You will own the development and maintenance of Power BI reports, working closely with internal stakeholders to understand their reporting requirements and delivering actionable analytics solutions. Your work will support business decision-making across various functions, including finance, supply chain, and operations, leveraging our data warehouse environment. You will be responsible for ensuring that stakeholders have access to accurate and timely data to inform their decisions.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver high-quality Power BI reports and dashboards, using DAX, Power Query, and data modelling techniques to meet stakeholder requirements
+•  Own the development and maintenance of data models, ensuring data integrity and adherence to star schema principles
+•  Build and deploy reports to the Power BI Service, configuring gateways for data refresh and security
+•  Coordinate with stakeholders to understand their reporting needs, translating requirements into technical specifications
+•  Improve existing reports and dashboards, incorporating feedback from stakeholders and identifying opportunities for process automation
+•  Review and provide feedback on junior team members' work, ensuring adherence to best practices and standards
+•  Collaborate with the data engineering team to optimize data warehouse queries and improve report performance
+•  Develop and maintain documentation of report specifications, data sources, and technical configurations
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Power BI — building enterprise dashboards, DAX measures, and row-level security
+•  DAX — creating calculated columns, measures, and tables for data analysis
+•  Power Query (M) — data transformation, filtering, and loading data into Power BI models
+•  Data modelling / star schema — designing and implementing data models for reporting and analysis
+•  SQL (query-only) — writing efficient queries to extract data from the data warehouse
+•  Power BI Service & Gateway — deploying and configuring reports, managing data refresh and security
+•  Stakeholder reporting — creating and delivering reports to meet business stakeholder needs
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with data visualization tools, such as Tableau or Looker
+•  Knowledge of data warehouse design principles and data governance
+•  Familiarity with agile development methodologies and version control systems, such as Git
+•  Certification in Power BI or related technologies, such as Microsoft Certified: Data Analyst Associate
+•  Experience with data storytelling and presenting insights to non-technical stakeholders
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Power BI, data warehouse, and cloud-based infrastructure
+•  Exposure to complex business problems and the chance to drive meaningful impact through data-driven insights
+•  Collaborative and dynamic work environment with opportunities for learning and development, including training and certification programs
+•  Cross-functional exposure to various business functions, including finance, supply chain, and operations, providing a broad understanding of the organization and its operations

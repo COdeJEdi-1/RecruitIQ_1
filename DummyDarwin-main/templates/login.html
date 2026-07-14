@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — DarwinBox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f0f1 0%, #ede0e2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(131,0,38,0.10);
+            padding: 44px 40px 36px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+        .brand-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #830026;
+            letter-spacing: -0.5px;
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #222;
+            outline: none;
+            transition: border-color .15s;
+            margin-bottom: 18px;
+            font-family: inherit;
+        }
+        input:focus { border-color: #830026; }
+        .error-msg {
+            background: #fff0f3;
+            color: #c62828;
+            border: 1px solid #f5c6d0;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #830026;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .15s;
+            font-family: inherit;
+        }
+        .btn-login:hover { background: #a00030; }
+        .footer-note {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 11px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="brand">
+            <span class="brand-text">DarwinBox</span>
+        </div>
+        <h1>Sign in</h1>
+        <p class="subtitle">Sign in with your DarwinBox credentials to continue.</p>
+
+        {% if error %}
+        <div class="error-msg">⚠ {{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <input type="hidden" name="next" value="{{ next }}">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username" placeholder="admin@arvind.in" autocomplete="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+
+            <button type="submit" class="btn-login">Sign In →</button>
+        </form>
+
+        <p class="footer-note">DarwinBox · AI-Powered Recruitment Middleware</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{"jd_id": "bd9a0e67", "role_family": "Product", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "8025ce5a-f658-472b-a30d-1575263dda05", "date_added": "2026-07-01", "approved_at": "2026-07-01T11:57:35.020642", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the product roadmap for our business intelligence and reporting platforms, working closely with internal stakeholders, including engineering squads, design partners, and business analysts. As a Product Manager at Arvind Limited GCC, you will drive business outcomes by delivering data-driven insights to key decision-makers, leveraging your expertise in data modelling, Power BI, and stakeholder reporting. Your primary focus will be on enhancing our reporting capabilities, improving data quality, and ensuring seamless integration with our existing tech stack. You will represent the product team in cross-functional forums, collaborating with various stakeholders to align product vision with business objectives.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver product roadmaps and requirements for our BI and reporting platforms, ensuring alignment with business objectives and stakeholder needs.
+•  Own the development and maintenance of data models, leveraging DAX, Power Query (M), and star schema to drive data-driven insights.
+•  Build and maintain relationships with stakeholders, including business analysts, engineering teams, and design partners, to ensure effective communication and collaboration.
+•  Coordinate with the engineering team to prioritize and deliver product features, ensuring timely and high-quality releases.
+•  Represent the product team in stakeholder reviews, providing updates on product progress, and gathering feedback to inform future product decisions.
+•  Hire, onboard, and develop team members, setting clear goals, running performance reviews, and coaching direct reports to ensure their growth and success.
+•  Balance hands-on product delivery with people management, allocating time and resources effectively to drive team performance and product outcomes.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  DAX — creating calculated columns, measures, and tables to drive data analysis and insights.
+•  Power Query (M) — data transformation, data cleansing, and data loading for reporting purposes.
+•  Data modelling / star schema — designing and implementing data models to support business intelligence and reporting.
+•  Power BI Service & Gateway — publishing, managing, and maintaining reports, dashboards, and data sets.
+•  SQL (query-only) — writing efficient SQL queries to extract and analyze data from various sources.
+•  Stakeholder reporting — creating and delivering reports to key stakeholders, including business leaders and decision-makers.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with data visualization tools, such as Tableau or QlikView, to enhance reporting capabilities.
+•  Knowledge of agile methodologies, such as Scrum or Kanban, to inform product development and delivery.
+•  Familiarity with cloud-based data platforms, such as Azure or AWS, to support data integration and analytics.
+•  Certification in product management, such as CSPO or PMI, to demonstrate expertise and commitment to the field.
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Power BI, Azure, and SQL, to drive business outcomes and growth.
+•  A collaborative and dynamic work environment, with cross-functional teams and stakeholders, to foster learning and development.
+•  A clear path for professional growth and development, with opportunities for training, mentoring, and career advancement.
+•  Exposure to complex business problems and the chance to make a significant impact on the organization, driving data-driven decision-making and insights.

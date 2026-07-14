@@ -1,0 +1,40 @@
+{"jd_id": "836f1184", "role_family": "Data Science", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "0-2", "generation_id": "c9ebd4a5-4b67-44df-8af7-f79a76307d5a", "date_added": "2026-07-02", "approved_at": "2026-07-02T12:11:08.101990", "approved_by": "recruiter2@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+As a Data Scientist at Arvind Limited GCC, you will own the development and deployment of machine learning models that drive business decisions and optimize operations. You will work closely with internal teams, such as business stakeholders and IT, to identify data requirements and deliver insights that inform strategic initiatives. Your work will have a direct impact on the business, enabling data-driven decision-making and process optimization. You will be an integral part of the Tech team, collaborating with cross-functional teams to drive business outcomes in the textile, retail, and diversified businesses.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Assist in designing and developing machine learning models using Python, R, and relevant libraries to solve complex business problems.
+•  Support the deployment of models to production environments using tools such as Docker and Kubernetes.
+•  Execute data preprocessing, feature engineering, and data visualization tasks using Pandas, NumPy, and Matplotlib.
+•  Contribute to the development of experiment design and A-B testing frameworks to measure model effectiveness.
+•  Collaborate with business stakeholders to gather requirements and deliver data insights that meet their needs.
+•  Learn and implement new tools and methodologies to improve data analysis and reporting processes.
+•  Assist in reviewing and refining junior team members' work to ensure quality and consistency.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Python (pandas, NumPy) — data wrangling, feature engineering, EDA, and data visualization.
+•  R — statistical modeling, data analysis, and data visualization.
+•  Statistical modelling — hypothesis testing, confidence intervals, and regression analysis.
+•  ML algorithms — supervised and unsupervised learning, neural networks, and deep learning.
+•  Model deployment — deploying models to production environments using tools such as Docker.
+•  Pandas / NumPy — data manipulation, analysis, and visualization.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with data visualization tools such as Tableau, Power BI, or D3.js.
+•  Knowledge of cloud-based data platforms such as AWS, GCP, or Azure.
+•  Familiarity with agile development methodologies such as Scrum or Kanban.
+•  Certification in data science or a related field, such as Certified Data Scientist (CDS) or Certified Analytics Professional (CAP).
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work on complex business problems and develop data-driven solutions that drive real business value in the textile, retail, and diversified industries.
+•  Access to cutting-edge technologies and tools, including Python, R, ML algorithms, and cloud-based data platforms.
+•  Collaborative and dynamic work environment with a team of experienced data analysts and scientists, with opportunities for cross-functional exposure and learning.
+•  Opportunities for learning and development, including training and certification programs, to help you advance your career in data science.

@@ -1,6 +1,7 @@
-approved_jds_count: 0
-avg_quality_rating: null
+approved_jds_count: 1
+avg_quality_rating: 5.0
 current_version: v1.0
-edit_ratio_trend: []
-feedback_submissions_count: 0
-last_updated: '2026-06-25'
+edit_ratio_trend:
+- 0.062
+feedback_submissions_count: 1
+last_updated: '2026-07-08'

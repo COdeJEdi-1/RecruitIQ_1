@@ -1,0 +1,26 @@
+[
+  {
+    "user_id": "961fb80d-39cc-4206-a644-6d53db362875",
+    "username": "admin",
+    "email": "admin@arvind.in",
+    "password_hash": "scrypt:32768:8:1$wZA1NZtb7g1Fxz2c$92b0d4c105ccc1e376260df1432c21266cba1300a1518179fdbe29614c5e55f3a59040ee4d7501704edeabef44236bc334dfe681bb6de5a45f4e5700028f3715",
+    "role": "admin",
+    "full_name": "Admin"
+  },
+  {
+    "user_id": "11e9c7a2-2fb2-4038-b6c2-c9e79f188d57",
+    "username": "recruiter1",
+    "email": "recruiter1@arvind.in",
+    "password_hash": "pbkdf2:sha256:1000000$e6qq7yLDa9qlnCBK$c25a5f6835a88e1a513a1a5b3af0b2145fc450408a9378ead61ceb0bc409e10a",
+    "role": "user",
+    "full_name": "Recruiter One"
+  },
+  {
+    "user_id": "3c55b1c4-3f8c-4871-a0c5-25c13cfcb21c",
+    "username": "recruiter2",
+    "email": "recruiter2@arvind.in",
+    "password_hash": "pbkdf2:sha256:1000000$OghN1op0fHZ78Eei$f1247e44da7a05719cf2329c62529d6ddd95b3caefb130e1990819caf2bc8078",
+    "role": "user",
+    "full_name": "Recruiter Two"
+  }
+]

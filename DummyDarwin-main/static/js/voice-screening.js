@@ -64,4 +64,85 @@ async function manualCall(name, phone, email, role, btn) {
   }
 }
 
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.voice-call-btn');
+  if (!btn) return;
+  e.stopPropagation();
+  e.preventDefault();
+  manualCall(btn.dataset.name, btn.dataset.phone, btn.dataset.email, btn.dataset.role, btn);
+});
+
+// Bulk calling — select up to MAX_BULK_CALLS candidates via checkboxes, then call them all at once.
+const MAX_BULK_CALLS = 5;
+const selectedCandidates = new Map();
+
+function candidateKey(name, phone) {
+  return `${name}|${phone}`;
+}
+
+function updateBulkCallBar() {
+  const bar = document.getElementById('bulkCallBar');
+  const countEl = document.getElementById('bulkCallCount');
+  const btn = document.getElementById('bulkCallBtn');
+  if (!bar || !countEl || !btn) return;
+  const n = selectedCandidates.size;
+  bar.style.display = n > 0 ? 'flex' : 'none';
+  countEl.textContent = `${n} of ${MAX_BULK_CALLS} selected`;
+  btn.disabled = n === 0;
+}
+
+document.addEventListener('change', (e) => {
+  const cb = e.target.closest('.voice-call-checkbox');
+  if (!cb) return;
+  const key = candidateKey(cb.dataset.name, cb.dataset.phone);
+  if (cb.checked) {
+    if (!cb.dataset.phone) {
+      cb.checked = false;
+      alert('This candidate has no phone number on file.');
+      return;
+    }
+    if (selectedCandidates.size >= MAX_BULK_CALLS) {
+      cb.checked = false;
+      alert(`You can call a maximum of ${MAX_BULK_CALLS} candidates at once.`);
+      return;
+    }
+    selectedCandidates.set(key, {
+      name: cb.dataset.name, phone: cb.dataset.phone, email: cb.dataset.email, role: cb.dataset.role, checkbox: cb,
+    });
+  } else {
+    selectedCandidates.delete(key);
+  }
+  updateBulkCallBar();
+});
+
+async function callSelectedCandidates() {
+  const entries = Array.from(selectedCandidates.values());
+  if (!entries.length) return;
+  const btn = document.getElementById('bulkCallBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Calling…'; }
+  const results = await Promise.all(entries.map((c) =>
+    fetch(`${VOICE_AGENT_URL}/api/candidates/manual-call`, {
+      method: 'POST',
+      headers: { 'X-Webhook-Secret': VOICE_AGENT_SECRET, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: c.name, phone: c.phone, email: c.email, roleTitle: c.role }),
+    })
+      .then(async (res) => ({ name: c.name, ok: res.ok, data: await res.json().catch(() => ({})) }))
+      .catch(() => ({ name: c.name, ok: false, data: { error: 'backend unreachable' } }))
+  ));
+  const succeeded = results.filter((r) => r.ok).map((r) => r.name);
+  const failed = results.filter((r) => !r.ok);
+  let msg = '';
+  if (succeeded.length) msg += `Calls triggered for: ${succeeded.join(', ')}.`;
+  if (failed.length) msg += `\nFailed for: ${failed.map((f) => `${f.name} (${f.data.error || 'error'})`).join(', ')}.`;
+  alert(msg);
+  clearCallSelection();
+  if (btn) { btn.disabled = false; btn.textContent = '📞 Call Selected'; }
+}
+
+function clearCallSelection() {
+  selectedCandidates.forEach((c) => { if (c.checkbox) c.checkbox.checked = false; });
+  selectedCandidates.clear();
+  updateBulkCallBar();
+}
+
 document.addEventListener('DOMContentLoaded', () => { loadAutoCallMode(); });

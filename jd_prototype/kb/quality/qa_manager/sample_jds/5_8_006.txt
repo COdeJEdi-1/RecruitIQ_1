@@ -1,0 +1,42 @@
+{"jd_id": "35dcbbfd", "role_family": "Qa Manager", "department_caps": "QUALITY ASSURANCE (TEXTILE)", "yoe_band": "5-8", "generation_id": "094b6a4f-8a8b-49f0-b88c-e9355e524605", "date_added": "2026-07-03", "approved_at": "2026-07-03T16:44:27.402000", "approved_by": "recruiter1@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the quality management process for Arvind Limited's textile manufacturing operations, working closely with internal teams such as production, supply chain, and external vendors to ensure compliance with international quality standards. As a QA Manager, you will drive business outcomes by implementing and maintaining quality management systems, conducting inline and final inspections, and managing customer audits. You will work with the HOD to develop and implement quality strategies that align with the company's goals and objectives.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Lead the implementation and maintenance of quality management systems, including ISO 9001 and SA8000, to ensure compliance with international standards
+•  Conduct inline and final inspections using AQL sampling to ensure products meet quality standards
+•  Perform root cause analysis using 8D and Ishikawa methodologies to identify and address quality issues
+•  Manage customer audits, including preparation, execution, and follow-up, to ensure compliance with customer requirements
+•  Develop and report quality KPIs to stakeholders, including defect rates, inspection results, and customer satisfaction metrics
+•  Collaborate with production teams to identify and implement process improvements that enhance product quality
+•  Mentor junior team members on quality procedures and best practices to ensure knowledge sharing and skill development
+•  Drive continuous improvement initiatives to enhance the overall quality management system
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Quality management systems (ISO 9001 / SA8000) — implementation and maintenance
+•  Inline & final inspection (AQL sampling) — product inspection and defect classification
+•  Root cause analysis (8D / Ishikawa) — problem-solving and corrective action
+•  Customer audit management — audit preparation, execution, and follow-up
+•  Quality KPI reporting — data analysis and reporting
+•  MS Office — data management, reporting, and presentation
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Certification in quality management, such as CQM or CMQ
+•  Experience with statistical process control (SPC) and control charts
+•  Knowledge of lean quality tools, such as FMEA and Six Sigma
+•  Familiarity with third-party lab accreditation, such as SGS or Bureau Veritas
+•  Experience with chemical testing, such as RSL/MRSL
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a leading textile manufacturer and contribute to the development of high-quality products
+•  Exposure to a range of quality management systems and methodologies, including ISO 9001 and SA8000
+•  Collaborative and dynamic work environment with opportunities for professional growth and development
+•  Access to training and development programs to enhance your skills and knowledge in quality management

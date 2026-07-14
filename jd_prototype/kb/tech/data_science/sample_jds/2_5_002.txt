@@ -1,0 +1,40 @@
+{"jd_id": "373cc659", "role_family": "Data Science", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "2-5", "generation_id": "f9093889-acd6-476d-8514-97f2248994bd", "date_added": "2026-07-01", "approved_at": "2026-07-01T12:13:05.066135", "approved_by": "chahatksd@gmail.com"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+As a Data Analyst at Arvind Limited GCC, you will own the development and maintenance of data models, reports, and dashboards that drive business decisions. You will work closely with internal teams, such as business stakeholders and IT, to identify data requirements and deliver insights that inform strategic initiatives. Your work will have a direct impact on the business, enabling data-driven decision-making and process optimization. You will be an integral part of the Tech team, collaborating with cross-functional teams to drive business outcomes.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Deliver high-quality data models, reports, and dashboards using Python, R, and ML algorithms to drive business insights and decision-making.
+•  Build and deploy machine learning models using scikit-learn, TensorFlow, or PyTorch to solve complex business problems.
+•  Own the design, development, and maintenance of databases and data pipelines using Pandas, NumPy, and SQL to ensure data quality and integrity.
+•  Coordinate with business stakeholders to gather requirements and deliver data insights that meet their needs.
+•  Improve data analysis and reporting processes by identifying areas for optimization and implementing new tools and methodologies.
+•  Review and refine junior team members' work to ensure quality and consistency.
+•  Develop and maintain technical documentation of data models, reports, and dashboards to ensure knowledge sharing and continuity.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  Python (pandas, NumPy) — data wrangling, feature engineering, EDA, and data visualization.
+•  R — statistical modeling, data analysis, and data visualization.
+•  Statistical modelling — hypothesis testing, confidence intervals, and regression analysis.
+•  ML algorithms — supervised and unsupervised learning, neural networks, and deep learning.
+•  Model deployment — deploying models to production environments using tools such as Docker.
+•  Pandas / NumPy — data manipulation, analysis, and visualization.
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Experience with data visualization tools such as Tableau, Power BI, or D3.js.
+•  Knowledge of cloud-based data platforms such as AWS, GCP, or Azure.
+•  Familiarity with agile development methodologies such as Scrum or Kanban.
+•  Certification in data science or a related field, such as Certified Data Scientist (CDS) or Certified Analytics Professional (CAP).
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work on complex business problems and develop data-driven solutions that drive real business value.
+•  Access to cutting-edge technologies and tools, including Python, R, ML algorithms, and cloud-based data platforms.
+•  Collaborative and dynamic work environment with a team of experienced data analysts and scientists.
+•  Opportunities for learning and development, including training and certification programs, to help you advance your career in data analytics.

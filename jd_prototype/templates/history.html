@@ -24,6 +24,40 @@
   <p class="text-body-md text-on-surface-variant mt-1">Sample JDs across every department, plus approved JDs.</p>
 </div>
 
+<!-- ── Tab bar ──────────────────────────────────────────────────────────── -->
+<div class="flex gap-1 mb-space-lg border-b border-outline-variant">
+  <button onclick="switchHistTab('history')" id="htab-history"
+          class="px-4 py-2 text-label-md font-semibold border-b-2 border-primary text-primary -mb-px transition-colors">
+    History
+  </button>
+  <button onclick="switchHistTab('candidates')" id="htab-candidates"
+          class="px-4 py-2 text-label-md font-semibold border-b-2 border-transparent text-on-surface-variant hover:text-primary -mb-px transition-colors">
+    Candidate Library
+  </button>
+</div>
+
+<!-- ── Candidate Library tab ────────────────────────────────────────────── -->
+<div id="htab-candidates-content" style="display:none">
+  <div class="mb-space-md flex flex-wrap items-center gap-3">
+    <select id="cFilterJob" onchange="loadCandidates()"
+            class="bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+      <option value="">All Jobs</option>
+    </select>
+    <select id="cFilterPlatform" onchange="loadCandidates()"
+            class="bg-white border border-outline-variant rounded-lg px-3 py-2 text-body-sm focus:ring-2 focus:ring-secondary focus:outline-none">
+      <option value="">All Platforms</option>
+      <option value="linkedin">LinkedIn</option>
+      <option value="naukri">Naukri</option>
+    </select>
+  </div>
+  <div id="candidatesList" class="flex flex-col gap-3">
+    <div class="text-body-sm text-on-surface-variant py-8 text-center">Loading…</div>
+  </div>
+</div>
+
+<!-- ── History tab (existing content) ───────────────────────────────────── -->
+<div id="htab-history-content">
+
 <!-- ── Department sample segments ──────────────────────────────────────── -->
 <div class="mb-space-2xl">
   <h2 class="text-headline-md text-on-surface mb-1">Browse by Department</h2>
@@ -124,6 +158,7 @@
     </div>
   </div>
 </div>
+</div><!-- /htab-history-content -->
 
 {% endblock %}
 
@@ -375,5 +410,76 @@
   loadLocalDrafts();
   loadDepartmentSamples();
   loadJdHistory();
+
+  // ── History tab close wrapper (opened above content) ──────────────────────
+  // (closed in HTML below script block)
+
+  // ── Tab switching ──────────────────────────────────────────────────────────
+  function switchHistTab(tab) {
+    const isHistory = tab === 'history';
+    document.getElementById('htab-history-content').style.display = isHistory ? '' : 'none';
+    document.getElementById('htab-candidates-content').style.display = isHistory ? 'none' : '';
+    document.getElementById('htab-history').className =
+      'px-4 py-2 text-label-md font-semibold border-b-2 -mb-px transition-colors ' +
+      (isHistory ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary');
+    document.getElementById('htab-candidates').className =
+      'px-4 py-2 text-label-md font-semibold border-b-2 -mb-px transition-colors ' +
+      (!isHistory ? 'border-primary text-primary' : 'border-transparent text-on-surface-variant hover:text-primary');
+    if (!isHistory) loadCandidates();
+  }
+
+  // ── Candidate Library ──────────────────────────────────────────────────────
+  const PLAT_COLOR = { linkedin: '#0077b5', naukri: '#ff7555' };
+
+  async function loadCandidates() {
+    const jobId = document.getElementById('cFilterJob').value;
+    const platform = document.getElementById('cFilterPlatform').value;
+    const el = document.getElementById('candidatesList');
+    el.innerHTML = '<div class="text-body-sm text-on-surface-variant py-8 text-center">Loading…</div>';
+    const params = new URLSearchParams();
+    if (jobId) params.set('job_id', jobId);
+    if (platform) params.set('platform', platform);
+    try {
+      const candidates = await fetch('/api/darwin/candidates?' + params).then(r => r.json());
+      if (!candidates.length) {
+        el.innerHTML = '<div class="text-body-sm text-on-surface-variant py-8 text-center">No applications yet.</div>';
+        return;
+      }
+      el.innerHTML = candidates.map(c => `
+        <div class="bg-white rounded-xl border border-outline-variant shadow-sm p-4 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <div class="font-semibold text-on-surface text-body-md">${c.name}</div>
+            <div class="text-xs text-on-surface-variant mt-0.5">${c.email}${c.phone ? ' · ' + c.phone : ''}</div>
+            <div class="text-xs text-on-surface-variant mt-0.5">Applied ${new Date(c.applied_at).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs px-2.5 py-1 rounded-full font-semibold text-white"
+                  style="background:${PLAT_COLOR[c.platform_source]||'#6b7280'}">
+              ${c.platform_source.charAt(0).toUpperCase()+c.platform_source.slice(1)}
+            </span>
+            ${c.resume_file
+              ? `<a href="/static/${c.resume_file}" target="_blank"
+                    class="text-xs font-semibold text-primary hover:underline">View Resume</a>`
+              : '<span class="text-xs text-on-surface-variant">No resume</span>'}
+          </div>
+        </div>`).join('');
+    } catch(e) {
+      el.innerHTML = '<div class="text-body-sm text-red-600 py-4 text-center">Failed to load candidates.</div>';
+    }
+  }
+
+  // Populate job filter dropdown from Darwinbox jobs
+  (async function populateJobFilter() {
+    try {
+      const jobs = await fetch('/api/darwin/jobs').then(r => r.json());
+      const sel = document.getElementById('cFilterJob');
+      jobs.forEach(j => {
+        const opt = document.createElement('option');
+        opt.value = j.darwinbox_job_id;
+        opt.textContent = j.role_title;
+        sel.appendChild(opt);
+      });
+    } catch {}
+  })();
 </script>
 {% endblock %}

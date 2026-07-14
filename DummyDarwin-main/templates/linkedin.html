@@ -22,6 +22,19 @@
     .pill-row { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
     .pill { background:#eef3f8; color:#0a66c2; font-size:12px; font-weight:600; padding:4px 10px; border-radius:14px; }
     .not-found { text-align:center; padding:60px 20px; color:#666; }
+
+    .jd-next-steps-footer {
+      display: flex; align-items: stretch; margin-top: 18px; border-radius: 8px;
+      background: linear-gradient(135deg, #7a0b22 0%, #b01030 55%, #9a1028 100%);
+      color: #fff; overflow: hidden;
+    }
+    .jd-next-steps-footer__main { flex: 1; display: flex; align-items: center; gap: 14px; padding: 16px 20px; min-width: 0; }
+    .jd-next-steps-footer__icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+    .jd-next-steps-footer__title { margin: 0 0 4px; font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .jd-next-steps-footer__text { margin: 0; font-size: 12px; line-height: 1.45; opacity: 0.96; }
+    .jd-next-steps-footer__brand { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px 18px; border-left: 1px solid rgba(255,255,255,0.28); min-width: 108px; text-align: center; }
+    .jd-next-steps-footer__brand-label { font-size: 8px; font-weight: 600; letter-spacing: 0.14em; opacity: 0.78; margin-bottom: 4px; }
+    .jd-next-steps-footer__brand-name { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
@@ -61,6 +74,20 @@
 
             <div class="section-title">About the job</div>
             <div class="desc">{{ job.jd_text }}</div>
+
+            <div class="jd-next-steps-footer" role="note" aria-label="Next steps for candidates">
+              <div class="jd-next-steps-footer__main">
+                <div class="jd-next-steps-footer__icon" aria-hidden="true">🎙️</div>
+                <div>
+                  <p class="jd-next-steps-footer__title">{{ jd_footer_heading }}</p>
+                  <p class="jd-next-steps-footer__text">{{ jd_footer_text }}</p>
+                </div>
+              </div>
+              <div class="jd-next-steps-footer__brand">
+                <span class="jd-next-steps-footer__brand-label">{{ jd_footer_brand_label }}</span>
+                <span class="jd-next-steps-footer__brand-name">{{ jd_footer_brand_name }}</span>
+              </div>
+            </div>
         </div>
     {% else %}
         <div class="card not-found">

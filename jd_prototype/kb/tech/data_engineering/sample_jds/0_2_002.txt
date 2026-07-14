@@ -1,0 +1,42 @@
+{"jd_id": "d027b4e6", "role_family": "Data Engineering", "department_caps": "TECHNOLOGY / GCC", "yoe_band": "0-2", "generation_id": "0699f75c-3614-4685-90e6-3ce3dbf445c3", "date_added": "2026-07-02", "approved_at": "2026-07-02T12:50:31.435356", "approved_by": "recruiter2@arvind.in"}
+
+---
+
+◆  ROLE SUMMARY
+──────────────────────────────────────────────
+You will own the design, development, and maintenance of secure data pipelines and architectures as a Cybersecurity Analyst at Arvind Limited GCC. You will work closely with internal teams, such as data engineering and business stakeholders, to identify and mitigate potential security threats. Your primary focus will be on driving business outcomes by ensuring the security and integrity of data warehousing systems, leveraging your expertise in data quality and governance. As part of the Tech team, you will contribute to the development of a robust cybersecurity framework that supports Arvind's textile, retail, and diversified businesses.
+
+◆  KEY RESPONSIBILITIES
+──────────────────────────────────────────────
+•  Assist in designing and implementing ETL/ELT pipelines using Azure Data Factory, Glue, or Airflow to ensure secure data transfer and processing.
+•  Support the development of data warehousing concepts and architectures, focusing on data quality and governance.
+•  Execute SQL/T-SQL queries to monitor and analyze data pipeline performance, identifying potential security vulnerabilities.
+•  Contribute to the development of Python or Scala scripts for data processing and analysis, ensuring compliance with cybersecurity protocols.
+•  Collaborate with data engineers to design and implement secure data storage solutions, leveraging expertise in data warehousing concepts.
+•  Learn and implement data quality and governance best practices, ensuring compliance with industry standards and regulations.
+•  Participate in regular security audits and risk assessments, providing recommendations for improvement.
+
+◆  MUST-HAVE SKILLS
+──────────────────────────────────────────────
+•  SQL — complex queries, data modeling, and database design
+•  Python (pandas, NumPy) — data wrangling, feature engineering, and data analysis
+•  Scala — data processing, distributed computing, and data engineering
+•  ETL/ELT pipeline design — data integration, data transformation, and data loading
+•  Azure Data Factory — data pipeline management, data integration, and data processing
+•  Data warehousing concepts — data modeling, data governance, and data quality
+•  Data quality and governance — data validation, data cleansing, and data certification
+
+◆  GOOD TO HAVE
+──────────────────────────────────────────────
+•  Certification in CompTIA Security+ or equivalent cybersecurity certification
+•  Experience with cloud-based security platforms, such as Azure Security Center or AWS Security Hub
+•  Knowledge of threat intelligence and incident response methodologies
+•  Familiarity with containerization technologies, such as Docker or Kubernetes
+•  Experience with agile development methodologies and version control systems, such as Git
+
+◆  WHAT WE OFFER
+──────────────────────────────────────────────
+•  The opportunity to work with a cutting-edge technology stack, including Azure Data Factory, Python, and Scala
+•  Exposure to complex business problems and the chance to develop scalable solutions
+•  A collaborative and dynamic work environment with cross-functional teams
+•  Opportunities for learning and development, including training and certification programs in cybersecurity and data engineering

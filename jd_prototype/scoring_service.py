@@ -27,7 +27,9 @@ _SCORES_FILE = _DATA_DIR / "candidate_scores.json"
 _VOICE_AGENT_PUSHES_FILE = _DATA_DIR / "voice_agent_pushes.json"
 
 # ── Voice-agent auto-screening handoff ────────────────────────────────────────
-VOICE_AGENT_SCORE_THRESHOLD = 70
+# Score is 0-100 internally; displayed to users as score/10 (e.g. 92 -> 9.2/10).
+AUTO_CALL_SCORE_THRESHOLD = 90     # score/10 >= 9.0 -> automatic voice-agent call
+MANUAL_CALL_SCORE_THRESHOLD = 70   # score/10 >= 7.0 -> manual call option surfaced
 
 # ── Scoring weights (configurable) ────────────────────────────────────────────
 WEIGHTS = {
@@ -93,11 +95,11 @@ def _get_candidate(candidate_id: str) -> dict | None:
 
 def _maybe_push_to_voice_agent(candidate: dict, job: dict, score_record: dict):
     """
-    Auto-handoff: candidates scoring >= VOICE_AGENT_SCORE_THRESHOLD get pushed to the
+    Auto-handoff: candidates scoring >= AUTO_CALL_SCORE_THRESHOLD get pushed to the
     AI_VoiceAgent backend, which dispatches a screening call on its own. Dedup'd via
     _VOICE_AGENT_PUSHES_FILE so a rescore never re-triggers a duplicate call.
     """
-    if score_record["overall_score"] < VOICE_AGENT_SCORE_THRESHOLD:
+    if score_record["overall_score"] < AUTO_CALL_SCORE_THRESHOLD:
         return
 
     pushed = _load(_VOICE_AGENT_PUSHES_FILE)

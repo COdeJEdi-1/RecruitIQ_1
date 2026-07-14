@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-07-08T05:16:50.912Z",
+  "projectRoot": "/Users/chahatd/AI_ASSIST_JD ver3",
+  "structure": {
+    "hasPackageJson": false,
+    "hasTsConfig": false,
+    "hasClaudeConfig": true,
+    "hasClaudeFlow": true
+  },
+  "scannedAt": 1783487810912
+}
