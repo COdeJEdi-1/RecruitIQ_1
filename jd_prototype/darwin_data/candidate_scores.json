@@ -1610,5 +1610,214 @@
       ]
     },
     "scored_at": "2026-07-13T17:36:59.720740"
+  },
+  {
+    "score_id": "b384e380-29b3-4ca9-9c27-c890a0b590bc",
+    "candidate_id": "e7e0d28e-17dd-4d92-843b-10936dc7024c",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "overall_score": 95.2,
+    "skills_score": 88.0,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 100.0,
+    "domain_score": 100.0,
+    "score_breakdown": {
+      "matched_required_skills": [
+        "Quality management systems (ISO 9001 / SA8000)",
+        "Inline & final inspection (AQL sampling)",
+        "Root cause analysis (8D / Ishikawa)",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "AQL sampling",
+        "ISO 9001 and SA8000 standards",
+        "ASTM / ISO / AATCC test method awareness"
+      ],
+      "missing_required_skills": [],
+      "matched_preferred_skills": [
+        "Six Sigma Green Belt or Black Belt certification",
+        "Knowledge of chemical testing (RSL/MRSL)",
+        "Experience with QMS implementation (ISO 9001)"
+      ],
+      "experience_gap_years": 0,
+      "candidate_yoe": 10,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [],
+      "candidate_titles": [
+        "QA Manager"
+      ]
+    },
+    "scored_at": "2026-07-14T12:33:41.765928"
+  },
+  {
+    "score_id": "14ab9979-64e9-410c-aa45-67797d0b79f6",
+    "candidate_id": "26801b67-b3b5-4282-b71c-cf717a1f9fb7",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "overall_score": 75.4,
+    "skills_score": 76.0,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 0.0,
+    "domain_score": 100.0,
+    "score_breakdown": {
+      "matched_required_skills": [
+        "Quality management systems (ISO 9001 / SA8000)",
+        "Inline & final inspection (AQL sampling)",
+        "Root cause analysis (8D / Ishikawa)",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "AQL sampling",
+        "ISO 9001 and SA8000 standards",
+        "ASTM / ISO / AATCC test method awareness"
+      ],
+      "missing_required_skills": [],
+      "matched_preferred_skills": [
+        "Experience with QMS implementation (ISO 9001)"
+      ],
+      "experience_gap_years": 0,
+      "candidate_yoe": 6,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [],
+      "candidate_titles": []
+    },
+    "scored_at": "2026-07-14T12:34:32.647071"
+  },
+  {
+    "score_id": "ce5d01a6-d973-454d-8983-719c0fdd4c5d",
+    "candidate_id": "34d4b7a0-d902-4bb4-89e1-36a223405bea",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "overall_score": 72.1,
+    "skills_score": 76.0,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 0.0,
+    "domain_score": 66.7,
+    "score_breakdown": {
+      "matched_required_skills": [
+        "Quality management systems (ISO 9001 / SA8000)",
+        "Inline & final inspection (AQL sampling)",
+        "Root cause analysis (8D / Ishikawa)",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "AQL sampling",
+        "ISO 9001 and SA8000 standards",
+        "ASTM / ISO / AATCC test method awareness"
+      ],
+      "missing_required_skills": [],
+      "matched_preferred_skills": [
+        "Experience with QMS implementation (ISO 9001)"
+      ],
+      "experience_gap_years": 0,
+      "candidate_yoe": 2,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [],
+      "candidate_titles": [
+        "Quality Executive"
+      ]
+    },
+    "scored_at": "2026-07-14T12:35:06.407819"
+  },
+  {
+    "score_id": "c6c5aa64-852c-472d-8d5d-5305e7a9766d",
+    "candidate_id": "5c75b12c-b1f4-4e3a-93e7-cc144155018a",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "overall_score": 72.1,
+    "skills_score": 76.0,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 0.0,
+    "domain_score": 66.7,
+    "score_breakdown": {
+      "matched_required_skills": [
+        "Quality management systems (ISO 9001 / SA8000)",
+        "Inline & final inspection (AQL sampling)",
+        "Root cause analysis (8D / Ishikawa)",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "AQL sampling",
+        "ISO 9001 and SA8000 standards",
+        "ASTM / ISO / AATCC test method awareness"
+      ],
+      "missing_required_skills": [],
+      "matched_preferred_skills": [
+        "Experience with QMS implementation (ISO 9001)"
+      ],
+      "experience_gap_years": 0,
+      "candidate_yoe": 2,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [],
+      "candidate_titles": [
+        "Quality Executive"
+      ]
+    },
+    "scored_at": "2026-07-14T12:38:29.494136"
+  },
+  {
+    "score_id": "cf5e8c25-d6e1-4ed2-ac4b-63089c7412a3",
+    "candidate_id": "cc57b5ae-8455-4857-89e8-dc897d114c00",
+    "darwinbox_job_id": "b5f88217-fde3-422f-a9a1-52fe72034adc",
+    "overall_score": 37.5,
+    "skills_score": 0.0,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 0.0,
+    "domain_score": 25.0,
+    "score_breakdown": {
+      "matched_required_skills": [],
+      "missing_required_skills": [
+        "ATS management",
+        "JD writing & job posting",
+        "Candidate screening & assessment",
+        "Full-cycle recruiting",
+        "Stakeholder management",
+        "Payroll software"
+      ],
+      "matched_preferred_skills": [],
+      "experience_gap_years": 0,
+      "candidate_yoe": 6,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [],
+      "candidate_titles": []
+    },
+    "scored_at": "2026-07-14T13:40:02.690592"
+  },
+  {
+    "score_id": "a5eeaeca-7b23-4dd8-bbe5-7fe7c720c016",
+    "candidate_id": "05a9c58f-4ca7-47fe-9a73-8addf0b61988",
+    "darwinbox_job_id": "1e1f6f0d-2fca-40d4-8ed9-31f6727b5cd7",
+    "overall_score": 80.5,
+    "skills_score": 59.5,
+    "experience_score": 100.0,
+    "education_score": 100.0,
+    "title_relevance_score": 100.0,
+    "domain_score": 66.7,
+    "score_breakdown": {
+      "matched_required_skills": [
+        "ATS management (Naukri / LinkedIn Recruiter)",
+        "JD writing & job posting",
+        "Candidate screening & assessment",
+        "Stakeholder management"
+      ],
+      "missing_required_skills": [
+        "Payroll app consolidation",
+        "Full-cycle recruiting"
+      ],
+      "matched_preferred_skills": [
+        "Certification in payroll management (e.g. Certified Payroll Professional (CPP) or Fundamental Payroll Certification (FPC))",
+        "Experience with payroll software (e.g. ADP or Paychex)",
+        "Experience with data analysis and reporting tools (e.g. Excel or Tableau)"
+      ],
+      "experience_gap_years": 0,
+      "candidate_yoe": 10,
+      "required_yoe_range": "0\u201399",
+      "candidate_education": [
+        "MBA (HR) \u2013 Gujarat University",
+        "B.Com \u2013 Gujarat University"
+      ],
+      "candidate_titles": [
+        "Payroll Manager",
+        "Senior Payroll Executive"
+      ]
+    },
+    "scored_at": "2026-07-14T16:22:14.005660"
   }
 ]

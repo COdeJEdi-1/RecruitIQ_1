@@ -442,5 +442,53 @@
       "jd_id": "1628361a"
     },
     "created_at": "2026-07-13T16:54:59.392461"
+  },
+  {
+    "log_id": "e7df9c59-80de-40a6-b5a8-620753a7311d",
+    "user_id": "3c55b1c4-3f8c-4871-a0c5-25c13cfcb21c",
+    "action": "jd_published",
+    "entity_type": "darwinbox_job",
+    "entity_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "metadata": {
+      "role_title": "QA Manager",
+      "jd_id": "d9cc8ee2"
+    },
+    "created_at": "2026-07-14T12:19:36.040110"
+  },
+  {
+    "log_id": "50a0e4b5-ce59-45d7-8f08-60e402406b5b",
+    "user_id": "11e9c7a2-2fb2-4038-b6c2-c9e79f188d57",
+    "action": "jd_published",
+    "entity_type": "darwinbox_job",
+    "entity_id": "b5b45031-c21f-4eae-8093-3b071b540377",
+    "metadata": {
+      "role_title": "manager payroll",
+      "jd_id": "6df7a250"
+    },
+    "created_at": "2026-07-14T13:28:22.795187"
+  },
+  {
+    "log_id": "acc04ebb-f95e-409e-af44-eae6cdf4f081",
+    "user_id": "11e9c7a2-2fb2-4038-b6c2-c9e79f188d57",
+    "action": "jd_published",
+    "entity_type": "darwinbox_job",
+    "entity_id": "b5f88217-fde3-422f-a9a1-52fe72034adc",
+    "metadata": {
+      "role_title": "manager payroll",
+      "jd_id": "e5b4459f"
+    },
+    "created_at": "2026-07-14T13:28:24.071755"
+  },
+  {
+    "log_id": "866db988-9525-4034-81b0-23d3fbfc4b3a",
+    "user_id": "11e9c7a2-2fb2-4038-b6c2-c9e79f188d57",
+    "action": "jd_published",
+    "entity_type": "darwinbox_job",
+    "entity_id": "1e1f6f0d-2fca-40d4-8ed9-31f6727b5cd7",
+    "metadata": {
+      "role_title": "payroll manager",
+      "jd_id": "2c704847"
+    },
+    "created_at": "2026-07-14T16:18:22.479657"
   }
 ]

@@ -1803,9 +1803,11 @@ def api_sample_filters():
 def api_sample_list():
     """List approved JDs for the Sample JD Library.
     Supabase-approved JDs come first (newest → oldest), then KB seed files as fallback."""
-    f_dept   = request.args.get("dept",     "").strip().lower()
-    f_family = request.args.get("family",   "").strip().lower()
-    f_yoe    = request.args.get("yoe_band", "").strip()
+    f_dept     = request.args.get("dept",     "").strip().lower()
+    f_family   = request.args.get("family",   "").strip().lower()
+    f_yoe      = request.args.get("yoe_band", "").strip()
+    f_division = request.args.get("division", "").strip()
+    f_search   = request.args.get("search",   "").strip().lower()
 
     results = []
 
@@ -1815,10 +1817,14 @@ def api_sample_list():
         dept   = (row.get("department") or "").lower()
         family = (row.get("family")     or "").lower()
         yoe    = row.get("yoe_band", "")
+        division = _division_for_dept(dept)
+        role_title = row.get("role_title") or display_name(family)
 
-        if f_dept   and dept   != f_dept:   continue
-        if f_family and family != f_family: continue
-        if f_yoe    and yoe    != f_yoe:    continue
+        if f_dept     and dept     != f_dept:     continue
+        if f_family   and family   != f_family:   continue
+        if f_yoe      and yoe      != f_yoe:      continue
+        if f_division and division != f_division: continue
+        if f_search   and f_search not in role_title.lower(): continue
 
         # Use generation_id as the ref (prefixed so api_sample_get knows it's Supabase)
         gen_id  = row.get("generation_id", "")
@@ -1826,10 +1832,10 @@ def api_sample_list():
 
         results.append({
             "ref":          f"sb:{gen_id}",
-            "role_title":   row.get("role_title") or display_name(family),
+            "role_title":   role_title,
             "dept":         dept,
             "dept_label":   DEPARTMENT_DISPLAY_NAMES.get(dept, display_name(dept)),
-            "division":     _division_for_dept(dept),
+            "division":     division,
             "family":       family,
             "family_label": display_name(family),
             "yoe_band":     yoe,
@@ -1844,6 +1850,10 @@ def api_sample_list():
             if f_dept   and dept.lower()   != f_dept:   continue
             if f_family and family.lower() != f_family: continue
 
+            division = _division_for_dept(dept)
+            if f_division and division != f_division:
+                continue
+
             loaded = _load_sample_file(jd_file)
             if not loaded:
                 continue
@@ -1855,12 +1865,16 @@ def api_sample_list():
             if f_yoe and yoe_band != f_yoe:
                 continue
 
+            role_title = meta.get("role_family", display_name(family))
+            if f_search and f_search not in role_title.lower():
+                continue
+
             results.append({
                 "ref":          _make_sample_ref(dept, family, jd_file.name),
-                "role_title":   meta.get("role_family", display_name(family)),
+                "role_title":   role_title,
                 "dept":         dept,
                 "dept_label":   display_name(dept),
-                "division":     _division_for_dept(dept),
+                "division":     division,
                 "family":       family,
                 "family_label": display_name(family),
                 "yoe_band":     yoe_band,
@@ -2223,6 +2237,7 @@ def apply_page(platform, darwinbox_job_id):
     name = request.form.get("name", "").strip()
     email = request.form.get("email", "").strip()
     phone = request.form.get("phone", "").strip()
+    consent_given = request.form.get("consent") in ("1", "on", "true", "yes")
 
     if not all([name, email]):
         return render_template(
@@ -2231,6 +2246,15 @@ def apply_page(platform, darwinbox_job_id):
             platform=platform,
             darwinbox_job_id=darwinbox_job_id,
             error="Name and email are required.",
+        )
+
+    if not consent_given:
+        return render_template(
+            "apply.html",
+            job=job,
+            platform=platform,
+            darwinbox_job_id=darwinbox_job_id,
+            error="You must provide consent before submitting your application.",
         )
 
     resume_path = ""
@@ -2242,6 +2266,8 @@ def apply_page(platform, darwinbox_job_id):
         resume_file.save(upload_dir / safe_name)
         resume_path = f"uploads/resumes/{safe_name}"
 
+    from datetime import datetime as _dt
+    consent_timestamp = _dt.now().isoformat()
     candidate = darwin.submit_candidate(
         darwinbox_job_id=darwinbox_job_id,
         platform_source=platform,
@@ -2249,6 +2275,8 @@ def apply_page(platform, darwinbox_job_id):
         email=email,
         phone=phone,
         resume_file=resume_path,
+        consent_given=True,
+        consent_timestamp=consent_timestamp,
     )
 
     # Fire-and-forget: score candidate asynchronously so submission isn't blocked

@@ -159,10 +159,13 @@ function buildWebhookUrl() {
 }
 
 function buildCallContext(record) {
+  const positionName = record.roleTitle ?? '';
   return {
     candidate_name: record.name,
     candidate_email: record.email ?? '',
-    role_title: record.roleTitle ?? '',
+    // OmniDimension prompt vars — use {{position_name}} or {{role_title}} in agent script
+    role_title: positionName,
+    position_name: positionName,
     match_score: record.score != null ? String(record.score) : '',
     source: 'darwin_auto_screening',
   };

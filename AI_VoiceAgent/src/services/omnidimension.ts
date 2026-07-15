@@ -83,6 +83,15 @@ function buildContactRow(candidate: ParsedCandidate, campaignName: string) {
 function buildCallContext(candidate: ParsedCandidate, campaignName: string): Record<string, string> {
   const row = buildContactRow(candidate, campaignName);
   const { phone_number: _p, ...context } = row;
+  const positionName =
+    context.role_title ||
+    context.position_name ||
+    context.role ||
+    '';
+  if (positionName) {
+    context.role_title = positionName;
+    context.position_name = positionName;
+  }
   return context;
 }
 

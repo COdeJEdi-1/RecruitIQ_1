@@ -148,8 +148,19 @@
         </label>
       </div>
 
-      <button type="submit"
-              class="w-full bg-[#830026] hover:bg-[#6e001f] text-white font-semibold py-3 rounded-xl text-sm transition-colors">
+      <div class="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5">
+        <label class="flex items-start gap-3 cursor-pointer">
+          <input type="checkbox" name="consent" id="consentCheckbox" value="1" required
+                 class="mt-1 h-4 w-4 shrink-0 rounded border-gray-300 text-[#830026] focus:ring-[#830026]"/>
+          <span class="text-sm text-gray-700 leading-relaxed">
+            I consent to Arvind Limited contacting me via phone, SMS, email, WhatsApp, and, where applicable, AI-assisted voice interactions for recruitment purposes, including application updates, interviews, candidate screening, assessments, and related hiring activities.<br><br>Where AI-assisted interactions are used, I will be informed at the start. Where required, my consent will be obtained before any recorded interaction. I may withdraw my consent for future recruitment communications at any time by contacting Arvind Limited, subject to applicable legal and operational requirements.
+            <span class="text-red-500">*</span>
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" id="applySubmitBtn" disabled
+              class="w-full bg-[#830026] text-white font-semibold py-3 rounded-xl text-sm transition-colors enabled:hover:bg-[#6e001f] disabled:opacity-40 disabled:cursor-not-allowed">
         Submit Application
       </button>
     </form>
@@ -161,6 +172,21 @@
 <footer class="text-center text-xs text-gray-400 py-8">
   © 2026 Arvind Limited · Global Capability Centre · HR Intelligence Platform
 </footer>
+
+{% if not submitted %}
+<script>
+  (function () {
+    var checkbox = document.getElementById('consentCheckbox');
+    var button = document.getElementById('applySubmitBtn');
+    if (!checkbox || !button) return;
+    function sync() {
+      button.disabled = !checkbox.checked;
+    }
+    checkbox.addEventListener('change', sync);
+    sync();
+  })();
+</script>
+{% endif %}
 
 </body>
 </html>

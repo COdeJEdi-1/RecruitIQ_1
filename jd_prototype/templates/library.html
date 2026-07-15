@@ -264,14 +264,18 @@
   }
 
   async function applyFilters() {
+    const division = document.getElementById('fDivision').value;
     const dept = document.getElementById('fDept').value;
     const family = document.getElementById('fFamily').value;
     const yoe = document.getElementById('fYoe').value;
+    const search = (document.getElementById('globalSearchInput') || {}).value || '';
 
     const params = new URLSearchParams();
+    if (division) params.set('division', division);
     if (dept) params.set('dept', dept);
     if (family) params.set('family', family);
     if (yoe) params.set('yoe_band', yoe);
+    if (search.trim()) params.set('search', search.trim());
 
     const grid = document.getElementById('cardGrid');
     const countEl = document.getElementById('resultCount');
@@ -629,5 +633,17 @@
   })();
 
   loadFilters().then(applyFilters);
+
+  // Wire the header's "Search JDs..." box (lives in base.html, shared across
+  // pages) to filter this page's results. Debounced so it doesn't re-fetch
+  // on every single keystroke.
+  let _searchDebounce = null;
+  const _searchInput = document.getElementById('globalSearchInput');
+  if (_searchInput) {
+    _searchInput.addEventListener('input', () => {
+      clearTimeout(_searchDebounce);
+      _searchDebounce = setTimeout(applyFilters, 300);
+    });
+  }
 </script>
 {% endblock %}

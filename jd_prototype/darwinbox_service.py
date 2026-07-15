@@ -151,6 +151,17 @@ def fetch_job_postings(darwinbox_job_id: str | None = None) -> list:
 
 # ── Candidates ────────────────────────────────────────────────────────────────
 
+# Consent copy shown on the public apply form — stored with each application for audit.
+CONSENT_TEXT = (
+    "I consent to Arvind Limited contacting me via phone, SMS, email, WhatsApp, and, where applicable, "
+    "AI-assisted voice interactions for recruitment purposes, including application updates, interviews, "
+    "candidate screening, assessments, and related hiring activities. "
+    "Where AI-assisted interactions are used, I will be informed at the start. Where required, my consent "
+    "will be obtained before any recorded interaction. I may withdraw my consent for future recruitment "
+    "communications at any time by contacting Arvind Limited, subject to applicable legal and operational requirements."
+)
+
+
 def submit_candidate(
     darwinbox_job_id: str,
     platform_source: str,
@@ -158,9 +169,12 @@ def submit_candidate(
     email: str,
     phone: str,
     resume_file: str,
+    consent_given: bool = False,
+    consent_timestamp: str | None = None,
 ) -> dict:
     """Store a candidate application submission."""
     candidates = _load(_CANDIDATES_FILE)
+    now = datetime.now().isoformat()
     candidate = {
         "candidate_id": str(uuid.uuid4()),
         "darwinbox_job_id": darwinbox_job_id,
@@ -169,7 +183,10 @@ def submit_candidate(
         "email": email,
         "phone": phone,
         "resume_file": resume_file,
-        "applied_at": datetime.now().isoformat(),
+        "applied_at": now,
+        "consent_given": bool(consent_given),
+        "consent_timestamp": consent_timestamp or (now if consent_given else None),
+        "consent_text": CONSENT_TEXT if consent_given else None,
     }
     candidates.append(candidate)
     _save(_CANDIDATES_FILE, candidates)

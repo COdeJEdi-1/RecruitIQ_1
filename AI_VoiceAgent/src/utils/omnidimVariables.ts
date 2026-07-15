@@ -19,6 +19,23 @@ export const OMNIDIM_EXTRACTED_VARIABLES = {
   job_change_reason: 'Reason for job change',
   family_background: "Candidate's family background",
   joining_status: 'How soon the candidate will be able to join',
+  Call_Recording_Consent: 'Yes if candidate consented to recording; No if declined',
 } as const;
 
 export type OmnidimExtractedVariableKey = keyof typeof OMNIDIM_EXTRACTED_VARIABLES;
+
+/**
+ * Call-context variables injected at dispatch time (agent prompt templates).
+ * In the OmniDimension agent script, reference these as {{candidate_name}}, {{position_name}}.
+ *
+ * Example greeting:
+ *   "Hi, I'm Veda... Thank you for applying for the {{position_name}} role."
+ */
+export const OMNIDIM_CALL_CONTEXT_VARIABLES = {
+  candidate_name: "Candidate's full name",
+  candidate_email: "Candidate's email address",
+  position_name: 'Job / position title for the role they applied to',
+  role_title: 'Alias of position_name (same value)',
+  match_score: 'Resume match score when available',
+  source: 'Dispatch source tag (e.g. darwin_auto_screening)',
+} as const;

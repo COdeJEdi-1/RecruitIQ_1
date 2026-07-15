@@ -27,10 +27,13 @@ function escapeCsv(value) {
 }
 
 function buildCallContext(candidate) {
+  const positionName = candidate.roleTitle ?? '';
   return {
     candidate_name: candidate.name,
     candidate_email: candidate.email ?? '',
-    role_title: candidate.roleTitle ?? '',
+    // OmniDimension prompt vars — use {{position_name}} or {{role_title}} in agent script
+    role_title: positionName,
+    position_name: positionName,
     match_score: candidate.score != null ? String(candidate.score) : '',
     source: 'darwin_auto_screening',
   };

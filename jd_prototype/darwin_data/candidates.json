@@ -1611,5 +1611,221 @@
       ]
     },
     "resume_profile_extracted_at": "2026-07-13T17:36:59.716634"
+  },
+  {
+    "candidate_id": "e7e0d28e-17dd-4d92-843b-10936dc7024c",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "platform_source": "linkedin",
+    "name": "Ved",
+    "email": "ved@arvind.in",
+    "phone": "9825184700",
+    "resume_file": "uploads/resumes/f82ab79d-2fd7-48cf-b558-7ae8f9f789fa_Ved_QA_Manager_Profile.pdf",
+    "applied_at": "2026-07-14T12:33:39.710465",
+    "resume_profile": {
+      "candidate_skills": [
+        "ISO 9001",
+        "SA8000",
+        "AQL sampling",
+        "Root Cause Analysis",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "ASTM",
+        "ISO",
+        "AATCC",
+        "Cross-functional collaboration",
+        "Six Sigma Green Belt",
+        "RSL/MRSL",
+        "SGS/Intertek coordination"
+      ],
+      "total_years_experience": 10,
+      "education": [],
+      "past_titles": [
+        "QA Manager"
+      ],
+      "domain_tags": [
+        "textile",
+        "manufacturing",
+        "quality management"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T12:33:41.742218"
+  },
+  {
+    "candidate_id": "26801b67-b3b5-4282-b71c-cf717a1f9fb7",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "platform_source": "linkedin",
+    "name": "Manav",
+    "email": "manav@arvind.in",
+    "phone": "8485934034",
+    "resume_file": "uploads/resumes/85ecc92f-a62b-4c73-bb77-947a76997f41_Manav_QA_Manager_Profile.pdf",
+    "applied_at": "2026-07-14T12:34:32.128042",
+    "resume_profile": {
+      "candidate_skills": [
+        "ISO 9001",
+        "SA8000",
+        "AQL sampling",
+        "Root Cause Analysis",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "ASTM",
+        "ISO",
+        "AATCC",
+        "Cross-functional collaboration"
+      ],
+      "total_years_experience": 6,
+      "education": [],
+      "past_titles": [],
+      "domain_tags": [
+        "textile",
+        "manufacturing",
+        "quality"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T12:34:32.640617"
+  },
+  {
+    "candidate_id": "34d4b7a0-d902-4bb4-89e1-36a223405bea",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "platform_source": "linkedin",
+    "name": "kashish",
+    "email": "kashish@arvind.in",
+    "phone": "8780923369",
+    "resume_file": "uploads/resumes/9c22a2ba-7dd4-4942-96cb-d8c29c7e2da5_Kashish_QA_Manager_Profile.pdf",
+    "applied_at": "2026-07-14T12:35:05.817334",
+    "resume_profile": {
+      "candidate_skills": [
+        "ISO 9001",
+        "SA8000",
+        "AQL sampling",
+        "Root Cause Analysis",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "ASTM",
+        "ISO",
+        "AATCC",
+        "Cross-functional collaboration"
+      ],
+      "total_years_experience": 2,
+      "education": [],
+      "past_titles": [
+        "Quality Executive"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "quality management"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T12:35:06.397093"
+  },
+  {
+    "candidate_id": "5c75b12c-b1f4-4e3a-93e7-cc144155018a",
+    "darwinbox_job_id": "29df4ae1-d9dc-4dc5-9822-ddfe3bc79631",
+    "platform_source": "linkedin",
+    "name": "Kashish",
+    "email": "kashish@arvind.in",
+    "phone": "+91 98251 84700",
+    "resume_file": "uploads/resumes/5c352a70-31f3-4c80-b9f6-30ff7fe3b12f_Kashish_QA_Manager_Profile.pdf",
+    "applied_at": "2026-07-14T12:38:28.768234",
+    "resume_profile": {
+      "candidate_skills": [
+        "ISO 9001",
+        "SA8000",
+        "AQL sampling",
+        "Root Cause Analysis",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "ASTM",
+        "ISO",
+        "AATCC",
+        "Cross-functional collaboration"
+      ],
+      "total_years_experience": 2,
+      "education": [],
+      "past_titles": [
+        "Quality Executive"
+      ],
+      "domain_tags": [
+        "manufacturing",
+        "quality management"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T12:38:29.487675"
+  },
+  {
+    "candidate_id": "cc57b5ae-8455-4857-89e8-dc897d114c00",
+    "darwinbox_job_id": "b5f88217-fde3-422f-a9a1-52fe72034adc",
+    "platform_source": "linkedin",
+    "name": "Nazeer",
+    "email": "naz@cloud.in",
+    "phone": "+91 9833774620",
+    "resume_file": "uploads/resumes/e74f9c56-8478-46dc-900f-29e6e82de3fc_Manav_QA_Manager_Profile.pdf",
+    "applied_at": "2026-07-14T13:40:01.280516",
+    "resume_profile": {
+      "candidate_skills": [
+        "ISO 9001",
+        "SA8000",
+        "AQL sampling",
+        "Root Cause Analysis",
+        "Customer audit management",
+        "Quality KPI reporting",
+        "ASTM",
+        "ISO",
+        "AATCC",
+        "Cross-functional collaboration"
+      ],
+      "total_years_experience": 6,
+      "education": [],
+      "past_titles": [],
+      "domain_tags": [
+        "textile",
+        "manufacturing",
+        "quality"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T13:40:02.681807"
+  },
+  {
+    "candidate_id": "05a9c58f-4ca7-47fe-9a73-8addf0b61988",
+    "darwinbox_job_id": "1e1f6f0d-2fca-40d4-8ed9-31f6727b5cd7",
+    "platform_source": "linkedin",
+    "name": "Anand",
+    "email": "anand@arvind.in",
+    "phone": "9971655585",
+    "resume_file": "uploads/resumes/34a3acfd-0ee8-4bd4-806d-93e79718a424_Anand_Barot_Manager_Payroll_Resume.pdf",
+    "applied_at": "2026-07-14T16:22:12.381061",
+    "resume_profile": {
+      "candidate_skills": [
+        "Payroll Management",
+        "Payroll Software",
+        "Payroll Transformation",
+        "Team Leadership",
+        "HR Operations",
+        "ATS",
+        "Full-cycle Recruitment",
+        "JD Writing",
+        "Candidate Screening",
+        "Stakeholder Management",
+        "Vendor Management",
+        "Indian Labour Laws",
+        "Power BI",
+        "Tableau",
+        "Advanced Excel"
+      ],
+      "total_years_experience": 10,
+      "education": [
+        "MBA (HR) \u2013 Gujarat University",
+        "B.Com \u2013 Gujarat University"
+      ],
+      "past_titles": [
+        "Payroll Manager",
+        "Senior Payroll Executive"
+      ],
+      "domain_tags": [
+        "hr",
+        "payroll",
+        "operations"
+      ]
+    },
+    "resume_profile_extracted_at": "2026-07-14T16:22:13.965505"
   }
 ]
