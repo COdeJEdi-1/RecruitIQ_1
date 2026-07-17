@@ -1,6 +1,6 @@
 // Candidate scoring helpers shared by dashboard.html and shortlisted.html.
 // Plain static file (not Jinja-templated) — talks to the jd_prototype
-// scoring backend on localhost:5001.
+// scoring backend on localhost:6001.
 
 function toggleBreakdown(id) {
   const el = document.getElementById('breakdown-' + id);
@@ -10,7 +10,7 @@ function toggleBreakdown(id) {
 // Auto-score unscored candidates on page load
 async function autoScorePending() {
   try {
-    const res = await fetch('http://localhost:5001/api/candidates/score-pending', {credentials:'include'}).then(r=>r.json());
+    const res = await fetch('http://localhost:6001/api/candidates/score-pending', {credentials:'include'}).then(r=>r.json());
     if (res.queued > 0) {
       const banner = document.getElementById('scoringBanner');
       if (banner) {
@@ -28,7 +28,7 @@ async function rescoreCandidate(candidateId, jobId, btn) {
   btn.disabled = true;
   btn.textContent = '↻ Scoring…';
   try {
-    const res = await fetch('http://localhost:5001/api/candidates/rescore', {
+    const res = await fetch('http://localhost:6001/api/candidates/rescore', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       credentials: 'include',

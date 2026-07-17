@@ -2,19 +2,23 @@
 Platform preview pages — LinkedIn and Naukri job posting views.
 """
 
-import json
 import sys
 from pathlib import Path
 
 from flask import Blueprint, render_template, request
 
+from database.models import DarwinboxJob
+
 platforms_bp = Blueprint("platforms", __name__)
 
 _JD_PROTOTYPE_DIR = Path(__file__).parent.parent.parent / "jd_prototype"
-_DARWIN_DATA = _JD_PROTOTYPE_DIR / "darwin_data"
 
 if str(_JD_PROTOTYPE_DIR) not in sys.path:
-    sys.path.insert(0, str(_JD_PROTOTYPE_DIR))
+    # Appended (not prepended) so this app's own same-named packages
+    # (utils, database, config, ...) keep resolving to themselves
+    # elsewhere in this process; jd_prototype is only a fallback for
+    # names unique to it, like `jd_constants`.
+    sys.path.append(str(_JD_PROTOTYPE_DIR))
 
 from jd_constants import (  # noqa: E402
     JD_FOOTER_HEADING,
@@ -31,18 +35,9 @@ _FOOTER_CTX = {
 }
 
 
-def _load(path):
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return []
-
-
 def _get_job(job_id):
-    for j in _load(_DARWIN_DATA / "darwinbox_jobs.json"):
-        if j.get("darwinbox_job_id") == job_id:
-            return j
-    return None
+    job = DarwinboxJob.query.get(job_id)
+    return job.to_dict() if job else None
 
 
 @platforms_bp.route("/linkedin")

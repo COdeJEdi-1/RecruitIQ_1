@@ -46,12 +46,12 @@ function loadEnvFile() {
 
 loadEnvFile();
 
-const PORT = Number(process.env.WEBHOOK_PORT || 3001);
+const PORT = Number(process.env.WEBHOOK_PORT || 6003);
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || process.env.VITE_WEBHOOK_SECRET || '';
 const PUBLIC_BASE_URL =
   process.env.WEBHOOK_PUBLIC_URL ||
   process.env.VITE_WEBHOOK_PUBLIC_URL ||
-  'http://localhost:5173';
+  'http://localhost:6004';
 
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {

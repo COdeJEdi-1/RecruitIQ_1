@@ -1,7 +1,7 @@
 // AI Voice Screening: Automatic/Manual toggle + per-candidate manual call.
 // Plain static file (not Jinja-templated) — talks directly to the
-// AI_VoiceAgent backend on localhost:3001.
-const VOICE_AGENT_URL = 'http://localhost:3001';
+// AI_VoiceAgent backend on localhost:6003.
+const VOICE_AGENT_URL = 'http://localhost:6003';
 const VOICE_AGENT_SECRET = 'be6c290a2b9fd52c342322ac2c8d1feadd328ff8c90675f257b6dd8d5d1d3890';
 
 function updateAutoCallToggleUI(enabled) {
@@ -21,7 +21,7 @@ async function loadAutoCallMode() {
     }).then((r) => r.json());
     updateAutoCallToggleUI(res.enabled !== false);
   } catch (e) {
-    console.warn('[AI Voice Screening] backend unreachable on localhost:3001', e);
+    console.warn('[AI Voice Screening] backend unreachable on localhost:6003', e);
   }
 }
 
@@ -34,7 +34,7 @@ async function setAutoCallMode(enabled) {
     }).then((r) => r.json());
     updateAutoCallToggleUI(res.enabled !== false);
   } catch (e) {
-    alert('Could not reach the AI Voice Screening backend on localhost:3001.');
+    alert('Could not reach the AI Voice Screening backend on localhost:6003.');
   }
 }
 
@@ -58,7 +58,7 @@ async function manualCall(name, phone, email, role, btn) {
       alert(`Could not trigger call for ${name}: ${data.error || 'unknown error'}`);
     }
   } catch (e) {
-    alert('Could not reach the AI Voice Screening backend on localhost:3001.');
+    alert('Could not reach the AI Voice Screening backend on localhost:6003.');
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = original ?? '📞'; }
   }

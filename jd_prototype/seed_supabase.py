@@ -1,30 +1,33 @@
 """
-seed_supabase.py — one-time script to populate Supabase tables from the
+seed_supabase.py — one-time script to populate MySQL tables from the
 existing filesystem KB (kb/ directory).
 
-Run once after applying supabase_schema_v2.sql:
+Run once after applying the MySQL schema (see database/init_db.py):
   python3 seed_supabase.py
 
-Requires SUPABASE_SERVICE_ROLE_KEY to be set in .env.
+Requires MySQL connection configured via Config (see config.py / .env).
 Safe to re-run (all upserts are idempotent).
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 load_dotenv()
+sys.path.insert(0, os.path.dirname(__file__))
 
-from supabase_kb import get_service_client, SUPABASE_DB_ENABLED, KB_ROOT
+from flask import Flask
+
+from config import Config
+from database.db import init_engine
+from database.models import RoleTaxonomy, SampleJd
+from services.kb_service import upsert_sample_jd, KB_ROOT
+
 
 def seed():
-    if not SUPABASE_DB_ENABLED:
-        print("ERROR: SUPABASE_SERVICE_ROLE_KEY not set in .env — cannot seed.")
-        sys.exit(1)
-
-    client = get_service_client()
     print(f"Seeding from {KB_ROOT} …")
     seeded = 0
     skipped = 0
@@ -63,52 +66,40 @@ def seed():
                     skipped += 1
                     continue
 
-                # Upsert into role_taxonomy
-                tax_res = client.table("role_taxonomy").upsert({
-                    "department":      dept,
-                    "division":        division or "",
-                    "role_family":     family,
-                    "yoe_band":        yoe_band,
-                    "seniority_label": seniority_lab,
-                }, on_conflict="department,role_family,yoe_band").execute()
+                # Find (but don't yet create) role_taxonomy, so we can look up
+                # taxonomy_id for the dedup check below. upsert_sample_jd()
+                # performs the actual find-or-create/update when we call it.
+                taxonomy = RoleTaxonomy.query.filter_by(
+                    department=dept, role_family=family, yoe_band=yoe_band
+                ).first()
+                taxonomy_id = taxonomy.id if taxonomy else None
 
-                taxonomy_id = None
-                if tax_res.data:
-                    taxonomy_id = tax_res.data[0].get("id")
-                else:
-                    # Fetch existing
-                    rows = (client.table("role_taxonomy")
-                            .select("id")
-                            .eq("department", dept)
-                            .eq("role_family", family)
-                            .eq("yoe_band", yoe_band)
-                            .execute().data)
-                    if rows:
-                        taxonomy_id = rows[0]["id"]
-
-                if not taxonomy_id:
-                    print(f"  WARN: no taxonomy_id for {dept}/{family}/{yoe_band}")
-                    skipped += 1
-                    continue
-
-                # Insert sample JD (check if already exists by metadata->jd_id to avoid dups)
+                # Skip if already seeded (check if it already exists by
+                # metadata->jd_id to avoid dups)
                 jd_id_meta = meta.get("jd_id", "")
-                if jd_id_meta:
-                    existing = (client.table("sample_jds")
-                                .select("id")
-                                .eq("taxonomy_id", taxonomy_id)
-                                .eq("metadata->>jd_id", jd_id_meta)
-                                .execute().data)
+                if taxonomy_id and jd_id_meta:
+                    existing = SampleJd.query.filter_by(taxonomy_id=taxonomy_id).filter(
+                        SampleJd.sample_metadata["jd_id"].as_string() == jd_id_meta
+                    ).first()
                     if existing:
                         skipped += 1
                         continue
 
-                client.table("sample_jds").insert({
-                    "taxonomy_id": taxonomy_id,
-                    "jd_text":     jd_text,
-                    "metadata":    meta,
-                    "added_by":    meta.get("approved_by", "seed_script"),
-                }).execute()
+                ok = upsert_sample_jd(
+                    department=dept,
+                    division=division or "",
+                    role_family=family,
+                    yoe_band=yoe_band,
+                    seniority_label=seniority_lab,
+                    jd_text=jd_text,
+                    metadata=meta,
+                    added_by=meta.get("approved_by", "seed_script"),
+                )
+
+                if not ok:
+                    print(f"  WARN: mirror failed for {dept}/{family}/{yoe_band}")
+                    skipped += 1
+                    continue
 
                 seeded += 1
                 print(f"  ✓ {dept}/{family}/{yoe_band} — {jd_file.name}")
@@ -117,4 +108,8 @@ def seed():
 
 
 if __name__ == "__main__":
-    seed()
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    init_engine(app)
+    with app.app_context():
+        seed()

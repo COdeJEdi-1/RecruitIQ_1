@@ -68,7 +68,7 @@
                     {% set scored = [] %}
                     {% for c in candidates %}
                         {% set sc = score_map.get(c.candidate_id) %}
-                        {% if sc %}{% if scored.append((sc.overall_score, c, sc)) %}{% endif %}{% endif %}
+                        {% if sc and sc.overall_score is not none %}{% if scored.append((sc.overall_score, c, sc)) %}{% endif %}{% endif %}
                     {% endfor %}
                     {% set scored = scored | sort(attribute='0', reverse=True) %}
 

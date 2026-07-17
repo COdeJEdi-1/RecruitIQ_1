@@ -57,7 +57,7 @@ export function Header({ title }: HeaderProps) {
           </button>
 
           <a
-            href="http://localhost:5001"
+            href="http://localhost:6001"
             title="Back to Platform Hub"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-grey-border text-xs font-semibold text-grey-secondary hover:text-maroon hover:border-maroon transition-all"
           >

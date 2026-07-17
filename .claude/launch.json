@@ -10,28 +10,28 @@
     {
       "name": "AI Voice Screening (AI_VoiceAgent)",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--prefix", "AI_VoiceAgent", "--", "--port", "5173"],
-      "port": 5173
+      "runtimeArgs": ["run", "dev", "--prefix", "AI_VoiceAgent", "--", "--port", "6004"],
+      "port": 6004
     },
     {
       "name": "Darwinbox HRIS (DummyDarwin-main)",
       "runtimeExecutable": "/usr/local/bin/python3",
       "runtimeArgs": ["app.py"],
       "cwd": "DummyDarwin-main",
-      "port": 5002
+      "port": 6002
     },
     {
       "name": "JD Generator (jd_prototype)",
       "runtimeExecutable": "/usr/local/bin/python3",
       "runtimeArgs": ["app.py"],
       "cwd": "jd_prototype",
-      "port": 5001
+      "port": 6001
     },
     {
       "name": "AI_VoiceAgent Webhook Server",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev:webhook", "--prefix", "AI_VoiceAgent"],
-      "port": 3001
+      "port": 6003
     }
   ]
 }

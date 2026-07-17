@@ -3,58 +3,58 @@ Dashboard blueprint — main portal view with statistics and document lists.
 Data is scoped by role: admin sees all; user sees only their own (created_by).
 """
 
-import json
 import os
 import sys
 
 from flask import Blueprint, render_template, session, redirect, url_for
 
 from config import Config
-from models.models import Document
+from database.models import (
+    ActivityLog,
+    Candidate,
+    CandidateScore,
+    DarwinboxJob,
+    Document,
+    DownloadRequest,
+    User,
+)
 from routes.auth import login_required, is_admin, current_user_id
+from utils.helpers import import_isolated
 
 dashboard_bp = Blueprint("dashboard", __name__)
 
 _JD_PROTOTYPE_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "jd_prototype")
-DARWIN_DATA = os.path.join(_JD_PROTOTYPE_DIR, "darwin_data")
-DARWIN_JOBS_FILE       = os.path.join(DARWIN_DATA, "darwinbox_jobs.json")
-DARWIN_CANDIDATES_FILE = os.path.join(DARWIN_DATA, "candidates.json")
-DARWIN_SCORES_FILE     = os.path.join(DARWIN_DATA, "candidate_scores.json")
-DARWIN_ACTIVITY_FILE   = os.path.join(DARWIN_DATA, "activity_log.json")
 
+# Appended (not prepended) so this app's own same-named packages
+# (utils, database, config, ...) keep resolving to themselves everywhere
+# else in this process; jd_prototype is only a fallback for names unique
+# to it, like `scoring_service`/`jd_constants`.
 if _JD_PROTOTYPE_DIR not in sys.path:
-    sys.path.insert(0, _JD_PROTOTYPE_DIR)
+    sys.path.append(_JD_PROTOTYPE_DIR)
 
-from scoring_service import AUTO_CALL_SCORE_THRESHOLD, MANUAL_CALL_SCORE_THRESHOLD  # noqa: E402
+# scoring_service.py (jd_prototype) transitively imports its OWN
+# `database.models` (bound to its own SQLAlchemy instance). Isolated so it
+# doesn't collide with this file's `database.models` import above — see
+# import_isolated()'s docstring for why a plain `from scoring_service
+# import ...` here would otherwise break.
+AUTO_CALL_SCORE_THRESHOLD, MANUAL_CALL_SCORE_THRESHOLD = import_isolated(
+    "scoring_service",
+    ("AUTO_CALL_SCORE_THRESHOLD", "MANUAL_CALL_SCORE_THRESHOLD"),
+    _JD_PROTOTYPE_DIR,
+)
 
 # Score is 0-100 internally, shown to users as /10. Tier boundaries below are
 # in the internal 0-100 scale (90 -> 9.0/10, 70 -> 7.0/10).
 SCORE_THRESHOLDS = {"green": AUTO_CALL_SCORE_THRESHOLD, "yellow": MANUAL_CALL_SCORE_THRESHOLD}
 
 
-def _load_file(path):
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception:
-        return []
-
-
-def _load_candidates():
-    try:
-        with open(DARWIN_CANDIDATES_FILE) as f:
-            return json.load(f)
-    except Exception:
-        return []
-
-
 def _load_shared_context():
     admin = is_admin()
     uid   = current_user_id()
 
-    all_jds     = [j for j in _load_file(DARWIN_JOBS_FILE) if j.get("is_active")]
-    all_cands   = _load_candidates()
-    scores_raw  = _load_file(DARWIN_SCORES_FILE)
+    all_jds    = [j.to_dict() for j in DarwinboxJob.query.filter_by(is_active=True).all()]
+    all_cands  = [c.to_dict() for c in Candidate.query.all()]
+    scores_raw = [s.to_dict() for s in CandidateScore.query.all()]
 
     # Scope data for non-admin: only rows they created
     if admin:
@@ -68,23 +68,26 @@ def _load_shared_context():
 
     score_map     = {s["candidate_id"]: s for s in scores_raw}
     job_map       = {j["darwinbox_job_id"]: j["role_title"] for j in all_jds}
-    threshold_map = {j["darwinbox_job_id"]: j.get("shortlist_threshold", 70) for j in all_jds}
+    threshold_map = {
+        j["darwinbox_job_id"]: j.get("shortlist_threshold")
+        if j.get("shortlist_threshold") is not None else 70
+        for j in all_jds
+    }
 
     # User map for admin "created by" display
     user_map = {}
     try:
-        import json as _j
-        from pathlib import Path
-        uf = Path(DARWIN_DATA) / "users.json"
-        for u in _j.loads(uf.read_text()):
-            user_map[u["user_id"]] = u.get("full_name") or u.get("username", u["user_id"])
+        for u in User.query.all():
+            ud = u.to_dict()
+            user_map[ud["user_id"]] = ud.get("full_name") or ud.get("username", ud["user_id"])
     except Exception:
         pass
 
     # Activity log — admin only
     activity_log = []
     if admin:
-        activity_log = list(reversed(_load_file(DARWIN_ACTIVITY_FILE)))[:50]
+        rows = ActivityLog.query.order_by(ActivityLog.created_at.desc()).limit(50).all()
+        activity_log = [a.to_dict() for a in rows]
 
     return {
         "admin": admin,
@@ -112,13 +115,9 @@ def index():
     }
 
     # Download request counts for admin badge
-    import json as _json
-    from pathlib import Path as _Path
     pending_download_count = 0
     try:
-        reqs_file = _Path(DARWIN_DATA) / "download_requests.json"
-        reqs = _json.loads(reqs_file.read_text()) if reqs_file.exists() else []
-        pending_download_count = sum(1 for r in reqs if r.get("status") == "pending")
+        pending_download_count = DownloadRequest.query.filter_by(status="pending").count()
     except Exception:
         pass
 

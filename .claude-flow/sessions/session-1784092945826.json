@@ -1,0 +1,15 @@
+{
+  "id": "session-1784092945826",
+  "startedAt": "2026-07-15T05:22:25.826Z",
+  "cwd": "/Users/chahatd/AI_ASSIST_JD ver5",
+  "context": {},
+  "metrics": {
+    "edits": 1,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "restoredAt": "2026-07-15T07:56:09.012Z",
+  "endedAt": "2026-07-15T07:56:10.345Z",
+  "duration": 9224520
+}

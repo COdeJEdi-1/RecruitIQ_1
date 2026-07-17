@@ -16,7 +16,7 @@ from routes.downloads import downloads_bp
 from routes.interview_ready import interview_ready_bp
 from routes.platforms import platforms_bp
 from routes.upload import upload_bp
-from utils.db import init_db
+from database.init_db import init_db
 
 
 def create_app():
@@ -46,4 +46,4 @@ app = create_app()
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5002, use_reloader=False)
+    app.run(debug=True, host="0.0.0.0", port=6002, use_reloader=False)

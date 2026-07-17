@@ -16,7 +16,7 @@ export function AutoScreeningControl() {
   useEffect(() => {
     getAutoCallEnabled()
       .then(setEnabled)
-      .catch(() => setError('Could not reach the screening backend — is it running on port 3001?'));
+      .catch(() => setError('Could not reach the screening backend — is it running on port 6003?'));
   }, []);
 
   const handleToggle = async () => {

@@ -14,8 +14,8 @@ from flask import (
 )
 
 from config import Config
-from models.models import Document
-from utils.db import db
+from database.models import Document
+from database.db import db
 from utils.helpers import delete_file_from_disk, save_uploaded_file
 
 upload_bp = Blueprint("upload", __name__)
@@ -24,7 +24,7 @@ upload_bp = Blueprint("upload", __name__)
 def _handle_upload(category, success_message):
     """
     Shared upload handler for JD and Candidate libraries.
-    Validates the file, saves to disk, and records metadata in SQLite.
+    Validates the file, saves to disk, and records metadata in MySQL.
     """
     if "file" not in request.files:
         flash("No file selected.", "error")

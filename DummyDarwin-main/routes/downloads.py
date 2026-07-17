@@ -4,61 +4,59 @@ admin approves/rejects, recruiter gets notified and can then download.
 """
 
 import io
-import json
 import sys
 import uuid
 import zipfile
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from flask import Blueprint, jsonify, request, send_file, session
 
+from database.db import db
+from database.models import Candidate, CandidateScore, DarwinboxJob, DownloadRequest, User
 from routes.auth import login_required, is_admin, current_user_id
+from utils.helpers import import_isolated
 
 downloads_bp = Blueprint("downloads", __name__)
 
 _JD_PROTOTYPE_DIR = Path(__file__).parent.parent.parent / "jd_prototype"
-_DARWIN_DATA  = _JD_PROTOTYPE_DIR / "darwin_data"
-_REQUESTS_FILE = _DARWIN_DATA / "download_requests.json"
-_CANDIDATES_FILE = _DARWIN_DATA / "candidates.json"
-_SCORES_FILE   = _DARWIN_DATA / "candidate_scores.json"
-_USERS_FILE    = _DARWIN_DATA / "users.json"
-_RESUME_BASE   = _JD_PROTOTYPE_DIR / "static" / "uploads" / "candidates"
+_RESUME_BASE = _JD_PROTOTYPE_DIR / "static" / "uploads" / "candidates"
 
+# Appended (not prepended) so this app's own same-named packages (utils,
+# database, config, ...) keep resolving to themselves everywhere else in
+# this process; jd_prototype is only a fallback for names unique to it.
 if str(_JD_PROTOTYPE_DIR) not in sys.path:
-    sys.path.insert(0, str(_JD_PROTOTYPE_DIR))
+    sys.path.append(str(_JD_PROTOTYPE_DIR))
 
-from scoring_service import AUTO_CALL_SCORE_THRESHOLD  # noqa: E402
-
-
-def _load(path: Path) -> list:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return []
-
-
-def _save(path: Path, data: list):
-    path.parent.mkdir(exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+# scoring_service.py (jd_prototype) transitively imports its OWN
+# `database.models` (bound to its own SQLAlchemy instance). Isolated so it
+# doesn't collide with this file's `database.models` import above — see
+# import_isolated()'s docstring for why a plain `from scoring_service
+# import ...` here would otherwise break.
+(AUTO_CALL_SCORE_THRESHOLD,) = import_isolated(
+    "scoring_service", ("AUTO_CALL_SCORE_THRESHOLD",), _JD_PROTOTYPE_DIR
+)
 
 
-def _load_requests() -> list:
-    if not _REQUESTS_FILE.exists():
-        return []
-    return _load(_REQUESTS_FILE)
+def _all_jobs() -> list:
+    return [j.to_dict() for j in DarwinboxJob.query.all()]
 
 
-def _save_requests(data: list):
-    _save(_REQUESTS_FILE, data)
+def _all_candidates() -> list:
+    return [c.to_dict() for c in Candidate.query.all()]
+
+
+def _all_scores() -> dict:
+    return {s["candidate_id"]: s for s in (s.to_dict() for s in CandidateScore.query.all())}
 
 
 def _user_name(user_id: str) -> str:
-    for u in _load(_USERS_FILE):
-        if u["user_id"] == user_id:
-            return u.get("full_name") or u.get("username", user_id[:8])
-    return user_id[:8]
+    user = User.query.get(user_id)
+    if not user:
+        return user_id[:8]
+    d = user.to_dict()
+    return d.get("full_name") or d.get("username", user_id[:8])
 
 
 def _apply_filters(candidates: list, scores: dict, filters: dict) -> list:
@@ -104,30 +102,29 @@ def submit_request():
         "job_ids":   data.get("job_ids",   []),
     }
 
-    uid = current_user_id()
-    darwin_jobs = _load(_DARWIN_DATA / "darwinbox_jobs.json")
+    uid         = current_user_id()
+    darwin_jobs = _all_jobs()
     owned_ids   = {j["darwinbox_job_id"] for j in darwin_jobs if j.get("created_by") == uid}
-    candidates  = [c for c in _load(_CANDIDATES_FILE) if c.get("darwinbox_job_id") in owned_ids]
-    scores      = {s["candidate_id"]: s for s in _load(_SCORES_FILE)}
+    candidates  = [c for c in _all_candidates() if c.get("darwinbox_job_id") in owned_ids]
+    scores      = _all_scores()
     matched     = _apply_filters(candidates, scores, filters)
 
-    req_id  = str(uuid.uuid4())
-    new_req = {
-        "request_id":    req_id,
-        "requester_id":  uid,
-        "requester_name": _user_name(uid),
-        "filters":       filters,
-        "match_count":   len(matched),
-        "status":        "pending",
-        "created_at":    datetime.now().isoformat(),
-        "reviewed_at":   None,
-        "reviewed_by":   None,
-        "reviewer_name": None,
-        "reject_reason": None,
-    }
-    reqs = _load_requests()
-    reqs.append(new_req)
-    _save_requests(reqs)
+    req_id = str(uuid.uuid4())
+    new_req = DownloadRequest(
+        request_id=req_id,
+        requester_id=uid,
+        requester_name=_user_name(uid),
+        filters=filters,
+        match_count=len(matched),
+        status="pending",
+    )
+    try:
+        db.session.add(new_req)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+        return jsonify({"error": "Failed to save download request"}), 500
+
     return jsonify({"success": True, "request_id": req_id, "match_count": len(matched)})
 
 
@@ -137,12 +134,12 @@ def submit_request():
 @login_required
 def request_status(req_id):
     uid = current_user_id()
-    for r in _load_requests():
-        if r["request_id"] == req_id:
-            if not is_admin() and r["requester_id"] != uid:
-                return jsonify({"error": "Forbidden"}), 403
-            return jsonify(r)
-    return jsonify({"error": "Not found"}), 404
+    r = DownloadRequest.query.get(req_id)
+    if not r:
+        return jsonify({"error": "Not found"}), 404
+    if not is_admin() and r.requester_id != uid:
+        return jsonify({"error": "Forbidden"}), 403
+    return jsonify(r.to_dict())
 
 
 # ── Admin: list all requests ──────────────────────────────────────────────────
@@ -152,8 +149,8 @@ def request_status(req_id):
 def list_requests():
     if not is_admin():
         return jsonify({"error": "Admin only"}), 403
-    reqs = sorted(_load_requests(), key=lambda r: r["created_at"], reverse=True)
-    return jsonify(reqs)
+    reqs = DownloadRequest.query.order_by(DownloadRequest.created_at.desc()).all()
+    return jsonify([r.to_dict() for r in reqs])
 
 
 # ── Admin: approve or reject ──────────────────────────────────────────────────
@@ -169,20 +166,25 @@ def review_request(req_id):
     if action not in ("approve", "reject"):
         return jsonify({"error": "action must be approve or reject"}), 400
 
-    reqs = _load_requests()
-    for r in reqs:
-        if r["request_id"] == req_id:
-            if r["status"] != "pending":
-                return jsonify({"error": "Already reviewed"}), 409
-            r["status"]        = "approved" if action == "approve" else "rejected"
-            r["reviewed_at"]   = datetime.now().isoformat()
-            r["reviewed_by"]   = current_user_id()
-            r["reviewer_name"] = _user_name(current_user_id())
-            r["reject_reason"] = data.get("reason", "")
-            _save_requests(reqs)
-            return jsonify({"success": True, "status": r["status"]})
+    r = DownloadRequest.query.get(req_id)
+    if not r:
+        return jsonify({"error": "Not found"}), 404
+    if r.status != "pending":
+        return jsonify({"error": "Already reviewed"}), 409
 
-    return jsonify({"error": "Not found"}), 404
+    r.status        = "approved" if action == "approve" else "rejected"
+    r.reviewed_at   = datetime.now(timezone.utc)
+    r.reviewed_by   = current_user_id()
+    r.reviewer_name = _user_name(current_user_id())
+    r.reject_reason = data.get("reason", "")
+
+    try:
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+        return jsonify({"error": "Failed to update request"}), 500
+
+    return jsonify({"success": True, "status": r.status})
 
 
 # ── Recruiter: download approved ZIP ─────────────────────────────────────────
@@ -191,23 +193,23 @@ def review_request(req_id):
 @login_required
 def download_bundle(req_id):
     uid    = current_user_id()
-    target = next((r for r in _load_requests() if r["request_id"] == req_id), None)
+    target = DownloadRequest.query.get(req_id)
 
     if not target:
         return jsonify({"error": "Request not found"}), 404
-    if not is_admin() and target["requester_id"] != uid:
+    if not is_admin() and target.requester_id != uid:
         return jsonify({"error": "Forbidden"}), 403
-    if target["status"] != "approved":
+    if target.status != "approved":
         return jsonify({"error": "Not yet approved"}), 403
 
-    darwin_jobs = _load(_DARWIN_DATA / "darwinbox_jobs.json")
-    all_cands   = _load(_CANDIDATES_FILE)
+    darwin_jobs = _all_jobs()
+    all_cands   = _all_candidates()
     if not is_admin():
         owned_ids = {j["darwinbox_job_id"] for j in darwin_jobs if j.get("created_by") == uid}
         all_cands = [c for c in all_cands if c.get("darwinbox_job_id") in owned_ids]
 
-    scores  = {s["candidate_id"]: s for s in _load(_SCORES_FILE)}
-    matched = _apply_filters(all_cands, scores, target["filters"])
+    scores  = _all_scores()
+    matched = _apply_filters(all_cands, scores, target.to_dict()["filters"])
     job_map = {j["darwinbox_job_id"]: j["role_title"] for j in darwin_jobs}
 
     buf = io.BytesIO()
@@ -246,9 +248,9 @@ def top3_export():
     uid   = current_user_id()
     admin = is_admin()
 
-    darwin_jobs = _load(_DARWIN_DATA / "darwinbox_jobs.json")
-    all_cands   = _load(_CANDIDATES_FILE)
-    scores      = {s["candidate_id"]: s for s in _load(_SCORES_FILE)}
+    darwin_jobs = _all_jobs()
+    all_cands   = _all_candidates()
+    scores      = _all_scores()
 
     if not admin:
         owned_ids = {j["darwinbox_job_id"] for j in darwin_jobs if j.get("created_by") == uid}
@@ -334,9 +336,9 @@ def qualified_export():
     uid   = current_user_id()
     admin = is_admin()
 
-    darwin_jobs = _load(_DARWIN_DATA / "darwinbox_jobs.json")
-    all_cands   = _load(_CANDIDATES_FILE)
-    scores      = {s["candidate_id"]: s for s in _load(_SCORES_FILE)}
+    darwin_jobs = _all_jobs()
+    all_cands   = _all_candidates()
+    scores      = _all_scores()
 
     if not admin:
         owned_ids = {j["darwinbox_job_id"] for j in darwin_jobs if j.get("created_by") == uid}

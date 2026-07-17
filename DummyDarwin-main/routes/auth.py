@@ -1,34 +1,24 @@
 """
 Multi-user authentication blueprint for DarwinBox.
-Reads credentials from shared darwin_data/users.json.
+Reads credentials from the shared MySQL `users` table (mirrored via
+database.models.User — same table jd_prototype's users.json migration writes to).
 Roles: 'admin' sees all data; 'user' sees only their own.
 """
 
-import json
-import os
 from functools import wraps
-from pathlib import Path
 
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash
 
+from database.db import db
+from database.models import User
+
 auth_bp = Blueprint("auth", __name__)
-
-_USERS_FILE = Path(__file__).parent.parent.parent / "jd_prototype" / "darwin_data" / "users.json"
-
-
-def _load_users() -> list:
-    try:
-        return json.loads(_USERS_FILE.read_text(encoding="utf-8"))
-    except Exception:
-        return []
 
 
 def _find_user(email: str) -> dict | None:
-    for u in _load_users():
-        if u.get("email", "").lower() == email.lower():
-            return u
-    return None
+    user = User.query.filter(db.func.lower(User.email) == email.lower()).first()
+    return user.to_dict() if user else None
 
 
 def login_required(f):

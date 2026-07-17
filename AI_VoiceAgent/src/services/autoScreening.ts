@@ -1,4 +1,4 @@
-const WEBHOOK_SERVER_URL = import.meta.env.VITE_WEBHOOK_SERVER_URL || 'http://localhost:3001';
+const WEBHOOK_SERVER_URL = import.meta.env.VITE_WEBHOOK_SERVER_URL || 'http://localhost:6003';
 
 function authHeaders(): Record<string, string> {
   const secret = import.meta.env.VITE_WEBHOOK_SECRET;

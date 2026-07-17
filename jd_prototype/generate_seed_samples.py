@@ -96,14 +96,21 @@ def main():
     script = f'''"""
 Auto-generated from KB files built from Arvind uploaded documents.
 Run: python seed_samples.py
-Requires: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env
+Requires: MySQL connection configured via Config / .env (see config.py).
 """
-from supabase import create_client
-from dotenv import load_dotenv
 import os
+import sys
+
+from dotenv import load_dotenv
 
 load_dotenv()
-supabase = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
+sys.path.insert(0, os.path.dirname(__file__))
+
+from flask import Flask
+
+from config import Config
+from database.db import init_engine
+from services.kb_service import upsert_sample_jd
 
 {taxonomies_src}
 
@@ -113,35 +120,45 @@ def run():
     print("Seeding role taxonomy...")
     tax_map = {{}}
     for t in TAXONOMIES:
-        result = supabase.table("role_taxonomy").upsert(
-            t, on_conflict="department,role_family,yoe_band"
-        ).execute()
-        if result.data:
-            key = (t["department"], t["role_family"], t["yoe_band"])
-            tax_map[key] = result.data[0]["id"]
-            print(f"  ✓ {{t['department']}} | {{t['role_family']}} | {{t['yoe_band']}}")
+        key = (t["department"], t["role_family"], t["yoe_band"])
+        tax_map[key] = t
+        print(f"  ✓ {{t['department']}} | {{t['role_family']}} | {{t['yoe_band']}}")
 
     print(f"\\nTaxonomy seeded: {{len(TAXONOMIES)}} entries\\n")
     print("Seeding sample JDs...")
 
+    seeded = 0
     for s in SAMPLE_JDS:
         key = s["taxonomy_key"]
-        taxonomy_id = tax_map.get(key)
-        if not taxonomy_id:
+        taxonomy = tax_map.get(key)
+        if not taxonomy:
             print(f"  ✗ No taxonomy for {{key}} — skipping")
             continue
-        supabase.table("sample_jds").insert({{
-            "taxonomy_id": taxonomy_id,
-            "jd_text":     s["jd_text"],
-            "metadata":    s.get("metadata", {{}}),
-            "added_by":    "seed_script"
-        }}).execute()
+        ok = upsert_sample_jd(
+            department=taxonomy["department"],
+            division=taxonomy["division"],
+            role_family=taxonomy["role_family"],
+            yoe_band=taxonomy["yoe_band"],
+            seniority_label=taxonomy["seniority_label"],
+            jd_text=s["jd_text"],
+            metadata=s.get("metadata", {{}}),
+            added_by="seed_script",
+        )
+        if not ok:
+            print(f"  ✗ Mirror failed for {{key[1]}} | {{key[2]}}")
+            continue
+        seeded += 1
         print(f"  ✓ JD seeded for {{key[1]}} | {{key[2]}}")
 
-    print(f"\\nDone. {{len(SAMPLE_JDS)}} sample JDs seeded into Supabase.")
+    print(f"\\nDone. {{seeded}} sample JDs seeded into MySQL.")
+
 
 if __name__ == "__main__":
-    run()
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    init_engine(app)
+    with app.app_context():
+        run()
 '''
 
     OUTPUT.write_text(script, encoding="utf-8")

@@ -2,11 +2,14 @@
 scoring_service.py — Candidate Scorecard: JD-based matching & ranking.
 
 Pipeline:
-  1. extractJdRequirements(darwinbox_job_id)  — Groq LLM, cached in darwinbox_jobs.json
-  2. extractResumeProfile(candidate_id)        — Groq LLM, cached in candidates.json
+  1. extractJdRequirements(darwinbox_job_id)  — Groq LLM, cached in darwinbox_jobs (MySQL)
+  2. extractResumeProfile(candidate_id)        — Groq LLM, cached in candidates (MySQL)
   3. computeCandidateScore(candidate_id, darwinbox_job_id) — deterministic, no LLM
   4. scoreCandidateOnSubmit(candidate_id)      — orchestrator, fire-and-forget
   5. rescoreCandidate(candidate_id, darwinbox_job_id) — manual re-score, forces re-extract
+
+Phase 3: persistence backed by MySQL via SQLAlchemy (database/models.py) —
+replaces the previous darwin_data/*.json flat-file storage.
 """
 
 import json
@@ -19,12 +22,8 @@ from pathlib import Path
 
 import requests
 
-# ── Storage ───────────────────────────────────────────────────────────────────
-_DATA_DIR = Path(__file__).parent / "darwin_data"
-_DARWIN_JOBS_FILE = _DATA_DIR / "darwinbox_jobs.json"
-_CANDIDATES_FILE = _DATA_DIR / "candidates.json"
-_SCORES_FILE = _DATA_DIR / "candidate_scores.json"
-_VOICE_AGENT_PUSHES_FILE = _DATA_DIR / "voice_agent_pushes.json"
+from database.db import db
+from database.models import Candidate, CandidateScore, DarwinboxJob, VoiceAgentPush
 
 # ── Voice-agent auto-screening handoff ────────────────────────────────────────
 # Score is 0-100 internally; displayed to users as score/10 (e.g. 92 -> 9.2/10).
@@ -47,67 +46,122 @@ PREFERRED_SKILL_WEIGHT = 0.30
 EXPERIENCE_TAPER_YEARS = 5
 
 
-# ── File helpers ──────────────────────────────────────────────────────────────
-def _load(path: Path) -> list:
-    _DATA_DIR.mkdir(exist_ok=True)
-    if not path.exists():
-        path.write_text("[]", encoding="utf-8")
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return []
+# ── Dict mapping helpers ───────────────────────────────────────────────────────
+def _job_to_dict(row: DarwinboxJob) -> dict:
+    return {
+        "darwinbox_job_id": row.darwinbox_job_id,
+        "jd_id": row.jd_id,
+        "role_title": row.role_title,
+        "jd_text": row.jd_text,
+        "version": row.version,
+        "is_active": row.is_active,
+        "status": row.status,
+        "published_at": row.published_at.isoformat() if row.published_at else None,
+        "created_by": row.created_by,
+        "jd_requirements": row.jd_requirements,
+        "jd_requirements_extracted_at": (
+            row.jd_requirements_extracted_at.isoformat()
+            if row.jd_requirements_extracted_at else None
+        ),
+    }
 
 
-def _save(path: Path, data: list):
-    _DATA_DIR.mkdir(exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, default=str), encoding="utf-8")
+def _candidate_to_dict(row: Candidate) -> dict:
+    return {
+        "candidate_id": row.candidate_id,
+        "darwinbox_job_id": row.darwinbox_job_id,
+        "platform_source": row.platform_source,
+        "name": row.name,
+        "email": row.email,
+        "phone": row.phone,
+        "resume_file": row.resume_file,
+        "applied_at": row.applied_at.isoformat() if row.applied_at else None,
+        "consent_given": row.consent_given,
+        "consent_timestamp": row.consent_timestamp.isoformat() if row.consent_timestamp else None,
+        "consent_text": row.consent_text,
+        "resume_profile": row.resume_profile,
+        "resume_profile_extracted_at": (
+            row.resume_profile_extracted_at.isoformat()
+            if row.resume_profile_extracted_at else None
+        ),
+    }
 
 
+def _score_to_dict(row: CandidateScore) -> dict:
+    return {
+        "score_id": row.score_id,
+        "candidate_id": row.candidate_id,
+        "darwinbox_job_id": row.darwinbox_job_id,
+        "overall_score": row.overall_score,
+        "skills_score": row.skills_score,
+        "experience_score": row.experience_score,
+        "education_score": row.education_score,
+        "title_relevance_score": row.title_relevance_score,
+        "domain_score": row.domain_score,
+        "score_breakdown": row.score_breakdown,
+        "scored_at": row.scored_at.isoformat() if row.scored_at else None,
+    }
+
+
+# ── Persistence helpers ────────────────────────────────────────────────────────
 def _update_job(darwinbox_job_id: str, updates: dict):
-    jobs = _load(_DARWIN_JOBS_FILE)
-    for j in jobs:
-        if j["darwinbox_job_id"] == darwinbox_job_id:
-            j.update(updates)
-    _save(_DARWIN_JOBS_FILE, jobs)
+    try:
+        row = DarwinboxJob.query.get(darwinbox_job_id)
+        if row is None:
+            return
+        for key, value in updates.items():
+            setattr(row, key, value)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
 
 
 def _update_candidate(candidate_id: str, updates: dict):
-    candidates = _load(_CANDIDATES_FILE)
-    for c in candidates:
-        if c["candidate_id"] == candidate_id:
-            c.update(updates)
-    _save(_CANDIDATES_FILE, candidates)
+    try:
+        row = Candidate.query.get(candidate_id)
+        if row is None:
+            return
+        for key, value in updates.items():
+            setattr(row, key, value)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
 
 
 def _get_job(darwinbox_job_id: str) -> dict | None:
-    for j in _load(_DARWIN_JOBS_FILE):
-        if j["darwinbox_job_id"] == darwinbox_job_id:
-            return j
-    return None
+    try:
+        row = DarwinboxJob.query.get(darwinbox_job_id)
+        return _job_to_dict(row) if row else None
+    except Exception:
+        return None
 
 
 def _get_candidate(candidate_id: str) -> dict | None:
-    for c in _load(_CANDIDATES_FILE):
-        if c["candidate_id"] == candidate_id:
-            return c
-    return None
+    try:
+        row = Candidate.query.get(candidate_id)
+        return _candidate_to_dict(row) if row else None
+    except Exception:
+        return None
 
 
 def _maybe_push_to_voice_agent(candidate: dict, job: dict, score_record: dict):
     """
     Auto-handoff: candidates scoring >= AUTO_CALL_SCORE_THRESHOLD get pushed to the
     AI_VoiceAgent backend, which dispatches a screening call on its own. Dedup'd via
-    _VOICE_AGENT_PUSHES_FILE so a rescore never re-triggers a duplicate call.
+    the voice_agent_pushes table so a rescore never re-triggers a duplicate call.
     """
     if score_record["overall_score"] < AUTO_CALL_SCORE_THRESHOLD:
         return
 
-    pushed = _load(_VOICE_AGENT_PUSHES_FILE)
-    if candidate["candidate_id"] in pushed:
+    try:
+        already_pushed = VoiceAgentPush.query.get(candidate["candidate_id"]) is not None
+    except Exception:
+        already_pushed = False
+    if already_pushed:
         return
 
     webhook_url = os.environ.get(
-        "VOICE_AGENT_WEBHOOK_URL", "http://localhost:3001/api/candidates/inbound"
+        "VOICE_AGENT_WEBHOOK_URL", "http://localhost:6003/api/candidates/inbound"
     )
     webhook_secret = os.environ.get("WEBHOOK_SECRET", "")
 
@@ -129,8 +183,11 @@ def _maybe_push_to_voice_agent(candidate: dict, job: dict, score_record: dict):
             timeout=5,
         )
         if response.ok:
-            pushed.append(candidate["candidate_id"])
-            _save(_VOICE_AGENT_PUSHES_FILE, pushed)
+            try:
+                db.session.add(VoiceAgentPush(candidate_id=candidate["candidate_id"]))
+                db.session.commit()
+            except Exception:
+                db.session.rollback()
         else:
             print(
                 f"[voice-agent] push failed for {candidate['candidate_id']}: "
@@ -203,7 +260,7 @@ def extractJdRequirements(darwinbox_job_id: str, force: bool = False) -> dict | 
         req = _groq_json(system, f"Job Description:\n\n{job['jd_text']}")
         _update_job(darwinbox_job_id, {
             "jd_requirements": req,
-            "jd_requirements_extracted_at": datetime.now().isoformat(),
+            "jd_requirements_extracted_at": datetime.now(),
         })
         return req
     except Exception as e:
@@ -228,7 +285,7 @@ def extractResumeProfile(candidate_id: str, force: bool = False) -> dict | None:
         }
         _update_candidate(candidate_id, {
             "resume_profile": profile,
-            "resume_profile_extracted_at": datetime.now().isoformat(),
+            "resume_profile_extracted_at": datetime.now(),
         })
         return profile
 
@@ -246,7 +303,7 @@ def extractResumeProfile(candidate_id: str, force: bool = False) -> dict | None:
         profile = _groq_json(system, f"Resume:\n\n{resume_text[:6000]}")
         _update_candidate(candidate_id, {
             "resume_profile": profile,
-            "resume_profile_extracted_at": datetime.now().isoformat(),
+            "resume_profile_extracted_at": datetime.now(),
         })
         return profile
     except Exception as e:
@@ -325,8 +382,8 @@ def _title_score(past_titles: list, target_titles: list, role_title: str) -> flo
 def computeCandidateScore(candidate_id: str, darwinbox_job_id: str) -> dict | None:
     """
     Pure deterministic scoring — no LLM call.
-    Reads cached profiles from JSON files.
-    Returns score dict and upserts into candidate_scores.json.
+    Reads cached profiles from the database.
+    Returns score dict and upserts into candidate_scores.
     """
     candidate = _get_candidate(candidate_id)
     job = _get_job(darwinbox_job_id)
@@ -391,6 +448,7 @@ def computeCandidateScore(candidate_id: str, darwinbox_job_id: str) -> dict | No
     )]
     exp_gap = max(0, req.get("min_years_experience", 0) - profile.get("total_years_experience", 0))
 
+    now = datetime.now()
     score_record = {
         "score_id": str(uuid.uuid4()),
         "candidate_id": candidate_id,
@@ -411,15 +469,36 @@ def computeCandidateScore(candidate_id: str, darwinbox_job_id: str) -> dict | No
             "candidate_education": profile.get("education", []),
             "candidate_titles": profile.get("past_titles", []),
         },
-        "scored_at": datetime.now().isoformat(),
+        "scored_at": now.isoformat(),
     }
 
-    # Upsert — replace existing score for same candidate+job
-    scores = _load(_SCORES_FILE)
-    scores = [s for s in scores
-              if not (s["candidate_id"] == candidate_id and s["darwinbox_job_id"] == darwinbox_job_id)]
-    scores.append(score_record)
-    _save(_SCORES_FILE, scores)
+    # Upsert — replace existing score row for same candidate+job
+    try:
+        existing = CandidateScore.query.filter_by(
+            candidate_id=candidate_id, darwinbox_job_id=darwinbox_job_id
+        ).first()
+        if existing is not None:
+            db.session.delete(existing)
+            db.session.flush()
+
+        row = CandidateScore(
+            score_id=score_record["score_id"],
+            candidate_id=candidate_id,
+            darwinbox_job_id=darwinbox_job_id,
+            overall_score=score_record["overall_score"],
+            skills_score=score_record["skills_score"],
+            experience_score=score_record["experience_score"],
+            education_score=score_record["education_score"],
+            title_relevance_score=score_record["title_relevance_score"],
+            domain_score=score_record["domain_score"],
+            score_breakdown=score_record["score_breakdown"],
+            scored_at=now,
+        )
+        db.session.add(row)
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+        raise
 
     _maybe_push_to_voice_agent(candidate, job, score_record)
 
@@ -458,16 +537,19 @@ def rescoreCandidate(candidate_id: str, darwinbox_job_id: str) -> dict | None:
 
 # ── Public: fetch scores ──────────────────────────────────────────────────────
 def get_score(candidate_id: str, darwinbox_job_id: str) -> dict | None:
-    for s in _load(_SCORES_FILE):
-        if s["candidate_id"] == candidate_id and s["darwinbox_job_id"] == darwinbox_job_id:
-            return s
-    return None
+    try:
+        row = CandidateScore.query.filter_by(
+            candidate_id=candidate_id, darwinbox_job_id=darwinbox_job_id
+        ).first()
+        return _score_to_dict(row) if row else None
+    except Exception:
+        return None
 
 
 def get_scores_for_job(darwinbox_job_id: str) -> dict:
     """Return {candidate_id: score_record} for all scored candidates of a job."""
-    return {
-        s["candidate_id"]: s
-        for s in _load(_SCORES_FILE)
-        if s["darwinbox_job_id"] == darwinbox_job_id
-    }
+    try:
+        rows = CandidateScore.query.filter_by(darwinbox_job_id=darwinbox_job_id).all()
+        return {r.candidate_id: _score_to_dict(r) for r in rows}
+    except Exception:
+        return {}

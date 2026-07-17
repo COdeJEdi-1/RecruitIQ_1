@@ -168,7 +168,7 @@
                     {% for c in candidates %}
                     {% set sc = score_map.get(c.candidate_id) %}
                     {% set threshold = threshold_map.get(c.darwinbox_job_id, 70) %}
-                    {% set overall = sc.overall_score if sc else -1 %}
+                    {% set overall = sc.overall_score if (sc and sc.overall_score is not none) else -1 %}
                     {% set shortlisted = (overall >= threshold) if sc else false %}
                     <li class="candidate-row"
                         data-job="{{ c.darwinbox_job_id }}"
@@ -218,7 +218,7 @@
                                 {% endif %}
                                 {% if c.resume_file %}
                                     {% if is_admin %}
-                                    <a href="http://localhost:5001/static/{{ c.resume_file }}" target="_blank"
+                                    <a href="http://localhost:6001/static/{{ c.resume_file }}" target="_blank"
                                        onclick="event.stopPropagation()"
                                        class="btn btn-ghost btn-sm">Resume</a>
                                     {% else %}

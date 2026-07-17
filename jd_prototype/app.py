@@ -3,9 +3,8 @@ Flask web app for the JD Generator — Arvind Limited.
 
 Routes:
   GET  /                       → redirect to /generate if logged in, else /login
-  GET  /login                  → login page (email/password + magic link)
-  POST /api/auth/signin        → Supabase email+password sign-in
-  POST /api/auth/magic-link    → Supabase magic link (passwordless)
+  GET  /login                  → login page (email/password)
+  POST /api/auth/signin        → local sign-in / sign-up (Flask-Login + MySQL)
   GET  /logout                 → clear session
   GET  /generate               → JD generator page (protected)
   GET  /history                → history page (protected) — sample JDs by department + user's approved JDs
@@ -49,6 +48,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from flask import (Flask, jsonify, make_response, redirect, render_template,
                    request, send_file, session, url_for)
+from flask_login import LoginManager, current_user, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
 
 load_dotenv()
 
@@ -66,17 +67,33 @@ from feedback_engine import (
     build_feedback_digest,
 )
 from community_skills import record_custom_skill, get_promoted_skills
-from supabase_kb import upsert_sample_jd, SUPABASE_DB_ENABLED
-import supabase_db as sdb
 import darwinbox_service as darwin
 from jd_constants import (JD_FOOTER_TEXT, JD_FOOTER_HEADING, JD_FOOTER_BRAND_LABEL,
                          JD_FOOTER_BRAND_NAME, append_jd_footer, strip_jd_footer)
 
+from config import Config
+from database import init_db as init_mysql
+from database.db import db
+from database.models import PendingGeneration, User
+from services import jd_service as sdb
+from services.kb_service import upsert_sample_jd, KB_DB_ENABLED
+
 # ── App setup ────────────────────────────────────────────────────────────────
 
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "dev-secret-please-change-in-production")
+app.config.from_object(Config)
+app.secret_key = app.config["SECRET_KEY"]
 app.jinja_env.filters["display_name"] = display_name
+
+init_mysql(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @app.context_processor
@@ -88,20 +105,14 @@ def inject_jd_constants():
         "jd_footer_brand_name": JD_FOOTER_BRAND_NAME,
     }
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
-DEV_MODE = not SUPABASE_URL
+DEV_MODE = app.config.get("DEV_MODE", False)
 ADMIN_EMAILS = {e.strip().lower() for e in os.getenv("ADMIN_EMAILS", "").split(",") if e.strip()}
-
-if not DEV_MODE:
-    from supabase import create_client
-    supabase = create_client(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 # ── Microsoft SSO (Entra ID / Azure AD) ──────────────────────────────────────
 MS_CLIENT_ID     = os.getenv("MICROSOFT_CLIENT_ID", "")
 MS_CLIENT_SECRET = os.getenv("MICROSOFT_CLIENT_SECRET", "")
 MS_TENANT_ID     = os.getenv("MICROSOFT_TENANT_ID", "common")
-MS_REDIRECT_URI  = os.getenv("MICROSOFT_REDIRECT_URI", "http://localhost:5001/auth/microsoft/callback")
+MS_REDIRECT_URI  = os.getenv("MICROSOFT_REDIRECT_URI", "http://localhost:6001/auth/microsoft/callback")
 MS_AUTHORITY     = f"https://login.microsoftonline.com/{MS_TENANT_ID}"
 MS_SCOPES        = ["User.Read"]
 MS_ENABLED       = bool(MS_CLIENT_ID and MS_CLIENT_SECRET)
@@ -117,42 +128,91 @@ def _load_logo(name: str) -> str:
 LOGO_MAIN = _load_logo("arvind_logo_1_b64.txt")   # full Arvind Limited logo (header)
 LOGO_GCC  = _load_logo("arvind_logo_2_b64.txt")   # compact GCC logo (footer)
 
-# Pending generation results — persisted to disk so server restarts don't lose them
-_PENDING_FILE = Path(__file__).parent / "darwin_data" / "pending_generations.json"
+
+def _score_candidate_in_background(candidate_id: str):
+    """Run scoreCandidateOnSubmit inside a real Flask app context — background
+    threads don't inherit one automatically, and every SQLAlchemy call inside
+    the scoring pipeline needs it (silently no-ops/fails without it)."""
+    with app.app_context():
+        scoring.scoreCandidateOnSubmit(candidate_id)
 
 
-def _load_pending() -> dict:
+# Pending generation results — persisted in MySQL so server restarts don't lose them
+def _set_pending(generation_id: str, payload: dict):
     try:
-        return json.loads(_PENDING_FILE.read_text(encoding="utf-8"))
+        row = PendingGeneration.query.get(generation_id)
+        if row is None:
+            row = PendingGeneration(generation_id=generation_id, payload=payload)
+            db.session.add(row)
+        else:
+            row.payload = payload
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+
+
+def _get_pending(generation_id: str) -> dict:
+    try:
+        row = PendingGeneration.query.get(generation_id)
+        return row.payload if row else {}
     except Exception:
         return {}
 
 
-def _save_pending(store: dict):
+def _pop_pending(generation_id: str):
     try:
-        _PENDING_FILE.parent.mkdir(exist_ok=True)
-        _PENDING_FILE.write_text(json.dumps(store, default=str), encoding="utf-8")
+        row = PendingGeneration.query.get(generation_id)
+        if row is not None:
+            db.session.delete(row)
+            db.session.commit()
     except Exception:
-        pass
-
-
-_pending_generations: dict = _load_pending()
+        db.session.rollback()
 
 
 # ── Auth helpers ──────────────────────────────────────────────────────────────
+# Two auth mechanisms coexist: Flask-Login (local email/password sign-in and
+# sign-up, backed by the MySQL `users` table) and a hand-built `session["user"]`
+# dict (Microsoft SSO, unchanged). Both are treated as "logged in" everywhere.
 
 def _enrich_user(user: dict) -> dict:
-    """Add computed fields (is_admin) to the session user dict."""
+    """Add computed fields (is_admin) to a raw session user dict (MSAL path)."""
     user = dict(user)
     role = user.get("role", "user")
     user["is_admin"] = (role == "admin") or (not DEV_MODE and user.get("email", "").lower() in ADMIN_EMAILS)
     return user
 
 
+def _current_template_user():
+    """Return the user object templates should render, from whichever auth
+    mechanism is active for this request (Flask-Login or MSAL session dict)."""
+    if current_user.is_authenticated:
+        current_user.is_admin = (
+            current_user.role == "admin"
+            or (not DEV_MODE and current_user.email.lower() in ADMIN_EMAILS)
+        )
+        return current_user
+    if "user" in session:
+        return _enrich_user(session["user"])
+    return None
+
+
+def _is_logged_in() -> bool:
+    return current_user.is_authenticated or "user" in session
+
+
+def _is_admin(user) -> bool:
+    """user may be a User model instance (Flask-Login) or a dict (MSAL)."""
+    if user is None:
+        return False
+    if isinstance(user, dict):
+        return bool(user.get("is_admin"))
+    return bool(getattr(user, "is_admin", False))
+
+
 def login_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        if "user" not in session:
+        if not _is_logged_in():
             # Return JSON 401 for API/XHR calls so the frontend can handle it
             if request.path.startswith("/api/") or request.is_json:
                 return jsonify({"error": "Session expired. Please sign in again.", "redirect": url_for("login")}), 401
@@ -164,10 +224,9 @@ def login_required(f):
 def admin_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        if "user" not in session:
+        if not _is_logged_in():
             return redirect(url_for("login"))
-        user = _enrich_user(session["user"])
-        if not user["is_admin"]:
+        if not _is_admin(_current_template_user()):
             return redirect(url_for("library"))
         return f(*args, **kwargs)
     return decorated
@@ -202,6 +261,7 @@ def login():
 
 @app.route("/logout")
 def logout():
+    logout_user()
     session.clear()
     return redirect(url_for("login"))
 
@@ -212,7 +272,7 @@ def generator():
     family_labels = {fam: display_name(fam) for fams in DEPARTMENTS.values() for fam in fams}
     return render_template(
         "generator.html",
-        user=_enrich_user(session["user"]),
+        user=_current_template_user(),
         departments=DEPARTMENTS,
         family_labels=family_labels,
         divisions=DIVISIONS,
@@ -229,7 +289,7 @@ def generator():
 def history():
     return render_template(
         "history.html",
-        user=_enrich_user(session["user"]),
+        user=_current_template_user(),
         departments=DEPARTMENTS,
     )
 
@@ -237,14 +297,14 @@ def history():
 @app.route("/admin")
 @admin_required
 def admin_panel():
-    return render_template("admin.html", user=_enrich_user(session["user"]))
+    return render_template("admin.html", user=_current_template_user())
 
 
 @app.route("/api/admin/stats")
 @admin_required
 def api_admin_stats():
     """Return aggregate metrics for the admin dashboard.
-    Tries Supabase first (rich data); falls back to filesystem KB scan."""
+    Tries MySQL first (rich data); falls back to filesystem KB scan."""
     from datetime import datetime, timedelta, timezone
 
     sb_stats = sdb.get_admin_stats()
@@ -453,141 +513,78 @@ def api_ms_status():
 # ── Auth API endpoints ────────────────────────────────────────────────────────
 
 def _load_local_users() -> list:
-    """Load users from darwin_data/users.json for DEV_MODE auth."""
-    uf = Path(__file__).parent / "darwin_data" / "users.json"
+    """Load local users from MySQL (drives the /login dev-mode banner)."""
     try:
-        return json.loads(uf.read_text(encoding="utf-8"))
+        return [
+            {
+                "user_id": u.id,
+                "username": u.username,
+                "email": u.email,
+                "password_hash": u.password_hash,
+                "role": u.role,
+                "full_name": u.full_name,
+            }
+            for u in User.query.filter(User.auth_provider == "local").all()
+        ]
     except Exception:
         return []
 
 
+def _session_dict_for(user: User) -> dict:
+    """Build the legacy session["user"] dict shape from a User row — kept so
+    the many unmodified business routes that read session["user"]["email"]
+    directly continue to work unchanged."""
+    return {
+        "user_id":  user.id,
+        "email":    user.email,
+        "name":     user.name,
+        "picture":  user.picture,
+        "initials": user.initials,
+        "role":     user.role,
+    }
+
+
 @app.route("/api/auth/signin", methods=["POST"])
 def api_signin():
-    from werkzeug.security import check_password_hash as _chk
     data = request.get_json(silent=True) or {}
     email = data.get("email", "").strip().lower()
     password = data.get("password", "")
+    mode = data.get("mode", "signin")
 
-    # Always try local users.json first (covers DEV_MODE and local recruiters
-    # even when Supabase is configured).
-    local_match = next((u for u in _load_local_users() if u.get("email", "").lower() == email), None)
-    if local_match:
-        if not _chk(local_match["password_hash"], password):
-            return jsonify({"error": "Invalid email or password."}), 401
-        name = local_match.get("full_name") or email.split("@")[0]
-        session["user"] = {
-            "user_id":  local_match["user_id"],
-            "email":    local_match["email"],
-            "name":     name,
-            "picture":  "",
-            "initials": _make_initials(name),
-            "role":     local_match.get("role", "user"),
-        }
+    if mode == "signup":
+        if not email or "@" not in email or "." not in email.split("@")[-1]:
+            return jsonify({"error": "Please enter a valid email address."}), 400
+        if not password:
+            return jsonify({"error": "Password is required."}), 400
+        existing = User.query.filter(db.func.lower(User.email) == email).first()
+        if existing:
+            return jsonify({"error": "An account with this email already exists."}), 409
+
+        user = User(
+            email=email,
+            password_hash=generate_password_hash(password),
+            full_name=email.split("@")[0],
+            role="employee",
+            auth_provider="local",
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        session["user"] = _session_dict_for(user)
         return jsonify({"redirect": url_for("library")})
-
-    if DEV_MODE:
-        return jsonify({"error": "Invalid email or password."}), 401
-
-    data = request.get_json(silent=True) or {}
-    email = data.get("email", "").strip()
-    password = data.get("password", "").strip()
 
     if not email or not password:
         return jsonify({"error": "Email and password are required."}), 400
 
-    mode = data.get("mode", "signin")
-    try:
-        if mode == "signup":
-            resp = supabase.auth.sign_up({"email": email, "password": password})
-            if resp.session is None:
-                return jsonify({"message": "Account created! Check your email to confirm before signing in."})
-            user = resp.user
-        else:
-            resp = supabase.auth.sign_in_with_password({"email": email, "password": password})
-            user = resp.user
+    user = User.query.filter(
+        db.func.lower(User.email) == email, User.auth_provider == "local"
+    ).first()
+    if not user or not user.password_hash or not check_password_hash(user.password_hash, password):
+        return jsonify({"error": "Invalid email or password."}), 401
 
-        name = (user.user_metadata or {}).get("full_name") or email.split("@")[0]
-        session["user"] = {
-            "email": user.email,
-            "name": name,
-            "picture": (user.user_metadata or {}).get("avatar_url", ""),
-            "initials": _make_initials(name),
-        }
-        return jsonify({"redirect": url_for("library")})
-    except Exception as exc:
-        return jsonify({"error": str(exc)}), 401
-
-
-@app.route("/api/auth/magic-link", methods=["POST"])
-def api_magic_link():
-    if DEV_MODE:
-        session["user"] = {"email": "dev@arvind.in", "name": "Dev User",
-                           "picture": "", "initials": "DU"}
-        return jsonify({"message": "Dev mode — signed in directly."})
-
-    data = request.get_json(silent=True) or {}
-    email = data.get("email", "").strip()
-    if not email:
-        return jsonify({"error": "Email is required."}), 400
-
-    try:
-        callback_url = request.host_url.rstrip("/") + "/auth/callback"
-        supabase.auth.sign_in_with_otp({"email": email, "options": {"email_redirect_to": callback_url}})
-        return jsonify({"message": f"Magic link sent to {email}. Check your inbox."})
-    except Exception as exc:
-        return jsonify({"error": str(exc)}), 400
-
-
-@app.route("/auth/callback")
-def auth_callback():
-    """Landing page for Supabase magic-link redirects. The token arrives in the
-    URL fragment (#access_token=...) which is client-side only, so we serve a
-    small HTML page that reads it and POSTs it to /api/auth/token-exchange."""
-    return """<!DOCTYPE html>
-<html><head><title>Signing you in…</title>
-<style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;
-min-height:100vh;margin:0;background:#fff8f7;color:#251819;}
-.msg{text-align:center;}.spinner{width:32px;height:32px;border:3px solid #fce2e2;
-border-top-color:#810022;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px;}
-@keyframes spin{to{transform:rotate(360deg)}}</style></head>
-<body><div class="msg"><div class="spinner"></div><p>Completing sign-in…</p></div>
-<script>
-const hash = Object.fromEntries(new URLSearchParams(location.hash.slice(1)));
-if (hash.access_token) {
-  fetch('/api/auth/token-exchange', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({access_token: hash.access_token, refresh_token: hash.refresh_token})
-  }).then(r => r.json()).then(d => {
-    if (d.redirect) location.href = d.redirect;
-    else document.querySelector('.msg').innerHTML = '<p style="color:#ba1a1a">Sign-in failed: ' + (d.error||'Unknown error') + '</p>';
-  }).catch(() => { document.querySelector('.msg').innerHTML = '<p style="color:#ba1a1a">Sign-in failed. Please try again.</p>'; });
-} else {
-  document.querySelector('.msg').innerHTML = '<p style="color:#ba1a1a">Invalid or expired link. <a href="/login">Try again</a></p>';
-}
-</script></body></html>"""
-
-
-@app.route("/api/auth/token-exchange", methods=["POST"])
-def api_token_exchange():
-    """Exchange a Supabase access token (from magic-link callback) for a Flask session."""
-    data = request.get_json(silent=True) or {}
-    access_token = data.get("access_token", "")
-    refresh_token = data.get("refresh_token", "")
-    if not access_token:
-        return jsonify({"error": "No token provided."}), 400
-    try:
-        resp = supabase.auth.set_session(access_token, refresh_token)
-        user = resp.user
-        name = (user.user_metadata or {}).get("full_name") or user.email.split("@")[0]
-        session["user"] = {
-            "email": user.email,
-            "name": name,
-            "picture": (user.user_metadata or {}).get("avatar_url", ""),
-            "initials": _make_initials(name),
-        }
-        return jsonify({"redirect": url_for("library")})
-    except Exception as exc:
-        return jsonify({"error": str(exc)}), 401
+    login_user(user)
+    session["user"] = _session_dict_for(user)
+    return jsonify({"redirect": url_for("library")})
 
 
 # ── Legacy API (Phase 1 — kept for backward compat) ──────────────────────────
@@ -718,7 +715,7 @@ def api_jd_generate():
     generation_id = str(uuid.uuid4())
 
     # Cache the generated text so /api/jd/approve can compute an edit diff
-    _pending_generations[generation_id] = {
+    _set_pending(generation_id, {
         "role_title": role_title,
         "department": department,
         "family": family,
@@ -727,10 +724,9 @@ def api_jd_generate():
         "text": jd_text,
         "user_email": session["user"]["email"],
         "custom_skills": custom_skills,
-    }
-    _save_pending(_pending_generations)
+    })
 
-    # Persist draft to Supabase (best-effort)
+    # Persist draft to MySQL (best-effort)
     sdb.save_draft(
         generation_id=generation_id,
         user_email=session["user"]["email"],
@@ -765,7 +761,7 @@ def api_jd_approve():
         return jsonify({"error": "No JD content to save."}), 400
 
     # Original text from cache (to compute edit diff)
-    gen = _pending_generations.get(generation_id, {})
+    gen = _get_pending(generation_id)
     original_text = gen.get("text", "")
 
     # Save to KB
@@ -822,10 +818,9 @@ def api_jd_approve():
         )
 
     # Remove from pending cache
-    _pending_generations.pop(generation_id, None)
-    _save_pending(_pending_generations)
+    _pop_pending(generation_id)
 
-    # Best-effort Supabase persistence (never blocks filesystem-based flow)
+    # Best-effort MySQL persistence (never blocks filesystem-based flow)
     sdb.approve_draft(
         generation_id=generation_id,
         final_text=final_for_diff,
@@ -847,7 +842,7 @@ def api_jd_approve():
     sdb.bump_jd_count(session["user"]["email"])
     sdb.bump_kb_version(department, family, yoe_band)
 
-    if SUPABASE_DB_ENABLED:
+    if KB_DB_ENABLED:
         upsert_sample_jd(
             department=department,
             division=_division_for_dept(department),
@@ -914,7 +909,7 @@ def api_jd_feedback():
         user_email=session["user"]["email"],
     )
 
-    # Mirror feedback to Supabase (best-effort)
+    # Mirror feedback to MySQL (best-effort)
     sdb.save_feedback(
         jd_id=data["jd_id"],
         generation_id=data.get("generation_id", ""),
@@ -1504,8 +1499,7 @@ def api_jd_archive():
     if not generation_id:
         return jsonify({"error": "generation_id is required."}), 400
     sdb.archive_jd(generation_id, session["user"]["email"])
-    _pending_generations.pop(generation_id, None)
-    _save_pending(_pending_generations)
+    _pop_pending(generation_id)
     return jsonify({"success": True})
 
 
@@ -1513,10 +1507,10 @@ def api_jd_archive():
 @login_required
 def api_jd_history():
     """Return approved JDs metadata for the current user, most recent first.
-    Prefers Supabase; falls back to filesystem KB scan."""
+    Prefers MySQL; falls back to filesystem KB scan."""
     user_email = session["user"]["email"]
 
-    # Supabase path (richer — includes drafts and all statuses)
+    # MySQL path (richer — includes drafts and all statuses)
     sb_rows = sdb.get_user_jds(user_email, status="approved")
     if sb_rows:
         results = []
@@ -1585,7 +1579,7 @@ def api_jd_history():
 @app.route("/api/jd/draft/list", methods=["GET"])
 @login_required
 def api_jd_draft_list():
-    """Return pending/draft JDs for the current user from Supabase."""
+    """Return pending/draft JDs for the current user from MySQL."""
     user_email = session["user"]["email"]
     rows = sdb.get_user_jds(user_email, status="draft")
     drafts = [{
@@ -1768,7 +1762,7 @@ def _load_sample_file(jd_file: Path) -> tuple[dict, str] | None:
 @app.route("/library")
 @login_required
 def library():
-    return render_template("library.html", user=_enrich_user(session["user"]))
+    return render_template("library.html", user=_current_template_user())
 
 
 @app.route("/api/sample/filters", methods=["GET"])
@@ -1802,7 +1796,7 @@ def api_sample_filters():
 @login_required
 def api_sample_list():
     """List approved JDs for the Sample JD Library.
-    Supabase-approved JDs come first (newest → oldest), then KB seed files as fallback."""
+    MySQL-approved JDs come first (newest → oldest), then KB seed files as fallback."""
     f_dept     = request.args.get("dept",     "").strip().lower()
     f_family   = request.args.get("family",   "").strip().lower()
     f_yoe      = request.args.get("yoe_band", "").strip()
@@ -1811,7 +1805,7 @@ def api_sample_list():
 
     results = []
 
-    # ── 1. Supabase: all approved JDs (newest first) ───────────────────────
+    # ── 1. MySQL: all approved JDs (newest first) ───────────────────────────
     sb_rows = sdb.get_all_approved_jds(limit=300)
     for row in sb_rows:
         dept   = (row.get("department") or "").lower()
@@ -1826,7 +1820,7 @@ def api_sample_list():
         if f_division and division != f_division: continue
         if f_search   and f_search not in role_title.lower(): continue
 
-        # Use generation_id as the ref (prefixed so api_sample_get knows it's Supabase)
+        # Use generation_id as the ref (prefixed so api_sample_get knows it's MySQL-approved)
         gen_id  = row.get("generation_id", "")
         approved_at = (row.get("approved_at") or row.get("created_at") or "")[:10]
 
@@ -1844,44 +1838,51 @@ def api_sample_list():
             "source":       "approved",
         })
 
-    # ── 2. KB seed files as fallback (only if no Supabase results at all) ──
-    if not results:
-        for dept, family, jd_file in _iter_sample_files():
-            if f_dept   and dept.lower()   != f_dept:   continue
-            if f_family and family.lower() != f_family: continue
+    # ── 2. KB seed files — always merged alongside MySQL-approved JDs (not a
+    # fallback gated on "no MySQL results"; both sources should always be
+    # visible together, matching pre-migration behavior) ───────────────────
+    seen_refs = {r["ref"] for r in results}
+    for dept, family, jd_file in _iter_sample_files():
+        if f_dept   and dept.lower()   != f_dept:   continue
+        if f_family and family.lower() != f_family: continue
 
-            division = _division_for_dept(dept)
-            if f_division and division != f_division:
-                continue
+        division = _division_for_dept(dept)
+        if f_division and division != f_division:
+            continue
 
-            loaded = _load_sample_file(jd_file)
-            if not loaded:
-                continue
-            meta, body = loaded
-            if not body.strip():
-                continue
+        loaded = _load_sample_file(jd_file)
+        if not loaded:
+            continue
+        meta, body = loaded
+        if not body.strip():
+            continue
 
-            yoe_band = meta.get("yoe_band", "")
-            if f_yoe and yoe_band != f_yoe:
-                continue
+        yoe_band = meta.get("yoe_band", "")
+        if f_yoe and yoe_band != f_yoe:
+            continue
 
-            role_title = meta.get("role_family", display_name(family))
-            if f_search and f_search not in role_title.lower():
-                continue
+        role_title = meta.get("role_family", display_name(family))
+        if f_search and f_search not in role_title.lower():
+            continue
 
-            results.append({
-                "ref":          _make_sample_ref(dept, family, jd_file.name),
-                "role_title":   role_title,
-                "dept":         dept,
-                "dept_label":   display_name(dept),
-                "division":     division,
-                "family":       family,
-                "family_label": display_name(family),
-                "yoe_band":     yoe_band,
-                "date_added":   meta.get("date_added", ""),
-                "source":       "kb",
-            })
-        results.sort(key=lambda r: r.get("date_added", "") or "", reverse=True)
+        ref = _make_sample_ref(dept, family, jd_file.name)
+        if ref in seen_refs:
+            continue
+
+        results.append({
+            "ref":          ref,
+            "role_title":   role_title,
+            "dept":         dept,
+            "dept_label":   display_name(dept),
+            "division":     division,
+            "family":       family,
+            "family_label": display_name(family),
+            "yoe_band":     yoe_band,
+            "date_added":   meta.get("date_added", ""),
+            "source":       "kb",
+        })
+
+    results.sort(key=lambda r: r.get("date_added", "") or "", reverse=True)
 
     return jsonify({"jds": results})
 
@@ -1890,10 +1891,10 @@ def api_sample_list():
 @login_required
 def api_sample_get():
     """Full JD content + parsed sections for the preview modal.
-    Handles both Supabase-approved refs (sb:<generation_id>) and KB file refs."""
+    Handles both MySQL-approved refs (sb:<generation_id>) and KB file refs."""
     ref = (request.args.get("jd_id") or request.args.get("ref") or "").strip()
 
-    # ── Supabase-approved JD ───────────────────────────────────────────────
+    # ── MySQL-approved JD ──────────────────────────────────────────────────
     if ref.startswith("sb:"):
         gen_id = ref[3:]
         row = sdb.get_jd_by_generation_id(gen_id)
@@ -2281,7 +2282,7 @@ def apply_page(platform, darwinbox_job_id):
 
     # Fire-and-forget: score candidate asynchronously so submission isn't blocked
     threading.Thread(
-        target=scoring.scoreCandidateOnSubmit,
+        target=_score_candidate_in_background,
         args=(candidate["candidate_id"],),
         daemon=True,
     ).start()
@@ -2303,17 +2304,18 @@ def api_score_pending():
         "Access-Control-Allow-Origin": origin or "*",
         "Access-Control-Allow-Methods": "GET, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Credentials": "true",
     }
     if request.method == "OPTIONS":
         return ("", 204, cors)
 
-    from scoring_service import _load, _CANDIDATES_FILE, get_score
-    candidates = _load(_CANDIDATES_FILE)
+    from scoring_service import get_score
+    candidates = darwin.fetch_candidates()
     pending = [c for c in candidates if not get_score(c["candidate_id"], c["darwinbox_job_id"])]
 
     for c in pending:
         threading.Thread(
-            target=scoring.scoreCandidateOnSubmit,
+            target=_score_candidate_in_background,
             args=(c["candidate_id"],),
             daemon=True,
         ).start()
@@ -2326,7 +2328,7 @@ def api_score_pending():
 
 @app.route("/api/candidates/rescore", methods=["POST", "OPTIONS"])
 def api_rescore_candidate():
-    # Allow cross-origin calls from DummyDarwin (localhost:5002)
+    # Allow cross-origin calls from DummyDarwin (localhost:6002)
     origin = request.headers.get("Origin", "")
     headers = {
         "Access-Control-Allow-Origin": origin or "*",
@@ -2358,10 +2360,10 @@ def api_rescore_candidate():
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5001))
+    port = int(os.getenv("PORT", 6001))
     debug = os.getenv("FLASK_ENV", "development") == "development"
     if DEV_MODE:
-        print("⚠  No SUPABASE_URL found — running in dev mode (auth bypassed).")
+        print("⚠  DEV_MODE enabled — auth is relaxed for local development.")
     # use_reloader=False prevents the reloader from spawning a child process
     # that holds the port — avoids "Address already in use" on restart
     app.run(debug=debug, port=port, use_reloader=False)

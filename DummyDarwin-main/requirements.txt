@@ -3,3 +3,9 @@ Flask-SQLAlchemy==3.1.1
 Werkzeug==3.0.3
 certifi
 vaderSentiment==3.3.2
+openpyxl
+# MySQL / SQLAlchemy (primary datastore; USE_SQLITE=true for local fallback)
+SQLAlchemy
+PyMySQL
+cryptography
+python-dotenv

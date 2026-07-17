@@ -8,13 +8,13 @@ No Google API credentials needed — reads the sheet's public CSV export.
 
 import csv
 import io
-import json
 import re
 import ssl
 import urllib.request
-from pathlib import Path
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+from database.models import Candidate, DarwinboxJob
 
 try:
     import certifi
@@ -23,8 +23,6 @@ except ImportError:
     _SSL_CONTEXT = None
 
 _VADER = SentimentIntensityAnalyzer()
-
-_DARWIN_DATA = Path(__file__).parent.parent.parent / "jd_prototype" / "darwin_data"
 
 SHEET_CSV_URL = (
     "https://docs.google.com/spreadsheets/d/"
@@ -372,13 +370,14 @@ def _phone_last10(phone):
 
 
 def _load_phone_to_role_map():
-    """Builds {last-10-digit phone: role_title} by joining candidates.json
-    (candidate -> darwinbox_job_id) with darwinbox_jobs.json (job_id -> role_title).
-    The voice-screening sheet has no role/job field of its own — this is the
-    only way to know which role a given call was actually screening for."""
+    """Builds {last-10-digit phone: role_title} by joining the `candidates`
+    table (candidate -> darwinbox_job_id) with `darwinbox_jobs` (job_id ->
+    role_title). The voice-screening sheet has no role/job field of its own —
+    this is the only way to know which role a given call was actually
+    screening for."""
     try:
-        candidates = json.loads((_DARWIN_DATA / "candidates.json").read_text(encoding="utf-8"))
-        jobs = json.loads((_DARWIN_DATA / "darwinbox_jobs.json").read_text(encoding="utf-8"))
+        candidates = [c.to_dict() for c in Candidate.query.all()]
+        jobs = [j.to_dict() for j in DarwinboxJob.query.all()]
     except Exception:
         return {}
 

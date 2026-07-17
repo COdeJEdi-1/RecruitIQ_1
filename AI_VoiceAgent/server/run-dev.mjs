@@ -20,7 +20,7 @@ function run(command, args, label) {
 }
 
 const webhook = run('node', ['server/webhookServer.mjs'], 'webhook-server');
-const vite = run('npm', ['run', 'dev:vite', '--', '--host', '0.0.0.0', '--port', '5173'], 'vite');
+const vite = run('npm', ['run', 'dev:vite', '--', '--host', '0.0.0.0', '--port', '6004'], 'vite');
 
 function shutdown() {
   webhook.kill('SIGTERM');

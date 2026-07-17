@@ -1,11 +1,13 @@
 groq
-openai
-chromadb
 pyyaml
 python-dotenv
-streamlit
 flask
-supabase
+Flask-Login
 requests
 python-docx
 reportlab
+# MySQL / SQLAlchemy (primary datastore)
+Flask-SQLAlchemy
+SQLAlchemy
+PyMySQL
+cryptography

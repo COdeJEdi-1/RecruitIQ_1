@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-07-08T05:16:50.912Z",
-  "projectRoot": "/Users/chahatd/AI_ASSIST_JD ver3",
+  "timestamp": "2026-07-15T05:22:36.966Z",
+  "projectRoot": "/Users/chahatd/AI_ASSIST_JD ver5",
   "structure": {
     "hasPackageJson": false,
     "hasTsConfig": false,
     "hasClaudeConfig": true,
     "hasClaudeFlow": true
   },
-  "scannedAt": 1783487810912
+  "scannedAt": 1784092956966
 }

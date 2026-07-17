@@ -1,64 +1,64 @@
 {
   "running": true,
-  "startedAt": "2026-07-08T05:16:50.910Z",
+  "startedAt": "2026-07-15T05:22:36.965Z",
   "workers": {
     "map": {
-      "runCount": 1,
-      "successCount": 1,
+      "runCount": 2,
+      "successCount": 2,
       "failureCount": 0,
-      "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:16:50.910Z",
-      "lastStartedAt": "2026-07-08T05:16:50.912Z",
-      "lastRun": "2026-07-08T05:16:50.912Z"
+      "averageDurationMs": 0.5,
+      "lastRun": "2026-07-15T05:22:36.967Z",
+      "lastStartedAt": "2026-07-15T05:22:36.966Z",
+      "nextRun": "2026-07-15T05:22:36.965Z",
+      "isRunning": false
     },
     "audit": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:18:50.910Z"
+      "nextRun": "2026-07-15T05:24:36.965Z",
+      "isRunning": false
     },
     "optimize": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:20:50.910Z"
+      "nextRun": "2026-07-15T05:26:36.965Z",
+      "isRunning": false
     },
     "consolidate": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:22:50.911Z"
+      "nextRun": "2026-07-15T05:28:36.965Z",
+      "isRunning": false
     },
     "testgaps": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:24:50.911Z"
+      "nextRun": "2026-07-15T05:30:36.965Z",
+      "isRunning": false
     },
     "backup": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:26:50.911Z"
+      "nextRun": "2026-07-15T05:32:36.965Z",
+      "isRunning": false
     },
     "harness": {
       "runCount": 0,
       "successCount": 0,
       "failureCount": 0,
       "averageDurationMs": 0,
-      "isRunning": false,
-      "nextRun": "2026-07-08T05:28:50.911Z"
+      "nextRun": "2026-07-15T05:34:36.965Z",
+      "isRunning": false
     },
     "predict": {
       "runCount": 0,
@@ -77,8 +77,8 @@
   },
   "config": {
     "autoStart": false,
-    "logDir": "/Users/chahatd/AI_ASSIST_JD ver3/.claude-flow/logs",
-    "stateFile": "/Users/chahatd/AI_ASSIST_JD ver3/.claude-flow/daemon-state.json",
+    "logDir": "/Users/chahatd/AI_ASSIST_JD ver5/.claude-flow/logs",
+    "stateFile": "/Users/chahatd/AI_ASSIST_JD ver5/.claude-flow/daemon-state.json",
     "maxConcurrent": 2,
     "workerTimeoutMs": 960000,
     "resourceThresholds": {
@@ -87,6 +87,7 @@
     },
     "ttlMs": 43200000,
     "idleShutdownMs": 0,
+    "aiWorkersEnabled": false,
     "workers": [
       {
         "type": "map",
@@ -162,5 +163,5 @@
       }
     ]
   },
-  "savedAt": "2026-07-08T05:16:50.913Z"
+  "savedAt": "2026-07-15T05:22:36.967Z"
 }
