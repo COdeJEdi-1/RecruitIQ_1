@@ -21,3 +21,12 @@ node_modules/
 # Build artifacts
 dist/
 build/
+
+# Agent tooling metadata — not part of the application
+.claude-flow/
+
+# Legacy pre-MySQL flat-file data store (superseded by the recruitiq DB)
+darwin_data/
+
+# Legacy SQLite files (MySQL is now the default datastore)
+*.db
