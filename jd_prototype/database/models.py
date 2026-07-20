@@ -222,6 +222,7 @@ class DarwinboxJob(db.Model):
     status = db.Column(String(32), nullable=False, default="published")
     published_at = db.Column(DateTime, nullable=False, default=_utcnow)
     created_by = db.Column(String(255), nullable=True)
+    position_level = db.Column(String(32), nullable=False, default="junior")
     shortlist_threshold = db.Column(Integer, nullable=True)
     jd_requirements = db.Column(JSON, nullable=True)
     jd_requirements_extracted_at = db.Column(DateTime, nullable=True)
@@ -258,6 +259,7 @@ class Candidate(db.Model):
     consent_text = db.Column(Text, nullable=True)
     resume_profile = db.Column(JSON, nullable=True)
     resume_profile_extracted_at = db.Column(DateTime, nullable=True)
+    manual_call_triggered_at = db.Column(DateTime, nullable=True)
 
 
 class CandidateScore(db.Model):

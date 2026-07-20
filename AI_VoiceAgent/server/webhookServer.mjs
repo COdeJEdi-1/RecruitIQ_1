@@ -511,6 +511,10 @@ const server = http.createServer(async (req, res) => {
         sendJson(res, 400, { error: 'name and phone are required' });
         return;
       }
+      if (body.positionLevel === 'executive') {
+        sendJson(res, 403, { error: 'Executive-position candidates cannot be called by the AI bot — a human recruiter must call them directly.' });
+        return;
+      }
 
       const record = addInboundCandidate({
         candidateId: body.candidateId ? String(body.candidateId) : `manual-${Date.now()}`,

@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Ranking — AI Shortlisting{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="page-header">
+    <div class="page-header-text">
+        <h1>Ranking</h1>
+        <p class="subtitle">Every AI-scored candidate, grouped by role — a clean leaderboard by rank and score. No call actions here.</p>
+    </div>
+</header>
+
+<section>
+    <article class="library-card" style="overflow:visible;">
+        <div class="library-card-header" style="flex-wrap:wrap;gap:12px;">
+            <div class="library-card-title">
+                <div class="library-icon library-icon-candidate">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Candidate Ranking</h2>
+                    <p class="library-description">Applications received via LinkedIn &amp; Naukri — AI-scored &amp; ranked within each role.</p>
+                    <div id="scoringBanner" style="display:none;margin-top:6px;font-size:12px;color:#f57c00;background:#fff3e0;border-radius:6px;padding:4px 10px;font-weight:600;"></div>
+                </div>
+            </div>
+            {% if groups %}
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+                <select id="sortOrder" onchange="applyFilters()"
+                    style="font-size:12px;padding:5px 10px;border:1px solid #e0e0e0;border-radius:6px;background:#fff;color:#333;cursor:pointer;">
+                    <option value="score_desc">Sort: Rank ↓ (Score)</option>
+                    <option value="score_asc">Sort: Rank ↑ (Score)</option>
+                    <option value="date_desc">Sort: Newest</option>
+                </select>
+                <span id="candidateCount" style="font-size:12px;color:#aaa;white-space:nowrap;"></span>
+            </div>
+            {% endif %}
+        </div>
+
+        <div style="border-top:1px solid #f0f0f0;padding-top:1rem;">
+            {% if groups %}
+                <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                        <thead>
+                            <tr style="background:#f9fbe7;border-bottom:2px solid #e8f5e9;">
+                                <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Role</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Rank</th>
+                                <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Candidate</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Score</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="candidateTbody">
+                            {% for group in groups %}
+                                {% for row in group.rows %}
+                                {% set c = row.candidate %}
+                                {% set sc = row.sc %}
+                                {% set overall = row.score %}
+                                {% set threshold = threshold_map.get(c.darwinbox_job_id, 70) %}
+                                {% set shortlisted = (overall >= threshold) if (sc and overall is not none) else false %}
+                                <tr class="candidate-row" data-job="{{ group.job_id }}" data-role="{{ group.role }}"
+                                    data-candidate-id="{{ c.candidate_id }}"
+                                    data-score="{{ overall if overall is not none else -1 }}" data-date="{{ c.applied_at }}"
+                                    style="border-bottom:1px solid #f0f0f0;cursor:pointer;"
+                                    onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background=''"
+                                    onclick="toggleBreakdown('{{ c.candidate_id }}')">
+                                    {% if loop.first %}
+                                    <td class="role-cell" rowspan="{{ group.rows|length }}"
+                                        style="padding:10px 14px;font-weight:600;color:#333;vertical-align:top;border-right:1px solid #f0f0f0;">{{ group.role }}</td>
+                                    {% endif %}
+                                    <td class="rank-num" style="padding:10px 8px;text-align:center;font-weight:800;color:#830026;">#{{ row.rank }}</td>
+                                    <td style="padding:10px 14px;">
+                                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                                            <span style="font-weight:600;font-size:14px;">{{ c.name }}</span>
+                                            {% if c.platform_source == 'linkedin' %}
+                                            <span style="font-size:10px;background:#e8f4fd;color:#0a66c2;padding:1px 7px;border-radius:99px;font-weight:700;">LinkedIn</span>
+                                            {% else %}
+                                            <span style="font-size:10px;background:#fff3f0;color:#ff7555;padding:1px 7px;border-radius:99px;font-weight:700;">Naukri</span>
+                                            {% endif %}
+                                            {% if shortlisted %}
+                                            <span style="font-size:10px;background:#e8f5e9;color:#2e7d32;padding:1px 7px;border-radius:99px;font-weight:700;">✓ Shortlisted</span>
+                                            {% endif %}
+                                        </div>
+                                        <div style="font-size:11px;color:#888;margin-top:2px;">
+                                            {{ c.email }}{% if c.phone %} · {{ c.phone }}{% endif %} · Applied {{ c.applied_at[:10] }}
+                                            {% if is_admin and c.get('created_by') %}· via {{ user_map.get(c.get('created_by'), '') }}{% endif %}
+                                        </div>
+                                    </td>
+                                    <td style="padding:10px 8px;text-align:center;">
+                                        {% if sc and overall is not none %}
+                                        {% set score_color = '#2e7d32' if overall >= score_thresholds.green else ('#f57c00' if overall >= score_thresholds.yellow else '#c62828') %}
+                                        {% set score_bg = '#e8f5e9' if overall >= score_thresholds.green else ('#fff3e0' if overall >= score_thresholds.yellow else '#ffebee') %}
+                                        <div style="text-align:center;background:{{ score_bg }};border-radius:8px;padding:6px 12px;min-width:56px;display:inline-block;">
+                                            <div style="font-size:18px;font-weight:800;color:{{ score_color }};line-height:1;">{{ (overall / 10) | round(1) }}</div>
+                                            <div style="font-size:9px;color:{{ score_color }};font-weight:600;letter-spacing:0.04em;">/ 10</div>
+                                        </div>
+                                        {% else %}
+                                        <div style="text-align:center;background:#f5f5f5;border-radius:8px;padding:6px 12px;min-width:56px;display:inline-block;">
+                                            <div style="font-size:11px;color:#bbb;">Scoring…</div>
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td style="padding:10px 8px;text-align:center;white-space:nowrap;">
+                                        {% if c.resume_file %}
+                                            {% if is_admin %}
+                                            <a href="http://localhost:6001/static/{{ c.resume_file }}" target="_blank"
+                                               onclick="event.stopPropagation()"
+                                               class="btn btn-ghost btn-sm">Resume</a>
+                                            {% else %}
+                                            <span title="Admin login required to view resumes"
+                                                  onclick="event.stopPropagation();alert('Please log in as Admin to view resumes.')"
+                                                  style="font-size:12px;padding:4px 10px;border:1px solid #e0e0e0;border-radius:6px;background:#f5f5f5;color:#bbb;cursor:not-allowed;">🔒 Resume</span>
+                                            {% endif %}
+                                        {% endif %}
+                                        <button onclick="event.stopPropagation();rescoreCandidate('{{ c.candidate_id }}','{{ group.job_id }}',this)"
+                                            style="font-size:11px;padding:4px 8px;border:1px solid #e0e0e0;border-radius:6px;background:#fff;cursor:pointer;color:#666;margin-left:6px;">
+                                            ↻ Re-score
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Score breakdown drawer (hidden by default) -->
+                                {% if sc %}
+                                <tr id="breakdown-{{ c.candidate_id }}" style="display:none;background:#fafafa;border-bottom:1px solid #f0f0f0;">
+                                    <td colspan="5" style="padding:16px;">
+                                        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px;">
+                                            {% for label,key,icon in [('Skills','skills_score','🎯'),('Experience','experience_score','📅'),('Education','education_score','🎓'),('Title Fit','title_relevance_score','💼'),('Domain','domain_score','🌐')] %}
+                                            <div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:10px;text-align:center;">
+                                                <div style="font-size:16px;">{{ icon }}</div>
+                                                <div style="font-size:16px;font-weight:700;color:#333;margin-top:2px;">{{ sc[key] }}</div>
+                                                <div style="font-size:10px;color:#888;">{{ label }}</div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        {% set bd = sc.score_breakdown %}
+                                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px;">
+                                            <div>
+                                                <div style="font-weight:700;color:#2e7d32;margin-bottom:4px;">✓ Matched Skills</div>
+                                                {% if bd.matched_required_skills %}
+                                                    {% for s in bd.matched_required_skills %}<span style="display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 6px;margin:2px;font-size:11px;">{{ s }}</span>{% endfor %}
+                                                {% else %}<span style="color:#aaa;">None matched</span>{% endif %}
+                                            </div>
+                                            <div>
+                                                <div style="font-weight:700;color:#c62828;margin-bottom:4px;">✗ Missing Skills</div>
+                                                {% if bd.missing_required_skills %}
+                                                    {% for s in bd.missing_required_skills %}<span style="display:inline-block;background:#ffebee;color:#c62828;border-radius:4px;padding:1px 6px;margin:2px;font-size:11px;">{{ s }}</span>{% endfor %}
+                                                {% else %}<span style="color:#aaa;">None missing</span>{% endif %}
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:10px;font-size:12px;color:#666;display:flex;gap:20px;flex-wrap:wrap;">
+                                            <span>📅 Candidate YOE: <strong>{{ bd.candidate_yoe }}</strong></span>
+                                            <span>📊 Required: <strong>{{ bd.required_yoe_range }}</strong></span>
+                                            {% if bd.experience_gap_years > 0 %}<span style="color:#f57c00;">⚠ Gap: {{ bd.experience_gap_years }} yr(s)</span>{% endif %}
+                                            <span>🎓 {{ bd.candidate_education | join(', ') or '—' }}</span>
+                                            <span>💼 {{ bd.candidate_titles[:2] | join(', ') or '—' }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="noResults" style="display:none;padding:24px;text-align:center;color:#aaa;font-size:13px;">No candidates match the selected filters.</div>
+            {% elif not logged_in %}
+                <div class="empty-state" style="background:#fff8e1;">
+                    <span class="empty-icon">🔒</span>
+                    <p><strong>You're not logged in</strong> — this page only shows candidates tied to your account (or everyone, if you're an admin). <a href="{{ url_for('auth.login') }}" style="color:#830026;font-weight:700;">Log in</a> to see the leaderboard.</p>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <span class="empty-icon">👥</span>
+                    <p>No candidates yet. Share the LinkedIn or Naukri link to receive applications.</p>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/candidate-scoring.js') }}"></script>
+<script>
+// Re-sorts candidates WITHIN their existing role group (never moves a
+// candidate to a different group) and rebuilds the rowspan'd Role cell
+// fresh each time, since a plain DOM reorder would leave the old Role cell
+// attached to whatever row it originally rendered next to.
+function applyFilters() {
+  const sort = (document.getElementById('sortOrder') || {}).value || 'score_desc';
+  const tbody = document.getElementById('candidateTbody');
+  if (!tbody) return;
+
+  const rows = Array.from(tbody.querySelectorAll('tr.candidate-row'));
+
+  // Each candidate row may have a paired breakdown-drawer <tr> right after it
+  // (a sibling, not a child — tables can't nest <tr> inside <tr>). Capture the
+  // pairing before we detach anything, so the drawer survives the rebuild.
+  const breakdownFor = new Map();
+  rows.forEach(r => {
+    const drawer = document.getElementById('breakdown-' + r.dataset.candidateId);
+    if (drawer) breakdownFor.set(r, drawer);
+  });
+
+  // Detach any role cell a previous pass created, so each row starts "bare" again.
+  rows.forEach(r => {
+    const roleCell = r.querySelector('td.role-cell');
+    if (roleCell) roleCell.remove();
+  });
+
+  // Group by role (first-seen order defines group order; that never changes on sort).
+  const groupOrder = [];
+  const groups = new Map();
+  rows.forEach(r => {
+    const jid = r.dataset.job;
+    if (!groups.has(jid)) { groups.set(jid, []); groupOrder.push(jid); }
+    groups.get(jid).push(r);
+  });
+
+  // Sort rows within each group only.
+  groups.forEach(groupRows => {
+    groupRows.sort((a, b) => {
+      if (sort === 'score_desc') return parseFloat(b.dataset.score) - parseFloat(a.dataset.score);
+      if (sort === 'score_asc')  return parseFloat(a.dataset.score) - parseFloat(b.dataset.score);
+      return b.dataset.date.localeCompare(a.dataset.date);
+    });
+  });
+
+  tbody.innerHTML = '';
+  let total = 0;
+  groupOrder.forEach(jid => {
+    const groupRows = groups.get(jid);
+    groupRows.forEach((row, idx) => {
+      if (idx === 0) {
+        const roleTd = document.createElement('td');
+        roleTd.className = 'role-cell';
+        roleTd.rowSpan = groupRows.length;
+        roleTd.style.cssText = 'padding:10px 14px;font-weight:600;color:#333;vertical-align:top;border-right:1px solid #f0f0f0;';
+        roleTd.textContent = row.dataset.role;
+        row.insertBefore(roleTd, row.firstChild);
+      }
+      const rankCell = row.querySelector('.rank-num');
+      if (rankCell) rankCell.textContent = '#' + (idx + 1);
+      tbody.appendChild(row);
+      const drawer = breakdownFor.get(row);
+      if (drawer) tbody.appendChild(drawer);
+      total++;
+    });
+  });
+
+  const countEl = document.getElementById('candidateCount');
+  if (countEl) countEl.textContent = total + ' candidate' + (total !== 1 ? 's' : '');
+}
+
+window.addEventListener('DOMContentLoaded', () => { applyFilters(); autoScorePending(); });
+</script>
+{% endblock %}

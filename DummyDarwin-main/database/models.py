@@ -96,6 +96,7 @@ class DarwinboxJob(db.Model):
     status = db.Column(db.String(32), nullable=False, default="published")
     published_at = db.Column(db.DateTime, nullable=False, default=_utcnow)
     created_by = db.Column(db.String(255), nullable=True)
+    position_level = db.Column(db.String(32), nullable=False, default="junior")
     shortlist_threshold = db.Column(db.Integer, nullable=True)
     # Owned by jd_prototype; read here for the linkedin.html/naukri.html previews.
     jd_requirements = db.Column(db.JSON, nullable=True)
@@ -112,6 +113,7 @@ class DarwinboxJob(db.Model):
             "status": self.status,
             "published_at": _iso(self.published_at),
             "created_by": self.created_by,
+            "position_level": self.position_level,
             "shortlist_threshold": self.shortlist_threshold,
             "jd_requirements": self.jd_requirements,
         }
@@ -135,6 +137,11 @@ class Candidate(db.Model):
     # model's schema matches exactly, making table creation order-independent.
     resume_profile = db.Column(db.JSON, nullable=True)
     resume_profile_extracted_at = db.Column(db.DateTime, nullable=True)
+    # Set the moment a recruiter clicks the manual-call button (single or bulk)
+    # -- independent of whether the call has actually connected/completed yet,
+    # so the UI can show "Call Triggered" immediately instead of waiting for
+    # the OmniDimension sheet to sync a result.
+    manual_call_triggered_at = db.Column(db.DateTime, nullable=True)
 
     def to_dict(self):
         return {
@@ -149,6 +156,7 @@ class Candidate(db.Model):
             "consent_given": self.consent_given,
             "consent_timestamp": _iso(self.consent_timestamp),
             "consent_text": self.consent_text,
+            "manual_call_triggered_at": _iso(self.manual_call_triggered_at),
         }
 
 

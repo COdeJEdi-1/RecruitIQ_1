@@ -38,7 +38,17 @@ async function setAutoCallMode(enabled) {
   }
 }
 
-async function manualCall(name, phone, email, role, btn) {
+// Records the trigger on our own side (independent of the AI_VoiceAgent
+// dispatch itself) so Pre-Calling can show "Call Triggered" right away
+// instead of waiting for the OmniDimension sheet to sync a result.
+async function markCandidateCalled(candidateId) {
+  if (!candidateId) return;
+  try {
+    await fetch(`/api/candidates/${candidateId}/mark-called`, { method: 'POST' });
+  } catch (e) { /* best-effort — the call itself already went out */ }
+}
+
+async function manualCall(name, phone, email, role, btn, positionLevel, candidateId) {
   if (!phone) {
     alert('This candidate has no phone number on file.');
     return;
@@ -49,11 +59,12 @@ async function manualCall(name, phone, email, role, btn) {
     const res = await fetch(`${VOICE_AGENT_URL}/api/candidates/manual-call`, {
       method: 'POST',
       headers: { 'X-Webhook-Secret': VOICE_AGENT_SECRET, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, email, roleTitle: role }),
+      body: JSON.stringify({ name, phone, email, roleTitle: role, positionLevel }),
     });
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
-      alert(`Call triggered for ${name}.`);
+      await markCandidateCalled(candidateId);
+      location.reload();
     } else {
       alert(`Could not trigger call for ${name}: ${data.error || 'unknown error'}`);
     }
@@ -69,7 +80,7 @@ document.addEventListener('click', (e) => {
   if (!btn) return;
   e.stopPropagation();
   e.preventDefault();
-  manualCall(btn.dataset.name, btn.dataset.phone, btn.dataset.email, btn.dataset.role, btn);
+  manualCall(btn.dataset.name, btn.dataset.phone, btn.dataset.email, btn.dataset.role, btn, btn.dataset.positionLevel, btn.dataset.candidateId);
 });
 
 // Bulk calling — select up to MAX_BULK_CALLS candidates via checkboxes, then call them all at once.
@@ -107,7 +118,8 @@ document.addEventListener('change', (e) => {
       return;
     }
     selectedCandidates.set(key, {
-      name: cb.dataset.name, phone: cb.dataset.phone, email: cb.dataset.email, role: cb.dataset.role, checkbox: cb,
+      name: cb.dataset.name, phone: cb.dataset.phone, email: cb.dataset.email, role: cb.dataset.role,
+      positionLevel: cb.dataset.positionLevel, candidateId: cb.dataset.candidateId, checkbox: cb,
     });
   } else {
     selectedCandidates.delete(key);
@@ -124,19 +136,25 @@ async function callSelectedCandidates() {
     fetch(`${VOICE_AGENT_URL}/api/candidates/manual-call`, {
       method: 'POST',
       headers: { 'X-Webhook-Secret': VOICE_AGENT_SECRET, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: c.name, phone: c.phone, email: c.email, roleTitle: c.role }),
+      body: JSON.stringify({ name: c.name, phone: c.phone, email: c.email, roleTitle: c.role, positionLevel: c.positionLevel }),
     })
-      .then(async (res) => ({ name: c.name, ok: res.ok, data: await res.json().catch(() => ({})) }))
-      .catch(() => ({ name: c.name, ok: false, data: { error: 'backend unreachable' } }))
+      .then(async (res) => ({ name: c.name, candidateId: c.candidateId, ok: res.ok, data: await res.json().catch(() => ({})) }))
+      .catch(() => ({ name: c.name, candidateId: c.candidateId, ok: false, data: { error: 'backend unreachable' } }))
   ));
-  const succeeded = results.filter((r) => r.ok).map((r) => r.name);
+  const succeeded = results.filter((r) => r.ok);
   const failed = results.filter((r) => !r.ok);
+  await Promise.all(succeeded.map((r) => markCandidateCalled(r.candidateId)));
   let msg = '';
-  if (succeeded.length) msg += `Calls triggered for: ${succeeded.join(', ')}.`;
+  if (succeeded.length) msg += `Calls triggered for: ${succeeded.map((r) => r.name).join(', ')}.`;
   if (failed.length) msg += `\nFailed for: ${failed.map((f) => `${f.name} (${f.data.error || 'error'})`).join(', ')}.`;
-  alert(msg);
-  clearCallSelection();
-  if (btn) { btn.disabled = false; btn.textContent = '📞 Call Selected'; }
+  if (succeeded.length) {
+    alert(msg);
+    location.reload();
+  } else {
+    alert(msg);
+    clearCallSelection();
+    if (btn) { btn.disabled = false; btn.textContent = '📞 Call Selected'; }
+  }
 }
 
 function clearCallSelection() {

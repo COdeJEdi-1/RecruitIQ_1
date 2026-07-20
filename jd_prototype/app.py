@@ -671,6 +671,7 @@ def api_jd_generate():
     yoe_band = data.get("yoe_band", "2-5").strip()
     focus_areas = data.get("focus_areas", "").strip()
     role_type        = data.get("role_type", "individual_contributor").strip()
+    position_level   = data.get("position_level", "junior").strip()
     team_size        = data.get("team_size")  # int or None
     employment_type  = data.get("employment_type", "Full-Time").strip()
     work_mode        = data.get("work_mode", "Onsite").strip()
@@ -724,6 +725,7 @@ def api_jd_generate():
         "text": jd_text,
         "user_email": session["user"]["email"],
         "custom_skills": custom_skills,
+        "position_level": position_level,
     })
 
     # Persist draft to MySQL (best-effort)
@@ -763,6 +765,7 @@ def api_jd_approve():
     # Original text from cache (to compute edit diff)
     gen = _get_pending(generation_id)
     original_text = gen.get("text", "")
+    position_level = gen.get("position_level", "junior")
 
     # Save to KB
     band_prefix = yoe_band.replace("+", "plus").replace("-", "_")
@@ -863,6 +866,7 @@ def api_jd_approve():
             role_title=role_title or family.replace("_", " ").title(),
             jd_text=final_jd_to_save,
             created_by=session["user"].get("user_id"),
+            position_level=position_level,
         )
     except Exception as exc:
         darwin_error = str(exc)

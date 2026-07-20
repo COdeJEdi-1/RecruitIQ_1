@@ -47,6 +47,7 @@ def _darwinbox_job_to_dict(row: DarwinboxJob) -> dict:
         "status": row.status,
         "published_at": row.published_at.isoformat() if row.published_at else None,
         "created_by": row.created_by,
+        "position_level": row.position_level,
     }
 
 
@@ -84,7 +85,8 @@ def _candidate_to_dict(row: Candidate) -> dict:
 
 # ── Darwinbox Jobs ────────────────────────────────────────────────────────────
 
-def publish_to_darwinbox(jd_id: str, role_title: str, jd_text: str, created_by: str = None) -> dict:
+def publish_to_darwinbox(jd_id: str, role_title: str, jd_text: str, created_by: str = None,
+                          position_level: str = "junior") -> dict:
     """
     Mock: push approved JD to Darwinbox.
     Returns the new darwinbox_job record.
@@ -112,6 +114,7 @@ def publish_to_darwinbox(jd_id: str, role_title: str, jd_text: str, created_by: 
             status="published",
             published_at=datetime.now(),
             created_by=created_by,
+            position_level=position_level,
         )
         db.session.add(new_job)
         db.session.commit()

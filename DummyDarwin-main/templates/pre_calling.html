@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Pre-Calling — AI Shortlisting{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="page-header">
+    <div class="page-header-text">
+        <h1>Pre-Calling</h1>
+        <p class="subtitle">Every scored candidate, grouped by role and tagged with call status — trigger AI or manual outreach by score band.</p>
+    </div>
+</header>
+
+{% if call_error %}
+<div class="empty-state" style="background:#fff3e0;border-radius:12px;padding:14px 20px;margin-bottom:1.5rem;text-align:left;display:block;">
+    <span style="font-size:12px;color:#e65100;">⚠️ Call-status sheet is unreachable right now ({{ call_error }}) — everyone below is shown as "Not Called" as a fallback, but some may actually have already been called; this list will self-correct once the sheet is reachable again.</span>
+</div>
+{% endif %}
+
+<section>
+    <article class="library-card" style="overflow:visible;">
+        <div class="library-card-header" style="flex-wrap:wrap;gap:12px;">
+            <div class="library-card-title">
+                <div class="library-icon library-icon-candidate">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Calling Queue</h2>
+                    <p class="library-description">Ranked by score within each role. Score {{ (score_thresholds.green / 10) | round(1) }}+/10 auto-calls; {{ (score_thresholds.yellow / 10) | round(1) }}–{{ (score_thresholds.green / 10) | round(1) }} needs a manual trigger.</p>
+                </div>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:#f5f5f5;padding:4px;border-radius:24px;" title="Controls whether candidates scoring 9.0+/10 get an automatic AI screening call">
+                <button type="button" id="btnAutoCallAuto" onclick="setAutoCallMode(true)"
+                        style="border:none;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;">Automatic</button>
+                <button type="button" id="btnAutoCallManual" onclick="setAutoCallMode(false)"
+                        style="border:none;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;">Manual</button>
+            </div>
+        </div>
+
+        <div style="border-top:1px solid #f0f0f0;padding-top:1rem;">
+            {% if groups %}
+                <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+                        <thead>
+                            <tr style="background:#f9fbe7;border-bottom:2px solid #e8f5e9;">
+                                <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Role</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Rank</th>
+                                <th style="text-align:left;padding:10px 14px;font-weight:700;color:#2e7d32;">Candidate</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Score</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Select</th>
+                                <th style="text-align:center;padding:10px 8px;font-weight:700;color:#2e7d32;">Call Trigger</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for group in groups %}
+                                {% for row in group.rows %}
+                                {% set c = row.candidate %}
+                                {% set score = row.score %}
+                                {% set is_executive = position_level_map.get(group.job_id, 'junior') == 'executive' %}
+                                {% set auto_eligible = score >= score_thresholds.green %}
+                                {% set manual_eligible = (not auto_eligible) and score >= score_thresholds.yellow %}
+                                {% set manual_triggered = c.manual_call_triggered_at is not none %}
+                                {% set answered = row.call_info.verdict != 'Incomplete' if row.call_info else none %}
+                                <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background=''">
+                                    {% if loop.first %}
+                                    <td rowspan="{{ group.rows|length }}"
+                                        style="padding:10px 14px;font-weight:600;color:#333;vertical-align:top;border-right:1px solid #f0f0f0;">{{ group.role }}</td>
+                                    {% endif %}
+                                    <td style="padding:10px 8px;text-align:center;font-weight:800;color:#830026;">#{{ row.rank }}</td>
+                                    <td style="padding:10px 14px;">
+                                        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                                            <span style="font-weight:600;font-size:14px;">{{ c.name }}</span>
+                                            {% if c.platform_source == 'linkedin' %}
+                                            <span style="font-size:10px;background:#e8f4fd;color:#0a66c2;padding:1px 7px;border-radius:99px;font-weight:700;">LinkedIn</span>
+                                            {% else %}
+                                            <span style="font-size:10px;background:#fff3f0;color:#ff7555;padding:1px 7px;border-radius:99px;font-weight:700;">Naukri</span>
+                                            {% endif %}
+                                        </div>
+                                        <div style="font-size:11px;color:#888;margin-top:2px;">
+                                            {{ c.email }}{% if c.phone %} · {{ c.phone }}{% endif %} · Applied {{ c.applied_at[:10] }}
+                                        </div>
+                                    </td>
+                                    <td style="padding:10px 8px;text-align:center;">
+                                        {% set score_color = '#2e7d32' if score >= score_thresholds.green else ('#f57c00' if score >= score_thresholds.yellow else '#c62828') %}
+                                        {% set score_bg = '#e8f5e9' if score >= score_thresholds.green else ('#fff3e0' if score >= score_thresholds.yellow else '#ffebee') %}
+                                        <div style="text-align:center;background:{{ score_bg }};border-radius:8px;padding:6px 12px;min-width:56px;display:inline-block;">
+                                            <div style="font-size:18px;font-weight:800;color:{{ score_color }};line-height:1;">{{ (score / 10) | round(1) }}</div>
+                                            <div style="font-size:9px;color:{{ score_color }};font-weight:600;letter-spacing:0.04em;">/ 10</div>
+                                        </div>
+                                    </td>
+                                    <td style="padding:10px 8px;text-align:center;">
+                                        {# ── Select column: bulk-call checkbox — junior candidates only,
+                                           and only while they're still in the manual band and haven't
+                                           been triggered yet (nothing left to select once triggered). ── #}
+                                        {% if (not is_executive) and manual_eligible and not manual_triggered %}
+                                        <input type="checkbox" class="voice-call-checkbox" title="Select for bulk calling (max 5 at once)"
+                                               data-name="{{ c.name }}" data-phone="{{ c.phone or '' }}" data-email="{{ c.email or '' }}" data-role="{{ group.role }}" data-position-level="{{ position_level_map.get(group.job_id, 'junior') }}" data-candidate-id="{{ c.candidate_id }}"
+                                               style="width:16px;height:16px;cursor:pointer;">
+                                        {% endif %}
+                                    </td>
+                                    <td style="padding:10px 8px;text-align:center;">
+                                        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+
+                                        {% if is_executive %}
+                                            {# ── Executive: never called by the AI bot, no bulk-select, no
+                                               call button — a human recruiter handles these directly. ── #}
+                                            <span title="Executive-position candidates are never called by the AI bot — a human recruiter must call them directly"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#ede7f6;color:#4527a0;">🧑‍💼 Requires Human Call</span>
+
+                                        {% elif auto_eligible %}
+                                            {# ── Score >=90: the backend auto-dispatches unconditionally the
+                                               moment scoring crosses this threshold — "Call Triggered" shows
+                                               immediately, it never waits for a sheet result. ── #}
+                                            <span title="A call was dispatched automatically — this does not wait on the call actually connecting or completing"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e8f5e9;color:#2e7d32;">✅ Call Triggered</span>
+                                            <span title="Dispatched automatically (score {{ (score_thresholds.green / 10) | round(1) }}+/10)"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e3f2fd;color:#1565c0;">☎ Auto</span>
+                                            {% if answered is not none %}
+                                                {% if answered %}
+                                                <span title="Verdict: {{ row.call_info.verdict }}"
+                                                      style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e8f5e9;color:#2e7d32;">✓ Answered</span>
+                                                {% else %}
+                                                <span title="Call didn't complete or gather enough answers"
+                                                      style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#fff3e0;color:#e65100;">✗ No Answer</span>
+                                                {% endif %}
+                                            {% endif %}
+
+                                        {% elif manual_eligible and manual_triggered %}
+                                            {# ── A recruiter has already clicked call/bulk-call for this
+                                               candidate — shows immediately, independent of whether the
+                                               sheet has a result yet. ── #}
+                                            <span title="A recruiter triggered a manual call for this candidate — this does not wait on the call actually connecting or completing"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e8f5e9;color:#2e7d32;">✅ Call Triggered</span>
+                                            <span title="Triggered manually by a recruiter"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e3f2fd;color:#1565c0;">📞 Manual</span>
+                                            {% if answered is not none %}
+                                                {% if answered %}
+                                                <span title="Verdict: {{ row.call_info.verdict }}"
+                                                      style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#e8f5e9;color:#2e7d32;">✓ Answered</span>
+                                                {% else %}
+                                                <span title="Call didn't complete or gather enough answers"
+                                                      style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#fff3e0;color:#e65100;">✗ No Answer</span>
+                                                {% endif %}
+                                            {% endif %}
+
+                                        {% elif manual_eligible %}
+                                            {# ── Not triggered yet — the green call button fires a single
+                                               manual call right from this row (bulk-call bar handles the
+                                               multi-select case via the Select column). ── #}
+                                            <button type="button" class="voice-call-btn" title="Manually call this candidate now"
+                                                    data-name="{{ c.name }}" data-phone="{{ c.phone or '' }}" data-email="{{ c.email or '' }}" data-role="{{ group.role }}" data-position-level="{{ position_level_map.get(group.job_id, 'junior') }}" data-candidate-id="{{ c.candidate_id }}"
+                                                    style="border:none;background:#2e7d32;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;">📞</button>
+
+                                        {% else %}
+                                            <span title="Below {{ (score_thresholds.yellow / 10) | round(1) }}/10 — no call action available"
+                                                  style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;background:#ffebee;color:#c62828;">Screened Off</span>
+                                        {% endif %}
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% elif not logged_in %}
+                <div class="empty-state" style="background:#fff8e1;">
+                    <span class="empty-icon">🔒</span>
+                    <p><strong>You're not logged in</strong> — this page only shows candidates tied to your account (or everyone, if you're an admin). <a href="{{ url_for('auth.login') }}" style="color:#830026;font-weight:700;">Log in</a> to see the calling queue.</p>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <span class="empty-icon">📞</span>
+                    <p>No scored candidates yet. They'll show up here — called or not — as soon as scoring completes.</p>
+                </div>
+            {% endif %}
+        </div>
+    </article>
+</section>
+
+<!-- Bulk calling bar — select up to 5 candidates (checkboxes above) and call them all at once -->
+<div id="bulkCallBar" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1b1b1b;color:#fff;padding:12px 20px;border-radius:30px;box-shadow:0 4px 20px rgba(0,0,0,0.3);z-index:9999;align-items:center;gap:14px;font-size:13px;">
+    <span id="bulkCallCount">0 of 5 selected</span>
+    <button type="button" id="bulkCallBtn" onclick="callSelectedCandidates()"
+            style="background:#2e7d32;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-weight:700;cursor:pointer;font-size:13px;">📞 Call Selected</button>
+    <button type="button" onclick="clearCallSelection()"
+            style="background:transparent;color:#ccc;border:none;cursor:pointer;font-size:12px;">Clear</button>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/candidate-scoring.js') }}"></script>
+<script src="{{ url_for('static', filename='js/voice-screening.js') }}"></script>
+{% endblock %}

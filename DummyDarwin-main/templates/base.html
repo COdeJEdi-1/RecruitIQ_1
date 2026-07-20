@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}DarwinBox{% endblock %}</title>
+    <title>{% block title %}AI Shortlisting{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -29,29 +29,6 @@
                 </a>
             </div>
 
-            <ul class="navbar-links">
-                <li>
-                    <a href="{{ url_for('dashboard.index') }}" class="nav-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}">
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('dashboard.index') }}#library" class="nav-link">
-                        Library
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('dashboard.shortlisted') }}" class="nav-link {% if request.endpoint == 'dashboard.shortlisted' %}active{% endif %}">
-                        Shortlisted
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('interview_ready.index') }}" class="nav-link {% if request.endpoint == 'interview_ready.index' %}active{% endif %}">
-                        Interview Ready
-                    </a>
-                </li>
-            </ul>
-
             {% set _name = (session.get('full_name') or session.get('username') or 'User') %}
             {% set _words = _name.split(' ') %}
             {% set _initials = (_words[0][0] ~ (_words[1][0] if _words|length > 1 else '')) | upper %}
@@ -73,6 +50,11 @@
         </div>
     </nav>
 
+    <!-- Portal Banner -->
+    <div class="portal-banner">
+        <h1>AI SHORTLISTING</h1>
+    </div>
+
     <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -90,14 +72,48 @@
         {% endif %}
     {% endwith %}
 
-    <!-- Main Content -->
-    <main class="main-content">
-        {% block content %}{% endblock %}
-    </main>
+    <!-- App layout: sidebar + main content -->
+    <div class="app-layout">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('dashboard.darwin_resumes') }}" class="sidebar-link {% if request.endpoint == 'dashboard.darwin_resumes' %}active{% endif %}">
+                            Darwin Fetched Resumes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('dashboard.ranking') }}" class="sidebar-link {% if request.endpoint == 'dashboard.ranking' %}active{% endif %}">
+                            Ranking
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('dashboard.pre_calling') }}" class="sidebar-link {% if request.endpoint == 'dashboard.pre_calling' %}active{% endif %}">
+                            Pre-Calling
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('dashboard.post_calling') }}" class="sidebar-link {% if request.endpoint == 'dashboard.post_calling' %}active{% endif %}">
+                            Post-Calling
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('dashboard.index') }}" class="sidebar-link {% if request.endpoint == 'dashboard.index' %}active{% endif %}">
+                            Library
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2026 DarwinBox · AI-powered recruitment middleware</p>
+        <p>&copy; 2026 AI Shortlisting · AI-powered recruitment middleware</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

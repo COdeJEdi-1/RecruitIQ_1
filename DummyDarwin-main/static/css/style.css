@@ -220,6 +220,22 @@ button {
     color: var(--text-secondary);
 }
 
+/* --- Portal Banner --- */
+.portal-banner {
+    background: var(--primary);
+    padding: 1.1rem 2rem;
+}
+
+.portal-banner h1 {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    font-family: var(--font-headline);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #fff;
+}
+
 /* --- Flash Messages --- */
 .flash-container {
     max-width: var(--content-max-width);
@@ -283,13 +299,58 @@ button {
     opacity: 1;
 }
 
+/* --- App layout: sidebar + main content --- */
+.app-layout {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 2.5rem 1rem 2rem 2rem;
+    position: sticky;
+    top: 1.5rem;
+}
+
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid transparent;
+    transition: color var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.sidebar-link:hover {
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.sidebar-link.active {
+    color: var(--primary);
+    background: var(--primary-light);
+    border-left-color: var(--primary);
+    font-weight: 700;
+}
+
 /* --- Main Content --- */
 .main-content {
     flex: 1;
-    max-width: var(--content-max-width);
-    width: 100%;
-    margin: 0 auto;
-    padding: 2.5rem 2rem 3rem;
+    min-width: 0;
+    padding: 2.5rem 2rem 3rem 1.5rem;
 }
 
 /* --- Page Header --- */
@@ -724,6 +785,32 @@ button {
 
     .brand-text {
         font-size: 1rem;
+    }
+
+    .app-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+        padding: 1.25rem 1.25rem 0;
+    }
+
+    .sidebar-nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .sidebar-link {
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+
+    .sidebar-link.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--primary);
     }
 
     .main-content {

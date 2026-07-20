@@ -30,3 +30,11 @@ darwin_data/
 
 # Legacy SQLite files (MySQL is now the default datastore)
 *.db
+
+# Local DB backups/dumps — may contain real data, never commit
+backups/
+
+# AI_VoiceAgent local runtime state (generated, not source)
+AI_VoiceAgent/server/data/*.json
+AI_VoiceAgent/server/data/reports/
+!AI_VoiceAgent/server/data/settings.json

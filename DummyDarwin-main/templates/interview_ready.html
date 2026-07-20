@@ -19,6 +19,47 @@
     .grid-table th, .grid-table td { border:1px solid #eee; }
     .grid-table th { text-align:left; padding:10px 14px; font-weight:700; color:#2e7d32; background:#f9fbe7; }
     .grid-table td { padding:10px 14px; }
+
+    /* Sticky Candidate + Phone columns — Phone's left offset must equal the
+       rendered width of Candidate exactly (see the matching min/max-width
+       below), since Role sits between them and is NOT sticky: it scrolls
+       away and slides under these two once scrollLeft passes its width. */
+    .sticky-col-name, .sticky-col-phone { position: sticky; z-index: 2; background: #fff; }
+    .sticky-col-name { left: 0; min-width: 190px; max-width: 190px; }
+    .sticky-col-phone { left: 190px; min-width: 140px; max-width: 140px; }
+    .grid-table thead th.sticky-col-name, .grid-table thead th.sticky-col-phone { z-index: 3; background: #f9fbe7; }
+    .result-row:hover td { background: #fafafa; }
+    .result-row.dimmed td { color: #999; }
+    .result-row.dimmed .hover-tip-wrap { cursor: default; }
+
+    .hover-tip-wrap { position: relative; display: inline-block; }
+    .hover-tip {
+        position: absolute; top: calc(100% + 6px); left: 0; z-index: 40;
+        width: 230px; background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.16); padding: 10px 12px;
+        opacity: 0; visibility: hidden; transform: translateY(-4px);
+        transition: opacity .15s ease, transform .15s ease, visibility .15s;
+        font-size: 11.5px; color: #444; text-align: left; white-space: normal;
+    }
+    .hover-tip-wrap:hover .hover-tip { opacity: 1; visibility: visible; transform: translateY(0); }
+    .hover-tip .ht-row { margin-bottom: 5px; }
+    .hover-tip .ht-row:last-child { margin-bottom: 0; }
+    .hover-tip .ht-label { font-weight: 700; color: #333; }
+
+    .modal-overlay {
+        display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+        z-index: 200; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-box {
+        background: #fff; border-radius: 14px; max-width: 560px; width: 100%;
+        max-height: 85vh; overflow-y: auto; padding: 26px 28px; position: relative;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-close {
+        position: absolute; top: 14px; right: 16px; border: none; background: transparent;
+        font-size: 24px; line-height: 1; color: #999; cursor: pointer; padding: 4px 8px;
+    }
+    .modal-close:hover { color: #333; }
 </style>
 {% endblock %}
 
@@ -166,9 +207,9 @@
             <table class="grid-table">
                 <thead>
                     <tr>
-                        <th>Candidate</th>
+                        <th class="sticky-col-name">Candidate</th>
                         <th>Role</th>
-                        <th>Phone</th>
+                        <th class="sticky-col-phone">Phone</th>
                         <th style="text-align:center;">Verdict</th>
                         <th style="text-align:center;">Consent</th>
                         <th style="text-align:center;">Score</th>
@@ -198,18 +239,30 @@
                     } %}
                     {% set sentiment_color = rating_color.get(c.sentiment_rating, ('#999', '#f5f5f5')) %}
                     {% set comm_color = rating_color.get(c.communication_rating, ('#999', '#f5f5f5')) %}
-                    <tr class="result-row" data-verdict="{{ c.verdict }}" data-name="{{ (c.name or '')|lower }}" data-role="{{ c.role }}"
+                    {% set is_complete = c.verdict != 'Incomplete' %}
+                    <tr class="result-row {{ '' if is_complete else 'dimmed' }}" data-verdict="{{ c.verdict }}" data-name="{{ (c.name or '')|lower }}" data-role="{{ c.role }}"
                         style="cursor:pointer;"
-                        onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background=''"
-                        onclick="toggleBreakdown('vs-{{ loop.index }}')">
-                        <td style="font-weight:600;">
+                        onclick="openCandidateModal('vs-{{ loop.index }}')">
+                        <td class="sticky-col-name" style="font-weight:600;">
+                            {% if is_complete %}
+                            <span class="hover-tip-wrap">
+                                {{ c.name }}
+                                <div class="hover-tip">
+                                    <div class="ht-row"><span class="ht-label">Open to change:</span> {{ c.job_change }}</div>
+                                    <div class="ht-row"><span class="ht-label">Experience:</span> {{ c.years_experience if c.years_experience is not none else '—' }}{% if c.years_experience is not none %} yr{% endif %}</div>
+                                    <div class="ht-row"><span class="ht-label">Notice period:</span> {{ c.notice_period }}</div>
+                                    <div class="ht-row"><span class="ht-label">Location:</span> {{ c.current_location }}</div>
+                                </div>
+                            </span>
+                            {% else %}
                             {{ c.name }}
+                            {% endif %}
                             {% if c.needs_manual_call or c.recording_consent == 'No' %}
                             <div style="margin-top:4px;"><span style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;background:#e8eaf6;color:#3949ab;">📞 HR manual screen</span></div>
                             {% endif %}
                         </td>
                         <td style="color:#555;font-size:12px;">{{ c.role }}</td>
-                        <td style="color:#555;font-size:12px;">{{ c.phone }}</td>
+                        <td class="sticky-col-phone" style="color:#555;font-size:12px;">{{ c.phone if is_complete else c.masked_phone }}</td>
                         <td style="text-align:center;">
                             <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:{{ verdict_color[1] }};color:{{ verdict_color[0] }};">{{ c.verdict }}</span>
                         </td>
@@ -243,14 +296,33 @@
                             {% endif %}
                         </td>
                     </tr>
-                    <tr id="breakdown-vs-{{ loop.index }}" class="breakdown-row" data-for-row="{{ loop.index }}" style="display:none;background:#fafafa;">
-                        <td colspan="12" style="padding:16px;">
+                    <tr id="breakdown-vs-{{ loop.index }}" class="breakdown-row" data-for-row="{{ loop.index }}" style="display:none;">
+                        <td>
+                            <div id="modal-content-vs-{{ loop.index }}">
+                            <h3 style="margin:0 0 2px;font-size:19px;font-weight:700;color:#333;">{{ c.name }}</h3>
+                            <p style="margin:0 0 16px;font-size:12.5px;color:#777;">{{ c.role }}{% if c.req_id %} · REQ-{{ c.req_id }}{% endif %}</p>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:12.5px;color:#444;margin-bottom:16px;">
+                                <div><strong>Phone:</strong> {{ c.phone if is_complete else c.masked_phone }}</div>
+                                <div><strong>Verdict:</strong> <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;background:{{ verdict_color[1] }};color:{{ verdict_color[0] }};">{{ c.verdict }}</span></div>
+                                <div><strong>Consent:</strong> {{ c.recording_consent or '—' }}</div>
+                                <div><strong>Score:</strong> {{ c.score if c.score is not none else '—' }}</div>
+                                <div><strong>Experience:</strong> {{ c.years_experience if c.years_experience is not none else '—' }}{% if c.years_experience is not none %} yr{% endif %}</div>
+                                <div><strong>CTC:</strong> {{ c.current_ctc }} → {{ c.expected_ctc }}</div>
+                                <div><strong>Notice/Joining:</strong> {{ c.notice_period }}</div>
+                                <div><strong>Location:</strong> {{ c.current_location }}{% if c.willing_to_relocate == 'Yes' %} (open to relocate){% endif %}</div>
+                                <div><strong>Sentiment:</strong>
+                                    {% if c.sentiment_rating %}
+                                    <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;background:{{ sentiment_color[1] }};color:{{ sentiment_color[0] }};">{{ '★' * c.sentiment_rating }}{{ '☆' * (5 - c.sentiment_rating) }} {{ c.computed_sentiment }}</span>
+                                    {% else %}
+                                    <span style="color:#999;">Not enough data</span>
+                                    {% endif %}
+                                </div>
+                            </div>
                             {% if c.flags %}
                             <div style="margin-bottom:10px;">
                                 {% for f in c.flags %}<span style="display:inline-block;background:#fff3e0;color:#e65100;border-radius:4px;padding:2px 8px;margin:2px;font-size:11px;">⚑ {{ f }}</span>{% endfor %}
                             </div>
                             {% endif %}
-                            <div style="font-size:12px;color:#666;margin-bottom:8px;"><strong>Recording consent:</strong> {{ c.recording_consent or '—' }}</div>
                             {% if c.recording_consent == 'No' or c.needs_manual_call %}
                             <div style="font-size:12px;font-weight:600;color:#3949ab;background:#e8eaf6;border-radius:8px;padding:10px 12px;margin-bottom:10px;">
                                 Recording declined — HR should contact this candidate via an alternate (non-recorded / manual) screening call.
@@ -267,6 +339,7 @@
                                 <div style="font-size:12px;color:#555;white-space:pre-wrap;margin-top:8px;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:10px;">{{ c.full_conversation }}</div>
                             </details>
                             {% endif %}
+                            </div>
                         </td>
                     </tr>
                     {% endfor %}
@@ -281,6 +354,13 @@
         {% endif %}
     </article>
 </section>
+
+<div id="candidateModalOverlay" class="modal-overlay">
+    <div class="modal-box">
+        <button type="button" class="modal-close" aria-label="Close" onclick="closeCandidateModal()">×</button>
+        <div id="candidateModalBody"></div>
+    </div>
+</div>
 {% endif %}
 {% endblock %}
 
@@ -301,10 +381,6 @@ function applyFilters() {
         const show = matchesVerdict && matchesRole && matchesSearch;
         row.style.display = show ? '' : 'none';
         if (show) visibleCount++;
-        // Hide the row's breakdown drawer too, and collapse it if it was open
-        const idx = [...rows].indexOf(row) + 1;
-        const drawer = document.getElementById('breakdown-vs-' + idx);
-        if (drawer && !show) drawer.style.display = 'none';
     });
 
     const total = rows.length;
@@ -313,5 +389,30 @@ function applyFilters() {
         countEl.textContent = (verdict || role || search) ? `Showing ${visibleCount} of ${total}` : '';
     }
 }
+
+// Row click opens a modal populated from that row's hidden
+// #modal-content-vs-N source (server-rendered by Jinja, same markup/badges
+// as the rest of the page) — replaces the old inline dropdown-expand.
+function openCandidateModal(rowId) {
+    const source = document.getElementById('modal-content-' + rowId);
+    const overlay = document.getElementById('candidateModalOverlay');
+    const body = document.getElementById('candidateModalBody');
+    if (!source || !overlay || !body) return;
+    body.innerHTML = source.innerHTML;
+    overlay.style.display = 'flex';
+}
+
+function closeCandidateModal() {
+    const overlay = document.getElementById('candidateModalOverlay');
+    if (overlay) overlay.style.display = 'none';
+}
+
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'candidateModalOverlay') closeCandidateModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCandidateModal();
+});
 </script>
 {% endblock %}

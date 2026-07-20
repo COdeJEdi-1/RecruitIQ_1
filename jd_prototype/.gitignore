@@ -8,3 +8,7 @@ dist/
 build/
 .venv/
 venv/
+
+# Uploaded resumes contain real candidate PII — keep directory structure only
+static/uploads/resumes/*
+!static/uploads/resumes/.gitkeep

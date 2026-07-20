@@ -58,6 +58,7 @@ def _job_to_dict(row: DarwinboxJob) -> dict:
         "status": row.status,
         "published_at": row.published_at.isoformat() if row.published_at else None,
         "created_by": row.created_by,
+        "position_level": row.position_level,
         "jd_requirements": row.jd_requirements,
         "jd_requirements_extracted_at": (
             row.jd_requirements_extracted_at.isoformat()
@@ -150,6 +151,9 @@ def _maybe_push_to_voice_agent(candidate: dict, job: dict, score_record: dict):
     AI_VoiceAgent backend, which dispatches a screening call on its own. Dedup'd via
     the voice_agent_pushes table so a rescore never re-triggers a duplicate call.
     """
+    if job.get("position_level") == "executive":
+        return  # Executive roles are never auto-called by the AI bot — human recruiter handles these.
+
     if score_record["overall_score"] < AUTO_CALL_SCORE_THRESHOLD:
         return
 

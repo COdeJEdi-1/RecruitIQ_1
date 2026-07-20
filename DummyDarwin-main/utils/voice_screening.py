@@ -11,6 +11,7 @@ import io
 import re
 import ssl
 import urllib.request
+from datetime import datetime
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
@@ -369,27 +370,60 @@ def _phone_last10(phone):
     return digits[-10:] if len(digits) >= 10 else None
 
 
-def _load_phone_to_role_map():
-    """Builds {last-10-digit phone: role_title} by joining the `candidates`
-    table (candidate -> darwinbox_job_id) with `darwinbox_jobs` (job_id ->
-    role_title). The voice-screening sheet has no role/job field of its own —
-    this is the only way to know which role a given call was actually
-    screening for."""
+def _load_phone_lookup():
+    """Builds {last-10-digit phone: {"role": role_title, "req_id": jd_id,
+    "name": candidate_name}} by joining the `candidates` table (candidate ->
+    darwinbox_job_id) with `darwinbox_jobs` (job_id -> role_title/jd_id). The
+    voice-screening sheet has no role/job field of its own, and its own
+    candidate_name is often blank (the call ended before OmniDimension's LLM
+    extracted a name) — this join is the only way to know which role a call
+    was screening for, and lets fetch_and_score() fall back to our own
+    record of the candidate's name instead of showing "Unknown" for someone
+    we actually do know."""
     try:
         candidates = [c.to_dict() for c in Candidate.query.all()]
         jobs = [j.to_dict() for j in DarwinboxJob.query.all()]
     except Exception:
         return {}
 
-    job_role_map = {j["darwinbox_job_id"]: j.get("role_title", "") for j in jobs if j.get("darwinbox_job_id")}
+    job_map = {
+        j["darwinbox_job_id"]: {"role": j.get("role_title", ""), "req_id": j.get("jd_id")}
+        for j in jobs
+        if j.get("darwinbox_job_id")
+    }
 
-    phone_role_map = {}
+    phone_lookup = {}
     for c in candidates:
         last10 = _phone_last10(c.get("phone"))
-        role = job_role_map.get(c.get("darwinbox_job_id"))
-        if last10 and role:
-            phone_role_map[last10] = role
-    return phone_role_map
+        job = job_map.get(c.get("darwinbox_job_id"))
+        if last10 and job and job["role"]:
+            phone_lookup[last10] = {"role": job["role"], "req_id": job["req_id"], "name": c.get("name")}
+    return phone_lookup
+
+
+def _mask_phone(phone):
+    """Masks all but the country code and outer 2+2 digits, for rows whose
+    call never actually completed — there's no verified interaction to
+    justify showing the full number. e.g. '+919825184700' -> '+91 98••• •••00'."""
+    if not phone or phone == "—":
+        return "—"
+    digits = re.sub(r"\D", "", str(phone))
+    if len(digits) < 10:
+        return "—"
+    cc, num = digits[:-10], digits[-10:]
+    masked = f"{num[:2]}••• •••{num[-2:]}"
+    return f"+{cc} {masked}" if cc else masked
+
+
+def _looks_like_phone(value):
+    """OmniDimension logs web-widget test calls with junk values in the phone
+    columns (e.g. phone_number="Web Call", to_number="Assistant") instead of
+    a real number. Rejects anything without enough digits to be a real phone,
+    so the UI shows '—' rather than a literal 'Assistant'/'Web Call' string."""
+    if not value:
+        return False
+    digits = re.sub(r"\D", "", str(value))
+    return len(digits) >= 7
 
 
 def fetch_and_score(timeout=10):
@@ -400,7 +434,7 @@ def fetch_and_score(timeout=10):
     except Exception as e:
         return [], f"Could not reach the screening sheet: {e}"
 
-    phone_role_map = _load_phone_to_role_map()
+    phone_lookup = _load_phone_lookup()
 
     reader = csv.DictReader(io.StringIO(raw))
     candidates = []
@@ -410,12 +444,29 @@ def fetch_and_score(timeout=10):
         result = score_row(row)
         # phone_number is OmniDimension's own outbound line (near-constant across
         # every row) — the actual candidate number is to_number for outbound calls.
-        candidate_phone = _clean(row.get("to_number")) or _clean(row.get("phone_number")) or "—"
-        role = phone_role_map.get(_phone_last10(candidate_phone)) or "Unknown Role"
+        # Web-widget test calls log junk like "Web Call"/"Assistant" here instead
+        # of a real number — _looks_like_phone() keeps those from being displayed
+        # or matched as if they were one.
+        raw_phone = _clean(row.get("to_number")) or _clean(row.get("phone_number"))
+        phone_valid = _looks_like_phone(raw_phone)
+        candidate_phone = raw_phone if phone_valid else "—"
+        match = phone_lookup.get(_phone_last10(raw_phone)) if phone_valid else None
+
+        # The sheet's own candidate_name is frequently blank/"Not provided" —
+        # the call ended before OmniDimension's LLM captured a name. Fall back
+        # to our own record of this candidate (matched by phone) rather than
+        # showing "Unknown" for someone we actually do know.
+        sheet_name = _clean(row.get("candidate_name"))
+        if sheet_name and sheet_name.lower() == "not provided":
+            sheet_name = None
+        name = sheet_name or (match.get("name") if match else None) or "Unknown"
+
         candidates.append({
-            "name": _clean(row.get("candidate_name")) or "Unknown",
+            "name": name,
             "phone": candidate_phone,
-            "role": role,
+            "masked_phone": _mask_phone(candidate_phone),
+            "role": (match.get("role") if match else None) or "Unknown Role",
+            "req_id": match.get("req_id") if match else None,
             "call_date": _clean(row.get("call_date")) or "",
             "current_job": _clean(row.get("current_job")) or "—",
             "years_experience": _parse_years(row),
@@ -423,6 +474,7 @@ def fetch_and_score(timeout=10):
             "expected_ctc": _clean(row.get("expected_ctc")) or "—",
             "current_location": _clean(row.get("current_location")) or "—",
             "willing_to_relocate": _clean(row.get("willing_to_relocate")) or "—",
+            "job_change": _clean(row.get("job_change")) or "—",
             "notice_period": _clean(row.get("notice_period")) or _clean(row.get("joining_time")) or "—",
             "sentiment": _clean(row.get("sentiment")) or "—",
             "job_change_reason": _clean(row.get("job_change_reason")) or "—",
@@ -438,3 +490,42 @@ def fetch_and_score(timeout=10):
     _order = {"Needs Manual Call": 0, "Ready for Interview": 1, "Manual Review": 2, "Not Suitable": 3, "Incomplete": 4}
     candidates.sort(key=lambda c: (_order.get(c["verdict"], 9), c["score"] is None, -(c["score"] or 0)))
     return candidates, None
+
+
+def fetch_call_results_by_phone(timeout=10):
+    """Same call data as fetch_and_score(), keyed by the candidate's last-10-digit
+    phone number -> every logged call to that number, most-recent-first, so
+    callers (e.g. the Calling pages) can join it onto candidate rows sourced
+    from the `candidates` table without re-fetching the sheet.
+
+    Returns a LIST per phone rather than picking one "best" call here —
+    this sheet's phone numbers are heavily reused test/demo data (confirmed:
+    one number alone logged calls under half a dozen different candidate
+    names — Kashish, "Kashish Bhagat", Rohit Malhotra, and several blank
+    names — spanning weeks). Picking "the most recent call to this number"
+    without checking WHO made it would silently attribute a totally
+    different person's call to this candidate. The caller
+    (_call_info_for_candidate() in routes/dashboard.py) is responsible for
+    picking the right entry from the list by matching the candidate's own
+    name, not just their phone."""
+    candidates, error = fetch_and_score(timeout=timeout)
+    if error:
+        return {}, error
+
+    by_phone = {}
+    for c in candidates:
+        last10 = _phone_last10(c.get("phone"))
+        if not last10:
+            continue
+        by_phone.setdefault(last10, []).append(c)
+
+    def _sort_key(call):
+        try:
+            return datetime.fromisoformat(call.get("call_date") or "")
+        except ValueError:
+            return datetime.min
+
+    for last10 in by_phone:
+        by_phone[last10].sort(key=_sort_key, reverse=True)
+
+    return by_phone, None

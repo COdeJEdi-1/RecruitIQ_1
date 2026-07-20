@@ -1,4 +1,4 @@
-// Candidate scoring helpers shared by dashboard.html and shortlisted.html.
+// Candidate scoring helpers shared by ranking.html, pre_calling.html, and post_calling.html.
 // Plain static file (not Jinja-templated) — talks to the jd_prototype
 // scoring backend on localhost:6001.
 

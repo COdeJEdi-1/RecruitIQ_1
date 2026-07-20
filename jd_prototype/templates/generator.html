@@ -151,6 +151,23 @@
         </div>
       </div>
 
+      <!-- Position Level -->
+      <div class="flex flex-col gap-1.5">
+        <label class="text-label-sm text-on-surface-variant">Position Level <span class="text-error">*</span></label>
+        <div class="flex gap-3">
+          <label class="flex items-center gap-2 flex-1 cursor-pointer border border-outline-variant rounded-lg px-3 py-2.5 transition-colors hover:border-secondary has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+            <input type="radio" name="positionLevel" id="positionLevelJunior" value="junior" checked
+                   class="accent-[#810022]"/>
+            <span class="text-body-sm text-on-surface select-none">Junior Position</span>
+          </label>
+          <label class="flex items-center gap-2 flex-1 cursor-pointer border border-outline-variant rounded-lg px-3 py-2.5 transition-colors hover:border-secondary has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+            <input type="radio" name="positionLevel" id="positionLevelExec" value="executive"
+                   class="accent-[#810022]"/>
+            <span class="text-body-sm text-on-surface select-none">Executive Position</span>
+          </label>
+        </div>
+      </div>
+
 
       <!-- Department -->
       <div class="flex flex-col gap-1.5">
@@ -809,6 +826,7 @@
     return {
       role_title:       document.getElementById('roleTitle').value.trim(),
       role_type:        isMgr ? 'team_manager' : 'individual_contributor',
+      position_level:   document.getElementById('positionLevelExec').checked ? 'executive' : 'junior',
       team_size:        isMgr && teamSize ? parseInt(teamSize, 10) : null,
       employment_type:  empMap[_toggleVal('empTypeGroup')] || 'Full-Time',
       work_mode:        wkMap[_toggleVal('workModeGroup')]  || 'Onsite',
@@ -1377,6 +1395,7 @@
           family:       inp.family,
           yoe_band:     inp.yoe_band,
           role_type:    inp.role_type,
+          position_level: inp.position_level,
           action:       _drawerAction,
         }),
       });
